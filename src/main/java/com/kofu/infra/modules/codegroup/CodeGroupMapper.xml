@@ -9,11 +9,11 @@
     <resultMap id="resultMapObj" type="com.kofu.infra.modules.codegroup.CodeGroup"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
-		SELECT
+		select
 			a.*
-		FROM ccg a
-		WHERE 1=1
-			AND UseNY = 1
+		    ,(select count(ccg_seq) from cc aa where aa.ccg_seq = a.ccgSeq ) as countCCG
+		from ccg a
+		;
 	</select>
 
 </mapper>	

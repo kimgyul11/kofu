@@ -163,7 +163,7 @@
 		            <th scope="col">#</th>
 		            <th scope="col">코드그룹 코드</th>
 		            <th scope="col">코드그룹 이름(한글)</th>
-		            <th scope="col">코드그룹 이름(영어)</th>
+		            <th scope="col">UseNY</th>
 		            <th scope="col">코드갯수</th>
 		            <th scope="col">등록일</th>
 		            <th scope="col">수정일</th>

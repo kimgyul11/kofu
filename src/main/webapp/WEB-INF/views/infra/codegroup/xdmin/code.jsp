@@ -1,22 +1,78 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-
-	<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>codeGroupList</title>
-	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
-	<!-- Bootstrap CSS -->
+	<title>코드관리</title>
+	<!-- CDN : content Delivery Network  -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
-    <!-- user css -->
-    <link rel="stylesheet" href="/resources/xdmin/css/codeGroupListi.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Brush+Script&family=Song+Myung&display=swap');
+			.ng-font2{
+			font-family: 'Gowun Dodum', sans-serif;
+			}
+		#thcenter{
+			text-align:center;
+		}
+		a{
+			color:black;
+		}
+		#sch{
+			background-color:red;
+			height:150px;
+			margin:auto;
+		}
+		.pagetop{
+		height:250px;
+		border:1px solid;
+		background: linear-gradient(to top right, #efebe9, #fafafa 80%);
+		font-size:100px;
+		text-align:center;
+		}
+		.rightmenu{
+			text-align: center;
+			font-size:80px;
+		}
+		.lastbutton{
+			margin:auto;
+			width:80%;
+		}
+		#zentai{
+			width:80%;
+			margin:150px auto 0px auto;
+		}
+		#table{
+			width:80%;
+			margin:auto; 
+			text-align: center;
+		}
+		#no{
+			font-size:150px;
+		}
+		td{
+			cursor:pointer;
+		}
+			.profile_box{
+	width:50px;
+	height:50px;
+	border-radius:70%;
+	overflow:hidden;
+	}
+	.profile_box img{
+		width:100%;
+		height:100%;
+		object-fit:cover;
+	}
+	</style>
 </head>
 <body class="ng-font2">
 <!-- 네비바 -->
@@ -33,11 +89,11 @@
 			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
 			    <div class="offcanvas-header">
 			        <h5 class="offcanvas-title" id="offcanvasRightLabel">메뉴</h5>
-			        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa-solid fa-burger"></i></button>
+			        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 			    </div>
 		    	<div class="offcanvas-body">
 		    		<div class="rightmenu">
-		    			<i class="fa-solid fa-burger"></i>
+		    			<i class="bi bi-person"></i>
 		    		</div>
 		    		
 		    		<p>환영합니다.<b>관리자</b>님</p>
@@ -164,16 +220,20 @@
 		            <th scope="col">#</th>
 		            <th scope="col">코드그룹 코드</th>
 		            <th scope="col">코드그룹 이름(한글)</th>
-		            <th scope="col">사용확인</th>
-		            <th scope="col">코드갯수</th>
+		            <th scope="col">코드</th>
+		            <th scope="col">대체 코드</th>
+		            <th scope="col">코드 이름(한글)</th>
+		            <th scope="col">코드 이름(영문)</th>
+		            <th scope="col">사용</th>
+		            <th scope="col">순서</th>
 		            <th scope="col">등록일</th>
 		            <th scope="col">수정일</th>
+		            
 		        </tr>
 		    </thead>
 		    <tbody>
-			    <c:forEach items="${list}" var="list" varStatus="status">
-					
 		        <tr>
+		        <c:forEach items="${list}" var="list" varStatus="status">
 		            <th scope="row">
 		            	<div class="form-check">
 		    				<input class="form-check-input" type="checkbox" value="5번" id="flexCheckDefault"name='nember'>
@@ -181,11 +241,15 @@
 		 			   		</label>
 						</div>
 		            </th>
+		            <td></td>
 		            <td><c:out value="${list.ccgSeq }"/></td>
-		            <td><c:out value="${list.ccg_nomber }"/></td>
 		            <td><c:out value="${list.ccg_groupname }"/></td>
+		            <td><c:out value="${list.seq }"/></td>
+		            <td></td>
+		            <td><c:out value="${list.cc_Name }"/></td>
+		            <td></td>
 		            <td><c:out value="${list.useNY }"/></td>
-		            <td><c:out value="${list.countCCG }"/></td>
+		            <td></td>
 		            <td></td>
 		            <td></td>
 		        </tr>
@@ -271,5 +335,6 @@
 		  })
 		}
 	</script>
+	<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 </body>
 </html>
