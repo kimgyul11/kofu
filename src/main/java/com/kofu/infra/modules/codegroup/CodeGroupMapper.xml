@@ -8,12 +8,17 @@
 
     <resultMap id="resultMapObj" type="com.kofu.infra.modules.codegroup.CodeGroup"></resultMap>
 	
+	
+	
+	
 	<select id="selectList" resultMap="resultMapObj">
 		select
 			a.*
 		    ,(select count(ccg_seq) from cc aa where aa.ccg_seq = a.ccgSeq ) as countCCG
 		from ccg a
-		;
+		where 1=1 
+		and a.ccg_groupname like concat('%', #{shValue},'%')
+		
 	</select>
 
 </mapper>	
