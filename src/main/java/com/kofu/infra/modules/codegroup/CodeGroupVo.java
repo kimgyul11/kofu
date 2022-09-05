@@ -4,6 +4,29 @@ public class CodeGroupVo {
 
 	private Integer shOption;
 	private String shValue;
+	private Integer shDelNy;
+	private String startDate;
+	private String endDate;
+	
+	
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+	public Integer getShDelNy() {
+		return shDelNy;
+	}
+	public void setShDelNy(Integer shDelNy) {
+		this.shDelNy = shDelNy;
+	}
 	// -----------
 	public Integer getShOption() {
 		return shOption;

@@ -22,5 +22,6 @@ public class CodeDao {
 	//아래 리스트에서 
 	// 패배원인 : 코드그룹DTO를 가져올려고 했다.
 	// 그러면 안되고, 코드DTO를 가져온다.
-	public List<Code> selectList(){ return sqlSession.selectList(namespace + ".selectList", ""); }
+	public List<Code> selectList(CodeVo vo)
+	{ return sqlSession.selectList(namespace + ".selectList", vo); }
 }

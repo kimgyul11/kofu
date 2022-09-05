@@ -6,6 +6,33 @@ public class CodeGroup {
 	private String ccg_groupname;
 	private Integer UseNY;
 	private Integer ccg_nomber;
+	private String ccg_groupnameEng;
+	private String insertdate;
+	private String moddate;
+	
+	
+	
+	
+//	-----------------------------------------
+	
+	public String getInsertdate() {
+		return insertdate;
+	}
+	public void setInsertdate(String insertdate) {
+		this.insertdate = insertdate;
+	}
+	public String getModdate() {
+		return moddate;
+	}
+	public void setModdate(String moddate) {
+		this.moddate = moddate;
+	}
+	public String getCcg_groupnameEng() {
+		return ccg_groupnameEng;
+	}
+	public void setCcg_groupnameEng(String ccg_groupnameEng) {
+		this.ccg_groupnameEng = ccg_groupnameEng;
+	}
 	//---------
 	public Integer getCcgSeq() {
 		return ccgSeq;

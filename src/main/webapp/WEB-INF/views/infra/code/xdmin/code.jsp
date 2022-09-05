@@ -75,6 +75,7 @@
 	</style>
 </head>
 <body class="ng-font2">
+<form method="post" action="/code/code">
 <!-- 네비바 -->
 	<nav class="navbar" style="background-color:#e3f2fd;">
 		<div class="container-fluid">
@@ -152,11 +153,10 @@
 		<!-- 검색창 상단-->
 		<div class="row row-cols-4"style="margin-top:10px;">
 		    <div class="col">
-		    	<select class="form-select" aria-label="Default select example">
-					<option selected>성별</option>
-					<option value="남">남</option>
-					<option value="여">여</option>
-					<option value="선택안함">선택안함</option>
+		    	<select class="form-select" id='shDelNy' name='shDelNy'>
+					<option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>검색구분</option>
+					<option value='0' <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
+					<option value='1' <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
 				</select>
 		    </div>
 		    <div class="col">
@@ -177,18 +177,18 @@
 		<!-- 하단 검색창 -->
 		<br>
 		<div class="float-start">
-    		<select class="form-select" aria-label="Default select example">
-				<option selected>검색구분</option>
-				<option value="1">One</option>
-				<option value="2">Two</option>
-				<option value="3">Three</option>
+    		<select class="form-select" id="shOption" name="shOption" aria-label="Default select example">
+				<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색구분</option>
+				<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
+				<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름(한글)</option>
+				<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 이름(영어)</option>
 			</select>
 		</div>		
 	    <div class="float-start">
-   			 <input class="form-control" type="text" placeholder="검색어를 입력해주세요." aria-label="default input example" style="margin-left:5px; width:300px;">
+   			 <input  class="form-control" type="text" id="shValue" name="shValue" placeholder="검색어를 입력해주세요." aria-label="default input example" style="margin-left:5px; width:300px;">
 		</div>
 		<div class="float-start">
-			 <button type="button" class="btn btn-outline-success" style="margin-left:20px;"><i class="fa-solid fa-magnifying-glass"></i></button>	
+			 <button type="submit" class="btn btn-outline-success" style="margin-left:20px;"><i class="fa-solid fa-magnifying-glass"></i></button>	
 		</div>
 		<div class="float-start">
 			 <button type="button" class="btn btn-outline-danger" style="margin-left:20px;"><i class="fa-solid fa-rotate-left"></i></button>	
@@ -316,6 +316,7 @@
 	</div>	
 </div>
 <br>
+</form>
 <!-- 하단 추가 삭제 수정 버튼 완료 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script>
@@ -336,5 +337,6 @@
 		}
 	</script>
 	<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
+	
 </body>
 </html>

@@ -7,6 +7,8 @@ public class Code {
 	private Integer use_NY;
 	private Integer nember;
 	private Integer ccg_seq;
+	
+	
 	public Integer getSeq() {
 		return seq;
 	}

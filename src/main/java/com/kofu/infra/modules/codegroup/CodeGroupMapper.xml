@@ -17,8 +17,16 @@
 		    ,(select count(ccg_seq) from cc aa where aa.ccg_seq = a.ccgSeq ) as countCCG
 		from ccg a
 		where 1=1 
-		and a.ccg_groupname like concat('%', #{shValue},'%')
-		
-	</select>
+				
+				<if test="startDate != null and !startDate.equals('') and endDate != null and !endDate.equals('')"> AND a.insertdate Between #{startDate} AND #{endDate}</if>
+				<if test="shDelNy != null and !shDelNy.equals('')">AND UseNY = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND ccgSeq = #{shValue}</when>
+				<when test="shOption == 2">AND ccg_groupname LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND ccg_groupnameEng LIKE CONCAT('%',#{shValue},'%')</when>
+				
+				<otherwise></otherwise>
+			</choose>
+	</select>		
 
 </mapper>	

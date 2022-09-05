@@ -17,6 +17,9 @@ public class CodeGroupDao {
 	
 	private static String namespace = "com.kofu.infra.modules.codegroup.CodeGroupMapper";
 	
-	public List<CodeGroup> selectList(CodeGroupVo vo){return sqlSession.selectList(namespace + ".selectList", vo); }
-
+	public List<CodeGroup> selectList(CodeGroupVo vo)
+	{return sqlSession.selectList(namespace + ".selectList", vo); }
+	//아래와같은 의미다..
+//	List<CodeGroup>list = sqlSession.selectList("com.kofu.infra.modules.codegroup.CodeGroupMapper.selectList",vo);
+//	return list;
 }
