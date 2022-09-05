@@ -143,19 +143,11 @@
 		</div>		
 	</div>
 </div>	  
-
  <!--검색창 끝  -->
  
  
 <br>
 <br>   
-
-		
-			
-			
-				
-			
-
     <!--테이블 시작  -->
     <div class="contaner"
     <div style="width:80%;margin:auto; text-align: center; height:700px;">
