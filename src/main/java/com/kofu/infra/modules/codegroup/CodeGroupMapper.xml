@@ -26,6 +26,26 @@
 			<otherwise></otherwise>
 		</choose>
 	</select>		
+	
+	<insert id="insert">
+		INSERT INTO ccg(
+		    ccg_groupname
+		    ,delNy
+		    ,UseNY
+		    ,ccg_groupnameEng
+		    ,insertdate
+		)
+		VALUES(
+			#{ccg_groupname}
+			,#{delNy}
+			,#{UseNY}
+			,#{ccg_groupnameEng}
+			,now()
+		)
+		<selectKey resultType="String" keyProperty="ccgSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 
 </mapper>	
 

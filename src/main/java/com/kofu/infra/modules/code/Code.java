@@ -2,36 +2,52 @@ package com.kofu.infra.modules.code;
 
 public class Code {
 	
-	private Integer seq;
-	private String cc_Name;
-	private Integer use_NY;
-	private Integer nember;
 	private Integer ccg_seq;
+	private String ccSeq;
+	private String cc_name;
+	private String cc_nameEng;
+	private String cc_number;
+	private Integer cc_delNy;
+	private Integer cc_useNy;
 	
 	
-	public Integer getSeq() {
-		return seq;
+	
+
+	public String getCcSeq() {
+		return ccSeq;
 	}
-	public void setSeq(Integer seq) {
-		this.seq = seq;
+	public void setCcSeq(String ccSeq) {
+		this.ccSeq = ccSeq;
 	}
-	public String getCc_Name() {
-		return cc_Name;
+	public String getCc_name() {
+		return cc_name;
 	}
-	public void setCc_Name(String cc_Name) {
-		this.cc_Name = cc_Name;
+	public void setCc_name(String cc_name) {
+		this.cc_name = cc_name;
 	}
-	public Integer getUse_NY() {
-		return use_NY;
+	public String getCc_nameEng() {
+		return cc_nameEng;
 	}
-	public void setUse_NY(Integer use_NY) {
-		this.use_NY = use_NY;
+	public void setCc_nameEng(String cc_nameEng) {
+		this.cc_nameEng = cc_nameEng;
 	}
-	public Integer getNember() {
-		return nember;
+	public String getCc_number() {
+		return cc_number;
 	}
-	public void setNember(Integer nember) {
-		this.nember = nember;
+	public void setCc_number(String cc_number) {
+		this.cc_number = cc_number;
+	}
+	public Integer getCc_delNy() {
+		return cc_delNy;
+	}
+	public void setCc_delNy(Integer cc_delNy) {
+		this.cc_delNy = cc_delNy;
+	}
+	public Integer getCc_useNy() {
+		return cc_useNy;
+	}
+	public void setCc_useNy(Integer cc_useNy) {
+		this.cc_useNy = cc_useNy;
 	}
 	public Integer getCcg_seq() {
 		return ccg_seq;

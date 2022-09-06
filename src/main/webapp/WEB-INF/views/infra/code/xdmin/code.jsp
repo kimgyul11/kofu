@@ -187,11 +187,11 @@
 		            <td></td>
 		            <td><c:out value="${list.ccgSeq }"/></td>
 		            <td><c:out value="${list.ccg_groupname }"/></td>
-		            <td><c:out value="${list.seq }"/></td>
+		            <td><c:out value="${list.ccSeq }"/></td>
 		            <td></td>
-		            <td><c:out value="${list.cc_Name }"/></td>
+		            <td><c:out value="${list.cc_name }"/></td>
 		            <td></td>
-		            <td><c:out value="${list.useNY }"/></td>
+		            <td><c:out value="${list.cc_useNy }"/></td>
 		            <td></td>
 		            <td></td>
 		            <td></td>
@@ -249,7 +249,7 @@
 		</div>
 		</div>
 		<div class="float-end">
-			<a href="memberRegForm.html">
+			<a href="codelistform">
 				<button type="button" class="btn btn-outline-dark" style="margin:5px;">생성</button>
 			</a>
 		</div>

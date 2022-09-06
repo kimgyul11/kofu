@@ -24,4 +24,40 @@
 			</choose>
 	</select>
 
+	<select id="ccgselectList" resultMap="resultMapObj">
+		select
+			a.ccg_groupname
+			,a.*
+			,b.*
+		from ccg a
+		join cc b on b.ccg_Seq = a.ccgSeq
+		where 1=1
+		and a.UseNY = 1
+		group by ccg_groupname
+	</select>
+	
+	
+	<insert id="insert">
+		INSERT INTO cc(
+			cc_name
+			,cc_nameEng
+			,cc_useNy
+			,cc_delNy
+			,ccg_seq
+		)
+		VALUES(
+			#{cc_name}
+			,#{cc_nameEng}
+			,#{cc_useNy}
+			,#{cc_delNy}
+			,#{ccg_seq}
+		)
+		<selectKey resultType="String" keyProperty="ccSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	
+	
+
 </mapper>	

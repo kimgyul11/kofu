@@ -24,4 +24,14 @@ public class CodeDao {
 	// 그러면 안되고, 코드DTO를 가져온다.
 	public List<Code> selectList(CodeVo vo)
 	{ return sqlSession.selectList(namespace + ".selectList", vo); }
+	
+	public List<Code> ccgselectList()
+	{return sqlSession.selectList(namespace + ".ccgselectList", "");}
+	//sqlSession.selectList는 함수다.
+	public int insert(Code dto) {
+		int result = sqlSession.insert(namespace + ".insert", dto);
+		System.out.println("dao result :"+result);
+		return result;
+	}
+	
 }

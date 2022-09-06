@@ -165,6 +165,7 @@
 		            <th scope="col">코드갯수</th>
 		            <th scope="col">등록일</th>
 		            <th scope="col">수정일</th>
+		            <th scope="col">삭제여부</th>
 		        </tr>
 		    </thead>
 		    <tbody>
@@ -194,6 +195,7 @@
 		            <td><c:out value="${list.countCCG }"/></td>
 		            <td><c:out value="${list.insertdate }"/></td>
 		            <td><c:out value="${list.moddate }"/></td>
+		            <td><c:out value="${list.delNy }"/></td>
 		        </tr>
 		        </c:forEach>
 		        </c:otherwise>
@@ -250,7 +252,7 @@
 		</div>
 		</div>
 		<div class="float-end">
-			<a href="memberRegForm.html">
+			<a href="codeGroupReg">
 				<button type="button" class="btn btn-outline-dark" style="margin:5px;">생성</button>
 			</a>
 		</div>

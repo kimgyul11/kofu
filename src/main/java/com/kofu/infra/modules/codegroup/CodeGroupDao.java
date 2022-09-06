@@ -22,4 +22,9 @@ public class CodeGroupDao {
 	//아래와같은 의미다..
 //	List<CodeGroup>list = sqlSession.selectList("com.kofu.infra.modules.codegroup.CodeGroupMapper.selectList",vo);
 //	return list;
+	public int insert(CodeGroup dto) {
+		int result = sqlSession.insert(namespace + ".insert", dto);
+		System.out.println("dao result : "+result);
+		return result;
+	}
 }

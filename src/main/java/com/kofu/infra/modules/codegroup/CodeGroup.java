@@ -2,19 +2,32 @@ package com.kofu.infra.modules.codegroup;
 
 public class CodeGroup {
 	
-	private Integer ccgSeq;
+	private String ccgSeq;
 	private String ccg_groupname;
 	private Integer UseNY;
 	private Integer ccg_nomber;
 	private String ccg_groupnameEng;
 	private String insertdate;
 	private String moddate;
+	private Integer delNy;
 	
 	
 	
 	
 //	-----------------------------------------
 	
+	public String getCcgSeq() {
+		return ccgSeq;
+	}
+	public void setCcgSeq(String ccgSeq) {
+		this.ccgSeq = ccgSeq;
+	}
+	public Integer getDelNy() {
+		return delNy;
+	}
+	public void setDelNy(Integer delNy) {
+		this.delNy = delNy;
+	}
 	public String getInsertdate() {
 		return insertdate;
 	}
@@ -34,12 +47,7 @@ public class CodeGroup {
 		this.ccg_groupnameEng = ccg_groupnameEng;
 	}
 	//---------
-	public Integer getCcgSeq() {
-		return ccgSeq;
-	}
-	public void setCcgSeq(Integer ccgSeq) {
-		this.ccgSeq = ccgSeq;
-	}
+
 	public String getCcg_groupname() {
 		return ccg_groupname;
 	}
