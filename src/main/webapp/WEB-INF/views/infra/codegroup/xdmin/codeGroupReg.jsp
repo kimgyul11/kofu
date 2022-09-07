@@ -131,19 +131,19 @@
 					<div class="col-md-6">
 
 						<p>코드 이름(한글)</p>
-						<input type="text" class="form-control" name="ccg_groupname" >
+						<input type="text" class="form-control" name="ccg_groupname" id="ccg_groupname" >
 					
 					</div>
 					<div class="col-md-6 ">
 						<p>코드 이름(영문)</p>
-						<input type="text" class="form-control" name="ccg_groupnameEng">
+						<input type="text" class="form-control" name="ccg_groupnameEng" id="ccg_groupnameEng">
 					</div>
 				</div>
 				<div class="row m-4">
 					<div class="col-md-6">
 						<p>사용 여부</p>
-						<select class="form-select" aria-label="Default select example"name="UseNY">
-							  <option selected>선택하세요</option>
+						<select class="form-select" aria-label="Default select example"name="UseNY" id="UseNY">
+							  <option selected value=''>선택하세요</option>
 							  <option value="0">N</option>
 							  <option value="1">Y</option>
 						</select>
@@ -162,7 +162,7 @@
 					</div>
 					<div class="col-md-6 ">
 						<p>삭제여부</p>
-						<select class="form-select" aria-label="Default select example" name="delNy">
+						<select class="form-select" aria-label="Default select example" name="delNy" id="delNy">
 							  <option value="0">N</option>
 							  <option value="1">Y</option>
 						</select>
@@ -200,17 +200,66 @@
 						<input type="email" class="form-control" placeholder="숫자">
 					</div>
 				</div>
+				<div class="row m-4">
+					<div class="col-md-6" >
+						<p>가입경로</p>
+						<input type="radio" id="map1" name="radiomap" value ="1">인터넷
+						<input type="radio" id="map2" name="radiomap" value ="2">전화
+						<input type="radio" id="map3" name="radiomap" value ="3">팜플렛
+					</div>
+					<div class="col-md-6" >
+						<p>여러개선택</p>
+						<input type="checkbox" id="no1" name="money" value ="1">10,100
+						<input type="checkbox" id="no2" name="money" value ="2">20,200
+						<input type="checkbox" id="no3" name="money" value ="3">30,300
+					</div>
+				</div>
 			</div>
 			<div class="d-flex mt-5 ">
 				<div class="me-auto p-2"><button type="button" class="btn btn-dark"><i class="fa-solid fa-list"></i></button></div>
 				<div class="p-2"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></div>
-				<div class="p-2"><button type="button" class="btn btn-success"><i class="fa-solid fa-bookmark"></i></button></div>
-				<div class="p-2"><button type="submit" class="btn btn-dark"><i class="fa-solid fa-floppy-disk"></i></button></div>
+				<div class="p-2"><button type="button" class="btn btn-success" ><i class="fa-solid fa-bookmark" ></i></button></div>
+				<div class="p-2"><button type="submit" class="btn btn-dark" ><i class="fa-solid fa-floppy-disk"></i></button></div>
+				<span onClick="test();" style="cursor:pointer;">검색</span>
 			</div>
 		</div>
 	</div>
 	</form>	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+		function test(){			
+			if(document.getElementById("ccg_groupname").value == '' || document.getElementById("ccg_groupname").value == null){
+				alert("값을 제대로 입력해주세요 ");
+				document.getElementById("ccg_groupname").value ="";
+				document.getElementById("ccg_groupname").focus();
+				return false;
+			}
+			
+			if(document.getElementById("ccg_groupnameEng").value == '' || document.getElementById("ccg_groupnameEng").value == null){
+				alert("값을 제대로 입력해주세요 ");
+				document.getElementById("ccg_groupnameEng").value ="";
+				document.getElementById("ccg_groupnameEng").focus();
+				return false;
+			}
+			
+			if(document.getElementById("UseNY").value == ''){
+				alert("값을 선택해주세요 ")
+				document.getElementById("UseNY").focus();
+				return false;
+			}
+			
+			
+			if($("input[name=[radiomap]]:radio:checked").length < 1){
+
+			alert("버튼을 선택해 주세요.");
+
+			return;
+
+			}
+			
+		}
+	</script>
 </body>
 </html>

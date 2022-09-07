@@ -177,8 +177,7 @@
 					</tr>
 			    </c:when>
 			    <c:otherwise>
-			    <c:forEach items="${list}" var="list" varStatus="status">
-					
+			    <c:forEach items="${list}" var="list" varStatus="status">	
 		        <tr>
 		            <th scope="row">
 		            	<div class="form-check">
