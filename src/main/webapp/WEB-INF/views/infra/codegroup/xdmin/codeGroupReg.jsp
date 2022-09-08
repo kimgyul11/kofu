@@ -131,21 +131,20 @@
 					<div class="col-md-6">
 
 						<p>코드 이름(한글)</p>
-						<input type="text" class="form-control" name="ccg_groupname" id="ccg_groupname" >
+						<input type="text" class="form-control" name="ccg_groupname" id="ccg_groupname" value="<c:out value ="${item.ccg_groupname }"/>">
 					
 					</div>
 					<div class="col-md-6 ">
 						<p>코드 이름(영문)</p>
-						<input type="text" class="form-control" name="ccg_groupnameEng" id="ccg_groupnameEng">
+						<input type="text" class="form-control" name="ccg_groupnameEng" id="ccg_groupnameEng" value="<c:out value="${item.ccg_groupnameEng }"/>">
 					</div>
 				</div>
 				<div class="row m-4">
 					<div class="col-md-6">
 						<p>사용 여부</p>
 						<select class="form-select" aria-label="Default select example"name="UseNY" id="UseNY">
-							  <option selected value=''>선택하세요</option>
-							  <option value="0">N</option>
-							  <option value="1">Y</option>
+							  <option value="0" <c:if test="${item.useNY eq 0 }">selected</c:if>>N</option>
+							  <option value="1" <c:if test="${item.useNY eq 1 }">selected</c:if>>Y</option>
 						</select>
 					</div>
 					<div class="col-md-6 ">
@@ -227,7 +226,6 @@
 	</form>	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript">
 		function test(){			
 			if(document.getElementById("ccg_groupname").value == '' || document.getElementById("ccg_groupname").value == null){
@@ -235,30 +233,16 @@
 				document.getElementById("ccg_groupname").value ="";
 				document.getElementById("ccg_groupname").focus();
 				return false;
-			}
-			
-			if(document.getElementById("ccg_groupnameEng").value == '' || document.getElementById("ccg_groupnameEng").value == null){
+			}else if(document.getElementById("ccg_groupnameEng").value == '' || document.getElementById("ccg_groupnameEng").value == null){
 				alert("값을 제대로 입력해주세요 ");
 				document.getElementById("ccg_groupnameEng").value ="";
 				document.getElementById("ccg_groupnameEng").focus();
 				return false;
-			}
-			
-			if(document.getElementById("UseNY").value == ''){
+			}else if(document.getElementById("UseNY").value == ''){
 				alert("값을 선택해주세요 ")
 				document.getElementById("UseNY").focus();
 				return false;
 			}
-			
-			
-			if($("input[name=[radiomap]]:radio:checked").length < 1){
-
-			alert("버튼을 선택해 주세요.");
-
-			return;
-
-			}
-			
 		}
 	</script>
 </body>

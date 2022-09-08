@@ -2,6 +2,14 @@ package com.kofu.infra.modules.codegroup;
 
 public class CodeGroupVo {
 
+	private String ccgSeq;
+	
+	public String getCcgSeq() {
+		return ccgSeq;
+	}
+	public void setCcgSeq(String ccgSeq) {
+		this.ccgSeq = ccgSeq;
+	}
 	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;

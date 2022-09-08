@@ -177,16 +177,16 @@
 					</tr>
 			    </c:when>
 			    <c:otherwise>
-			    <c:forEach items="${list}" var="list" varStatus="status">	
+			    <c:forEach items="${list}" var="list" varStatus="status">
 		        <tr>
-		            <th scope="row">
+		            <td scope="row">
 		            	<div class="form-check">
 		    				<input class="form-check-input" type="checkbox" value="5번" id="flexCheckDefault"name='nember'>
 		    				<label class="form-check-label" for="flexCheckDefault">
 		 			   		</label>
 						</div>
-		            </th>
-		            <td><c:out value="${list.ccgSeq }"/></td>
+		            </td>
+		            <td><a href="/codeGroup/codeGroupView?ccgSeq=<c:out value="${list.ccgSeq }"/>"><c:out value="${list.ccgSeq }"/></a></td>
 		            <td><c:out value="${list.ccg_nomber }"/></td>
 		            <td><c:out value="${list.ccg_groupname }"/></td>
 		            <td><c:out value="${list.ccg_groupnameEng }"/></td>
@@ -199,6 +199,7 @@
 		        </c:forEach>
 		        </c:otherwise>
 	        	</c:choose>
+	        	
 		    </tbody>
 		</table>
 	<nav aria-label="Page navigation example" >
