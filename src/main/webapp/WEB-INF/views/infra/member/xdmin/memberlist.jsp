@@ -307,7 +307,7 @@ select{
 				<div class="header__item">이름</div>
 				<div class="header__item">성별</div>
 				<div class="header__item">생년월일</div>
-				<div class="header__item">주소</div>
+				<div class="header__item">배우는언어</div>
 				<div class="header__item">국적</div>
 			</div>
 			<div class="table-content">
@@ -319,7 +319,7 @@ select{
 							<div class="table-data"><c:out value="${list.user_level }"/></div>
 							<div class="table-data"><c:out value="${list.user_name }"/></div>
 							<div class="table-data"><c:out value="${list.user_gender }"/></div>
-							<div class="table-data"></div>
+							<div class="table-data"><c:out value="${list.user_dob }"/></div>
 							<div class="table-data"></div>
 							<div class="table-data"></div>
 					</div>
