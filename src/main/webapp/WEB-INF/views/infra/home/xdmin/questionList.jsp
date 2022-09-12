@@ -77,7 +77,16 @@
     <!-- 네비게이션 종료 -->
 
     <!-- 질문리스트 시작-->
+    
     <div class="container">
+    <c:choose>
+					<c:when test="${fn:length(list) eq 0}">
+					<tr>
+						<td class="text-center" colspan="8">no data</td>
+					</tr>
+			    </c:when>
+			    <c:otherwise>
+    <c:forEach items="${list}" var="list" varStatus="status">
         <div class="quelist_box">
             <div class="quelist_profile">
                 <a href="#">
@@ -86,16 +95,12 @@
                 </div>
             <div class="bubble">
                 <ul class="bubble_head">
-                    <li>질문 언어 : 한국어</li>
-                    <li>작성일 : 2022-08-15</li>
-                    <li>작성자 : kimgiyul</li>
+                    <li>질문 언어 :<c:out value="${list.ccname}"/></li>
+                    <li>작성일 : <c:out value="${list.writetime}"/></li>
+                    <li>작성자 : <c:out value="${list.user_id }"/></li>
                 </ul>
-                <a href="newQuestionView.html" class="bubble_content">
-                    <p>"나랏말싸미 듕귁에 달아 문자와로 서르 사맛디 아니할쎄
-                        이런 젼차로 어린 백셩이 니르고져 홀 배 이셔도
-                        마참내 제 뜨들 시러펴디 몯 할 노미 하니라
-                        내 이랄 위하야 어엿비 너겨 새로 스믈 여듧 짜랄 맹가노니
-                        사람마다 해여 수비 니겨 날로 쑤메 뼌한킈 하고져 할따라미니라 " </p>
+                <a href=" class="bubble_content">
+                    <p><td><c:out value="${list.content }"/></td> </p>
                 </a>
                 <ul class="bubble_footer">
                     <li><a href=""><i class="fa-solid fa-bookmark"></i></a></li>
@@ -103,6 +108,9 @@
                 </ul>
             </div>
         </div>
+        </c:forEach>
+        </c:otherwise>
+	    </c:choose>
         <div class="quelist_box">
             <div class="quelist_profile">
                 <img src="https://images.chosun.com/resizer/st-zZ2xnqfq-dQGE86rW_1RFETU=/275x183/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/C2TCSX45ZFD2THKHP2XMCXR6KY.jpg" alt="" class="">
@@ -165,30 +173,7 @@
                 </ul>
             </div>
         </div>
-        <div class="quelist_box">
-            <div class="quelist_profile">
-                <img src="https://wikidocs.net/images/page/127728/smile.png" alt="" class="">
-            </div>
-            <div class="bubble">
-                <ul class="bubble_head">
-                    <li>질문 언어 : 영어</li>
-                    <li>작성일 : 2022-08-15</li>
-                    <li>작성자 : jopkim1023</li>
-                </ul>
-                <a href="#" class="bubble_content">
-                    <p>
-                        A painful lack of rain and relentless
-                        heat waves are drying up rivers in the US, Europe, Asia and the Middle East. Many are shrinking in length and breadth. Patches of riverbed poking out above the water are a common sight. 
-                        Some rivers are so desiccated,
-                        they have become virtually impassable.
-                    </p>
-                </a>
-                <ul class="bubble_footer">
-                    <li><a href=""><i class="fa-solid fa-bookmark"></i></a></li>
-                    <li><a href=""><i class="fa-solid fa-comment"></i></a></li>
-                </ul>
-            </div>
-        </div>
+ 
     </div>
     <div class="pagination_wrap">
         <div class="pagination">

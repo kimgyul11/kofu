@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kofu.infra.modules.home.HomeMapper">
+
+    <resultMap id="resultMapObj" type="com.kofu.infra.modules.home.Home"></resultMap>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+			a.content
+	    	,a.writetime
+	    	,b.user_id
+	    	,c.cc_name    
+	    	FROM question a
+	    	join airLanguage_member b on a.userId = b.memberSeq
+	    	join cc c on c.ccSeq = a.language_select
+
+	</select>
+	
+		
+	
+</mapper>
