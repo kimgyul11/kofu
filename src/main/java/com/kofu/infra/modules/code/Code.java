@@ -10,7 +10,8 @@ public class Code {
 	private Integer cc_delNy;
 	private Integer cc_useNy;
 	
-	
+	private Integer ccgSeq;
+	private String ccg_groupname;
 	
 
 	public String getCcSeq() {
@@ -56,8 +57,7 @@ public class Code {
 		this.ccg_seq = ccg_seq;
 	}
 	
-	private Integer ccgSeq;
-	private String ccg_groupname;
+	
 	public Integer getCcgSeq() {
 		return ccgSeq;
 	}

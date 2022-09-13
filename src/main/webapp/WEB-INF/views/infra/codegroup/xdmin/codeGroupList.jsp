@@ -171,7 +171,7 @@
 		    <tbody>
 		    <!-- choose --> 
 		    	<c:choose>
-					<c:when test="${fn:length(list) eq 0}">
+				<c:when test="${fn:length(list) eq 0}">
 					<tr>
 						<td class="text-center" colspan="8">no data</td>
 					</tr>
@@ -224,10 +224,8 @@
 			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 				<button type="button" class="btn btn-outline-danger" style="margin:5px;">
 				<i class="fa-solid fa-ban"></i>
-				
 				</button>
 			</div>
-			
 		</div>
 		<div class="float-start">
 		<button type="button" class="btn btn-outline-danger "style="margin:5px;" data-bs-toggle="modal" data-bs-target="#exampleModal">

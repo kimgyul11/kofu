@@ -44,5 +44,10 @@ public class CodeController {
 		
 		return "redirect:/code/code";
 	}
-	
+	@RequestMapping(value = "codeView")
+	public String codeGroupView(CodeVo vo,Model model) throws Exception{
+		Code result = service.selectOne(vo);
+		model.addAttribute("item", result);
+		return "infra/code/xdmin/codelistform";
+	}
 }

@@ -16,18 +16,19 @@ public class CodeGroup {
 	
 //	-----------------------------------------
 	
-	public String getCcgSeq() {
-		return ccgSeq;
-	}
-	public void setCcgSeq(String ccgSeq) {
-		this.ccgSeq = ccgSeq;
-	}
 	public Integer getDelNy() {
 		return delNy;
 	}
 	public void setDelNy(Integer delNy) {
 		this.delNy = delNy;
 	}
+	public String getCcgSeq() {
+		return ccgSeq;
+	}
+	public void setCcgSeq(String ccgSeq) {
+		this.ccgSeq = ccgSeq;
+	}
+
 	public String getInsertdate() {
 		return insertdate;
 	}

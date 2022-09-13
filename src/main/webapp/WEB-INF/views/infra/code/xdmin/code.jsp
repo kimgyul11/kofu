@@ -184,7 +184,7 @@
 		 			   		</label>
 						</div>
 		            </th>
-		            <td></td>
+		            <td><a href="/code/codeView?ccSeq=<c:out value="${list.ccSeq }"/>"><c:out value="${list.ccSeq }"/></td>
 		            <td><c:out value="${list.ccgSeq }"/></td>
 		            <td><c:out value="${list.ccg_groupname }"/></td>
 		            <td><c:out value="${list.ccSeq }"/></td>

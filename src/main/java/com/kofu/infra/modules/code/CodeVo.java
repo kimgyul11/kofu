@@ -4,6 +4,14 @@ public class CodeVo {
 	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;
+	
+	private String ccSeq;
+	public String getCcSeq() {
+		return ccSeq;
+	}
+	public void setCcSeq(String ccSeq) {
+		this.ccSeq = ccSeq;
+	}
 	//--------------------------------------------
 	public Integer getShOption() {
 		return shOption;

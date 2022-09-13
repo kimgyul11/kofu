@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/codeGroup/")
@@ -39,7 +41,6 @@ public class CodeGroupController {
 		
 		int result = service.insert(dto);
 		System.out.println("controller result: "+result);
-		
 		return "redirect:/codeGroup/codeGroupList";
 	}
 	@RequestMapping(value = "codeGroupView")
@@ -48,8 +49,46 @@ public class CodeGroupController {
 		model.addAttribute("item",result);
 		return "infra/codegroup/xdmin/codeGroupReg";
 	}
-		
 	
+	@RequestMapping(value = "codeGroupUpdt")
+	public String codeGroupUpdt(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
+		
+		System.out.println(dto.getCcgSeq());
+		service.update(dto);
+		redirectAttributes.addFlashAttribute("vo",vo);
+		
+		return "redirect:/codeGroup/codeGroupList";
+	}
+	
+	@RequestMapping(value = "codeGroupUele")
+	public String codeGroupUele(CodeGroupVo vo, CodeGroup dto,RedirectAttributes redirectAttributes) throws Exception{
+		service.uelete(dto);
+		redirectAttributes.addFlashAttribute("vo",vo);
+		return "redirect:/codeGroup/codeGroupList";
+	}
+	
+	@RequestMapping(value = "codeGroupDele")
+	public String nationnalityDele(CodeGroupVo vo, RedirectAttributes redirectAttributes) throws Exception{
+		service.delete(vo);
+		redirectAttributes.addFlashAttribute("vo",vo);
+		
+		return "redirect:/codeGroup/codeGroupList";
+		
+	}
+	
+	@RequestMapping(value = "codeGroupForm")
+	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo,Model model)throws Exception{
+		
+		if(vo.getCcgSeq().equals("0") || vo.getCcgSeq().equals("")) {
+			//insert
+		}else {
+			CodeGroup item = service.selectOne(vo);
+			model.addAttribute("item",item);
+		}
+		
+		return "infar/codegroup/xdmin/codeGroupReg";
+		
+	}
 	
 	
 }

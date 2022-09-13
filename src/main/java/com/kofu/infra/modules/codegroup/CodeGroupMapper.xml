@@ -54,6 +54,32 @@
 		where 1=1
 			AND ccgSeq = #{ccgSeq}
 	</select>
+	
+	<!-- 업데이트 및 삭제 9.13-->
+	<update id="update">
+		UPDATE ccg
+		SET
+			ccg_groupname = #{ccg_groupname}
+			,ccg_groupnameEng = #{ccg_groupnameEng}
+			,UseNy = #{UseNY}
+			,delNy = #{delNy}
+		WHERE
+			ccgSeq = #{ccgSeq}	
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM ccg WHERE ccgSeq = #{ccgSeq}
+	</delete>
+	
+	<update id="uelete">
+		UPDATE ccg
+		SET
+			delNy = 1
+		WHERE ccgSeq = #{ccgSeq}
+	</update>
+	
+	
+	
 </mapper>	
 
 

@@ -110,9 +110,9 @@
 				<div class="row m-4">
 					<div class="col-md-6">
 						<p>코드그룹</p>
-						<select class="form-select" aria-label="Default select example" name="ccg_seq">
+						<select class="form-select" aria-label="Default select example" name="ccgSeq">
 							<c:forEach items="${list}" var="list" varStatus="status">
-								  <option value=<c:out value="${list.ccg_seq}"/>><c:out value="${list.ccg_groupname }"/></option>
+								  <option value=<c:out value="${list.ccgSeq}"/>><c:out value="${list.ccg_groupname }"/></option>
 							</c:forEach>
 						</select>
 					</div>
@@ -131,7 +131,7 @@
 					<div class="col-md-6">
 
 						<p>코드 이름(한글)</p>
-						<input type="text" class="form-control" name="cc_name" >
+						<input type="text" class="form-control" name="cc_name" value="<c:out value="${item.cc_name }"/>">
 					
 					</div>
 					<div class="col-md-6 ">

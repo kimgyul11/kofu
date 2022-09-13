@@ -51,7 +51,7 @@
 	</style>
 </head>
 <body>
-	<form method="post" action="/codeGroup/codeGroupInst">
+	<form method="post" name="form">
 	<nav class="navbar navbar-expand-sm ">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">AIR LANGUAGE</a>
@@ -120,7 +120,7 @@
 				<div class="row m-4">
 					<div class="col-md-6">
 						<p>코드</p>
-						<input type="text" class="form-control" placeholder="자동생성" disabled>
+						<input type="text" class="form-control" placeholder="자동생성" readonly name="ccgSeq" value="<c:out value ="${item.ccgSeq }"/>">
 					</div>
 					<div class="col-md-6">
 						<p>코드(Another)</p>
@@ -129,10 +129,8 @@
 				</div>
 				<div class="row m-4">
 					<div class="col-md-6">
-
 						<p>코드 이름(한글)</p>
 						<input type="text" class="form-control" name="ccg_groupname" id="ccg_groupname" value="<c:out value ="${item.ccg_groupname }"/>">
-					
 					</div>
 					<div class="col-md-6 ">
 						<p>코드 이름(영문)</p>
@@ -143,13 +141,18 @@
 					<div class="col-md-6">
 						<p>사용 여부</p>
 						<select class="form-select" aria-label="Default select example"name="UseNY" id="UseNY">
-							  <option value="0" <c:if test="${item.useNY eq 0 }">selected</c:if>>N</option>
-							  <option value="1" <c:if test="${item.useNY eq 1 }">selected</c:if>>Y</option>
+							<option> </option>
+							<option value="0" <c:if test="${item.useNY eq 0 }">selected</c:if>>N</option>
+							<option value="1" <c:if test="${item.useNY eq 1 }">selected</c:if>>Y</option>
 						</select>
 					</div>
 					<div class="col-md-6 ">
-						<p>순서</p>
-						<input type="text" class="form-control" name="delNy">
+						<p>삭제여부</p>
+						<select class="form-select" id="delNy"name='delNy'>
+								<option>사용</option>
+								<option value='0' <c:if test="${item.delNy eq 0 }">selected</c:if>>N</option>
+								<option value='1' <c:if test="${item.delNy eq 1 }">selected</c:if>>Y</option>
+						</select>
 					</div>
 				</div>
 				<div class="row m-4">
@@ -160,11 +163,8 @@
 						</div>
 					</div>
 					<div class="col-md-6 ">
-						<p>삭제여부</p>
-						<select class="form-select" aria-label="Default select example" name="delNy" id="delNy">
-							  <option value="0">N</option>
-							  <option value="1">Y</option>
-						</select>
+						<p>순서</p>
+						<input type="text" class="form-control" name="delNy">
 					</div>
 				</div>
 				<div class="row m-4">
@@ -214,16 +214,40 @@
 					</div>
 				</div>
 			</div>
+			<!--  type="submit" formaction="codeGroupUele"  -->
+			<!-- type="submit" formaction="codeGroupDele"-->
+			
 			<div class="d-flex mt-5 ">
 				<div class="me-auto p-2"><button type="button" class="btn btn-dark"><i class="fa-solid fa-list"></i></button></div>
-				<div class="p-2"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></div>
-				<div class="p-2"><button type="button" class="btn btn-success" ><i class="fa-solid fa-bookmark" ></i></button></div>
-				<div class="p-2"><button type="submit" class="btn btn-dark" ><i class="fa-solid fa-floppy-disk"></i></button></div>
-				<span onClick="test();" style="cursor:pointer;">검색</span>
+				<div class="p-2"><button id="btnUelete" type="button" name="btnUelete"class="btn btn-danger"><i class="fa-solid fa-x"></i></button></div>
+				<div class="p-2"><button id="btnDelete" type="button" class="btn btn-danger" ><i class="fa-solid fa-trash-can"></i></button></div>
+				<div class="p-2"><button id="btnSave" type="button" class="btn btn-success" ><i class="fa-solid fa-floppy-disk"></i></button></div>
+				<!-- Button trigger modal -->
+				
+				<!-- Modal -->
+				<div class="modal fade" id="modalConfirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				        ...
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">취소</button>
+				        <button type="button" class="btn btn-primary" id="btnModalUelete" name="btnModalUelete">확인</button>
+				        <button type="button" class="btn btn-primary"id="btnModalDelete" name="btnModalDelete">확인</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 			</div>
 		</div>
 	</div>
-	</form>	
+	</form>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 	<script type="text/javascript">
@@ -244,6 +268,61 @@
 				return false;
 			}
 		}
+		
+		var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+		var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+		var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+		var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+		var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+		
+		var seq = $("input:text[name=ccgSeq]");				/* #-> */
+		
+		var form = $("form[name=form]");
+		var formVo = $("form[name=formVo]");
+		
+		
+		$("#btnSave").on("click", function(){
+			if (seq.val() == "0" || seq.val() == ""){
+		   		// insert
+		   		form.attr("action", goUrlInst).submit();
+		   	} else {
+		   		// update
+		   		/* keyName.val(atob(keyName.val())); */
+		   		form.attr("action", goUrlUpdt).submit();
+		   	}
+		}); 
+		
+		$("#btnUelete").on("click", function(){
+			$(".modal-title").text("확 인");
+			$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+			$("#btnModalUelete").show();
+			$("#btnModalDelete").hide();
+			$("#modalConfirm").modal("show");
+		});
+		
+
+		$("#btnDelete").on("click", function(){
+			$(".modal-title").text("확 인");
+			$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
+			$("#btnModalUelete").hide();
+			$("#btnModalDelete").show();
+			$("#modalConfirm").modal("show");
+		});
+		
+		
+		$("#btnModalUelete").on("click", function(){
+			$("#modalConfirm").modal("hide");
+			form.attr("action", goUrlUele).submit();
+		});
+		
+		
+		$("#btnModalDelete").on("click", function(){
+			$("#modalConfirm").modal("hide");
+			form.attr("action", goUrlDele).submit();
+		});
+		
+		
+		
 	</script>
 </body>
 </html>
