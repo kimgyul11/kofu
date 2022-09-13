@@ -67,7 +67,7 @@
                 <li>
                     <div class="btn_wraper">
                         <div class="btn btn_1">
-                            <a href="">질문하기</a>
+                            <a href="quereg">질문하기</a>
                         </div>
                     </div>
                 </li>
@@ -79,13 +79,6 @@
     <!-- 질문리스트 시작-->
     
     <div class="container">
-    <c:choose>
-					<c:when test="${fn:length(list) eq 0}">
-					<tr>
-						<td class="text-center" colspan="8">no data</td>
-					</tr>
-			    </c:when>
-			    <c:otherwise>
     <c:forEach items="${list}" var="list" varStatus="status">
         <div class="quelist_box">
             <div class="quelist_profile">
@@ -95,8 +88,8 @@
                 </div>
             <div class="bubble">
                 <ul class="bubble_head">
-                    <li>질문 언어 :<c:out value="${list.ccname}"/></li>
-                    <li>작성일 : <c:out value="${list.writetime}"/></li>
+                    <li>질문 언어 :<c:out value="${list.cc_name}"/></li>
+  						<!-- 작성일 들어가는 곳-->		                  
                     <li>작성자 : <c:out value="${list.user_id }"/></li>
                 </ul>
                 <a href=" class="bubble_content">
@@ -109,8 +102,6 @@
             </div>
         </div>
         </c:forEach>
-        </c:otherwise>
-	    </c:choose>
         <div class="quelist_box">
             <div class="quelist_profile">
                 <img src="https://images.chosun.com/resizer/st-zZ2xnqfq-dQGE86rW_1RFETU=/275x183/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/C2TCSX45ZFD2THKHP2XMCXR6KY.jpg" alt="" class="">

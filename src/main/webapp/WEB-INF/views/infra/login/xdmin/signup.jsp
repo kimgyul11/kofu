@@ -164,7 +164,7 @@
 							</div>
 							<br>
 							<div class="d-flex gap-2 justify-content-center">
-								<a href="">
+								<a href="complete">
 								<button class="btn btn-outline-success" type="button">완료</button>
   								</a>
   								<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
