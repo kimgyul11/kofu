@@ -136,7 +136,7 @@
 					</div>
 					<div class="col-md-6 ">
 						<p>코드 이름(영문)</p>
-						<input type="text" class="form-control" name="cc_nameEng">
+						<input type="text" class="form-control" name="cc_nameEng" value="<c:out value="${item.cc_nameEng }"/>">
 					</div>
 				</div>
 				<div class="row m-4">
@@ -144,8 +144,8 @@
 						<p>사용 여부</p>
 						<select class="form-select" aria-label="Default select example"name="cc_useNy">
 							  <option selected>선택하세요</option>
-							  <option value="0">N</option>
-							  <option value="1">Y</option>
+							  <option value="0" <c:if test="${item.cc_useNy eq 0}">selected</c:if>>N</option>
+							  <option value="1" <c:if test="${item.cc_useNy eq 1}">selected</c:if>>Y</option>
 						</select>
 					</div>
 					<div class="col-md-6 ">

@@ -17,9 +17,9 @@
 		
 		<if test="shDelNy != null and !shDelNy.equals('')">AND UseNY = #{shDelNy}</if>
 			<choose>
-				<when test="shOption == 1">AND ccg_seq = #{shValue}</when>
-				<when test="shOption == 2">AND cc_Name LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 1">AND ccgSeq = #{shValue}</when>
+				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND cc_nameEng LIKE CONCAT('%',#{shValue},'%')</when>
 				<otherwise></otherwise>
 			</choose>
 	</select>
@@ -77,6 +77,17 @@
 			AND  ccSeq = #{ccSeq}
 	</select>
 	
+	<update id="update">
+		UPDATE cc
+		SET
+			cc_name
+			,cc_nameEng
+			,cc_number
+			,cc_useNy
+			,cc_delNy
+		WHERE
+			ccSeq = #{ccSeq}	
+	</update>
 	
 	
 

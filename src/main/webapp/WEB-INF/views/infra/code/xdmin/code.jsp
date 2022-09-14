@@ -168,7 +168,7 @@
 		            <th scope="col">코드 이름(한글)</th>
 		            <th scope="col">코드 이름(영문)</th>
 		            <th scope="col">사용</th>
-		            <th scope="col">순서</th>
+		            <th scope="col">삭제</th>
 		            <th scope="col">등록일</th>
 		            <th scope="col">수정일</th>
 		            
@@ -188,11 +188,11 @@
 		            <td><c:out value="${list.ccgSeq }"/></td>
 		            <td><c:out value="${list.ccg_groupname }"/></td>
 		            <td><c:out value="${list.ccSeq }"/></td>
-		            <td></td>
+		            <td><c:out value="${list.cc_number }"/></td>
 		            <td><c:out value="${list.cc_name }"/></td>
-		            <td></td>
+		            <td><c:out value="${list.cc_nameEng }"/></td>
 		            <td><c:out value="${list.cc_useNy }"/></td>
-		            <td></td>
+		            <td><c:out value="${list.cc_delNy }"/></td>
 		            <td></td>
 		            <td></td>
 		        </tr>

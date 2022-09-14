@@ -18,17 +18,17 @@ public class CodeGroupController {
 	
 
 	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model,CodeGroupVo vo) throws Exception {
+	public String codeGroupList(@ModelAttribute("vo")CodeGroupVo vo ,Model model) throws Exception {
 		
-		System.out.println("vo.getShValue(): " + vo.getShValue());
-		System.out.println("vo.getShOption(): " + vo.getShOption());
-		
-		System.out.println(vo.getStartDate());
-		System.out.println(vo.getEndDate());
+		/*
+		 * System.out.println("vo.getShValue(): " + vo.getShValue());
+		 * System.out.println("vo.getShOption(): " + vo.getShOption());
+		 * 
+		 * System.out.println(vo.getStartDate()); System.out.println(vo.getEndDate());
+		 */
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
-		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	@RequestMapping(value = "codeGroupReg")

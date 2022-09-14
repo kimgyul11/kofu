@@ -129,14 +129,13 @@
 			</select>
 		</div>		
 	    <div class="float-start">
-   			 <input  class="form-control" type="text" id="shValue" name="shValue" placeholder="검색어를 입력해주세요." aria-label="default input example" style="margin-left:5px; width:300px;">
+   			 <input  class="form-control" type="text" value="<c:out value="${vo.shValue }"/>" id="shValue" name="shValue" placeholder="검색어를 입력해주세요." aria-label="default input example" style="margin-left:5px; width:300px;">
 		</div>
 		<div class="float-start">
 			 <button type="submit" class="btn btn-outline-success" style="margin-left:20px;"><i class="fa-solid fa-magnifying-glass"></i></button>	
+			 <button id="btnReset" name="btnReset" type="button" class="btn btn-outline-danger" style="margin-left:20px;"><i class="fa-solid fa-rotate-left"></i></button>
 		</div>
-		<div class="float-start">
-			 <button type="button" class="btn btn-outline-danger" style="margin-left:20px;"><i class="fa-solid fa-rotate-left"></i></button>	
-		</div>		
+		
 	</div>
 </div>	  
  <!--검색창 끝  -->
@@ -173,7 +172,7 @@
 		    	<c:choose>
 				<c:when test="${fn:length(list) eq 0}">
 					<tr>
-						<td class="text-center" colspan="8">no data</td>
+						<td class="text-center" colspan="10">no data</td>
 					</tr>
 			    </c:when>
 			    <c:otherwise>
@@ -322,6 +321,14 @@
                  }
             });
     });
+        	var goUrlList="/codeGroup/codeGroupList";
+        	
+        	$("#btnReset").on("click",function(){
+        		$(location).attr("href",goUrlList);
+        	});
+            
+            
+ 
 </script>
 </body>
 </html>
