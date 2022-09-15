@@ -48,4 +48,10 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 	public int delete(CodeGroupVo vo) throws Exception{
 		return dao.delete(vo);
 	}
+	@Override
+	public int selectOneCount(CodeGroupVo vo) throws Exception{
+		return dao.selectOneCount(vo);
+	}
+	
+
 }

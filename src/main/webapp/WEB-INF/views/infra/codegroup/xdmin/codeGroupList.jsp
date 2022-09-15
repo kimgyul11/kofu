@@ -10,7 +10,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>codeGroupList</title>
+	<title>코드그룹리스트</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="/resources/xdmin/css/codeGroupListi.css" />
 </head>
 <body class="ng-font2">
-<form method="post" action="/codeGroup/codeGroupList">
+<form method="post" action="/codeGroup/codeGroupList" name="form">
 <!-- 네비바 -->
 	<nav class="navbar" style="background-color:#e3f2fd;">
 		<div class="container-fluid">
@@ -201,23 +201,55 @@
 	        	
 		    </tbody>
 		</table>
-	<nav aria-label="Page navigation example" >
-    <ul class="pagination justify-content-center" >
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-	</nav>
+		
+		
+		<!-- 페이지네이션 시작 -->
+	<!-- <nav aria-label="Page navigation example" >
+	    <ul class="pagination justify-content-center" >
+	    
+	        <li class="page-item">
+	            <a class="page-link" href="#" aria-label="Previous">
+	                <span aria-hidden="true">&laquo;</span>
+	            </a>
+	        </li>
+	        <li class="page-item"><a class="page-link" href="#">1</a></li>
+	        <li class="page-item"><a class="page-link" href="#">2</a></li>
+	        <li class="page-item"><a class="page-link" href="#">3</a></li>
+	        <li class="page-item">
+	            <a class="page-link" href="#" aria-label="Next">
+	                <span aria-hidden="true">&raquo;</span>
+	            </a>
+	        </li>
+	    </ul>
+	</nav>페이지네이션 끝 -->
+	<div class="container-fluid px-0 mt-2">
+	    <div class="row">
+	        <div class="col">
+	            <!-- <ul class="pagination pagination-sm justify-content-center mb-0"> -->
+	            <ul class="pagination justify-content-center mb-0">
+	                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
+					<c:if test="${vo.startPage gt vo.pageNumToShow}">
+		                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="fa-solid fa-angle-left"></i></a></li>
+					</c:if>
+					<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+						<c:choose>
+							<c:when test="${i.index eq vo.thisPage}">
+			                	<li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+							</c:when>
+							<c:otherwise>             
+			                	<li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>                
+					<c:if test="${vo.endPage ne vo.totalPages}">                
+	                	<li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angle-right"></i></a></li>
+					</c:if>
+	                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
+	            </ul>
+	        </div>
+	    </div>
+	</div>
+	
 	<div id="kensaku">	
 		<div class="float-start">
 			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -259,6 +291,8 @@
 	</div>	
 </div>
 <br>
+<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 </form>
 <!-- 하단 추가 삭제 수정 버튼 완료 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -280,6 +314,7 @@
 		}
 	</script>
 	<!-- Datepicker -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -321,12 +356,19 @@
                  }
             });
     });
-        	var goUrlList="/codeGroup/codeGroupList";
         	
-        	$("#btnReset").on("click",function(){
-        		$(location).attr("href",goUrlList);
-        	});
-            
+				    var goUrlList = "/codeGroup/codeGroupList";
+					var form = $("form[name=form]")
+					
+					$("#btnReset").on("click", function() {
+							$(location).attr("href",goUrlList);
+					});
+					
+					goList = function(thisPage) {
+						$("input:hidden[name=thisPage]").val(thisPage);
+						form.attr("action", goUrlList).submit();
+					}
+        
             
  
 </script>

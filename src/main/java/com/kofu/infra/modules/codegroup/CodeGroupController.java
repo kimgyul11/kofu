@@ -27,6 +27,7 @@ public class CodeGroupController {
 		 * System.out.println(vo.getStartDate()); System.out.println(vo.getEndDate());
 		 */
 		
+		vo.setParamsPaging(service.selectOneCount(vo));
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		return "infra/codegroup/xdmin/codeGroupList";

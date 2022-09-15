@@ -8,21 +8,69 @@
 
     <resultMap id="resultMapObj" type="com.kofu.infra.modules.codegroup.CodeGroup"></resultMap>
 	
-	<select id="selectList" resultMap="resultMapObj">
+	
+	
+<!-- 	<select id="selectList" resultMap="resultMapObj">
 		select
 			a.*
 		    ,(select count(ccg_seq) from cc aa where aa.ccg_seq = a.ccgSeq ) as countCCG
 		from ccg a
 		where 1=1 
 			<if test="startDate != null and !startDate.equals('') and endDate != null and !endDate.equals('')"> AND a.insertdate Between #{startDate} AND #{endDate}</if>
-			<if test="shDelNy != null and !shDelNy.equals('')">AND UseNY = #{shDelNy}</if>
+			<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
 		<choose>
 			<when test="shOption == 1">AND ccgSeq = #{shValue}</when>
 			<when test="shOption == 2">AND ccg_groupname LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND ccg_groupnameEng LIKE CONCAT('%',#{shValue},'%')</when>
-			<otherwise></otherwise>
 		</choose>
+	</select> -->
+		
+		<sql id="selectListUpperForMysql">
+		select aa.* from (
+		</sql>
+	
+	
+		<sql id="selectListLowerForMysql">	
+			) aa
+			limit #{rowNumToShow} offset #{startRnumForMysql}
+		</sql>
+	
+		<sql id ="selectCommon">
+			FROM ccg a
+			WHERE 1=1
+			<if test="startDate != null and !startDate.equals('') and endDate != null and !endDate.equals('')"> AND a.insertdate Between #{startDate} AND #{endDate}</if>
+			<if test="shDelNy != null and !shDelNy.equals('')">AND delNy = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND ccgSeq = #{shValue}</when>
+				<when test="shOption == 2">AND ccg_groupname LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND ccg_groupnameEng LIKE CONCAT('%',#{shValue},'%')</when>
+			</choose>
+		</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="selectListUpperForMysql" />
+			SELECT
+				a.ccgSeq
+				, a.ccg_groupname
+				, a.ccg_groupnameEng
+				, a.ccg_nomber
+				, a.UseNY
+				, a.delNy
+				,(select count(aa.ccg_seq) from cc aa where aa.ccg_seq = a.ccgSeq ) as countCCG
+		<include refid="selectCommon" />
+			ORDER BY a.ccgSeq DESC
+		<include refid="selectListLowerForMysql" />
 	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>  
+
+
+
+
+	
 	
 	<insert id="insert">
 		INSERT INTO ccg(
