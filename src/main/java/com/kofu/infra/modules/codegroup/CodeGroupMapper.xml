@@ -8,9 +8,6 @@
 
     <resultMap id="resultMapObj" type="com.kofu.infra.modules.codegroup.CodeGroup"></resultMap>
 	
-	
-	
-	
 	<select id="selectList" resultMap="resultMapObj">
 		select
 			a.*
@@ -25,7 +22,7 @@
 			<when test="shOption == 3">AND ccg_groupnameEng LIKE CONCAT('%',#{shValue},'%')</when>
 			<otherwise></otherwise>
 		</choose>
-	</select>		
+	</select>
 	
 	<insert id="insert">
 		INSERT INTO ccg(

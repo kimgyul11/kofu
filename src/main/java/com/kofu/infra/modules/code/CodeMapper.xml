@@ -26,20 +26,12 @@
 
 	<select id="ccgselectList" resultMap="resultMapObj">
 		select
-			a.ccSeq
-			,a.cc_name
-			,a.cc_nameEng
-			,a.cc_number
-			,a.ccg_seq
-			,a.cc_delNy
-			,a.cc_useNy
-			,b.ccgSeq
-			,b.ccg_groupname
-		from cc a
-		join ccg b on b.ccgSeq = a.ccg_Seq
+			a.ccgSeq
+			,a.ccg_groupname
+			,b.ccg_seq
+		from ccg a cc b
 		WHERE 1=1
-			AND b.ccgSeq = b.UseNy
-			group by ccg_groupname
+			AND b.UseNy = 1
 	</select>
 	
 	
@@ -87,6 +79,17 @@
 			,cc_delNy
 		WHERE
 			ccSeq = #{ccSeq}	
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM cc WHERE ccSeq = #{ccSeq}
+	</delete>
+	
+	<update id="uelete">
+		UPDATE cc
+		SET
+			cc_delNy = 1
+		WHERE ccSeq = #{ccSeq}	
 	</update>
 	
 	

@@ -75,7 +75,7 @@ public class CodeGroupController {
 		return "redirect:/codeGroup/codeGroupList";
 		
 	}
-	
+//	한페이지로 구현하기
 	@RequestMapping(value = "codeGroupForm")
 	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo,Model model)throws Exception{
 		

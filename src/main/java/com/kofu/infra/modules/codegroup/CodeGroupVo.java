@@ -1,5 +1,7 @@
 package com.kofu.infra.modules.codegroup;
 
+import com.kofu.infra.common.constants.Constants;
+
 public class CodeGroupVo {
 
 	private String ccgSeq;
@@ -10,6 +12,11 @@ public class CodeGroupVo {
 	public void setCcgSeq(String ccgSeq) {
 		this.ccgSeq = ccgSeq;
 	}
+	
+
+
+	
+	
 	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;

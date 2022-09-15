@@ -19,9 +19,7 @@ public class CodeDao {
 	private static String namespace = "com.kofu.infra.modules.code.CodeMapper";
 	
 	
-	//아래 리스트에서 
-	// 패배원인 : 코드그룹DTO를 가져올려고 했다.
-	// 그러면 안되고, 코드DTO를 가져온다.
+
 	public List<Code> selectList(CodeVo vo)
 	{ return sqlSession.selectList(namespace + ".selectList", vo); }
 	
@@ -34,12 +32,15 @@ public class CodeDao {
 		return result;
 	}
 	
+//	셀렉트 하나만 뽑기
 	public Code selectOne(CodeVo vo) {
 		Code result = sqlSession.selectOne(namespace + ".selectOne",vo);
 		System.out.println("dao result : "+result);
 		return result;
 	}
-	public int update(Code dto) {return sqlSession.update(namespace + ".update",dto);}
-		
 	
+//	업데이트,율리트,딜리트 
+	public int update(Code dto) {return sqlSession.update(namespace + ".update",dto);}
+	public int delete(CodeVo vo){return sqlSession.delete(namespace + ".delete",vo);}
+	public int uelete(Code dto) {return sqlSession.update(namespace + ".uelete", dto);}
 }
