@@ -19,7 +19,7 @@
 		.ng-font2{
 			font-family: 'Gowun Dodum', sans-serif;
 		}
-	body{
+		body{
 		font-family: 'Gowun Dodum', sans-serif;
 	}
 	p{
@@ -52,6 +52,9 @@
 </head>
 <body>
 	<form method="post" name="form">
+	<!-- *Vo.jsp s -->
+	<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	<nav class="navbar navbar-expand-sm ">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="codeGroupList">
@@ -115,7 +118,7 @@
 				<div class="row m-4">
 					<div class="col-md-6">
 						<p>코드</p>
-						<input type="text" class="form-control" placeholder="자동생성" readonly name="ccgSeq" value="<c:out value ="${item.ccgSeq }"/>">
+						<input type="text" class="form-control" placeholder="자동생성" >
 					</div>
 					<div class="col-md-6">
 						<p>코드(Another)</p>
@@ -213,10 +216,10 @@
 			<!-- type="submit" formaction="codeGroupDele"-->
 			
 			<div class="d-flex mt-5 ">
-				<div class="me-auto p-2"><button type="button" class="btn btn-dark"><i class="fa-solid fa-list"></i></button></div>
+				<div class="me-auto p-2"><button type="button" class="btn btn-dark" id="btnList" name="btnList"><i class="fa-solid fa-list"></i></button></div>
 				<div class="p-2"><button id="btnUelete" type="button" name="btnUelete"class="btn btn-danger"><i class="fa-solid fa-x"></i></button></div>
 				<div class="p-2"><button id="btnDelete" type="button" class="btn btn-danger" ><i class="fa-solid fa-trash-can"></i></button></div>
-				<div class="p-2"><button id="btnSave" type="button" class="btn btn-success" ><i class="fa-solid fa-floppy-disk"></i></button></div>
+				<div class="p-2"><button id="btnSave" type="button" class="btn btn-success" onclick="test()"><i class="fa-solid fa-floppy-disk"></i></button></div>
 				<!-- Button trigger modal -->
 				
 				<!-- Modal -->
@@ -241,6 +244,11 @@
 			</div>
 		</div>
 	</div>
+	</form>
+	<form name="formVo" id="formVo" method="post">
+	<!-- *Vo.jsp s -->
+	<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	</form>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -270,7 +278,7 @@
 		var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
 		var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
 		
-		var seq = $("input:text[name=ccgSeq]");				/* #-> */
+		var seq = $("input:hidden[name=ccgSeq]");				/* #-> */
 		
 		var form = $("form[name=form]");
 		var formVo = $("form[name=formVo]");
@@ -285,7 +293,13 @@
 		   		/* keyName.val(atob(keyName.val())); */
 		   		form.attr("action", goUrlUpdt).submit();
 		   	}
-		}); 
+		});
+		
+		$("#btnList").on("click", function(){
+			formVo.attr("action", goUrlList).submit();
+		});
+		
+		
 		
 		$("#btnUelete").on("click", function(){
 			$(".modal-title").text("확 인");
@@ -315,8 +329,6 @@
 			$("#modalConfirm").modal("hide");
 			form.attr("action", goUrlDele).submit();
 		});
-		
-		
 		
 	</script>
 </body>

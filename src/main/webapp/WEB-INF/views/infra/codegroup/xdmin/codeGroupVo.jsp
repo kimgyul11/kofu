@@ -4,7 +4,7 @@
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 
 <input type="hidden" name="shDelNy" value="<c:out value="${vo.shDelNy}"/>"/>
-<input type="hidden" name="shOptionDate" value="<c:out value="${vo.shOptionDate}"/>"/>
+<%-- <input type="hidden" name="shOptionDate" value="<c:out value="${vo.shOptionDate}"/>"/> --%>
 
 <input type="hidden" name="startDate" value="<c:out value="${vo.startDate}"/>"/>
 <input type="hidden" name="endDate" value="<c:out value="${vo.endDate}"/>"/>

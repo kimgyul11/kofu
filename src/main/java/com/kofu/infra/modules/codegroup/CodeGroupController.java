@@ -40,9 +40,11 @@ public class CodeGroupController {
 	
 	
 	@RequestMapping(value = "codeGroupReg")
-	public String codeGroupReg() throws Exception{
+	public String codeGroupReg(@ModelAttribute("vo") CodeGroupVo vo,Model model) throws Exception{
 		
-		
+		CodeGroup item = service.selectOne(vo);
+		model.addAttribute("item",item);
+	
 		
 		return "infra/codegroup/xdmin/codeGroupReg";
 	}
@@ -57,7 +59,7 @@ public class CodeGroupController {
 		
 		redirectAttributes.addFlashAttribute("vo",vo);
 		/* System.out.println("controller result: "+result); */
-		return "redirect:/codeGroup/codeGroupForm";
+		return "redirect:/codeGroup/codeGroupReg";
 	}
 	
 	
@@ -73,9 +75,10 @@ public class CodeGroupController {
 		
 		System.out.println(dto.getCcgSeq());
 		service.update(dto);
+		vo.setCcgSeq(dto.getCcgSeq());
 		redirectAttributes.addFlashAttribute("vo",vo);
 		
-		return "redirect:/codeGroup/codeGroupList";
+		return "redirect:/codeGroup/codeGroupReg";
 	}
 	
 	@RequestMapping(value = "codeGroupUele")
@@ -93,19 +96,7 @@ public class CodeGroupController {
 		return "redirect:/codeGroup/codeGroupList";
 		
 	}
-//	한페이지로 구현하기
-	@RequestMapping(value = "codeGroupForm")
-	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo,Model model)throws Exception{
-			
-			
-		
-			CodeGroup item = service.selectOne(vo);
-			model.addAttribute("item",item);
-		
-		
-	return "infra/codegroup/xdmin/codeGroupReg";
-		
-	}
+
 	
 	
 }
