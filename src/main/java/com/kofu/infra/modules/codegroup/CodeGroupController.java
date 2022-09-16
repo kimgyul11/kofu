@@ -28,7 +28,7 @@ public class CodeGroupController {
 		 */
 		
 		
-		
+		/* 변경되도 유지하는검색조건 */
 		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
 		
 		vo.setParamsPaging(service.selectOneCount(vo));

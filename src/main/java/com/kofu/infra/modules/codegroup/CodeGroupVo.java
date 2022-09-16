@@ -16,7 +16,8 @@ public class CodeGroupVo {
 
 	
 	
-//	paging
+//	---------------------- 페이징 -------------------------------------
+	
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 갯수
 	private int pageNumToShow = Constants.PAGE_NUM_TO_SHOW;		// 화면에 보여줄 페이징 번호 갯수
@@ -32,7 +33,7 @@ public class CodeGroupVo {
 
 	private int startRnumForMysql = 0;							// 쿼리 시작 row
 
-public void setParamsPaging(int totalRows) {
+	public void setParamsPaging(int totalRows) {
 		
 //		setThisPage(3);
 
@@ -150,7 +151,9 @@ public void setParamsPaging(int totalRows) {
 		this.startRnumForMysql = startRnumForMysql;
 	}
 
-
+	
+	
+// ------------------------------------------------------ 날짜,값 리스트 가져오기 ------------------------------------------------------
 	
 	private Integer shOption;
 	private String shValue;
@@ -177,7 +180,6 @@ public void setParamsPaging(int totalRows) {
 	public void setShDelNy(Integer shDelNy) {
 		this.shDelNy = shDelNy;
 	}
-	// -----------
 	public Integer getShOption() {
 		return shOption;
 	}
