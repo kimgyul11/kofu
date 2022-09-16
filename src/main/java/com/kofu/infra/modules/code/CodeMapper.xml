@@ -26,9 +26,11 @@
 
 	<select id="ccgselectList" resultMap="resultMapObj">
 		select
-			ccgSeq
-			,ccg_groupname
-		from ccg
+			a.ccgSeq
+			,a.ccg_groupname
+			,b.ccg_seq
+		from ccg a
+		join cc b
 		WHERE 1=1
 			AND delNy = 0
 		GROUP BY ccg_groupname
@@ -66,9 +68,7 @@
 			,cc_delNy
 		FROM cc
 		WHERE 1=1
-			AND  ccSeq = #{ccSeq}
-			
-			
+			AND  ccSeq = #{ccSeq} 
 	</select>
 	
 	<update id="update">

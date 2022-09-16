@@ -110,7 +110,7 @@
 			<div class="col-md-12">
 				<div class="row m-4">
 					<div class="col-md-6">
-						<p>코드그룹</p>
+						<p>코드그룹명</p>
 						<select class="form-select" aria-label="Default select example" name="ccgSeq">
 							<c:forEach items="${list}" var="list" varStatus="status">
 								  <option value=<c:out value="${list.ccg_groupname}"/>><c:out value="${list.ccg_groupname }"/></option>
@@ -119,17 +119,17 @@
 					</div>
 					<div class="col-md-6">
 						<p>코드그룹</p>
-						<select class="form-select" aria-label="Default select example" name="ccgSeq">
-							<c:forEach items="${list}" var="list" varStatus="status">
-								  <option value=<c:out value="${list.ccgSeq}"/>><c:out value="${list.ccgSeq }"/></option>
-							</c:forEach>
+						<select class="form-select" aria-label="Default select example" name="ccg_groupname">
+							<%-- <c:forEach items="${list}" var="list" varStatus="status">
+								  <option value=<c:out value="${item.ccg_seq}"/>><c:out value="${item.ccg_groupname }"/></option>
+							</c:forEach> --%>
 						</select>
 					</div>
 				</div>
 				<div class="row m-4">
 					<div class="col-md-6">
 						<p>코드</p>
-						<input type="text" class="form-control" placeholder="자동생성" disabled readonly name="ccSeq" value="<c:out value ="${item.ccSeq }"/>">
+						<input type="text" class="form-control" placeholder="자동생성" >
 					</div>
 					<div class="col-md-6">
 						<p>코드(Another)</p>
@@ -235,6 +235,7 @@
 				</div>
 		</div>
 	</div>
+	<input type="hidden" name="ccSeq" value="<c:out value ="${item.ccSeq }"/>" >
 	</form>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -264,7 +265,7 @@
 		var goUrlUele = "/code/codeUele";				/* #-> */
 		var goUrlDele = "/code/codeDele";				/* #-> */
 		
-		var seq = $("input:text[name=ccSeq]");				/* #-> */
+		var seq = $("input:hidden[name=ccSeq]");				/* #-> */
 		
 		var form = $("form[name=form]");
 		var formVo = $("form[name=formVo]");

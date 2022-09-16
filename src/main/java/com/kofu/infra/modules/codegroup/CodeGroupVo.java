@@ -151,8 +151,7 @@ public void setParamsPaging(int totalRows) {
 	}
 
 
-
-
+	
 	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;

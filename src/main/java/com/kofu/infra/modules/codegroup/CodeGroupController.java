@@ -27,23 +27,40 @@ public class CodeGroupController {
 		 * System.out.println(vo.getStartDate()); System.out.println(vo.getEndDate());
 		 */
 		
+		
+		
+		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
+		
 		vo.setParamsPaging(service.selectOneCount(vo));
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
+	
+	
+	
 	@RequestMapping(value = "codeGroupReg")
 	public String codeGroupReg() throws Exception{
+		
+		
+		
 		return "infra/codegroup/xdmin/codeGroupReg";
 	}
 	
+	
 	@RequestMapping(value = "codeGroupInst")
-	public String codeGroupInst(CodeGroup dto) throws Exception{
+	public String codeGroupInst(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
 		
-		int result = service.insert(dto);
-		System.out.println("controller result: "+result);
-		return "redirect:/codeGroup/codeGroupList";
+		service.insert(dto);
+		
+		vo.setCcgSeq(dto.getCcgSeq());
+		
+		redirectAttributes.addFlashAttribute("vo",vo);
+		/* System.out.println("controller result: "+result); */
+		return "redirect:/codeGroup/codeGroupForm";
 	}
+	
+	
 	@RequestMapping(value = "codeGroupView")
 	public String codeGroupView(CodeGroupVo vo, Model model) throws Exception{
 		CodeGroup result = service.selectOne(vo);
@@ -79,15 +96,14 @@ public class CodeGroupController {
 //	한페이지로 구현하기
 	@RequestMapping(value = "codeGroupForm")
 	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo,Model model)throws Exception{
+			
+			
 		
-		if(vo.getCcgSeq().equals("0") || vo.getCcgSeq().equals("")) {
-			//insert
-		}else {
 			CodeGroup item = service.selectOne(vo);
 			model.addAttribute("item",item);
-		}
 		
-		return "infar/codegroup/xdmin/codeGroupReg";
+		
+	return "infra/codegroup/xdmin/codeGroupReg";
 		
 	}
 	

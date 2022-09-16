@@ -24,7 +24,7 @@
 <!-- 네비바 -->
 	<nav class="navbar" style="background-color:#e3f2fd;">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="memberList.html">
+			<a class="navbar-brand" href="codeGroupoList">
 				<i class="fa-solid fa-plane-departure"></i>
 				AIR LANGUAGE
 			</a>
@@ -104,7 +104,7 @@
 				</select>
 		    </div>
 		    <div class="col">
-		    	<select class="form-select" aria-label="Default select example">
+		    	<select class="form-select" aria-label="Default select example" >
 					<option selected>검색구분</option>
 					<option value="1">One</option>
 					<option value="2">Two</option>
@@ -170,33 +170,33 @@
 		    <tbody>
 		    <!-- choose --> 
 		    	<c:choose>
-				<c:when test="${fn:length(list) eq 0}">
-					<tr>
-						<td class="text-center" colspan="10">no data</td>
-					</tr>
-			    </c:when>
-			    <c:otherwise>
-			    <c:forEach items="${list}" var="list" varStatus="status">
-		        <tr>
-		            <td scope="row">
-		            	<div class="form-check">
-		    				<input class="form-check-input" type="checkbox" value="5번" id="flexCheckDefault"name='nember'>
-		    				<label class="form-check-label" for="flexCheckDefault">
-		 			   		</label>
-						</div>
-		            </td>
-		            <td><a href="/codeGroup/codeGroupView?ccgSeq=<c:out value="${list.ccgSeq }"/>"><c:out value="${list.ccgSeq }"/></a></td>
-		            <td><c:out value="${list.ccg_nomber }"/></td>
-		            <td><c:out value="${list.ccg_groupname }"/></td>
-		            <td><c:out value="${list.ccg_groupnameEng }"/></td>
-		            <td><c:out value="${list.useNY }"/></td>
-		            <td><c:out value="${list.countCCG }"/></td>
-		            <td><c:out value="${list.insertdate }"/></td>
-		            <td><c:out value="${list.moddate }"/></td>
-		            <td><c:out value="${list.delNy }"/></td>
-		        </tr>
-		        </c:forEach>
-		        </c:otherwise>
+					<c:when test="${fn:length(list) eq 0}">
+						<tr>
+							<td class="text-center" colspan="10">no data</td>
+						</tr>
+				    </c:when>
+				    <c:otherwise>
+					    <c:forEach items="${list}" var="list" varStatus="status">
+					        <tr>
+					            <td scope="row">
+					            	<div class="form-check">
+					    				<input class="form-check-input" type="checkbox" value="5번" id="flexCheckDefault"name='nember'>
+					    				<label class="form-check-label" for="flexCheckDefault">
+					 			   		</label>
+									</div>
+					            </td>
+					            <td><a href="/codeGroup/codeGroupView?ccgSeq=<c:out value="${list.ccgSeq }"/>"><c:out value="${list.ccgSeq }"/></a></td>
+					            <td><c:out value="${list.ccg_nomber }"/></td>
+					            <td><c:out value="${list.ccg_groupname }"/></td>
+					            <td><c:out value="${list.ccg_groupnameEng }"/></td>
+					            <td><c:out value="${list.useNY }"/></td>
+					            <td><c:out value="${list.countCCG }"/></td>
+					            <td><c:out value="${list.insertdate }"/></td>
+					            <td><c:out value="${list.moddate }"/></td>
+					            <td><c:out value="${list.delNy }"/></td>
+					        </tr>
+				        </c:forEach>
+			        </c:otherwise>
 	        	</c:choose>
 	        	
 		    </tbody>

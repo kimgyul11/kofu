@@ -27,7 +27,6 @@
 				<i class="fa-solid fa-plane-departure"></i>
 				AIR LANGUAGE
 			</a>
-			
 			<button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
 			    aria-controls="offcanvasRight"><i class="bi bi-list"></i>
 			</button>
@@ -53,28 +52,28 @@
 <!-- 네비바 끝 -->	
 
 	<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="#">Navbar</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="#">회원관리</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">게시판관리</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">코드관리</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">시스템관리</a>
-				</li>
-			</ul>
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Navbar</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="#">회원관리</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">게시판관리</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">코드관리</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">시스템관리</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-	</div>
 	</nav>
 	
 
@@ -104,10 +103,9 @@
 		    </div>
 		    <div class="col">
 		    	<select class="form-select" aria-label="Default select example">
-					<option selected>검색구분</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
+					<option selected>삭제여부</option>
+					<option value="1">N</option>
+					<option value="2">Y</option>
 				</select>
 		    </div>
 		    <div class="col">
@@ -227,26 +225,26 @@
 			
 		</div>
 		<div class="float-start">
-		<button type="button" class="btn btn-outline-danger "style="margin:5px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-			<i class="fa-solid fa-trash-can"></i>
-		</button>
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">알림</h5>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
-		      </div>
-		      <div class="modal-body">
-		        삭제 하시겠습니까?
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-		        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">확인</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
+			<button type="button" class="btn btn-outline-danger "style="margin:5px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+				<i class="fa-solid fa-trash-can"></i>
+			</button>
+			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">알림</h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+			      </div>
+			      <div class="modal-body">
+			        삭제 하시겠습니까?
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+			        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">확인</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 		</div>
 		<div class="float-end">
 			<a href="codelistform">

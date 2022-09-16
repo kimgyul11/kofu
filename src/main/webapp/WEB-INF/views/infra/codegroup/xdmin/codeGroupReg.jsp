@@ -54,7 +54,10 @@
 	<form method="post" name="form">
 	<nav class="navbar navbar-expand-sm ">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">AIR LANGUAGE</a>
+			<a class="navbar-brand" href="codeGroupList">
+				<i class="fa-solid fa-plane-departure"></i>
+				AIR LANGUAGE
+			</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-targer="#collapasibleNavbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -108,14 +111,6 @@
 		<h3>코드그룹관리</h3>
 			<div class="col-md-12">
 				<div class="row m-4">
-					<div class="col-md-6">
-						<p>-</p>
-						<select class="form-select" aria-label="Default select example">
-							  <option selected>선택하세요</option>
-							  <option value="1">N</option>
-							  <option value="1">Y</option>
-						</select>
-					</div>
 				</div>
 				<div class="row m-4">
 					<div class="col-md-6">
@@ -149,7 +144,7 @@
 					<div class="col-md-6 ">
 						<p>삭제여부</p>
 						<select class="form-select" id="delNy"name='delNy'>
-								<option>사용</option>
+								<option> </option>
 								<option value='0' <c:if test="${item.delNy eq 0 }">selected</c:if>>N</option>
 								<option value='1' <c:if test="${item.delNy eq 1 }">selected</c:if>>Y</option>
 						</select>
