@@ -52,6 +52,11 @@ public class CodeController {
 	public String codeGroupView(CodeVo vo,Model model) throws Exception{
 		Code result = service.selectOne(vo);
 		model.addAttribute("item", result);
+		
+		List<Code> list = service.ccgselectList();
+		model.addAttribute("list", list);
+		
+		
 		return "infra/code/xdmin/codelistform";
 	}
 	@RequestMapping(value = "codeUpdt")

@@ -121,7 +121,7 @@
 						<p>코드그룹</p>
 						<select class="form-select" aria-label="Default select example" name="ccgSeq">
 							<c:forEach items="${list}" var="list" varStatus="status">
-								  <option value=<c:out value="${list.ccg_Seq}"/>><c:out value="${list.ccgSeq }"/></option>
+								  <option value=<c:out value="${list.ccgSeq}"/>><c:out value="${list.ccgSeq }"/></option>
 							</c:forEach>
 						</select>
 					</div>
