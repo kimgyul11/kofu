@@ -48,4 +48,10 @@ public class CodeServiceImpl implements CodeService{
 	public int uelete(Code dto)throws Exception{
 		return dao.uelete(dto);
 	}
+	
+	@Override
+	public int selectOneCount(CodeVo vo)throws Exception{
+		return dao.selectOneCount(vo);
+	}
+	
 }

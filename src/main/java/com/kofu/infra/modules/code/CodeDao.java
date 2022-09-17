@@ -43,4 +43,11 @@ public class CodeDao {
 	public int update(Code dto) {return sqlSession.update(namespace + ".update",dto);}
 	public int delete(CodeVo vo){return sqlSession.delete(namespace + ".delete",vo);}
 	public int uelete(Code dto) {return sqlSession.update(namespace + ".uelete", dto);}
+
+	// 페이징
+		public int selectOneCount(CodeVo vo) {
+			return sqlSession.selectOne(namespace + ".selectOneCount",vo);}
 }
+
+
+	

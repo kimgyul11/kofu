@@ -8,20 +8,46 @@
 
     <resultMap id="resultMapObj" type="com.kofu.infra.modules.code.Code"></resultMap>
 	
+	<sql id="selectListUpperForMysql">
+		select aa.* from (
+		</sql>
+	
+	
+		<sql id="selectListLowerForMysql">	
+			) aa
+			limit #{rowNumToShow} offset #{startRnumForMysql}
+		</sql>
+	
+	<sql id="selectCommon">
+		FROM cc 
+		WHERE 1=1
+		<if test="shDelNy != null and !shDelNy.equals('')">AND UseNY = #{shDelNy}</if>
+		<choose>
+				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
+				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND cc_nameEng LIKE CONCAT('%',#{shValue},'%')</when>
+				<otherwise></otherwise>
+		</choose>
+	</sql>
+	
+	
 	<select id="selectList" resultMap="resultMapObj">		
+		<include refid = "selectListUpperForMysql"/>
 		select
-			b.*
-	    	,a.*
-		from ccg a 
-		join cc b on b.ccg_seq = a.ccgSeq
+			a.*
+	    	,b.*
+		from cc a 
+		join ccg b on b.ccgSeq = a.ccg_Seq
+		ORDER BY ccSeq DESC
 		
 		<if test="shDelNy != null and !shDelNy.equals('')">AND UseNY = #{shDelNy}</if>
 			<choose>
-				<when test="shOption == 1">AND ccgSeq = #{shValue}</when>
+				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
 				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 3">AND cc_nameEng LIKE CONCAT('%',#{shValue},'%')</when>
 				<otherwise></otherwise>
 			</choose>
+			<include refid="selectListLowerForMysql" />
 	</select>
 
 	<select id="ccgselectList" resultMap="resultMapObj">
@@ -35,6 +61,18 @@
 			AND delNy = 0
 		GROUP BY ccg_groupname
 	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		FROM cc a
+		WHERE 1=1
+		<choose>
+				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
+				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND cc_nameEng LIKE CONCAT('%',#{shValue},'%')</when>
+				<otherwise></otherwise>
+			</choose>
+	</select>  
 	
 	
 	<insert id="insert">

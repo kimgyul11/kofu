@@ -19,7 +19,11 @@
 	<link rel="stylesheet" href="/resources/xdmin/css/codeList.css" />
 </head>
 <body class="ng-font2">
-<form method="post" action="/code/code">
+<form method="post" action="/code/code" name="form">
+<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+<input type="hidden" name="ccSeq" value="<c:out value="${vo.ccSeq}"/>">
+
 <!-- 네비바 -->
 	<nav class="navbar" style="background-color:#e3f2fd;">
 		<div class="container-fluid">
@@ -197,23 +201,36 @@
 		        </c:forEach>
 		    </tbody>
 		</table>
-	<nav aria-label="Page navigation example" >
-    <ul class="pagination justify-content-center" >
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-	</nav>
+	<div class="container-fluid px-0 mt-2">
+	    <div class="row">
+	        <div class="col">
+	            <!-- <ul class="pagination pagination-sm justify-content-center mb-0"> -->
+	            <ul class="pagination justify-content-center mb-0">
+	                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
+					<c:if test="${vo.startPage gt vo.pageNumToShow}">
+		                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="fa-solid fa-angle-left"></i></a></li>
+					</c:if>
+					<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+						<c:choose>
+							<c:when test="${i.index eq vo.thisPage}">
+			                	<li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+							</c:when>
+							<c:otherwise>             
+			                	<li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>                
+					<c:if test="${vo.endPage ne vo.totalPages}">                
+	                	<li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angle-right"></i></a></li>
+					</c:if>
+	                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
+	            </ul>
+	        </div>
+	    </div>
+	</div>
+	
+	
+	
 	<div id="kensaku">	
 		<div class="float-start">
 			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -259,6 +276,7 @@
 <br>
 </form>
 <!-- 하단 추가 삭제 수정 버튼 완료 -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script>
 		function selectAll(selectAll)  {
@@ -275,6 +293,13 @@
 		  checkboxes.forEach((checkbox) => {
 		    checkbox.checked = selectAll.checked;
 		  })
+		}
+		var goUrlList = "/code/code";
+		var form = $("form[name=form]")
+		
+		goList = function(thisPage) {
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
 		}
 	</script>
 	<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>

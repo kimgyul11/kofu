@@ -380,14 +380,10 @@
 		form.attr("action", goUrlForm).submit();
 	}
 
-
-
-    
-	
 	$("#btnReset").on("click", function() {
 			$(location).attr("href",goUrlList);
 	});
-	
+/* 페이지네이션 리스	 */
 	goList = function(thisPage) {
 		$("input:hidden[name=thisPage]").val(thisPage);
 		form.attr("action", goUrlList).submit();
