@@ -178,6 +178,13 @@
 		    </thead>
 		    <tbody>
 		        <tr>
+		        <c:choose>
+					<c:when test="${fn:length(list) eq 0}">
+						<tr>
+							<td class="text-center" colspan="12">검색결과가 없습니다.</td>
+						</tr>
+				    </c:when>
+				    <c:otherwise>
 		        <c:forEach items="${list}" var="list" varStatus="status">
 		            <th scope="row">
 		            	<div class="form-check">
@@ -199,6 +206,8 @@
 		            <td></td>
 		        </tr>
 		        </c:forEach>
+		        </c:otherwise>
+	        	</c:choose>
 		    </tbody>
 		</table>
 	<div class="container-fluid px-0 mt-2">

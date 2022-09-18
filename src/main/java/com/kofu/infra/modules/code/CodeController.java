@@ -59,7 +59,7 @@ public class CodeController {
 	public String codeUpdt(CodeVo vo,Code dto,RedirectAttributes redirectAttributes) throws Exception{
 		service.update(dto);
 		redirectAttributes.addFlashAttribute("vo",vo);
-		return "redirect:/code/code";
+		return "redirect:/code/codelistform";
 	}
 	
 	@RequestMapping(value="codeDele")

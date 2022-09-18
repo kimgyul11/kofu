@@ -18,17 +18,7 @@
 			limit #{rowNumToShow} offset #{startRnumForMysql}
 		</sql>
 	
-	<sql id="selectCommon">
-		FROM cc 
-		WHERE 1=1
-		<if test="shDelNy != null and !shDelNy.equals('')">AND UseNY = #{shDelNy}</if>
-		<choose>
-				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
-				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND cc_nameEng LIKE CONCAT('%',#{shValue},'%')</when>
-				<otherwise></otherwise>
-		</choose>
-	</sql>
+
 	
 	
 	<select id="selectList" resultMap="resultMapObj">		
@@ -38,15 +28,16 @@
 	    	,b.*
 		from cc a 
 		join ccg b on b.ccgSeq = a.ccg_Seq
-		ORDER BY ccSeq DESC
 		
-		<if test="shDelNy != null and !shDelNy.equals('')">AND UseNY = #{shDelNy}</if>
+		
+		<if test="shDelNy != null and !shDelNy.equals('')">AND cc_useNy = #{shDelNy}</if>
 			<choose>
 				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
 				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 3">AND cc_nameEng LIKE CONCAT('%',#{shValue},'%')</when>
 				<otherwise></otherwise>
 			</choose>
+			ORDER BY ccSeq DESC
 			<include refid="selectListLowerForMysql" />
 	</select>
 
@@ -107,6 +98,12 @@
 		FROM cc
 		WHERE 1=1
 			AND  ccSeq = #{ccSeq} 
+			<choose>
+				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
+				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND cc_nameEng LIKE CONCAT('%',#{shValue},'%')</when>
+				<otherwise></otherwise>
+			</choose>
 	</select>
 	
 	<update id="update">
