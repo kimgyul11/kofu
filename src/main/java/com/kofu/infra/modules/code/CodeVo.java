@@ -6,15 +6,17 @@ public class CodeVo {
 	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;
-	
+	private String startDate;
+	private String endDate;
 	private String ccSeq;
+
+	//--------------------------------------------
 	public String getCcSeq() {
 		return ccSeq;
 	}
 	public void setCcSeq(String ccSeq) {
 		this.ccSeq = ccSeq;
 	}
-	//--------------------------------------------
 	public Integer getShOption() {
 		return shOption;
 	}
@@ -33,9 +35,24 @@ public class CodeVo {
 	public void setShDelNy(Integer shDelNy) {
 		this.shDelNy = shDelNy;
 	}
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 	
 //	---------------------- 페이징 -------------------------------------
 	
+	
+
+
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 갯수
 	private int pageNumToShow = Constants.PAGE_NUM_TO_SHOW;		// 화면에 보여줄 페이징 번호 갯수

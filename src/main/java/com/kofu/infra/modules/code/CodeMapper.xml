@@ -29,7 +29,7 @@
 		from cc a 
 		join ccg b on b.ccgSeq = a.ccg_Seq
 		
-		
+		<if test="startDate != null and !startDate.equals('') and endDate != null and !endDate.equals('')"> AND a.cc_InsertDate Between #{startDate} AND #{endDate}</if>
 		<if test="shDelNy != null and !shDelNy.equals('')">AND cc_useNy = #{shDelNy}</if>
 			<choose>
 				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
@@ -45,11 +45,11 @@
 		select
 			a.ccgSeq
 			,a.ccg_groupname
-			,b.ccg_seq
 		from ccg a
 		join cc b
 		WHERE 1=1
-			AND delNy = 0
+			AND a.delNy = 0
+			AND a.useNY = 1
 		GROUP BY ccg_groupname
 	</select>
 	
@@ -57,12 +57,14 @@
 		SELECT COUNT(*)
 		FROM cc a
 		WHERE 1=1
+		
+		<if test="startDate != null and !startDate.equals('') and endDate != null and !endDate.equals('')"> AND a.cc_InsertDate Between #{startDate} AND #{endDate}</if>
 		<choose>
-				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
-				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND cc_nameEng LIKE CONCAT('%',#{shValue},'%')</when>
-				<otherwise></otherwise>
-			</choose>
+			<when test="shOption == 1">AND ccSeq = #{shValue}</when>
+			<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND cc_nameEng LIKE CONCAT('%',#{shValue},'%')</when>
+			<otherwise></otherwise>
+		</choose>
 	</select>  
 	
 	
@@ -89,15 +91,17 @@
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			ccSeq
-			,cc_name
-			,cc_nameEng
-			,cc_number
-			,ccg_seq
-			,cc_useNy
-			,cc_delNy
-		FROM cc
+			,a.cc_name
+			,a.cc_nameEng
+			,a.cc_number
+			,a.ccg_seq
+			,a.cc_useNy
+			,a.cc_delNy
+			,a.cc_InsertDate
+		FROM cc a
 		WHERE 1=1
 			AND  ccSeq = #{ccSeq} 
+			<if test="startDate != null and !startDate.equals('') and endDate != null and !endDate.equals('')"> AND a.cc_InsertDate Between #{startDate} AND #{endDate}</if>
 			<choose>
 				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
 				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>

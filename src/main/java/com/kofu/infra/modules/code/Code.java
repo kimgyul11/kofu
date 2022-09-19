@@ -9,11 +9,17 @@ public class Code {
 	private String cc_number;
 	private Integer cc_delNy;
 	private Integer cc_useNy;
+	private String cc_InsertDate;
+	private String cc_ModDate;
 	
+	
+	private Integer UseNY;
 	private Integer ccgSeq;
 	private String ccg_groupname;
 	
 
+	
+	//---------------------------------------
 	public String getCcSeq() {
 		return ccSeq;
 	}
@@ -56,8 +62,6 @@ public class Code {
 	public void setCcg_seq(Integer ccg_seq) {
 		this.ccg_seq = ccg_seq;
 	}
-	
-	
 	public Integer getCcgSeq() {
 		return ccgSeq;
 	}
@@ -70,14 +74,24 @@ public class Code {
 	public void setCcg_groupname(String ccg_groupname) {
 		this.ccg_groupname = ccg_groupname;
 	}
-	
 
-	private Integer UseNY;
 	public Integer getUseNY() {
 		return UseNY;
 	}
 	public void setUseNY(Integer useNY) {
 		UseNY = useNY;
 	}
-	
+	public String getCc_InsertDate() {
+		return cc_InsertDate;
+	}
+	public void setCc_InsertDate(String cc_InsertDate) {
+		this.cc_InsertDate = cc_InsertDate;
+	}
+	public String getCc_ModDate() {
+		return cc_ModDate;
+	}
+	public void setCc_ModDate(String cc_ModDate) {
+		this.cc_ModDate = cc_ModDate;
+	}
+
 }

@@ -7,8 +7,6 @@
 <mapper namespace="com.kofu.infra.modules.codegroup.CodeGroupMapper">
 
     <resultMap id="resultMapObj" type="com.kofu.infra.modules.codegroup.CodeGroup"></resultMap>
-	
-		
 		<sql id="selectListUpperForMysql">
 		select aa.* from (
 		</sql>
@@ -30,7 +28,6 @@
 				<when test="shOption == 3">AND ccg_groupnameEng LIKE CONCAT('%',#{shValue},'%')</when>
 			</choose>
 		</sql>
-	
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="selectListUpperForMysql" />
 			SELECT
@@ -40,6 +37,8 @@
 				, a.ccg_nomber
 				, a.UseNY
 				, a.delNy
+				, a.insertdate
+				, a.moddate
 				,(select count(aa.ccg_seq) from cc aa where aa.ccg_seq = a.ccgSeq ) as countCCG
 		<include refid="selectCommon" />
 			ORDER BY a.ccgSeq DESC
@@ -50,12 +49,6 @@
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
 	</select>  
-
-
-
-
-	
-	
 	<insert id="insert">
 		INSERT INTO ccg(
 		    ccg_groupname
