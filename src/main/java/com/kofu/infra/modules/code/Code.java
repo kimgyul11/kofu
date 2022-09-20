@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Code {
 	
-	private Integer ccg_seq;
+	private String ccg_seq;
 	private String ccSeq;
 	private String cc_name;
 	private String cc_nameEng;
@@ -73,10 +73,10 @@ public class Code {
 	public void setCc_useNy(Integer cc_useNy) {
 		this.cc_useNy = cc_useNy;
 	}
-	public Integer getCcg_seq() {
+	public String getCcg_seq() {
 		return ccg_seq;
 	}
-	public void setCcg_seq(Integer ccg_seq) {
+	public void setCcg_seq(String ccg_seq) {
 		this.ccg_seq = ccg_seq;
 	}
 	public String getCcg_groupname() {

@@ -137,7 +137,7 @@
 		SELECT 
 			ccSeq
 			, cc_name
-			, ccg_seq AS ccgSeq
+			, ccg_seq
 		FROM
 			cc
 		WHERE 1=1
