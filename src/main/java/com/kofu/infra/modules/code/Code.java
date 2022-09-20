@@ -1,5 +1,8 @@
 package com.kofu.infra.modules.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Code {
 	
 	private Integer ccg_seq;
@@ -14,14 +17,28 @@ public class Code {
 	
 	
 	private Integer UseNY;
-	private Integer ccgSeq;
+	private String ccgSeq;
 	private String ccg_groupname;
 	
-
+//	for cache
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
 	
 	//---------------------------------------
+	
 	public String getCcSeq() {
 		return ccSeq;
+	}
+	public String getCcgSeq() {
+		return ccgSeq;
+	}
+	public void setCcgSeq(String ccgSeq) {
+		this.ccgSeq = ccgSeq;
+	}
+	public static List<Code> getCachedCodeArrayList() {
+		return cachedCodeArrayList;
+	}
+	public static void setCachedCodeArrayList(List<Code> cachedCodeArrayList) {
+		Code.cachedCodeArrayList = cachedCodeArrayList;
 	}
 	public void setCcSeq(String ccSeq) {
 		this.ccSeq = ccSeq;
@@ -61,12 +78,6 @@ public class Code {
 	}
 	public void setCcg_seq(Integer ccg_seq) {
 		this.ccg_seq = ccg_seq;
-	}
-	public Integer getCcgSeq() {
-		return ccgSeq;
-	}
-	public void setCcgSeq(Integer ccgSeq) {
-		this.ccgSeq = ccgSeq;
 	}
 	public String getCcg_groupname() {
 		return ccg_groupname;

@@ -133,6 +133,17 @@
 		WHERE ccSeq = #{ccSeq}	
 	</update>
 	
+	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+		SELECT 
+			ccSeq
+			, cc_name
+			, ccg_seq AS ccgSeq
+		FROM
+			cc
+		WHERE 1=1
+			AND cc_delNy = 0
+		    AND cc_useNy = 1
+    </select>
 	
 
 </mapper>	

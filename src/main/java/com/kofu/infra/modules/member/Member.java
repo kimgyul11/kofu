@@ -10,15 +10,8 @@ public class Member {
 	private String user_conutry;
 	private Integer lean_language;
 	private Integer user_gender;
-	private Integer user_pw;
 	
 	//-----------------------------------------------------------------------------
-	public Integer getUser_pw() {
-		return user_pw;
-	}
-	public void setUser_pw(Integer user_pw) {
-		this.user_pw = user_pw;
-	}
 	public Integer getUser_gender() {
 		return user_gender;
 	}

@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-
+<jsp:useBean id="CodeServiceImpl" class="com.kofu.infra.modules.code.CodeServiceImpl"/>
 <!doctype html>
 <html lang="kr">
 <head>
@@ -310,7 +310,9 @@ select{
 				<div class="header__item">배우는언어</div>
 				<div class="header__item">국적</div>
 			</div>
+			
 			<div class="table-content">
+			<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 				<c:forEach items="${list}" var="list" varStatus="status">	
 					<div class="table-row">
 							<div class="table-data-ch"><input type="checkbox"></div>		
@@ -318,7 +320,10 @@ select{
 							<div class="table-data"><c:out value="${list.user_id }"/></div>
 							<div class="table-data"><c:out value="${list.user_level }"/></div>
 							<div class="table-data"><c:out value="${list.user_name }"/></div>
-							<div class="table-data"><c:out value="${list.user_gender }"/></div>
+							<%-- <div class="table-data"><c:out value="${list.user_gender }"/></div> --%>
+							
+								<div class="table-data"><c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender"><c:if test="${list.user_gender eq listGender.ccSeq}"><c:out value="${listGender.cc_name }"/></c:if></c:forEach></div>
+							
 							<div class="table-data"><c:out value="${list.user_dob }"/></div>
 							<div class="table-data"></div>
 							<div class="table-data"></div>
