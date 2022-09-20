@@ -313,20 +313,32 @@ select{
 			
 			<div class="table-content">
 			<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+			<c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+			<c:set var="listCodecountry" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
 				<c:forEach items="${list}" var="list" varStatus="status">	
 					<div class="table-row">
-							<div class="table-data-ch"><input type="checkbox"></div>		
-							<div class="table-data-num"></div>
-							<div class="table-data"><c:out value="${list.user_id }"/></div>
-							<div class="table-data"><c:out value="${list.user_level }"/></div>
-							<div class="table-data"><c:out value="${list.user_name }"/></div>
-							<%-- <div class="table-data"><c:out value="${list.user_gender }"/></div> --%>
-							
-								<div class="table-data"><c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender"><c:if test="${list.user_gender eq listGender.ccSeq}"><c:out value="${listGender.cc_name }"/></c:if></c:forEach></div>
-							
-							<div class="table-data"><c:out value="${list.user_dob }"/></div>
-							<div class="table-data"></div>
-							<div class="table-data"></div>
+						<div class="table-data-ch"><input type="checkbox"></div>		
+						<div class="table-data-num"></div>
+						<div class="table-data"><c:out value="${list.user_id }"/></div>
+						<div class="table-data"><c:out value="${list.user_level }"/></div>
+						<div class="table-data"><c:out value="${list.user_name }"/></div>
+						<%-- <div class="table-data"><c:out value="${list.user_gender }"/></div> --%>
+						<div class="table-data">
+							<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+								<c:if test="${list.user_gender eq listGender.ccSeq}"><c:out value="${listGender.cc_name }"/></c:if>
+							</c:forEach>
+						</div>
+						<div class="table-data"><c:out value="${list.user_dob }"/></div>
+						<div class="table-data">
+							<c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
+								<c:if test="${list.lean_language eq Language.ccSeq}"><c:out value="${Language.cc_name }"/></c:if>
+							</c:forEach>
+						</div>
+						<div class="table-data">
+							<c:forEach items="${listCodecountry}" var="country" varStatus="statusGender">
+								<c:if test="${list.user_conutry eq country.ccSeq}"><c:out value="${country.cc_name }"/></c:if>
+							</c:forEach>
+						</div>
 					</div>
 				</c:forEach>
 			</div>	
