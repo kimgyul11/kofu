@@ -44,12 +44,12 @@ public class CodeDao {
 	public int delete(CodeVo vo){return sqlSession.delete(namespace + ".delete",vo);}
 	public int uelete(Code dto) {return sqlSession.update(namespace + ".uelete", dto);}
 
-	// 페이징
-		public int selectOneCount(CodeVo vo) {
-			return sqlSession.selectOne(namespace + ".selectOneCount",vo);}
-		
+// 페이징
+	public int selectOneCount(CodeVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount",vo);}
+	
 //		for cache
-		public List<Code> selectListCachedCodeArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null); }	
+	public List<Code> selectListCachedCodeArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null); }	
 }
 
 
