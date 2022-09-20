@@ -15,6 +15,7 @@ public class HomeController {
 	@RequestMapping(value = "/")
 	public String airLanguageHome() {
 		
+	
 		return "infra/home/xdmin/airLanguageHome";
 	}
 	
@@ -31,9 +32,9 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "quelist")
-	public String quelist(Model model)throws Exception {
+	public String quelist(Model model,HomeVo vo)throws Exception {
 		
-		List<Home>list = service.selectList();
+		List<Home>list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/home/xdmin/questionList";

@@ -17,7 +17,7 @@ public class HomeDao {
 	
 	private static String namespace = "com.kofu.infra.modules.home.HomeMapper";
 	
-	public List<Home> selectList()
-	{return sqlSession.selectList(namespace + ".selectList","");}
+	public List<Home> selectList(HomeVo vo)
+	{return sqlSession.selectList(namespace + ".selectList",vo);}
 	
 }

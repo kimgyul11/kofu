@@ -18,6 +18,9 @@
     <title>HOME</title>
 </head>
 <body>
+<form name="form">
+<input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>"/>
+<input type="hidden" name="shValue" value="<c:out value="${vo.shValue}"/>"/>
     <!--  헤더영역 -->
     <header class="backcol">
         <nav class="navbar">
@@ -86,20 +89,20 @@
     </div>
     <div class="search_select">
         <span class="custom-select">
-        <select>
-            <option selected>언어를 선택하세요</option>
-            <option>영어</option>
-            <option>일본어</option>
-            <option>한국어</option>
+        <select id="shOption" name="shOption">
+            <option value=""<c:if test="${empty vo.shOption}">selected</c:if>>언어를 선택하세요</option>
+            <option value="1"<c:if test="${vo.shOption eq 1}">selected</c:if>>영어</option>
+            <option value="2"<c:if test="${vo.shOption eq 2}">selected</c:if>>일본어</option>
+            <option value="3"<c:if test="${vo.shOption eq 3}">selected</c:if>>한국어</option>
         </select>
         </span>
         <p>에 대한</p>
     </div>
     <div class="search_textbox">
-        <input type="text" name="" id="" placeholder="검색어를 입력하세요">
+        <input type="text" name="shValue" id="shValue" value="<c:out value="${vo.shValue}"/>" placeholder="검색어를 입력하세요">
     </div>
     <div class="search_btn">
-        <a href="#" class="button">검색하기</a>
+        <div class="button" onclick id="btnForm">검색하기</div>
         
     </div>
 </div>
@@ -184,8 +187,16 @@
 
 
 
-
-    <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+var goUrlList = "/quelist";
+var form = $("form[name=form]")
+	$("#btnForm").on("click", function() {
+			$(location).attr("href",goUrlList).submit();
+	});
+</script>
 
 </body>
 </html>

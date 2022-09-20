@@ -12,8 +12,7 @@ public class HomeServiceImpl implements HomeService{
 	HomeDao dao;
 	
 	@Override
-	public List<Home>selectList() throws Exception{
-		return dao.selectList();
+	public List<Home>selectList(HomeVo vo) throws Exception{
+		return dao.selectList(vo);
 	}
-	
 }

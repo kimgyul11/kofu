@@ -8,6 +8,9 @@
 
     <resultMap id="resultMapObj" type="com.kofu.infra.modules.home.Home"></resultMap>
 	
+
+	
+	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			a.content
@@ -17,7 +20,11 @@
 	    	FROM question a
 	    	join airLanguage_member b on a.userId = b.memberSeq
 	    	join cc c on c.ccSeq = a.language_select
-
+		<choose>
+			<when test="shOption == 1">AND content LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND content LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND content LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
 	</select>
 	
 		
