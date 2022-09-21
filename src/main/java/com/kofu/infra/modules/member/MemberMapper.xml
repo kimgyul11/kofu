@@ -26,11 +26,30 @@
 			,a.user_useNy
 			,a.user_delNy
 			,a.user_addr
+			,a.user_email
 		FROM airLanguage_member a
 		WHERE 1=1
 			 AND memberSeq = #{memberSeq}
 	</select>
 	
+	<insert id="insert">
+		INSERT INTO airLanguage_member(
+			user_id
+			,user_pw
+			,user_name
+			,user_dob
+			,user_conutry
+			,user_level
+		)
+		VALUES(
+			#{user_id}
+			,#{user_pw}
+			,#{user_name}
+			,#{user_dob}
+			,#{user_conutry}
+			,#{user_level}
+		) 
+	</insert>
 	
 
 </mapper>	

@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class MemberDao {
 	
@@ -19,7 +20,17 @@ public class MemberDao {
 	
 	public List<Member> selectList(){ return sqlSession.selectList(namespace + ".selectList", ""); }
 	
+	public Member selectOne(MemberVo vo){
+		Member result = sqlSession.selectOne(namespace + ".selectOne",vo);
+		System.out.println("dao result :"+ result);
+		return result;
+	}
 	
-
+	public int insert(Member dto) {
+		int result = sqlSession.insert(namespace + ".insert",dto);
+		System.out.println("dao result :"+result);
+		return result;
+		
+	}
 	
 }

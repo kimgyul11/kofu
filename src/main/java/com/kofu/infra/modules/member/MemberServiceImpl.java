@@ -15,5 +15,17 @@ public class MemberServiceImpl implements MemberService{
 	public List<Member> selectList() throws Exception {
 		return dao.selectList();
 	}
+	@Override
+	public Member selectOne(MemberVo vo)throws Exception{
+		Member result = dao.selectOne(vo);
+		System.out.println("service result :"+result);
+		return result;
+	}
+	@Override
+	public int insert(Member dto) throws Exception{
+		int result = dao.insert(dto);
+		System.out.println("service result: "+ result);
+		return result;
+	}
 
 }

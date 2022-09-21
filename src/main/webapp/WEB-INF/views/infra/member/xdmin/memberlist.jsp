@@ -17,6 +17,8 @@
 	<link rel="stylesheet" href="/resources/xdmin/xdmin_css/xdminMemberList.css" />
 </head>
 <body class="ng-font2">
+<form name="form">
+<input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq}"/>">
 	<!-- 네비게이션 바 -->
 <div class="container_nav">
   <div class="desk-nav-bar">
@@ -93,10 +95,18 @@
 			<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 			<c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 			<c:set var="listCodecountry" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
+				<c:choose>
+					<c:when test="${fn:length(list) eq 0}">
+					<div class="table-row">
+						<div class="header__item-ch" colspan="10">no data</td>
+					</div>
+			    </c:when>
+			    <c:otherwise>
 				<c:forEach items="${list}" var="list" varStatus="status">	
 					<div class="table-row">
-						<div class="table-data-ch"><input type="checkbox"></div>		
-						<div class="table-data-num"><c:out value="${list.memberSeq }"/></div>
+						<div class="table-data-ch"><input type="checkbox"></div>
+								
+						<div class="table-data-num" ><a href="/member/memberView?memberSeq=<c:out value="${list.memberSeq }"/>"><c:out value="${list.memberSeq }"/></a></div>
 						<div class="table-data"><c:out value="${list.user_id }"/></div>
 						<div class="table-data"><c:out value="${list.user_level }"/></div>
 						<div class="table-data"><c:out value="${list.user_name }"/></div>
@@ -119,16 +129,38 @@
 						</div>
 					</div>
 				</c:forEach>
+			</c:otherwise>
+        	</c:choose>	
 			</div>	
 		</div>
 		<ul class="buttonbox">
 		<li class="button">
-		<li><button>추가</button>
+		<li><button id="btnForm">추가</button>
 	</ul>
 	</div>
-	
+	</form>
 	<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	var seq = $("input:hidden[name=memberSeq]");
+	var goUrlForm = "/member/memberView";
+	var goUrlList = "/member/memberlist";
+	var form = $("form[name=form]")
+	
+	
+	$('#btnForm').on("click", function() {
+		goForm(0);                
+	});
+	
+	goForm = function(keyValue) {
+    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+    	seq.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}
+</script>
 </body>
 
 </html>

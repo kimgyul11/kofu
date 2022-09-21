@@ -11,11 +11,20 @@ public class Member {
 	private Integer lean_language;
 	private Integer user_gender;
 	private String user_addr;
+	private String user_email;
 	
 	//-----------------------------------------------------------------------------
 	
+	
+	
 	public Integer getUser_gender() {
 		return user_gender;
+	}
+	public String getUser_email() {
+		return user_email;
+	}
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
 	}
 	public String getUser_addr() {
 		return user_addr;

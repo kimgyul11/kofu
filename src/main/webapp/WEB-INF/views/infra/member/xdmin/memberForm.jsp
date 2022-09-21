@@ -9,6 +9,7 @@
 <html lang="kr">
 <head>
 	<meta charset="utf-8">
+	<jsp:useBean id="CodeServiceImpl" class="com.kofu.infra.modules.code.CodeServiceImpl"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>memberModform</title>
 	<!-- CDN : content Delivery Network  -->
@@ -39,6 +40,8 @@
 	}
 	</style>
 <body class="ng-font2">
+<form name="form">
+<input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq}"/>"/>
 	<nav class="navbar" style="background-color:#eceff1">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="memberList.html">
@@ -70,6 +73,9 @@
 		</div>
 	</nav>
 	<!-- 시작 -->
+	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+	<c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+	<c:set var="listCodecountry" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
 	<div class="container">
 		<div class="input-form-backgroud row " >
         	<div class="input-form col-md-12 mx-auto"style="border:1px solid;">
@@ -81,6 +87,7 @@
 	        			</div>
         			</div>
         			<div class="row justify-content-center">
+        			<br>
 	        			<div class="input-group mb-3"style="width:50%">
 	  						<input type="file" class="form-control" id="inputGroupFile02">
 							<label class="input-group-text" for="inputGroupFile02">수정</label>
@@ -91,17 +98,18 @@
             		<div class="row m-4">
 						<div class="col-md-6">
 							<p>아이디</p>
-							<input type="text" class="form-control" >
+							<input type="text" class="form-control"name="user_id" id="user_id"value="<c:out value="${item.user_id }"/>" >
 						</div>
 						<div class="col-md-6 ">
 							<p>비밀번호</p>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" >
 						</div>
 					</div>
             		<div class="row m-4">
 						<div class="col-md-6">
 							<p>국적</p>
-							<input type="text" class="form-control" >
+							<c:if test="${item.user_conutry eq country.ccSeq}"><c:out value="${country.cc_name }"/></c:if>
+							<input type="text" class="form-control" name="user_conutry" id="user_conutry" value="<c:if test="${User.user_conutry eq country.ccSeq}"><c:out value="${country.cc_name }"/></c:if>" >
 						</div>
 						<div class="col-md-6 ">
 							<p>언어</p>
@@ -111,83 +119,91 @@
 					<div class="row m-4">
 						<div class="col-md-6">
 							<p>생년월일</p>
-							<input type="text" class="form-control" placeholder="ex)19921013">
+							<input type="text" class="form-control" id="user_dob" value="<c:out value="${item.user_dob }"/>">
 						</div>
 						<div class="col-md-6 ">
 							<p>성별</p>
 							<select class="form-select" aria-label="Default select example">
 						  		<option selected>성별을 선택하세요</option>
-						  		<option value="남">남</option>
-						  		<option value="여">여</option>
+						  		<option value="17" <c:if test="${item.user_gender eq 17 }">selected</c:if>>남</option>
+							<option value="18" <c:if test="${item.user_gender eq 18 }">selected</c:if>>여</option>
 							</select>
 						</div>
 					</div>
 		         	<div class="row m-4 ">
-		            	<div class="col-md-12">
-		            		<label for="kokuseki">국적</label>
-		            		<input type="text" class="form-control"placeholder="국적을 입력하세요">
+		            	<div class="col-md-6">
+		            		<label for="kokuseki">회원등급</label>
+		            		<input type="text" class="form-control" id="user_level" value="<c:out value="${item.user_level }"/>">
+		            	</div>
+		            	<div class="col-md-6">
+		            		<label for="kokuseki">게시글수</label>
+		            		<input type="text" class="form-control">
 		            	</div>	
 	            	</div>
 	            	<div class="row m-4 ">
-		            	<div class="col-md-12">
+		            	<div class="col-md-6">
 		            		<label for="kokuseki">이메일</label>
-		            		<input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요" required>
-		            	</div>	
+		            		<input type="text" class="form-control" id="user_email" value="<c:out value="${item.user_email }"/>">
+		            	</div>
+		            	<div class="col-md-6">
+		            		<label for="kokuseki">관심언어</label>
+		            		<input type="text" class="form-control" id="email" placeholder="" required>
+		            	</div>		
 	            	</div>
+	            	<div class="row m-4 ">
+		            	<div class="col-md-6">
 		            	
-		          
-		           
-		           		
-		            <div class="mb-2">
-		              	<label for="address">주소</label>
-		              	<input type="text" class="form-control" id="address" placeholder="서울특별시 강남구" required>
-		              	<div class="invalid-feedback">주소를 입력해주세요.</div>
-		            </div>
-		            <div class="mb-2">
-		              	<label for="address2">상세주소<span class="text-muted">&nbsp;(필수 아님)</span></label>
-		              	<input  type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요.">
-		            </div>
-		            <input class="form-control" type="text" id="sample4_postcode" placeholder="우편번호">
-					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input class="form-control" type="text" id="sample4_roadAddress" placeholder="도로명주소">
-					<input class="form-control" type="text" id="sample4_jibunAddress" placeholder="지번주소">
-					<span id="guide" style="color:#999;display:none"></span>
-					<input type="text" id="sample4_detailAddress" placeholder="상세주소">
-					<input type="text" id="sample4_extraAddress" placeholder="참고항목">
-		            <hr class="mb-4">
-		            
-		            
-		            <div class="row m-4">
-						<div class="col-md-6">
-							<p>아이디</p>
-							<input type="text" class="form-control" >
+		            	</div>
+		            	<div class="col-md-6">
+		            	
+		            	</div>		
+	            	</div>
+	            	<div class="row m-4 ">
+	            		<div class="col-md-5">
+			            	<input type="text"class="form-control" id="sample4_postcode" placeholder="우편번호">
+			            </div>
+			            <div class="col-md-3">	
+							<input type="button" class="form-control" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+						</div>	
+					</div>
+					<div class="row m-4 ">
+						<div class="col-md-10">
+							<input type="text" class="form-control" id="sample4_roadAddress" placeholder="도로명주소">
 						</div>
-						<div class="col-md-6 ">
-							<p>비밀번호</p>
-							<input type="text" class="form-control">
+					</div>	
+					<div class="row m-4 ">
+						<div class="col-md-10">
+							<input type="text"class="form-control"  id="sample4_jibunAddress" placeholder="지번주소">
 						</div>
 					</div>
-		            
-	          	</form>
-        		<div class="mb-4">
-	            	<div class="boder d-flex justify-content-center">
-	            	<a href="memberList.html">
-	            		<button class="btn btn-primary btn-lg btn-block" >수정완료</button>
-	            	</a>	
-            			<button class="btn btn-primary btn-lg btn-block"style="margin-left:5px;" type="submit">취소</button>
-	            	</div>
+					<div class="row m-4 ">
+						<div class="col-md-6">		
+							<span id="guide" style="color:#999;display:none"></span>
+							<input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소">
+						</div>
+						<div class="col-md-4">
+							<input type="text" class="form-control" id="sample4_extraAddress" placeholder="참고항목">
+						</div>	
+					</div>
+            	<div class="d-flex mt-5 ">
+					<div class="me-auto p-2"><button type="button" class="btn btn-dark" id="btnList" name="btnList"><i class="fa-solid fa-list"></i></button></div>
+					<div class="p-2"><button id="btnUelete" type="button" name="btnUelete"class="btn btn-danger"><i class="fa-solid fa-x"></i></button></div>
+					<div class="p-2"><button id="btnDelete" type="button" class="btn btn-danger" ><i class="fa-solid fa-trash-can"></i></button></div>
+					<div class="p-2"><button id="btnSave" type="button" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i></button></div>
 	            </div>
 	    	</div>
 		</div>
 		
-		
+       	</form>
 	    <footer class="my-3 text-center text-small">
 	    	<p class="mb-1">&copy; 2021 YD</p>
 	     </footer>
-    </div>
+	     </div>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
@@ -241,8 +257,34 @@
                     guideTextBox.innerHTML = '';
                     guideTextBox.style.display = 'none';
                 }
-            }
-        }).open();
+	            }
+        		}).open();
+        
+        var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+		var goUrlInst = "/member/MemberInst"; 			/* #-> */
+		var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+		var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+		var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+		
+		var seq = $("input:hidden[name=memberSeq]");				/* #-> */
+		
+		var form = $("form[name=form]");
+        
+        
+        
+	        $("#btnSave").on("click", function(){
+				if (seq.val() == "0" || seq.val() == ""){
+			   		// insert
+			   		form.attr("action", goUrlInst).submit();
+			   	} else {
+			   		// update
+			   		/* keyName.val(atob(keyName.val())); */
+			   		form.attr("action", goUrlUpdt).submit();
+			   	}
+			});
+        
+        
+        
     }
 </script>
 </body>

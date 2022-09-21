@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
+
 @Controller
 @RequestMapping(value = "/member/")
 public class MemberController {
@@ -33,5 +34,26 @@ public class MemberController {
 		return "infra/member/xdmin/memberForm";
 	}
 	
+	@RequestMapping(value = "memberView")
+	public String memberView(MemberVo vo, Model model) throws Exception{
+		
+		
+		List<Member> list = service.selectList();
+		model.addAttribute("list", list);
+		Member result = service.selectOne(vo);
+		model.addAttribute("item",result);
+		return "infra/member/xdmin/memberForm";
+	}
+	
+	@RequestMapping(value = "MemberInst")
+	public String memberInst(Member dto) throws Exception{
+		
+		int result = service.insert(dto);
+		System.out.println("controller result: "+result);
+		
+		return "redirect:/xdmin/memberForm";
+	
+		
+	}
 	
 }
