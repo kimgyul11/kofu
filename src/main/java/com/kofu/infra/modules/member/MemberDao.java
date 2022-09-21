@@ -18,4 +18,8 @@ public class MemberDao {
 	private static String namespace = "com.kofu.infra.modules.member.MemberMapper";
 	
 	public List<Member> selectList(){ return sqlSession.selectList(namespace + ".selectList", ""); }
+	
+	
+
+	
 }

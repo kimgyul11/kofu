@@ -10,10 +10,18 @@ public class Member {
 	private String user_conutry;
 	private Integer lean_language;
 	private Integer user_gender;
+	private String user_addr;
 	
 	//-----------------------------------------------------------------------------
+	
 	public Integer getUser_gender() {
 		return user_gender;
+	}
+	public String getUser_addr() {
+		return user_addr;
+	}
+	public void setUser_addr(String user_addr) {
+		this.user_addr = user_addr;
 	}
 	public void setUser_gender(Integer user_gender) {
 		this.user_gender = user_gender;

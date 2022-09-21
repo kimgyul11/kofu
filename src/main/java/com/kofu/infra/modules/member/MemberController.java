@@ -28,4 +28,10 @@ public class MemberController {
 		return "infra/member/xdmin/memberlist";
 	}
 	
+	@RequestMapping(value = "memberform")
+	public String memberForm() {
+		return "infra/member/xdmin/memberForm";
+	}
+	
+	
 }

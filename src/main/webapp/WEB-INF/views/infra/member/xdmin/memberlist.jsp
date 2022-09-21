@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
 <jsp:useBean id="CodeServiceImpl" class="com.kofu.infra.modules.code.CodeServiceImpl"/>
 <!doctype html>
 <html lang="kr">
@@ -13,229 +14,7 @@
 	<title>코드그룹</title>
 	<!-- CDN : content Delivery Network  -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Brush+Script&family=Song+Myung&display=swap');
-		.ng-font2{
-			font-family: 'Gowun Dodum', sans-serif;
-		}
-  
-
-
-body {
-	margin: 0;
-	box-sizing: border-box;
-	margin: 0;
-  padding: 0;
-}
-a{
-	text-decoration: none;
-	color:white;
-}
-
-li{
-	list-style: none;
-}
-
-/* 네비바 */
-.container_nav{
-  width: 100%;
-  height: 70px;
-  background:#9e9e9e;
-  position: relative;
-}
-
-.desk-nav-bar{
-  width: 100%;
-  height: 100%;
-}
-
-.desk-nav-bar ul{
-  list-style: none;
-  width: 730px;
-  margin: 0 auto;
-}
-
-.desk-nav-bar ul li{
-  float: left;
-  width: 120px;
-  text-align: center;
-  padding: 23px 10px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.5s ease;
-}
-
-.desk-nav-bar ul li a{
-  text-decoration: none;
-  color: #fff;
-  font-size: 18px;
-  letter-spacing: 2px;
-  transition: all 0.5s ease;
-}
-
-.desk-nav-bar ul li.active{
-  background: #444759;
-}
-
-.desk-nav-bar ul li:hover{
-  background: #444759;
-}
-
-.hamburger-btn{
-  display: none;
-}
-
-.mob-nav-bar{
-  display: none;
-}
-
-@media screen and (max-width: 730px){
-	.desk-nav-bar{
-	  display: none;
-	}
-	.hamburger-btn{
-	  display: block;
-	  position: absolute;
-	  top: 50%;
-	  transform: translateY(-50%);
-	  right: 5%;
-	  cursor: pointer;
-	  font-size: 28px;
-	  color: #fff;
-	}
-	.mob-nav-bar{
-	  display: block;
-	  width: 250px;
-	  height: 100vh;
-	  background: #444759;
-	  position: absolute;
-	  top: 0px;
-	  left: -250px;
-	  transition: all 0.5s ease;
-	}
-	.mob-nav-bar ul{
-	  list-style: none;
-	  text-align: center;
-	  padding: 20px 0;
-	}
-	.mob-nav-bar ul li{
-	  padding: 20px 0;
-	  cursor: pointer;
-	  text-transform: uppercase;
-	  transition: all 0.5s ease;
-	}
-	.mob-nav-bar ul li a{
-	  text-decoration: none;
-	  color: #fff;
-	}
-	.mob-nav-bar ul li:hover{
-	  background: #ea3b50;
-	}
-}
-
-
-
-.code_wrap{
-	width:100%;
-	margin-right: auto;
-	margin-left: auto;
-}
-.code_wrap h1{
-	text-align: left;
-	margin-left:55px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-}
-.search_box{
-	border:1px solid #e0e0e0;
-	width:80%;
-	margin:150px auto 150px auto;
-	padding:25px;
-}
-.search_top{
-	display:flex;
-	justify-content:start;
-}
-.search_top input{
-	width:200px;
-	height:30px;
-	border-style:none;
-	border-bottom:2px solid;
-	margin: 0px 15px;
-}
-.search_bottom{
-	display:flex;
-	justify-content: start;
-}
-.search_bottom li input{
-	width:250px;
-	height:30px;
-	margin:0px 15px;
-	border-style: none;
-	border-bottom:2px solid;
-}
-
-select{
-	width:250px;
-	height:38px;
-	text-align: center;
-	font-weight: bold;
-	margin-left:15px;
-	margin-right:25px;
-	border-radius: 15px;
-}
-
-
-.container {
-	width:80%;
-	margin-right: auto;
-	margin-left: auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.table {
-	width: 100%;
-	border: 1px solid #EEEEEE;
-}
-
-.table-header {
-  display: flex;
-  width: 100%;
-  background: #424242;
-  padding: 18px 0;
-}
-
-.table-row {
-  display: flex;
-  width: 100%;
-  padding: 8px 0;
-}
-.table-row:nth-of-type(odd) {
-  background: #EEEEEE;
-}
-
-.table-data, .header__item {
-  flex: 1 1 20%;
-  text-align: center;
-}
-
-.table-data-ch, .header__item-ch{
-	width:50px;
-	color:white;
-	text-align: center;
-}
-.table-data-num, .header__item-num{
-	width:100px;
-	color:black;
-	text-align: center;
-}
-
-
-	</style>
+	<link rel="stylesheet" href="/resources/xdmin/xdmin_css/xdminMemberList.css" />
 </head>
 <body class="ng-font2">
 	<!-- 네비게이션 바 -->
@@ -246,7 +25,6 @@ select{
       <li class="active"><a href="#">회원관리</a></li>
       <li><a href="#">코드관리</a></li>
       <li><a href="#">게시판관리</a></li>
-      <li><a href="#">aboutus</a></li>
     </ul>
   </div>
   
@@ -286,10 +64,10 @@ select{
 			<ul class="search_bottom">
 				<li>
 					<select>
-						<option>검색구분
+						<option>검색조건
 					</select>
 				</li>
-				<li><input type="text" placeholder="검색어">
+				<li><input type="text" placeholder="검색어를 입력해주세요">
 				<li><button>검색</button>
 				<li><button>취소</button>
 			</ul>
@@ -318,23 +96,23 @@ select{
 				<c:forEach items="${list}" var="list" varStatus="status">	
 					<div class="table-row">
 						<div class="table-data-ch"><input type="checkbox"></div>		
-						<div class="table-data-num"></div>
+						<div class="table-data-num"><c:out value="${list.memberSeq }"/></div>
 						<div class="table-data"><c:out value="${list.user_id }"/></div>
 						<div class="table-data"><c:out value="${list.user_level }"/></div>
 						<div class="table-data"><c:out value="${list.user_name }"/></div>
 						<%-- <div class="table-data"><c:out value="${list.user_gender }"/></div> --%>
-						<div class="table-data">
+						<div class="table-data"><!-- 성별 공통코드 -->
 							<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
 								<c:if test="${list.user_gender eq listGender.ccSeq}"><c:out value="${listGender.cc_name }"/></c:if>
 							</c:forEach>
 						</div>
 						<div class="table-data"><c:out value="${list.user_dob }"/></div>
-						<div class="table-data">
+						<div class="table-data"><!-- 언어 공통코드 -->
 							<c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
 								<c:if test="${list.lean_language eq Language.ccSeq}"><c:out value="${Language.cc_name }"/></c:if>
 							</c:forEach>
 						</div>
-						<div class="table-data">
+						<div class="table-data"><!-- 국가 공통코드 -->
 							<c:forEach items="${listCodecountry}" var="country" varStatus="statusGender">
 								<c:if test="${list.user_conutry eq country.ccSeq}"><c:out value="${country.cc_name }"/></c:if>
 							</c:forEach>
@@ -343,8 +121,12 @@ select{
 				</c:forEach>
 			</div>	
 		</div>
+		<ul class="buttonbox">
+		<li class="button">
+		<li><button>추가</button>
+	</ul>
 	</div>
-
+	
 	<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 
 </body>

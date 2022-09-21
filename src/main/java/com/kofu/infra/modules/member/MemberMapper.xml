@@ -13,5 +13,24 @@
 			a.*
 		from airLanguage_member a
 	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.user_id
+			,a.user_pw
+			,a.user_name
+			,a.user_dob
+			,a.user_conutry
+			,a.user_level
+			,a.user_gender
+			,a.user_useNy
+			,a.user_delNy
+			,a.user_addr
+		FROM airLanguage_member a
+		WHERE 1=1
+			 AND memberSeq = #{memberSeq}
+	</select>
+	
+	
 
 </mapper>	
