@@ -172,39 +172,39 @@
 						</div>
 					</div>	
 					<div class="row m-4 ">
-						<div class="col-md-10">
-							<input type="text"class="form-control"  id="sample4_jibunAddress" placeholder="지번주소">
+						<div class="col-md-6">
+							<input type="text" class="form-control" id="sample4_extraAddress" placeholder="주소">
+						</div>	
+						<div class="col-md-4">		
+							<input type="text" class="form-control" id="sample4_detailAddress" placeholder="호수,번호등">
 						</div>
 					</div>
 					<div class="row m-4 ">
-						<div class="col-md-6">		
-							<span id="guide" style="color:#999;display:none"></span>
-							<input type="text" class="form-control" id="sample4_detailAddress" placeholder="상세주소">
-						</div>
-						<div class="col-md-4">
-							<input type="text" class="form-control" id="sample4_extraAddress" placeholder="참고항목">
+						<div class="col-md-6">
+							<input type="text" class="form-control" id="ifmaLatArray0" placeholder="위도">
 						</div>	
+						<div class="col-md-4">		
+							<input type="text" class="form-control" id="ifmaLngArray0" placeholder="경도">
+						</div>
 					</div>
             	<div class="d-flex mt-5 ">
 					<div class="me-auto p-2"><button type="button" class="btn btn-dark" id="btnList" name="btnList"><i class="fa-solid fa-list"></i></button></div>
 					<div class="p-2"><button id="btnUelete" type="button" name="btnUelete"class="btn btn-danger"><i class="fa-solid fa-x"></i></button></div>
 					<div class="p-2"><button id="btnDelete" type="button" class="btn btn-danger" ><i class="fa-solid fa-trash-can"></i></button></div>
-					<div class="p-2"><button id="btnSave" type="button" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i></button></div>
+					<div class="p-2"><button id="btnSave"  type="button" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i></button></div>
 	            </div>
 	    	</div>
 		</div>
 		
        	</form>
-	    <footer class="my-3 text-center text-small">
-	    	<p class="mb-1">&copy; 2021 YD</p>
-	     </footer>
 	     </div>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5c3c7104a83d9002a7ea31b4428c735d&libraries=services"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function sample4_execDaumPostcode() {
         new daum.Postcode({
@@ -233,7 +233,6 @@
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample4_postcode').value = data.zonecode;
                 document.getElementById("sample4_roadAddress").value = roadAddr;
-                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
                 
                 // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
                 if(roadAddr !== ''){
@@ -242,7 +241,7 @@
                     document.getElementById("sample4_extraAddress").value = '';
                 }
 
-                var guideTextBox = document.getElementById("guide");
+                /* var guideTextBox = document.getElementById("guide");
                 // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
                 if(data.autoRoadAddress) {
                     var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
@@ -256,9 +255,31 @@
                 } else {
                     guideTextBox.innerHTML = '';
                     guideTextBox.style.display = 'none';
-                }
+                } */
+                
+ 				/* lat and lng from address s */
+ 				
+				// 주소-좌표 변환 객체를 생성
+				var geocoder = new daum.maps.services.Geocoder();
+				
+				// 주소로 좌표를 검색
+				geocoder.addressSearch(roadAddr, function(result, status) {
+				 
+					// 정상적으로 검색이 완료됐으면,
+					if (status == daum.maps.services.Status.OK) {
+						
+						document.getElementById("ifmaLatArray0").value=result[0].y;
+						document.getElementById("ifmaLngArray0").value=result[0].x;
+					}
+				});
+				/* lat and lng from address e */
+
 	            }
         		}).open();
+        		
+        		
+    }
+    
         
         var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
 		var goUrlInst = "/member/MemberInst"; 			/* #-> */
@@ -282,10 +303,13 @@
 			   		form.attr("action", goUrlUpdt).submit();
 			   	}
 			});
+	        
+	        
+	        
         
+
         
-        
-    }
+ 
 </script>
 </body>
 </html>

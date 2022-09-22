@@ -77,50 +77,30 @@
     <!-- 네비게이션 종료 -->
 
     <!-- 질문리스트 시작-->
-    
     <div class="container">
-    <c:forEach items="${list}" var="list" varStatus="status">
-        <div class="quelist_box">
-            <div class="quelist_profile">
-                <a href="#">
-                    <img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt="" class="">
-                </a>
-                </div>
-            <div class="bubble">
-                <ul class="bubble_head">
-                    <li>질문 언어 :<c:out value="${list.cc_name}"/></li>
-  						<!-- 작성일 들어가는 곳-->		                  
-                    <li>작성자 : <c:out value="${list.user_id }"/></li>
-                </ul>
-                <a href=" class="bubble_content">
-                    <p><td><c:out value="${list.content }"/></td> </p>
-                </a>
-                <ul class="bubble_footer">
-                    <li><a href=""><i class="fa-solid fa-bookmark"></i></a></li>
-                    <li><a href=""><i class="fa-solid fa-comment"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        </c:forEach>
-        <div class="quelist_box">
-            <div class="quelist_profile">
-                <img src="https://images.chosun.com/resizer/st-zZ2xnqfq-dQGE86rW_1RFETU=/275x183/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/C2TCSX45ZFD2THKHP2XMCXR6KY.jpg" alt="" class="">
-            </div>
-            <div class="bubble">
-                <ul class="bubble_head">
-                    <li>질문 언어 : 한국어</li>
-                    <li>작성일 : 2022-08-15</li>
-                    <li>작성자 : kimgiyul</li>
-                </ul>
-                <a href="#" class="bubble_content">
-                    <p>What is Korean in English? Can you tell me Korean? I am translating Korean in English.</p>
-                </a>
-                <ul class="bubble_footer">
-                    <li><a href=""><i class="fa-solid fa-bookmark"></i></a></li>
-                    <li><a href=""><i class="fa-solid fa-comment"></i></a></li>
-                </ul>            
-            </div>
-        </div>
+	    <c:forEach items="${list}" var="list" varStatus="status">
+	        <div class="quelist_box">
+	            <div class="quelist_profile">
+	                <a href="#">
+	                    <img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt="" class="">
+	                </a>
+	                </div>
+	            <div class="bubble">
+	                <ul class="bubble_head">
+	                    <li>질문 언어 :<c:out value="${list.cc_name}"/></li>
+	  						<!-- 작성일 들어가는 곳-->		                  
+	                    <li>작성자 : <c:out value="${list.user_id }"/></li>
+	                </ul>
+	                <a href=" class="bubble_content">
+	                    <p><td><c:out value="${list.content }"/></td> </p>
+	                </a>
+	                <ul class="bubble_footer">
+	                    <li><a href=""><i class="fa-solid fa-bookmark"></i></a></li>
+	                    <li><a href=""><i class="fa-solid fa-comment"></i></a></li>
+	                </ul>
+	            </div>
+	        </div>
+		</c:forEach>
     </div>
     <div class="pagination_wrap">
         <div class="pagination">

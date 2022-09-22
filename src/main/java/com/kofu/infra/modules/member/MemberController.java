@@ -51,7 +51,7 @@ public class MemberController {
 		int result = service.insert(dto);
 		System.out.println("controller result: "+result);
 		
-		return "redirect:/xdmin/memberForm";
+		return "redirect:/member/memberlist";
 	
 		
 	}

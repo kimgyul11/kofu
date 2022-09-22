@@ -119,12 +119,6 @@
 								</div>
 							</div>
 							<div class="row m-2">
-								<p class="m-0">휴대전화</p>
-								<div class="col">
-									<input type="text" class="form-control"placeholder="번호를 입력해주세요">
-								</div>
-							</div>
-							<div class="row m-2">
 								<p class="m-0">국적</p>
 								<div class="col">
 									<select class="form-select" aria-label="Default select example">

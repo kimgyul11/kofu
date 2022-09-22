@@ -1,15 +1,34 @@
 package com.kofu.infra.modules.home;
 
 public class Home {
+	// 질문 리스트
 	private String content;
 	private String wirtetime;
 	private String user_id;
 	private  String cc_name;
 	
+	// 질문 작성
+	private String questionSeq;
+	private String userID;
+	
+	
 	
 	// -------------------------------------
+	
 	public String getContent() {
 		return content;
+	}
+	public String getQuestionSeq() {
+		return questionSeq;
+	}
+	public void setQuestionSeq(String questionSeq) {
+		this.questionSeq = questionSeq;
+	}
+	public String getUserID() {
+		return userID;
+	}
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 	public void setContent(String content) {
 		this.content = content;

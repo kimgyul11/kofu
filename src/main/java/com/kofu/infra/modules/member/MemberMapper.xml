@@ -48,7 +48,10 @@
 			,#{user_dob}
 			,#{user_conutry}
 			,#{user_level}
-		) 
+		)
+		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey> 
 	</insert>
 	
 

@@ -4,6 +4,7 @@ public class Member {
 	
 	private String memberSeq;
 	private String user_id;
+	private String user_pw;
 	private String user_name;
 	private String user_dob;
 	private Integer user_level;
@@ -19,6 +20,12 @@ public class Member {
 	
 	public Integer getUser_gender() {
 		return user_gender;
+	}
+	public String getUser_pw() {
+		return user_pw;
+	}
+	public void setUser_pw(String user_pw) {
+		this.user_pw = user_pw;
 	}
 	public String getUser_email() {
 		return user_email;
