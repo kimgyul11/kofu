@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.kofu.infra.modules.home.HomeController;
 
 
 
@@ -52,8 +53,15 @@ public class MemberController {
 		System.out.println("controller result: "+result);
 		
 		return "redirect:/member/memberlist";
-	
-		
 	}
 	
+	@RequestMapping(value = "signup")
+	public String signup(Member dto) throws Exception{
+		
+		int result = service.signup(dto);
+		System.out.println("controller result: "+result);
+		
+		return "infra/home/xdmin/airLanguageHome";
+		
+	}
 }

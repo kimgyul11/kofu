@@ -31,7 +31,7 @@
 		WHERE 1=1
 			 AND memberSeq = #{memberSeq}
 	</select>
-	
+	<!-- 관리자용 insert -->
 	<insert id="insert">
 		INSERT INTO airLanguage_member(
 			user_id
@@ -54,5 +54,29 @@
 		</selectKey> 
 	</insert>
 	
+	<insert id="signup">
+		INSERT INTO airLanguage_member(
+			user_id
+			,user_pw
+			,user_name
+			,user_email
+			,user_favoriteLanguage
+			,user_conutry
+		)
+		VALUES(
+			#{user_id}
+			,#{user_name}
+			,#{user_pw}
+			,#{user_dob}
+			,#{user_conutry}
+			,#{user_email}
+			,#{user_favoriteLanguage}
+			,#{user_conutry}
+		)	
+		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey> 
+		
+	</insert>
 
 </mapper>	

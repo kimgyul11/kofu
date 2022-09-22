@@ -17,6 +17,8 @@
 	<link rel="stylesheet" href="/resources/xdmin/css/signup.css" />
 </head>
 <body class="ng-font2">
+<form name=form>
+<input type="hidden" name="memberSeq">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="loginForm.html"><i class="fa-solid fa-plane-departure"></i>AIR LANGUAGE</a>
@@ -54,7 +56,7 @@
 							<div class="row m-2">
 							<p class="m-0">아이디</p>
 								<div class="col">
-									<input type="text" class="form-control"placeholder="아이디 입력해주세요">
+									<input type="text" class="form-control" name="user_id" id="user_id" value="<c:out value="${item.user_id }"/>" placeholder="아이디 입력해주세요">
 								</div>
 								<div class="col">
 									<a class="btn btn-primary" href="#" role="button">중복확인</a>
@@ -158,9 +160,7 @@
 							</div>
 							<br>
 							<div class="d-flex gap-2 justify-content-center">
-								<a href="complete">
-								<button class="btn btn-outline-success" type="button">완료</button>
-  								</a>
+								<button class="btn btn-outline-success" id="btnSave"type="button">완료</button>
   								<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
 									 취소
 								</button>
@@ -192,10 +192,31 @@
 			</div>
 		</div>
 	</div>
-
-
+	</form>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
+	<script>
+		var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+		var goUrlInst = "/member/signup"; 			/* #-> */
+		var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+		var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+		var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	
+		$("#btnSave").on("click", function(){
+			if (seq.val() == "0" || seq.val() == ""){
+		   		// insert
+		   		form.attr("action", goUrlInst).submit();
+		   	} else {
+		   		// update
+		   		/* keyName.val(atob(keyName.val())); */
+		   		form.attr("action", goUrlUpdt).submit();
+		   	}
+		});
+	var seq = $("input:hidden[name=memberSeq]");				/* #-> */
+		
+		var form = $("form[name=form]");
+	</script>
 </body>
 
 </html>

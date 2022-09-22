@@ -30,7 +30,13 @@ public class MemberDao {
 		int result = sqlSession.insert(namespace + ".insert",dto);
 		System.out.println("dao result :"+result);
 		return result;
-		
 	}
+	
+	public int signup(Member dto) {
+		int result = sqlSession.insert(namespace + ".signup",dto);
+		System.out.println("dao result :"+result);
+		return result;
+	}
+	
 	
 }
