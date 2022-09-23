@@ -5,15 +5,12 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kofu.infra.modules.member.MemberMapper">
-
     <resultMap id="resultMapObj" type="com.kofu.infra.modules.member.Member"></resultMap>
-	
 	<select id="selectList" resultMap="resultMapObj">		
 		select 
 			a.*
 		from airLanguage_member a
 	</select>
-	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.user_id
@@ -57,8 +54,9 @@
 	<insert id="signup">
 		INSERT INTO airLanguage_member(
 			user_id
-			,user_pw
 			,user_name
+			,user_pw
+			,user_dob
 			,user_email
 			,user_favoriteLanguage
 			,user_conutry
@@ -68,7 +66,6 @@
 			,#{user_name}
 			,#{user_pw}
 			,#{user_dob}
-			,#{user_conutry}
 			,#{user_email}
 			,#{user_favoriteLanguage}
 			,#{user_conutry}
@@ -76,7 +73,12 @@
 		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey> 
-		
 	</insert>
-
+	
+	<select id="selectOneIdCheck" resultType="Integer">
+		select count(*) 
+		from airLanguage_member 
+		where 1=1
+			and user_id = #{user_id}
+	</select>
 </mapper>	

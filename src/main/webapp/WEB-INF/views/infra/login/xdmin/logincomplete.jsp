@@ -79,7 +79,7 @@
     <div class="center_text">
         <h1>회원가입이 완료되었습니다!</h1>
         <h2>지금바로 AirLanguage로 떠나보세요</h2>
-            <a href="login"><button class="learn-more">
+            <a href="/login"><button class="learn-more">
                 <span class="circle" aria-hidden="true">
                 <span class="icon arrow"></span>
                 </span>

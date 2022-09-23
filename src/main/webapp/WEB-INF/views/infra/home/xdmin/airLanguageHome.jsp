@@ -37,6 +37,7 @@
             <ul class="navbar_linkicon">
                 <li><a href="login">로그인</a></li>
                 <li><a href="signup">신규가입</a></li>
+                <li><a href="/quelist">게시판</a></li>
             </ul>
             <a href="#" class="navbar_togglebtn">
                 <i class="fa-solid fa-bars"></i>
@@ -103,7 +104,6 @@
     </div>
     <div class="search_btn">
         <div class="button" onclick id="btnForm">검색하기</div>
-        
     </div>
 </div>
 
@@ -154,19 +154,19 @@
         <h4>일기를 쓰거나</h4>
         <p>일본어로 일기를 써보았는데 어떤가요?<br>"過去に住んでいる人は進歩しなかった証拠過去に住んでいる人は進歩しなかった証拠"
         </p>
-        <a href="quelist"><p>게시판으로 이동<p></a>
+        <a href="quelist"><p>Move<p></a>
     </div>
     <div class="card">
         <img src="https://cdn.pixabay.com/photo/2022/08/19/01/06/ferris-wheel-7395944_1280.jpg">
         <h4>이런질문을 해보거나</h4>
         <p>이번에 한국으로 여행을 가는데 서울에 있는<br> 놀이공원을 알려주세요<br>-</p>   
-        <a href="quelist">게시판으로 이동</a>
+        <a href="quelist">Move</a>
     </div>
     <div class="card">
         <img src="https://cdn.pixabay.com/photo/2022/01/23/18/31/minion-6961629_1280.jpg">
         <h4>이런질문도 해보세요</h4>
         <p>"제 한국어 발음 어떤가요?"<br>"私の日本語の発音はどうですか？"<br>"How Do I Look"</p> 
-        <a href="quelist">게시판으로 이동</a>
+        <a href="quelist">Move</a>
     </div>
 </div>
 
@@ -179,7 +179,6 @@
             <img src="" alt="">
             <button>가입하기</button>
         </div>
-        
     </div>
 
 

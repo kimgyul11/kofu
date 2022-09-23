@@ -18,6 +18,7 @@
 </head>
 <body class="ng-font2">
 <form name=form>
+<input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy">
 <input type="hidden" name="memberSeq">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">
@@ -57,15 +58,17 @@
 							<p class="m-0">아이디</p>
 								<div class="col">
 									<input type="text" class="form-control" name="user_id" id="user_id" value="<c:out value="${item.user_id }"/>" placeholder="아이디 입력해주세요">
+									<div class="feedback" id="ifmmIdFeedback"></div>
 								</div>
-								<div class="col">
+								
+								<!-- <div class="col">
 									<a class="btn btn-primary" href="#" role="button">중복확인</a>
-								</div>
+								</div> -->
 							</div>
 							<div class="row m-2">
 							<p class="m-0">비밀번호</p>
 								<div class="col">
-									<input type="text" class="form-control"placeholder="특수문자,대문자 포함8자이상">
+									<input type="text" class="form-control" name="user_pw" id="user_pw"value="<c:out value="${itme.user_pw }"/>" placeholder="특수문자,대문자 포함8자이상">
 								</div>
 							</div>
 							<div class="row m-2">
@@ -77,10 +80,10 @@
 							<div class="row m-2">
 							<p class="m-0">이름</p>
 								<div class="col">
-									<input type="text" class="form-control"placeholder="이름을 입력하세요">
+									<input type="text" name="user_name" id="user_name"value="<c:out value="${itme.user_name }"/>" class="form-control"placeholder="이름을 입력하세요">
 								</div>
 							</div>
-							<div class="row m-2">
+							<!-- <div class="row m-2">
 							<p class="m-0">생년월일</p>
 								<div class="col-md-3">
 									<div class="form-floating mb-3">
@@ -88,21 +91,21 @@
 										<label for="floatingInput">년도</label>
 									</div>
 								</div>
-								<!--월 입력 -->
+								월 입력
 								<div class="col-md-3">
 									<div class="form-floating mb-3">
 										<input type="text" class="form-control" id="floatingInput" placeholder="">
 										<label for="floatingInput">월</label>
 									</div>
 								</div>
-								<!--일 입력 -->
+								일 입력
 								<div class="col-md-3">
 									<div class="form-floating mb-3">
 										<input type="text" class="form-control" id="floatingInput" placeholder="">
 										<label for="floatingInput">일</label>
 									</div>
 								</div>	
-								<!--성별입력  -->	
+								성별입력 	
 								<div class="col-md-3">
 									<div class="form-floating">
 										<select class="form-select" id="floatingSelect" aria-label="Floating label select example">
@@ -112,6 +115,12 @@
 										</select>
 										<label for="floatingSelect">성별 선택</label>
 									</div>															
+								</div>
+							</div> -->
+							<div class="row m-2">
+							<p class="m-0">생년월일</p>
+								<div class="col">
+									<input type="text" name="user_dob" id="user_dob"value="<c:out value="${itme.user_dob }"/>" class="form-control"placeholder="ex)19921013">
 								</div>
 							</div>
 							<div class="row m-2">
@@ -213,9 +222,53 @@
 		   		form.attr("action", goUrlUpdt).submit();
 		   	}
 		});
-	var seq = $("input:hidden[name=memberSeq]");				/* #-> */
-		
+		var seq = $("input:hidden[name=memberSeq]");				/* #-> */
 		var form = $("form[name=form]");
+	
+		
+		/* ajax */
+		$("#user_id").on("focusout", function(){
+			
+			
+				$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					/* ,dataType:"json" */
+					,url: "/member/checkId"
+					/* ,data : $("#formLogin").serialize() */
+					,data : { "user_id" : $("#user_id").val() }
+					,success: function(response) {
+						if(response.rt == "success") {
+							document.getElementById("user_id").classList.remove('is-invalid');
+							document.getElementById("user_id").classList.add('is-valid');
+							
+							
+		
+							document.getElementById("ifmmIdFeedback").classList.remove('invalid-feedback');
+							document.getElementById("ifmmIdFeedback").classList.add('valid-feedback');
+							document.getElementById("ifmmIdFeedback").innerText = "잘몬";
+							
+							document.getElementById("ifmmIdAllowedNy").value = 1;
+							
+						} else {
+							document.getElementById("user_id").classList.add('is-invalid');
+							
+							document.getElementById("ifmmIdFeedback").classList.remove('valid-feedback');
+							document.getElementById("ifmmIdFeedback").classList.add('invalid-feedback');
+							document.getElementById("ifmmIdFeedback").innerText = "사용 불가능 합니다";
+							
+							document.getElementById("ifmmIdAllowedNy").value = 0;
+						}
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				});
+			
+		});
+	
+	
 	</script>
 </body>
 

@@ -1,12 +1,14 @@
 package com.kofu.infra.modules.member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.kofu.infra.modules.home.HomeController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
@@ -61,7 +63,25 @@ public class MemberController {
 		int result = service.signup(dto);
 		System.out.println("controller result: "+result);
 		
-		return "infra/home/xdmin/airLanguageHome";
-		
+		return "infra/login/xdmin/logincomplete";
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "checkId")
+	public Map<String, Object> checkId(Member dto) throws Exception {
+
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		int result = service.selectOneIdCheck(dto);
+
+		if (result > 0) {
+			returnMap.put("rt", "fail");
+		} else {
+			returnMap.put("rt", "success");
+		}
+		return returnMap;
+	}
+	
+	
 }
