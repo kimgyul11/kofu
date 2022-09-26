@@ -3,20 +3,49 @@ package com.kofu.infra.modules.home;
 public class Home {
 	// 질문 리스트
 	private String content;
-	private String wirtetime;
 	private String user_id;
-	private  String cc_name;
+	private String cc_name;
 	
 	// 질문 작성
 	private String questionSeq;
 	private String userID;
+	private String language_select;
+	private String writetime;
+	private String lastModTime;
+	private Integer questionDelNy;
 	
 	
 	
 	// -------------------------------------
 	
+	
+	
 	public String getContent() {
 		return content;
+	}
+	public Integer getQuestionDelNy() {
+		return questionDelNy;
+	}
+	public void setQuestionDelNy(Integer questionDelNy) {
+		this.questionDelNy = questionDelNy;
+	}
+	public String getLanguage_select() {
+		return language_select;
+	}
+	public void setLanguage_select(String language_select) {
+		this.language_select = language_select;
+	}
+	public String getWritetime() {
+		return writetime;
+	}
+	public void setWritetime(String writetime) {
+		this.writetime = writetime;
+	}
+	public String getLastModTime() {
+		return lastModTime;
+	}
+	public void setLastModTime(String lastModTime) {
+		this.lastModTime = lastModTime;
 	}
 	public String getQuestionSeq() {
 		return questionSeq;
@@ -32,12 +61,6 @@ public class Home {
 	}
 	public void setContent(String content) {
 		this.content = content;
-	}
-	public String getWirtetime() {
-		return wirtetime;
-	}
-	public void setWirtetime(String wirtetime) {
-		this.wirtetime = wirtetime;
 	}
 	public String getUser_id() {
 		return user_id;

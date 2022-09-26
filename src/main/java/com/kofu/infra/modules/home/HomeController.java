@@ -77,5 +77,13 @@ public class HomeController {
 		return "infra/home/xdmin/questionReg";
 	}
 	
+	@RequestMapping(value = "questionInst")
+	public String questionInst(Home dto) throws Exception {
+		
+		int result = service.insert(dto);
+		System.out.println("controller result: "+ result);
+		
+		return "redirect:quelist";
+	}
 	
 }

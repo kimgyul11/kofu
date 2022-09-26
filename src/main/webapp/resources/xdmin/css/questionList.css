@@ -338,7 +338,7 @@ color: #9fa3b1;
 position: relative;
 width: 60%;
 min-height: 120px;
-padding: 15px;
+padding: 5px;
 background: #FFFFFF;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
@@ -373,22 +373,23 @@ z-index: 0;
 left: -16px;
 top: 14px;
 }
-.bubble_content{
-    padding: 8px 16px;
+.bubble_content {
+    padding: 16px 16px;
 }
 .bubble_content p:hover{
     background: #b3e5fc;
     font-weight: bold;
     border-radius: 15px;
     opacity: 0.5;
-    
 }
 
 .bubble_head{
     display: flex;
     padding-left: 0;
-    justify-content: space-around;
+    margin-bottom:15px;
+    justify-content: space-between;
     color: gray;
+    font-size:12px;
 }
 .bubble_head li{
     font-weight: bold;
@@ -396,6 +397,7 @@ top: 14px;
 .bubble_footer{
     display: flex;
     justify-content: flex-end;
+    margin-top:15px;
 }
 .bubble_footer li{
     margin-left: 15px;

@@ -15,6 +15,8 @@
     <title>AirLanguage</title>
 </head>
 <body>
+<form name="form"> 
+<input type="hidden" name="questionSeq">
     <!-- 네비게이션바s -->
 <div class="navbar">
 	<div class="logo">
@@ -66,28 +68,38 @@
 	    </ul>
 	</div>
 </div>
-        
+
 <div class="container">
 	<div class="texthead">
 		<h3>질문하기</h3>
 	</div>
 	<p>언어를 선택해주세요</p>
-	<select name="" id="">
+	<!-- <select name="" id="">
 	    <option value="1">영어(미국)</option>
-	    <option value="1">한국어(한국)</option>
+	    <option value="2">한국어(한국)</option>
+	</select> -->
+	<select  id="language_select"name='language_select' placeholder="언어를 선택해주세요">
+		<option>언어를 선택해주세요</option>
+		<option value='0' <c:if test="${item.language_select eq 0 }">selected</c:if>>한국어</option>
+		<option value='2' <c:if test="${item.language_select eq 2 }">selected</c:if>>영어</option>
+		<option value='3' <c:if test="${item.language_select eq 3 }">selected</c:if>>프랑스어</option>
+		<option value='4' <c:if test="${item.language_select eq 4 }">selected</c:if>>일본어</option>
+		<option value='5' <c:if test="${item.language_select eq 5 }">selected</c:if>>베트남어</option>
 	</select>
-	<textarea name="" id="" cols="30" rows="10" placeholder="단어나 문장을 입력해보세요"></textarea>
+	<input name="content" id="content" placeholder="단어나 문장을 입력해보세요" value="<c:out value="${item.content }"/>">
 	<ul class="buttonlist">
 	    <li><i class="fa-regular fa-image"></i></li>
 	    <li><i class="fa-solid fa-microphone"></i></li>
 	</ul>
 	<div class="btn_container">
-	    <button class="btn_item1">등록하기</button>
-	</div>
+	    <button class="btn_item1" id="btnSae"type="button">등록하기</button>
+		<button  type ="button" id="btnsave">등록</button>
+	</div> 
 </div>
+</form>
     
-
-
+	<!-- 제이쿼리  -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script>
         var dd_main = document.querySelector(".dd_main");
@@ -102,7 +114,23 @@
         toggleBtn.addEventListener('click', () => {
         menu.classList.toggle('active');
         icons.classList.toggle('active');
-        });  
+        });
+        
+    /* 질문 등록 */
+    var form = $("form[name=form]");
+    var seq = $("input:hidden[name=questionSeq]");
+    var goUrlInst = "questionInst"; 			/* #-> */
+    
+    $("#btnsave").on("click",function(){
+    	if (seq.val() == "0" || seq.val() == ""){
+	   		// insert
+	   		form.attr("action", goUrlInst).submit();
+	   	} else {
+	   		// update
+	   		/* keyName.val(atob(keyName.val())); */
+	   		form.attr("action", goUrlUpdt).submit();
+	   	}
+	 	});
     </script>
 </body>
 </html>

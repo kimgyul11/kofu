@@ -17,7 +17,12 @@ public class HomeDao {
 	
 	private static String namespace = "com.kofu.infra.modules.home.HomeMapper";
 	
-	public List<Home> selectList(HomeVo vo)
-	{return sqlSession.selectList(namespace + ".selectList",vo);}
+	public List<Home> selectList(HomeVo vo){return sqlSession.selectList(namespace + ".selectList",vo);}
+	
+	public int insert(Home dto) {
+		int result = sqlSession.insert(namespace + ".insert" ,dto);
+		System.out.println("dao result :"+result);
+		return result;
+	}
 	
 }

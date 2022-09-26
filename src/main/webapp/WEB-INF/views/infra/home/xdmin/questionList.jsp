@@ -87,13 +87,15 @@
 	                </div>
 	            <div class="bubble">
 	                <ul class="bubble_head">
-	                    <li>질문 언어 :<c:out value="${list.cc_name}"/></li>
-	  						<!-- 작성일 들어가는 곳-->		                  
-	                    <li>작성자 : <c:out value="${list.user_id }"/></li>
+	                    <li>질문 언어 :<c:out value="${list.language_select}"/></li>
+	                    <li>작성자 : <c:out value="${list.userID }"/></li>
+	                    <li>작성일 : <c:out value="${list.writetime }"/></li>
 	                </ul>
-	                <a href=" class="bubble_content">
-	                    <p><td><c:out value="${list.content }"/></td> </p>
-	                </a>
+	                <div class="bubble_content">
+	                	<a href="#">
+	                    	<p><c:out value="${list.content }"/></p>
+	                    </a>
+	                </div>
 	                <ul class="bubble_footer">
 	                    <li><a href=""><i class="fa-solid fa-bookmark"></i></a></li>
 	                    <li><a href=""><i class="fa-solid fa-comment"></i></a></li>

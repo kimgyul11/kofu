@@ -12,7 +12,8 @@
 	
 	
 	<select id="selectList" resultMap="resultMapObj">
-		SELECT
+	<!-- 수정 전 쿼리 -->
+	<!-- 	SELECT
 			a.content
 	    	,a.writetime
 	    	,b.user_id
@@ -20,6 +21,14 @@
     	FROM question a
 	    	join airLanguage_member b on a.userId = b.memberSeq
 	    	join cc c on c.ccSeq = a.language_select
+	    ORDER BY a.writetime DESC -->
+	    SELECT
+			a.content
+	    	,a.writetime
+	    	,a.userID
+	    	,a.language_select    
+    	FROM question a
+	    ORDER BY a.writetime DESC
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -34,6 +43,25 @@
 		
 	</select>
 	
+	
+	<!-- 질문 등록  -->
+	<insert id="insert">
+		INSERT INTO question(
+			content
+			,userID
+			,questionDelNy
+			,writetime
+		)
+		VALUES(
+			#{content}
+			,#{userID}
+			,#{questionDelNy}
+			,now()
+		)
+		<selectKey resultType="String" keyProperty="questionSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 		
 	
 </mapper>
