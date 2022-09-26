@@ -15,7 +15,13 @@ body{
 	list-style: none;
     font-family: 'SUIT-Medium';
 }
-
+h3{
+	font-size:45px;
+	margin-bottom:100px;
+}
+p{
+	font-weight: bold;
+}
 .navbar{
 	background-image: url('https://images.unsplash.com/photo-1564500617448-e541b1df7cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
 	background-size : cover;  
@@ -296,15 +302,23 @@ top: 20px;
     background: white;
 }
 .container select{
-    width:30%;
+    width:40%;
     margin:50px auto;
     height: 50px;
     border: 3px solid #eeeeee;
 }
-.container textarea{
-    width: 50%;
+.container .textbox{
+    width: 40%;
+    height:150px;
     margin: 50px auto;
     border: 3px solid #eeeeee;
+}
+.container .textbox textarea{
+	border-style:none;
+	width:100%;
+	height:100%;
+	font-size:15px;
+	resize: none;
 }
 .buttonlist{
     list-style: none;

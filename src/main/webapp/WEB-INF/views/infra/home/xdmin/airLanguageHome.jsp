@@ -103,7 +103,7 @@
         <input type="text" name="shValue" id="shValue" value="<c:out value="${vo.shValue}"/>" placeholder="검색어를 입력하세요">
     </div>
     <div class="search_btn">
-        <div class="button" onclick id="btnForm">검색하기</div>
+        <div class="button" type="button" onclick id="btnForm">검색하기</div>
     </div>
 </div>
 
@@ -190,7 +190,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
-var goUrlList = "/quelist";
+var goUrlList = "homeSearch";
 var form = $("form[name=form]")
 	$("#btnForm").on("click", function() {
 			$(location).attr("href",goUrlList).submit();

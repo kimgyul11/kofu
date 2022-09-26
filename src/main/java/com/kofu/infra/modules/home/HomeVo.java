@@ -4,18 +4,21 @@ public class HomeVo {
 
 
 	private Integer shOption;
-	private Integer shValue;
+	private String shValue;
+	
+	//-------------------------------------------------------------------------------
 	public Integer getShOption() {
 		return shOption;
 	}
 	public void setShOption(Integer shOption) {
 		this.shOption = shOption;
 	}
-	public Integer getShValue() {
+	public String getShValue() {
 		return shValue;
 	}
-	public void setShValue(Integer shValue) {
+	public void setShValue(String shValue) {
 		this.shValue = shValue;
 	}
+	
 	
 }

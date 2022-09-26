@@ -78,31 +78,38 @@
 
     <!-- 질문리스트 시작-->
     <div class="container">
-	    <c:forEach items="${list}" var="list" varStatus="status">
-	        <div class="quelist_box">
-	            <div class="quelist_profile">
-	                <a href="#">
-	                    <img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt="" class="">
-	                </a>
-	                </div>
-	            <div class="bubble">
-	                <ul class="bubble_head">
-	                    <li>질문 언어 :<c:out value="${list.language_select}"/></li>
-	                    <li>작성자 : <c:out value="${list.userID }"/></li>
-	                    <li>작성일 : <c:out value="${list.writetime }"/></li>
-	                </ul>
-	                <div class="bubble_content">
-	                	<a href="#">
-	                    	<p><c:out value="${list.content }"/></p>
-	                    </a>
-	                </div>
-	                <ul class="bubble_footer">
-	                    <li><a href=""><i class="fa-solid fa-bookmark"></i></a></li>
-	                    <li><a href=""><i class="fa-solid fa-comment"></i></a></li>
-	                </ul>
-	            </div>
-	        </div>
-		</c:forEach>
+    <c:choose>
+    	<c:when test="${fn:length(list) eq 0}">
+			<p>검색조건이 없습니다.
+	    </c:when>
+	    <c:otherwise>
+		    <c:forEach items="${list}" var="list" varStatus="status">
+		        <div class="quelist_box">
+		            <div class="quelist_profile">
+		                <a href="#">
+		                    <img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt="" class="">
+		                </a>
+		                </div>
+		            <div class="bubble">
+		                <ul class="bubble_head">
+		                    <li>질문 언어 :<c:out value="${list.language_select}"/></li>
+		                    <li>작성자 : <c:out value="${list.userID }"/></li>
+		                    <li>작성일 : <c:out value="${list.writetime }"/></li>
+		                </ul>
+		                <div class="bubble_content">
+		                	<a href="#">
+		                    	<p><c:out value="${list.content }"/></p>
+		                    </a>
+		                </div>
+		                <ul class="bubble_footer">
+		                    <li><a href=""><i class="fa-solid fa-bookmark"></i></a></li>
+		                    <li><a href=""><i class="fa-solid fa-comment"></i></a></li>
+		                </ul>
+		            </div>
+		        </div>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
     </div>
     <div class="pagination_wrap">
         <div class="pagination">

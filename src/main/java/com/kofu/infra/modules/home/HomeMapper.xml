@@ -29,6 +29,12 @@
 	    	,a.language_select    
     	FROM question a
 	    ORDER BY a.writetime DESC
+	    
+	    <choose>
+			<when test="shOption == 1">AND content LIKE CONCAT('%',#{shValue},'%'}</when>
+			<when test="shOption == 2">AND content LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND content LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>    
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -51,17 +57,34 @@
 			,userID
 			,questionDelNy
 			,writetime
+			,language_select
 		)
 		VALUES(
 			#{content}
 			,#{userID}
 			,#{questionDelNy}
 			,now()
+			,#{language_select}
 		)
 		<selectKey resultType="String" keyProperty="questionSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
-		
+	
+	<!-- 빠른검색 -->
+	<select id="homeSearch" resultMap="resultMapObj">
+		SELECT
+			a.content
+	    	,a.writetime
+	    	,a.userID
+	    	,a.language_select
+	    FROM question
+	    WHERE 1=1
+     	<choose>
+			<when test="shOption == 1">AND content LIKE CONCAT('%',#{shValue},'%'}</when>
+			<when test="shOption == 2">AND content LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND content LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>  
+	</select>	
 	
 </mapper>

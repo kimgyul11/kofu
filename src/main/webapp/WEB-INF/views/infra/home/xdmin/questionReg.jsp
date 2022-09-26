@@ -71,29 +71,28 @@
 
 <div class="container">
 	<div class="texthead">
-		<h3>질문하기</h3>
+		<h3>질문하기<i class="fa-regular fa-lightbulb"></i></h3>
 	</div>
+	
 	<p>언어를 선택해주세요</p>
-	<!-- <select name="" id="">
-	    <option value="1">영어(미국)</option>
-	    <option value="2">한국어(한국)</option>
-	</select> -->
 	<select  id="language_select"name='language_select' placeholder="언어를 선택해주세요">
-		<option>언어를 선택해주세요</option>
-		<option value='0' <c:if test="${item.language_select eq 0 }">selected</c:if>>한국어</option>
-		<option value='2' <c:if test="${item.language_select eq 2 }">selected</c:if>>영어</option>
-		<option value='3' <c:if test="${item.language_select eq 3 }">selected</c:if>>프랑스어</option>
-		<option value='4' <c:if test="${item.language_select eq 4 }">selected</c:if>>일본어</option>
-		<option value='5' <c:if test="${item.language_select eq 5 }">selected</c:if>>베트남어</option>
+		<option>선택</option>
+		<option value="1" <c:if test="${item.language_select eq 1 }">selected</c:if>>한국어</option>
+		<option value="2" <c:if test="${item.language_select eq 2 }">selected</c:if>>영어</option>
+		<option value="3" <c:if test="${item.language_select eq 3 }">selected</c:if>>프랑스어</option>
+		<option value="4" <c:if test="${item.language_select eq 4 }">selected</c:if>>일본어</option>
+		<option value="5" <c:if test="${item.language_select eq 5 }">selected</c:if>>베트남어</option>
 	</select>
-	<input name="content" id="content" placeholder="단어나 문장을 입력해보세요" value="<c:out value="${item.content }"/>">
+	<p>에 대한 </p>
+	<div class="textbox">
+		<textarea name="content" id="content" placeholder="단어나 문장을 입력해보세요" value="<c:out value="${item.content }"/>"></textarea>
+	</div>
 	<ul class="buttonlist">
 	    <li><i class="fa-regular fa-image"></i></li>
 	    <li><i class="fa-solid fa-microphone"></i></li>
 	</ul>
 	<div class="btn_container">
-	    <button class="btn_item1" id="btnSae"type="button">등록하기</button>
-		<button  type ="button" id="btnsave">등록</button>
+	    <button class="btn_item1" id="btnsave"type="button">등록하기</button>
 	</div> 
 </div>
 </form>

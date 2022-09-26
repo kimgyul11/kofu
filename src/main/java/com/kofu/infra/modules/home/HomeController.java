@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kofu.infra.modules.codegroup.CodeGroup;
+
 @Controller
 public class HomeController {
 	@Autowired
@@ -86,4 +88,12 @@ public class HomeController {
 		return "redirect:quelist";
 	}
 	
+	@RequestMapping(value = "homeSearch")
+	public String homeSearch(Model model,HomeVo vo) throws Exception{
+		 System.out.println("vo.getShValue(): " + vo.getShValue());
+		 System.out.println("vo.getShOption(): " + vo.getShOption());
+		 List<Home>list = service.homeSearch(vo);
+		 model.addAttribute("list", list);
+		return "infra/home/xdmin/questionList";
+	}
 }
