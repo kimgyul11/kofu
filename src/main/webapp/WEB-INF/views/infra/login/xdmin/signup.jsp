@@ -81,6 +81,7 @@
 							<p class="m-0">이름</p>
 								<div class="col">
 									<input type="text" name="user_name" id="user_name"value="<c:out value="${itme.user_name }"/>" class="form-control"placeholder="이름을 입력하세요">
+									<div class="feedback" id="ifmmIdFeedback"></div>
 								</div>
 							</div>
 							<!-- <div class="row m-2">
@@ -226,7 +227,7 @@
 		var form = $("form[name=form]");
 	
 		
-		/* ajax */
+		/* ajax ID*/
 		$("#user_id").on("focusout", function(){
 			
 			
@@ -247,7 +248,7 @@
 		
 							document.getElementById("ifmmIdFeedback").classList.remove('invalid-feedback');
 							document.getElementById("ifmmIdFeedback").classList.add('valid-feedback');
-							document.getElementById("ifmmIdFeedback").innerText = "잘몬";
+							document.getElementById("ifmmIdFeedback").innerText = "사용할 수 있는 아이디입니다.";
 							
 							document.getElementById("ifmmIdAllowedNy").value = 1;
 							
@@ -267,6 +268,7 @@
 				});
 			
 		});
+		
 	
 	
 	</script>

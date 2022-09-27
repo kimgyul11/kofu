@@ -4,11 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.kofu.infra.common.constants.Constants;
+import com.kofu.infra.common.util.UtilSecurity;
 
 
 
@@ -82,6 +87,56 @@ public class MemberController {
 		}
 		return returnMap;
 	}
+	
+	
+//	9월 27일 로그인 구현
+//	@ResponseBody
+//	@RequestMapping(value = "loginProc")
+//	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
+//		Map<String, Object> returnMap = new HashMap<String, Object>();
+//		Member rtMember = service.selectOneId(dto);
+//		if (rtMember != null) {
+//			Member rtMember2 = service.selectOneLogin(dto);
+//			if (rtMember2 != null) {
+//				httpSession.setAttribute("sessSeq", rtMember2.getMemberSeq());
+//				httpSession.setAttribute("sessId", rtMember2.getUser_id());
+//				httpSession.setAttribute("sessName", rtMember2.getUser_name());
+//				returnMap.put("rt", "success");
+//			} else {
+//				returnMap.put("rt", "fail");
+//			}
+//		} else {
+//			returnMap.put("rt", "fail");
+//		}
+//		return returnMap;
+//	}
+//	
+
+	@ResponseBody
+	@RequestMapping(value = "loginProc")
+	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+
+		Member rtMember = service.selectOneId(dto);
+		
+		if (rtMember != null) {
+			dto.setUser_pw(UtilSecurity.encryptSha256(dto.getUser_pw()));
+			Member rtMember2 = service.selectOneLogin(dto);
+			if (rtMember2 != null) {
+				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
+				httpSession.setAttribute("sessSeq", rtMember2.getMemberSeq());
+				httpSession.setAttribute("sessId", rtMember2.getUser_id());
+				httpSession.setAttribute("sessName", rtMember2.getUser_name());
+				returnMap.put("rt", "success");
+			} else {
+				dto.setMemberSeq(rtMember.getMemberSeq());
+				returnMap.put("rt", "fail");
+			}
+		} else {
+			returnMap.put("rt", "fail");
+		}	
+		return returnMap;
+	}	
 	
 	
 }

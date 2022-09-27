@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kofu.infra.common.util.UtilSecurity;
+
 @Service
 public class MemberServiceImpl implements MemberService{
 	
@@ -30,6 +32,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public int signup(Member dto) throws Exception{
+		dto.setUser_pw(UtilSecurity.encryptSha256(dto.getUser_pw()));
 		int result = dao.insert(dto);
 		System.out.println("service result: "+result);
 		return result;
@@ -41,4 +44,16 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
+	
+	// 9월 27일 
+	@Override
+	public  Member selectOneId(Member dto) throws Exception{
+		Member result = dao.selectOneId(dto);
+		return result;
+	}
+	@Override
+	public  Member selectOneLogin(Member dto) throws Exception{
+		Member result = dao.selectOneLogin(dto);
+		return result;
+	}
 }

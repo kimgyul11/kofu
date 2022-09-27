@@ -42,6 +42,7 @@
 	</style>
 </head>
 <body class="ng-font2">
+<form>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="../Home/home.html"><i class="fa-solid fa-plane-departure"></i>AIR LANGUAGE</a>
@@ -71,7 +72,7 @@
 				<div class="row">
 					<div class="col-md-8 mx-auto">
 						<div class="form-floating mb-3">
-							<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+							<input type="email" class="form-control" id="user_id" placeholder="name@example.com">
 							<label for="floatingInput">아이디</label>
 						</div>
 					</div>
@@ -79,7 +80,7 @@
 				<div class="row">	
 					<div class="col-md-8 mx-auto">
 						<div class="form-floating mb-3">
-							<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+							<input type="password" class="form-control" id="user_pw" placeholder="name@example.com">
 							<label for="floatingInput">비밀번호</label>
 							<div class="form-check form-switch mb-3">
 								<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
@@ -92,7 +93,7 @@
 				</div>
 				<div class="row text-center">
 					<div class="col-5 d-grid gap-2 mx-auto mb-2">
-						<button class="btn btn-light m-2" type="button" style="background-color:#eeeeee">로그인</button>
+						<button class="btn btn-light m-2" type="button" id="btnLogin" style="background-color:#eeeeee">로그인</button>
 					</div>
 				</div>
 				<ul class="nav justify-content-center">
@@ -131,10 +132,38 @@
 			</div>
 		</div>
 	</div>
-
-
+	sessSeq: <c:out value="${sessSeq }"/><br>
+	sessName: <c:out value="${sessName }"/><br>
+	sessId: <c:out value="${sessId }"/><br>
+</form>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
+	<script>
+	$("#btnLogin").on("click", function(){
+
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			/* ,dataType:"json" */
+			,url: "/member/loginProc"
+			/* ,data : $("#formLogin").serialize() */
+			,data : { "user_id" : $("#user_id").val(), "user_pw" : $("#user_pw").val()}
+			,success: function(response) {
+				if(response.rt == "success") {
+						alert("완료");
+				} else {
+					alert("회원없음");
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+	
+	</script>
 </body>
 
 </html>

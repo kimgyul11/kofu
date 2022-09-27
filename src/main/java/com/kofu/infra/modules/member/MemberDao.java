@@ -43,4 +43,7 @@ public class MemberDao {
 		return result;
 	}
 	
+	//9월 27일 로그인 구현
+	public Member selectOneId(Member dto) {return sqlSession.selectOne(namespace + ".selectOneId",dto);}
+	public Member selectOneLogin(Member dto) {return sqlSession.selectOne(namespace +".selectOneLogin", dto);}
 }

@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kofu.infra.modules.codegroup.CodeGroup;
-
 @Controller
 public class HomeController {
 	@Autowired
