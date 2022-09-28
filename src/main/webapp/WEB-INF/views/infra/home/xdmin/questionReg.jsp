@@ -87,6 +87,7 @@
 	<div class="textbox">
 		<textarea name="content" id="content" placeholder="단어나 문장을 입력해보세요" value="<c:out value="${item.content }"/>"></textarea>
 	</div>
+	<input type="hidden"
 	<ul class="buttonlist">
 	    <li><i class="fa-regular fa-image"></i></li>
 	    <li><i class="fa-solid fa-microphone"></i></li>

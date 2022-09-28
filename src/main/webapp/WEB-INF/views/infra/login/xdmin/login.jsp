@@ -15,7 +15,6 @@
 	<!-- CDN : content Delivery Network  -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link href="../css/style.css" rel="stylesheet" type="text/css">
 	<style>
 		@charset "UTF-8";
 		@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Brush+Script&family=Song+Myung&display=swap');
@@ -55,7 +54,7 @@
 						<a class="nav-link" href="#"><i class="fa-solid fa-left-long"></i></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#"><i class="fa-solid fa-house"></i></a>
+						<a class="nav-link" href="/"><i class="fa-solid fa-house"></i></a>
 					</li>			
 				</ul>
 			</div>
@@ -132,9 +131,6 @@
 			</div>
 		</div>
 	</div>
-	sessSeq: <c:out value="${sessSeq }"/><br>
-	sessName: <c:out value="${sessName }"/><br>
-	sessId: <c:out value="${sessId }"/><br>
 </form>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -152,7 +148,8 @@
 			,data : { "user_id" : $("#user_id").val(), "user_pw" : $("#user_pw").val()}
 			,success: function(response) {
 				if(response.rt == "success") {
-						alert("완료");
+						alert("로그인 완료");
+						location.href = "/";
 				} else {
 					alert("회원없음");
 				}
@@ -162,7 +159,6 @@
 			}
 		});
 	});
-	
 	</script>
 </body>
 

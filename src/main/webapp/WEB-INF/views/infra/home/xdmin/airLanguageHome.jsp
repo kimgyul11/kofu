@@ -35,8 +35,16 @@
                 <li><a href="#">1:1문의</a></li>
             </ul>
             <ul class="navbar_linkicon">
-                <li><a href="login">로그인</a></li>
-                <li><a href="signup">신규가입</a></li>
+            <c:choose>
+            	<c:when test="${empty sessSeq }">
+	            	<li><a href="login">로그인</a></li>
+	            	<li><a href="signup">신규가입</a></li>
+	            </c:when>
+	            <c:otherwise>
+		            <li class="signinStatus"><a href="#"><c:out value="${sessId }"/>님 환영합니다.</a></li>
+	                <li><a href="login" id="btnLogout">로그아웃</a></li>
+                </c:otherwise>
+            </c:choose>
                 <li><a href="/quelist">게시판</a></li>
             </ul>
             <a href="#" class="navbar_togglebtn">
@@ -195,6 +203,27 @@ var form = $("form[name=form]")
 	$("#btnForm").on("click", function() {
 			$(location).attr("href",goUrlList).submit();
 	});
+	
+$("#btnLogout").on("click", function(){
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/logoutProc"
+		,data: {}
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = URL_LOGIN_FORM;
+			} else {
+				// by pass
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+});	
+	
 </script>
 
 </body>
