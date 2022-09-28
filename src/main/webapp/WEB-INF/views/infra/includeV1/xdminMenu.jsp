@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+	<nav class="nav_warp">
+        <div class="nav_logo">
+            <a href=""><i class="fa-solid fa-plane-departure"></i>AirLanguage</a>
+        </div>
+        <ul class="nav_list">
+            <li><a href="#">프로필이미지</a></li>
+            <li><a href="#">로그아웃</a></li>
+        </ul>
+    </nav>
+
+    <!-- 사이드 메뉴 -->
+    <ul class="side-menu">
+        <li><a href="#"><i class="fa-solid fa-house"></i>홈</a></li>
+        <li><a href="#"><i class="fa-solid fa-folder"></i>코드관리</a></li>
+        <li><a href="#"><i class="fa-regular fa-folder"></i>코드그룹관리</a></li>
+        <li><a href="#"><i class="fa-solid fa-user-group"></i>멤버관리</a></li>
+    </ul>
