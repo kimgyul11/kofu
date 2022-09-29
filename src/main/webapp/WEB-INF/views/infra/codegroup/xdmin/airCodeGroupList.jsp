@@ -16,7 +16,9 @@
 </head>
 <body>
 <form name="form">
- <input type="hidden" name="ccgSeq" value="${item.ccSeq }">
+<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+<input type="hidden" name="ccgSeq" value="<c:out value="${vo.ccgSeq}"/>">
 	<!--네비게이션바,사이드메뉴s -->
 	<%@include file="../../../infra/includeV1/xdminMenu.jsp"%>
 	<!--네비게이션바,사이드메뉴e -->
@@ -57,7 +59,6 @@
 			                    <td><c:out value="${list.ccgInsertDate }"/></td>
 			                    <td><c:out value="${list.ccgModDate }"/></td>
 			                </tr>
-			                
 		                </c:forEach>
 	                </c:otherwise>
 	        	</c:choose>
@@ -65,48 +66,31 @@
         </div>
         <div class="button_wrap">
             <button class="btn_delete" type="button"><i class="fa-solid fa-trash"></i></button>
-            <button class="btn_reg"><i class="fa-solid fa-folder-plus"></i></button>
-        </div>
-        <div class="pagination_wrap">
+            <div class="pagination_wrap">
             <ul class="pagination modal-2">
-                <li><a href="#" class="prev">&laquo </a></li>
-                <c:if test="${vo.startPage gt vo.pageNumToShow}">
-                	<li><a href="#"></a></li>
-                </c:if>
-                <li> <a href="#">2</a></li>
-                <li> <a href="#" class="active">3</a></li>
-                <li> <a href="#">4</a></li>
-                <li> <a href="#">5</a></li>
-                <li> <a href="#">6</a></li>
-                <li> <a href="#">7</a></li>
-                <li> <a href="#">8</a></li>
-                <li> <a href="#">9</a></li>
-                <li><a href="#" class="next">  &raquo;</a></li>
-            </ul><br> 
-        	<%-- <ul class="pagination justify-content-center mb-0">
-	                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
-					<c:if test="${vo.startPage gt vo.pageNumToShow}">
-		                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="fa-solid fa-angle-left"></i></a></li>
-					</c:if>
-					<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
-						<c:choose>
-							<c:when test="${i.index eq vo.thisPage}">
-			                	<li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
-							</c:when>
-							<c:otherwise>             
-			                	<li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>                
-					<c:if test="${vo.endPage ne vo.totalPages}">                
-	                	<li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angle-right"></i></a></li>
-					</c:if>
-	                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
-	            </ul> --%>
+	            <c:if test="${vo.startPage gt vo.pageNumToShow}">
+	                <li> <a href="javascript:goList(${vo.startPage - 1})" class="prev">&laquo </a></li>
+	            </c:if>
+            	<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+	            	<c:choose>    
+	                <c:when test="${i.index eq vo.thisPage}">
+	                	<li> <a  class="active" href="javascript:goList(${i.index})">${i.index}</a></li>
+	                </c:when>
+	                <c:otherwise>
+	                	<li><a href="javascript:goList(${i.index})">${i.index}</a></li>
+	                </c:otherwise>
+	                </c:choose>
+				</c:forEach> 
+                <c:if test="${vo.endPage ne vo.totalPages}">   
+                	<li><a  class="next" href="javascript:goList(${vo.endPage + 1})">  &raquo;</a></li>
+                </c:if>	
+            </ul>
+            <br>
+        </div>
+            <button class="btn_reg"  id="btnForm"><i class="fa-solid fa-folder-plus"></i></button>
         </div>
     </div>
     
-   
     </form>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -152,8 +136,8 @@
             });
     });
     var seq = $("input:hidden[name=ccgSeq]");
-	var goUrlForm = "/codeGroup/codeGroupReg";
-	var goUrlList = "/codeGroup/codeGroupList";
+	var goUrlForm = "/AircodeGroup/codeGroupReg";
+	var goUrlList = "/AircodeGroup/codeGroupList";
 	var form = $("form[name=form]")
 	
 	

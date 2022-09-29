@@ -8,19 +8,44 @@
 
 	<resultMap id="resultMapObj" type="com.kofu.infra.modules.aircodegroup.AirCodeGroup"></resultMap>
 	
-	<!-- 공통 검색 사항 -->
+	<!-- 공통 검색 사항s -->
 	<sql id="selectCommon">
 		FROM ccg a
 		WHERE 1=1
 		<if test="startDate != null and !startDate.equals('') and endDate != null and !endDate.equals('')">
 			AND a.insertdate BETWEEN #{startDate} AND #{endDate}
 		</if>
+		<if test="shDelNy != null and !shDelNy.equals('')">AND ccgDelNy = #{shDelNy}</if>
+		<if test="shUseNy != null and !shUseNy.equals('')">AND ccgUseNy = #{shUseNy}</if>
 		<choose>
 			<when test="shOption == 1">AND ccgSeq = #{shValue}</when>
 			<when test="shOption == 2">AND ccgGroupNameKor LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 2">AND ccgGroupNameEng LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND ccgGroupNameEng LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
-	</sql>
+	</sql><!--공통 검색 사항e -->
+	
+	<!-- 검색기능 시작  -->
+	<insert id="insert">
+		INSERT INTO ccg(
+		    ccgGroupNameEng
+		    ,ccgGroupNameKor
+		    ,ccgDelNy
+		    ,ccgUseNy
+		    ,ccgInsertDate
+			,ccgModDate
+		)
+		VALUES(
+			#{ccgGroupNameEng}
+		    ,#{ccgGroupNameKor}
+		    ,#{ccgDelNy}
+		    ,#{ccgUseNy}
+		    ,now()
+			,#{ccgModDate}
+		)
+		<selectKey resultType="String" keyProperty="ccgSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert><!-- 검색기능 종료  -->
 	
 	<!-- pagination -->
 	<sql id="selectListUpperForMysql">
@@ -31,9 +56,9 @@
 		limit #{rowNumToShow} offset #{startRnumForMysql}
 	</sql>
 	
-	<!-- list화면 -->
+	<!-- list 시작 -->
 	<select id="selectList" resultMap="resultMapObj">
-		<include refid="selectListUpperForMysql" />
+	<include refid="selectListUpperForMysql" />
 			SELECT
 				a.ccgSeq
 				,a.ccgGroupNameEng
@@ -45,14 +70,18 @@
 				,(SELECT COUNT(aa.ccg_seq) FROM cc aa WHERE aa.ccg_seq = a.ccgSeq) as countCCG
 			<include refid="selectCommon"/>
 				ORDER By a.ccgSeq DESC
-		<include refid="selectListLowerForMysql" />		
-	</select>
+	<include refid="selectListLowerForMysql" />
+	</select><!--list 종료  -->
 	
-	<select id="selectOneCount" resultType="Integer">
+	
+	<!-- 페이지네이션 페이지 카운트 시작 -->
+	<select id="selectOneCounting" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
-	</select>  	
+	</select><!-- 페이지네이션 페이지 카운트 종료  -->  
 	
+	
+	<!-- 셀렉트 원 시작 -->
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			 a.ccgSeq
@@ -65,7 +94,7 @@
 		FROM ccg a
 		WHERE 1=1
 		AND ccgSeq = #{ccgSeq}
-	</select>
+	</select><!-- 셀렉트 원 종료 -->
 	
 
 </mapper>	

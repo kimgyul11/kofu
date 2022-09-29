@@ -16,7 +16,7 @@
 </head>
 <body>
 <form method="post" name=form>
-<input type="hidden" name="ccgSeq">
+<input type="hidden" name="ccgSeq" value="<c:out value="${vo.ccgSeq}"/>"/>
     <!--네비게이션바,사이드메뉴s -->
 	<%@include file="../../../infra/includeV1/xdminMenu.jsp"%>
 	<!--네비게이션바,사이드메뉴e -->
@@ -24,11 +24,11 @@
         <div class="selectOneWrap">
             <h1>코드그룹관리<i class="fa-solid fa-pen-fancy"></i></h1>
             <div class="inputlabel">코드명(한글)</div>
-                <input type="text" value="<c:out value ="${item.ccgGroupNameKor }"/>">
+                <input type="text" id="ccgGroupNameKor"name="ccgGroupNameKor" value="<c:out value ="${item.ccgGroupNameKor }"/>">
             <div class="inputlabel">코드명(영어)</div>
-                <input type="text" value="<c:out value ="${item.ccgGroupNameEng }"/>"><br>
+                <input type="text" id="ccgGroupNameEng"name="ccgGroupNameEng" value="<c:out value ="${item.ccgGroupNameEng }"/>"><br>
             <div class="inputlabel">삭제여부</div>
-                <select>
+                <select name="ccgDelNy" id="ccgDelNy">
                     <option value=""></option>
                     <option value="0"<c:if test="${item.ccgDelNy eq 0 }">selected</c:if>>N</option>
                     <option value="1"<c:if test="${item.ccgDelNy eq 1 }">selected</c:if>>Y</option>
@@ -41,20 +41,20 @@
                     <option value="1"<c:if test="${item.ccgUseNy eq 1 }">selected</c:if>>Y</option>
                 </select><br>
             <div class="inputlabel">코드그룹번호</div>    
-            <input type="text" value="<c:out value ="${item.ccgSeq }"/>" readonly>
+            <input type="text" value="<c:out value ="${item.ccgSeq }"/>" readonly placeholder="자동으로 생성됩니다">
             <div class="inputlabel">코드개수</div>    
             <input type="text" value="<c:out value ="${item.countCCG }"/>" readonly>
             <div class="inputlabel">생성일</div>    
-            <input type="text"value="<c:out value ="${item.ccgInsertDate }"/>" readonly>
+            <input type="text"value="<c:out value ="${item.ccgInsertDate }"/>" readonly placeholder="현재시간으로 생성됩니다">
             <div class="inputlabel">수정일</div>    
-            <input type="text"value="<c:out value ="${item.ccgModDate }"/>" readonly> 
+            <input type="text"value="<c:out value ="${item.ccgModDate }"/>" readonly > 
             <ul class="buttonWrap">
-                <li><button><i class="fa-solid fa-list-ol"></i></button></li>
+                <li><button type="button" id="btnList"><i class="fa-solid fa-list-ol"></i></button></li>
                 <li>
                     <ul class="btnthree">
                         <li><button class="delete"><i class="fa-regular fa-circle-xmark"></i></button></li>
                         <li><button class="delete"><i class="fa-regular fa-trash-can"></i></button></li>
-                        <li><button class="insert"><i class="fa-regular fa-floppy-disk"></i></button></li>
+                        <li><button class="insert" id="btnSave"><i class="fa-regular fa-floppy-disk"></i></button></li>
                     </ul>
                 </li>
             </ul>
@@ -65,8 +65,8 @@
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
-	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
-	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+	var goUrlList = "/AircodeGroup/codeGroupList"; 			/* #-> */
+	var goUrlInst = "/AircodeGroup/airCodeGroupInst"; 			/* #-> */
 	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
 	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
 	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
@@ -89,7 +89,7 @@
 	});
 	
 	$("#btnList").on("click", function(){
-		formVo.attr("action", goUrlList).submit();
+		form.attr("action", goUrlList).submit();
 	});
 	
 	

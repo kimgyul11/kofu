@@ -41,8 +41,11 @@
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/test/**" />
 			<exclude-mapping path="/rest/**" />
+			<exclude-mapping path="/airCodeGroup/**" />
+			<exclude-mapping path="/AircodeGroup/codeGroupReg"/>
+			<exclude-mapping path="/AircodeGroup/airCodeGroupInst"/>
 			<exclude-mapping path="/AircodeGroup/codeGroupList"/>
-			<exclude-mapping path="/AirCodeGroup/**"/>
+			<exclude-mapping path="/AircodeGroup/**"/>
 			<exclude-mapping path="/AircodeGroup/codeGroupView"/>  
 			<beans:bean id="checkLoginSessionInterception" class="com.kofu.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>

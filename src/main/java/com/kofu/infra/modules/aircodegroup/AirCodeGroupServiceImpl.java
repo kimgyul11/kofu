@@ -20,7 +20,12 @@ public class AirCodeGroupServiceImpl implements AirCodeGroupService {
 		return dao.selectOne(vo);
 	}
 	@Override
-	public int selectOneCount(AirCodeGroupVo vo) throws Exception{
-		return dao.selectOneCount(vo);
+	public int selectOneCounting(AirCodeGroupVo vo) throws Exception{
+		return dao.selectOneCounting(vo);
+	}
+	
+	@Override
+	public int insert(AirCodeGroup dto) throws Exception{
+		return dao.insert(dto);
 	}
 }

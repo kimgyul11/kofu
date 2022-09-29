@@ -10,7 +10,6 @@
 body{
     margin: 0; 
     box-sizing: border-box;
-    height: 150vh;
 }    
 table{
     width: 100%;
@@ -156,15 +155,14 @@ select{
 /* 테이블e */
 
 /* 페이지네이션 s*/
-.pagination_wrap{
+/* .pagination_wrap{
     margin: auto;
     text-align: center;
-}
+} */
 .pagination {
 list-style: none;
 display: inline-block;
 padding: 0;
-margin: 70px;
 }
 .pagination li {
     display: inline;

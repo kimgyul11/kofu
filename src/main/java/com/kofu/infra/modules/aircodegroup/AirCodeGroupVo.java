@@ -4,13 +4,15 @@ import com.kofu.infra.common.constants.Constants;
 
 public class AirCodeGroupVo {
 
+// 검색 영역
 	private String ccgSeq;
 	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;
+	private Integer shUseNy;
 	private String startDate;
 	private String endDate;
-
+	
 //	---------------------- 페이징 -------------------------------------
 	
 	private int thisPage = 1;									// 현재 페이지
@@ -28,7 +30,7 @@ public class AirCodeGroupVo {
 
 	private int startRnumForMysql = 0;							// 쿼리 시작 row
 
-	public void setParamsPaging(int totalRows) {
+public void setParamsPaging(int totalRows) {
 		
 //		setThisPage(3);
 
@@ -77,97 +79,79 @@ public class AirCodeGroupVo {
 		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 		
 	}
+
+
+	//	---------------------------------------get,set-----------------------------------
 	
-
-
-	//	---------------------------------------
 	public int getThisPage() {
 		return thisPage;
 	}
-
 	public void setThisPage(int thisPage) {
 		this.thisPage = thisPage;
 	}
-
 	public int getRowNumToShow() {
 		return rowNumToShow;
 	}
-
 	public void setRowNumToShow(int rowNumToShow) {
 		this.rowNumToShow = rowNumToShow;
 	}
-
 	public int getPageNumToShow() {
 		return pageNumToShow;
 	}
-
 	public void setPageNumToShow(int pageNumToShow) {
 		this.pageNumToShow = pageNumToShow;
 	}
-
 	public int getTotalRows() {
 		return totalRows;
 	}
-
 	public void setTotalRows(int totalRows) {
 		this.totalRows = totalRows;
 	}
-
 	public int getTotalPages() {
 		return totalPages;
 	}
-
 	public void setTotalPages(int totalPages) {
 		this.totalPages = totalPages;
 	}
-
 	public int getStartPage() {
 		return startPage;
 	}
-
 	public void setStartPage(int startPage) {
 		this.startPage = startPage;
 	}
-
 	public int getEndPage() {
 		return endPage;
 	}
-
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
-
 	public int getStartRnumForOracle() {
 		return startRnumForOracle;
 	}
-
 	public void setStartRnumForOracle(int startRnumForOracle) {
 		this.startRnumForOracle = startRnumForOracle;
 	}
-
 	public int getEndRnumForOracle() {
 		return endRnumForOracle;
 	}
-
 	public void setEndRnumForOracle(int endRnumForOracle) {
 		this.endRnumForOracle = endRnumForOracle;
 	}
-
 	public Integer getRNUM() {
 		return RNUM;
 	}
-
 	public void setRNUM(Integer rNUM) {
 		RNUM = rNUM;
 	}
-
 	public int getStartRnumForMysql() {
 		return startRnumForMysql;
 	}
-
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
 	}
+	
+	
+	//------------------검색영역
 	public String getCcgSeq() {
 		return ccgSeq;
 	}
@@ -204,5 +188,10 @@ public class AirCodeGroupVo {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	
+	public Integer getShUseNy() {
+		return shUseNy;
+	}
+	public void setShUseNy(Integer shUseNy) {
+		this.shUseNy = shUseNy;
+	}
 }
