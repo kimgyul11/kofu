@@ -12,7 +12,7 @@ public class HomeController {
 	@Autowired
 	HomeServiceImpl service;
 	
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/airLanguageHome")
 	public String airLanguageHome() {
 		
 	

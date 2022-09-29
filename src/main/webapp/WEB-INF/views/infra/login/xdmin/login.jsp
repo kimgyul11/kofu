@@ -149,7 +149,7 @@
 			,success: function(response) {
 				if(response.rt == "success") {
 						alert("로그인 완료");
-						location.href = "/";
+						location.href = "/airLanguageHome";
 				} else {
 					alert("회원없음");
 				}

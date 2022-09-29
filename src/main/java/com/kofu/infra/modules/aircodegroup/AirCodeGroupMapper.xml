@@ -24,7 +24,6 @@
 		</choose>
 	</sql><!--공통 검색 사항e -->
 	
-	<!-- 검색기능 시작  -->
 	<insert id="insert">
 		INSERT INTO ccg(
 		    ccgGroupNameEng
@@ -32,7 +31,6 @@
 		    ,ccgDelNy
 		    ,ccgUseNy
 		    ,ccgInsertDate
-			,ccgModDate
 		)
 		VALUES(
 			#{ccgGroupNameEng}
@@ -40,12 +38,12 @@
 		    ,#{ccgDelNy}
 		    ,#{ccgUseNy}
 		    ,now()
-			,#{ccgModDate}
+			
 		)
 		<selectKey resultType="String" keyProperty="ccgSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
-	</insert><!-- 검색기능 종료  -->
+	</insert>
 	
 	<!-- pagination -->
 	<sql id="selectListUpperForMysql">

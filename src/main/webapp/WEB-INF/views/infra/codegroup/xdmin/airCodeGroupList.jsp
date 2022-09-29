@@ -136,7 +136,7 @@
             });
     });
     var seq = $("input:hidden[name=ccgSeq]");
-	var goUrlForm = "/AircodeGroup/codeGroupReg";
+	var goUrlForm = "/AircodeGroup/codeGroupView";
 	var goUrlList = "/AircodeGroup/codeGroupList";
 	var form = $("form[name=form]")
 	

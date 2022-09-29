@@ -45,7 +45,7 @@
             <div class="inputlabel">코드개수</div>    
             <input type="text" value="<c:out value ="${item.countCCG }"/>" readonly>
             <div class="inputlabel">생성일</div>    
-            <input id="ccgInsertDate" type="text"value="<c:out value ="${item.ccgInsertDate }"/>" readonly placeholder="현재시간으로 생성됩니다">
+            <input id="ccgInsertDate" type="text"value="<c:out value ="${item.getCcgInsertDate() }"/>" readonly placeholder="현재시간으로 생성됩니다">
             <div class="inputlabel">마지막 수정시간</div>    
             <input id="ccgModDate" type="text"value="<c:out value ="${item.ccgModDate }"/>" readonly > 
             <ul class="buttonWrap">
