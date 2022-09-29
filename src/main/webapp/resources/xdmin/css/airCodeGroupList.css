@@ -39,7 +39,9 @@ td{
     height: 30px;
     overflow: hidden;
 }
-
+td a{
+	color:black;
+}
 /* 왼쪽 사이드 메뉴s */
 .side-menu {
     position: fixed;

@@ -1,0 +1,150 @@
+@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    font-family: 'SUIT-Medium';
+}
+body{
+    margin: 0; 
+    box-sizing: border-box;
+    height: 120vh;
+}    
+a{
+    text-decoration: none;
+    color:white;
+}
+li{
+    list-style: none;
+}    
+/* 왼쪽 사이드 메뉴s */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 120px;
+    padding: 0;
+    height: 100%;
+    width: 60px;
+    list-style-type: none;
+    background: #263238;
+    overflow: hidden;
+    transition: width .4s;
+}
+.side-menu:hover {
+    width: 170px;
+}
+.side-menu li {
+width: 300px;
+}
+.side-menu li i {
+font-size: 1rem;
+margin: 20px 30px 0 22px;
+}
+.side-menu li a {
+display: block;
+font-size: .9rem;
+text-decoration: none;
+color: #FFF;
+height: 60px;
+}
+.side-menu li a:hover{
+background: #fafafa;
+color: black;
+display: block;
+}
+/* 왼쪽사이드메뉴e */
+
+/* 네비게이션바s */
+.nav_warp{
+    height: 120px;
+    background: #263238;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+}
+.nav_list{
+    margin:45px 15px 0 15px;
+    display: flex;
+    justify-content: right;
+    padding-left: 0;
+}
+.nav_list li{
+    margin-left: 15px;
+    font-size: 1.5rem;
+}
+.nav_logo{
+    font-size: 1.5rem;
+    margin:45px 15px 0 15px;
+}
+/* 네비게이션바 e */
+.container .selectOneWrap{
+    width: 50%;
+    margin: auto;
+    border: 1px solid none;
+    border-radius: 5px;
+    box-shadow: 5px 3px 10px 2px #eeeeee;
+}
+.container{
+    padding: 250px 30px 50px 85px;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+.container h1{
+    font-size: 2.0rem;
+    padding: 35px 0px 15px 35px;
+    text-align: left;
+}
+.container input{
+    width: 65%;
+    height: 35px;
+    margin: 0px 15px 15px 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size:1rem;
+}
+.container select{
+    width: 66%;
+    height: 39px;
+    margin: 0px 15px 15px 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size:1rem;
+}
+.inputlabel{
+    font-weight: bold;
+    color:#616161;
+}
+.buttonWrap{
+    display: flex;
+    justify-content: space-around;
+    padding-left:0 ;
+    
+}
+.buttonWrap button{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #eeeeee;
+    background-color: white;
+    margin: 15px 15px 10px 15px;
+    font-size: 25px;
+}
+.buttonWrap button:hover{
+    background: black;
+    color: white;
+}
+.btnthree .delete:hover{
+    background: #b71c1c;
+}
+.btnthree .insert:hover{
+    background: #1b5e20;
+}
+
+.btnthree{
+    display: flex;
+}

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 public class AirCodeGroupController {
 
@@ -22,5 +23,10 @@ public class AirCodeGroupController {
 		return "infra/codegroup/xdmin/airCodeGroupList";
 	}
 	
-
+	@RequestMapping(value = "/AircodeGroup/codeGroupView")
+	public String codeGroupView(AirCodeGroupVo vo, Model model) throws Exception{
+		AirCodeGroup result = service.selectOne(vo);
+		model.addAttribute("item",result);
+		return "infra/codegroup/xdmin/airCodeGroupForm";
+	}
 }

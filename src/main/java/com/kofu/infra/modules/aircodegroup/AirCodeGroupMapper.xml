@@ -47,6 +47,7 @@
 				ORDER By a.ccgSeq DESC
 		<include refid="selectListLowerForMysql" />		
 	</select>
+	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
@@ -63,7 +64,7 @@
 			,a.ccgModDate
 		FROM ccg a
 		WHERE 1=1
-		AND ccgSeq= #{ccgSeq}
+		AND ccgSeq = #{ccgSeq}
 	</select>
 	
 

@@ -5,6 +5,6 @@ import java.util.List;
 public interface AirCodeGroupService {
 	
 	public List<AirCodeGroup> selectList(AirCodeGroupVo vo) throws Exception;
-	
-	
+	public AirCodeGroup selectOne(AirCodeGroupVo vo) throws Exception;
+	public int selectOneCount(AirCodeGroupVo vo) throws Exception;
 }

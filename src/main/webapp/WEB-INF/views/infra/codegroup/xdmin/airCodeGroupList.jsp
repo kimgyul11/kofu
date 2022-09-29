@@ -15,6 +15,8 @@
     <title>AIRLANGUAGE</title>
 </head>
 <body>
+<form name="form">
+ <input type="hidden" name="ccgSeq" value="${item.ccSeq }">
 	<!--네비게이션바,사이드메뉴s -->
 	<%@include file="../../../infra/includeV1/xdminMenu.jsp"%>
 	<!--네비게이션바,사이드메뉴e -->
@@ -36,19 +38,29 @@
                     <th class="codename">등록일</th>
                     <th class="codename">수정일</th>
                 </tr>
-                <c:forEach items="${list}" var="list" varStatus="status">
-	                <tr>
-	                    <td><input type="checkbox"></td>
-	                    <td><c:out value="${list.ccgSeq }"/></td>
-	                    <td><c:out value="${list.ccgGroupNameKor }"/></td>
-	                    <td><c:out value="${list.ccgGroupNameEng }"/></td>
-	                    <td><c:out value="${list.countCCG }"/></td>
-	                    <td><c:out value="${list.ccgUseNy }"/></td>
-	                    <td><c:out value="${list.ccgDelNy }"/></td>
-	                    <td><c:out value="${list.ccgInsertDate }"/></td>
-	                    <td><c:out value="${list.ccgModDate }"/></td>
-	                </tr>
-                </c:forEach>
+				<c:choose>
+					<c:when test="${fn:length(list) eq 0}">
+						<tr>
+							<td colspan="9">검색결과가 없습니다.</td>
+						</tr>
+					</c:when>
+				    <c:otherwise>
+		                <c:forEach items="${list}" var="list" varStatus="status">
+			                <tr>
+			                    <td><input type="checkbox"></td>
+			                    <td><a href="/AircodeGroup/codeGroupView?ccgSeq=<c:out value="${list.ccgSeq }"/>"><c:out value="${list.ccgSeq }"/></a></td>
+			                    <td><c:out value="${list.ccgGroupNameKor }"/></td>
+			                    <td><c:out value="${list.ccgGroupNameEng }"/></td>
+			                    <td><c:out value="${list.countCCG }"/></td>
+			                    <td><c:out value="${list.ccgUseNy }"/></td>
+			                    <td><c:out value="${list.ccgDelNy }"/></td>
+			                    <td><c:out value="${list.ccgInsertDate }"/></td>
+			                    <td><c:out value="${list.ccgModDate }"/></td>
+			                </tr>
+			                
+		                </c:forEach>
+	                </c:otherwise>
+	        	</c:choose>
             </table>
         </div>
         <div class="button_wrap">
@@ -58,7 +70,9 @@
         <div class="pagination_wrap">
             <ul class="pagination modal-2">
                 <li><a href="#" class="prev">&laquo </a></li>
-                <li><a href="#">1</a></li>
+                <c:if test="${vo.startPage gt vo.pageNumToShow}">
+                	<li><a href="#"></a></li>
+                </c:if>
                 <li> <a href="#">2</a></li>
                 <li> <a href="#" class="active">3</a></li>
                 <li> <a href="#">4</a></li>
@@ -69,8 +83,31 @@
                 <li> <a href="#">9</a></li>
                 <li><a href="#" class="next">  &raquo;</a></li>
             </ul><br> 
+        	<%-- <ul class="pagination justify-content-center mb-0">
+	                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
+					<c:if test="${vo.startPage gt vo.pageNumToShow}">
+		                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="fa-solid fa-angle-left"></i></a></li>
+					</c:if>
+					<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+						<c:choose>
+							<c:when test="${i.index eq vo.thisPage}">
+			                	<li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+							</c:when>
+							<c:otherwise>             
+			                	<li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>                
+					<c:if test="${vo.endPage ne vo.totalPages}">                
+	                	<li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angle-right"></i></a></li>
+					</c:if>
+	                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
+	            </ul> --%>
         </div>
     </div>
+    
+   
+    </form>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -114,6 +151,32 @@
                 }
             });
     });
+    var seq = $("input:hidden[name=ccgSeq]");
+	var goUrlForm = "/codeGroup/codeGroupReg";
+	var goUrlList = "/codeGroup/codeGroupList";
+	var form = $("form[name=form]")
+	
+	
+	$('#btnForm').on("click", function() {
+		goForm(0);                
+	});
+
+	goForm = function(keyValue) {
+    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+    	seq.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}
+
+	$("#btnReset").on("click", function() {
+			$(location).attr("href",goUrlList);
+	});
+/* 페이지네이션 리스트*/
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlList).submit();
+	}
+    
+    
 </script>
 
 </body>
