@@ -9,5 +9,8 @@ public interface AirCodeGroupService {
 	public AirCodeGroup selectOne(AirCodeGroupVo vo) throws Exception;
 	public int selectOneCounting(AirCodeGroupVo vo) throws Exception;
 	public int insert(AirCodeGroup dto) throws Exception;
+	public int update(AirCodeGroup dto) throws Exception;
+	public int uelete(AirCodeGroup dto) throws Exception;
+	public int delete(AirCodeGroupVo vo) throws Exception;
 	
 }

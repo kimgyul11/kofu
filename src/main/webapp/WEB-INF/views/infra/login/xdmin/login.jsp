@@ -97,7 +97,7 @@
 				</div>
 				<ul class="nav justify-content-center">
 					<li class="nav-item">
-						<a class="nav-link active"  href="signup.html">회원가입</a>
+						<a class="nav-link active"  href="/member/signup">회원가입</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="find_id.html">아이디 찾기</a>

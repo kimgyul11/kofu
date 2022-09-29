@@ -96,6 +96,31 @@
 		AND ccgSeq = #{ccgSeq}
 	</select><!-- 셀렉트 원 종료 -->
 	
+	<!-- 업데이트 및 삭제 9.13-->
+		<!--폼 수정  -->
+	<update id="update">
+		UPDATE ccg
+		SET
+			ccgGroupNameKor = #{ccgGroupNameKor}
+			,ccgGroupNameEng = #{ccgGroupNameEng}
+			,ccgUseNy = #{ccgUseNy}
+			,ccgDelNy = #{ccgDelNy}
+			,ccgModDate = now()
+		WHERE
+			ccgSeq = #{ccgSeq}	
+	</update>
+		<!-- 폼 삭제 -->
+	<delete id="delete">
+		DELETE FROM ccg WHERE ccgSeq = #{ccgSeq}
+	</delete>
+		<!--폼 DelNy = 1로  -->
+	<update id="uelete">
+		UPDATE ccg
+		SET
+			ccgDelNy = 1
+		WHERE ccgSeq = #{ccgSeq}
+	</update>
+	
 
 </mapper>	
 	

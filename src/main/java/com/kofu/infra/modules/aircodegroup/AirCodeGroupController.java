@@ -61,4 +61,33 @@ public class AirCodeGroupController {
 	}
 	
 	
+//	수정,삭제,가짜삭제
+	@RequestMapping(value = "/AircodeGroup/codeGroupUpdt")
+	public String codeGroupUpdt(AirCodeGroupVo vo, AirCodeGroup dto, RedirectAttributes redirectAttributes) throws Exception{
+		
+		System.out.println(dto.getCcgSeq());
+		service.update(dto);
+		vo.setCcgSeq(dto.getCcgSeq());
+		redirectAttributes.addFlashAttribute("vo",vo);
+		
+		return "redirect:/AircodeGroup/codeGroupReg";
+	}
+	
+	@RequestMapping(value = "/AircodeGroup/codeGroupUele")
+	public String codeGroupUele(AirCodeGroupVo vo, AirCodeGroup dto,RedirectAttributes redirectAttributes) throws Exception{
+		service.uelete(dto);
+		redirectAttributes.addFlashAttribute("vo",vo);
+		return "redirect:/AircodeGroup/codeGroupList";
+	}
+	
+	@RequestMapping(value = "/AircodeGroup/codeGroupDele")
+	public String nationnalityDele(AirCodeGroupVo vo, RedirectAttributes redirectAttributes) throws Exception{
+		service.delete(vo);
+		redirectAttributes.addFlashAttribute("vo",vo);
+		
+		return "redirect:/AircodeGroup/codeGroupList";
+	}
+
+	
+	
 }

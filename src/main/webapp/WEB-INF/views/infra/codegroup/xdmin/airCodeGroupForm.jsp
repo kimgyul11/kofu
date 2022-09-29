@@ -45,19 +45,39 @@
             <div class="inputlabel">코드개수</div>    
             <input type="text" value="<c:out value ="${item.countCCG }"/>" readonly>
             <div class="inputlabel">생성일</div>    
-            <input type="text"value="<c:out value ="${item.ccgInsertDate }"/>" readonly placeholder="현재시간으로 생성됩니다">
-            <div class="inputlabel">수정일</div>    
-            <input type="text"value="<c:out value ="${item.ccgModDate }"/>" readonly > 
+            <input id="ccgInsertDate" type="text"value="<c:out value ="${item.ccgInsertDate }"/>" readonly placeholder="현재시간으로 생성됩니다">
+            <div class="inputlabel">마지막 수정시간</div>    
+            <input id="ccgModDate" type="text"value="<c:out value ="${item.ccgModDate }"/>" readonly > 
             <ul class="buttonWrap">
                 <li><button type="button" id="btnList"><i class="fa-solid fa-list-ol"></i></button></li>
                 <li>
                     <ul class="btnthree">
-                        <li><button class="delete"><i class="fa-regular fa-circle-xmark"></i></button></li>
-                        <li><button class="delete"><i class="fa-regular fa-trash-can"></i></button></li>
+                        <li><button class="delete" id="btnUelete"><i class="fa-regular fa-circle-xmark"></i></button></li>
+                        <li><button class="delete" id="btnDelete" name="btnDelete"><i class="fa-regular fa-trash-can"></i></button></li>
                         <li><button class="insert" id="btnSave"><i class="fa-regular fa-floppy-disk"></i></button></li>
                     </ul>
                 </li>
             </ul>
+            
+            
+           <!--  <div class="modal fade" id="modalConfirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+							...
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-primary" id="btnModalUelete" name="btnModalUelete">확인</button>
+								<button type="button" class="btn btn-primary"id="btnModalDelete" name="btnModalDelete">확인</button>
+							</div>
+						</div>
+					</div>
+				</div> -->
         </div>
     </div>   
         
@@ -67,9 +87,9 @@
 	<script>
 	var goUrlList = "/AircodeGroup/codeGroupList"; 			/* #-> */
 	var goUrlInst = "/AircodeGroup/airCodeGroupInst"; 			/* #-> */
-	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
-	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
-	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	var goUrlUpdt = "/AircodeGroup/codeGroupUpdt";				/* #-> */
+	var goUrlUele = "/AircodeGroup/codeGroupUele";				/* #-> */
+	var goUrlDele = "/AircodeGroup/codeGroupDele";				/* #-> */
 	
 	var seq = $("input:hidden[name=ccgSeq]");				/* #-> */
 	
@@ -104,11 +124,12 @@
 	
 
 	$("#btnDelete").on("click", function(){
-		$(".modal-title").text("확 인");
+		/* $(".modal-title").text("확 인");
 		$(".modal-body").text("해당 데이터를 삭제하시겠습니까 ?");
 		$("#btnModalUelete").hide();
 		$("#btnModalDelete").show();
-		$("#modalConfirm").modal("show");
+		$("#modalConfirm").modal("show"); */
+		form.attr("action", goUrlDele).submit();
 	});
 	
 	

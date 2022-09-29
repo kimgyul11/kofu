@@ -12,9 +12,6 @@ import org.springframework.stereotype.Repository;
 
 
 
-
-
-
 @Repository
 public class AirCodeGroupDao {
 	
@@ -46,7 +43,11 @@ public class AirCodeGroupDao {
 		System.out.println("dao result : "+result);
 		return result;
 	}
-
+	public int update(AirCodeGroup dto) {return sqlSession.update(namespace + ".update",dto);}
+	public int uelete(AirCodeGroup dto) {return sqlSession.update(namespace + ".uelete", dto);}
+	public int delete(AirCodeGroupVo vo) {return sqlSession.delete(namespace + ".delete",vo);}
+	
+	
 
 }
 	
