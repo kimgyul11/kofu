@@ -15,7 +15,7 @@
     <title>AIRLANGUAGE</title>
 </head>
 <body>
-<form name="form">
+<form name="form" autocomplete="off">
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 <input type="hidden" name="ccgSeq" value="<c:out value="${vo.ccgSeq}"/>">
@@ -154,13 +154,33 @@
 	$("#btnReset").on("click", function() {
 			$(location).attr("href",goUrlList);
 	});
+	
 /* 페이지네이션 리스트*/
 	goList = function(thisPage) {
 		$("input:hidden[name=thisPage]").val(thisPage);
 		form.attr("action", goUrlList).submit();
 	}
-    
-    
+
+/* 로그아웃 */
+    $("#btnLogout").on("click", function(){
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/member/logoutProc"
+		,data: {}
+		,success: function(response) {
+			if(response.rt == "success") {
+				location.href = URL_LOGIN_FORM;
+			} else {
+				// by pass
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+});	
 </script>
 
 </body>

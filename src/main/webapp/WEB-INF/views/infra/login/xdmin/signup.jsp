@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="/resources/xdmin/css/signup.css" />
 </head>
 <body class="ng-font2">
-<form name=form>
+<form name=form action="signup">
 <input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy">
 <input type="hidden" name="memberSeq">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -170,7 +170,7 @@
 							</div>
 							<br>
 							<div class="d-flex gap-2 justify-content-center">
-								<button class="btn btn-outline-success" id="btnSave"type="button">완료</button>
+								<button class="btn btn-outline-success" type="submit">완료</button>
   								<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
 									 취소
 								</button>

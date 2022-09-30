@@ -24,32 +24,32 @@
 	<context:component-scan base-package="com.kofu.infra" />
 	
 		<!-- session interceptor s 2022.03.13 for logincheck -->
-	<interceptors>
+	<!-- <interceptors>
 		<interceptor>
 			<mapping path="/**"/>
-			<!-- <mapping path="/AircodeGroup/codeGroupList"/> -->
 			<mapping path="/quereg"/>
+			<mapping path="/AircodeGroup/codeGroupList"/>
+			
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/codeGroup/**" />
 			<exclude-mapping path="/code/**" />
-			<exclude-mapping path="/member/**" />
 			<exclude-mapping path="/login" />
 			<exclude-mapping path="/codeGroup/codeGroupList" />
 			<exclude-mapping path="/quelist" />
-			<exclude-mapping path="/signup" />
+			<exclude-mapping path="/member/signup" />
 			<exclude-mapping path="/member/loginProc" />
 			<exclude-mapping path="/test/**" />
 			<exclude-mapping path="/rest/**" />
 			<exclude-mapping path="/airLanguageHome"/>
-			<exclude-mapping path="/airCodeGroup/**" />
 			<exclude-mapping path="/AircodeGroup/codeGroupReg"/>
 			<exclude-mapping path="/AircodeGroup/airCodeGroupInst"/>
 			<exclude-mapping path="/AircodeGroup/codeGroupList"/>
 			<exclude-mapping path="/AircodeGroup/**"/>
+			<exclude-mapping path="/xdminlogin"/>
 			<exclude-mapping path="/AircodeGroup/codeGroupView"/>  
 			<beans:bean id="checkLoginSessionInterception" class="com.kofu.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
-	</interceptors>	
+	</interceptors>	 -->
 	<!-- session interceptor e 2022.03.13 for logincheck -->
 	
 	

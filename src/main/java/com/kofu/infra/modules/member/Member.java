@@ -13,13 +13,19 @@ public class Member {
 	private Integer user_gender;
 	private String user_addr;
 	private String user_email;
-	
+	private String user_favoriteLanguage;
 	//-----------------------------------------------------------------------------
 	
 	
 	
 	public Integer getUser_gender() {
 		return user_gender;
+	}
+	public String getUser_favoriteLanguage() {
+		return user_favoriteLanguage;
+	}
+	public void setUser_favoriteLanguage(String user_favoriteLanguage) {
+		this.user_favoriteLanguage = user_favoriteLanguage;
 	}
 	public String getUser_pw() {
 		return user_pw;

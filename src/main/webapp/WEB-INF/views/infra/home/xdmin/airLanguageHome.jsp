@@ -38,7 +38,7 @@
             <c:choose>
             	<c:when test="${empty sessSeq }">
 	            	<li><a href="login">로그인</a></li>
-	            	<li><a href="signup">신규가입</a></li>
+	            	<li><a href="/member/signupView">신규가입</a></li>
 	            </c:when>
 	            <c:otherwise>
 		            <li class="signinStatus"><a href="#"><c:out value="${sessId }"/>님 환영합니다.</a></li>
@@ -213,7 +213,7 @@ $("#btnLogout").on("click", function(){
 		,data: {}
 		,success: function(response) {
 			if(response.rt == "success") {
-				location.href = URL_LOGIN_FORM;
+				location.href = URL_LOGINFORM;
 			} else {
 				// by pass
 			}

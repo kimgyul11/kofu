@@ -11,8 +11,8 @@
 				<option value='0' <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
 				<option value='1' <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
             </select>
-            <input type="text" id="startDate" placeholder="시작일을 선택"<c:out value="${vo.startDate }"/>>
-            <input type="text" id="endDate" placeholder="종료일을 선택" <c:out value="${vo.endDate }"/>><br>
+            <input type="text" id="startDate" placeholder="시작일을 선택" name="startDate"<c:out value="${vo.startDate }"/>>
+            <input type="text" id="endDate" placeholder="종료일을 선택" name="endDate" <c:out value="${vo.endDate }"/>><br>
             <select name="shOption" id="shOption">
                 <option value=""<c:if test="${empty vo.shOption}">selected</c:if>>검색조건</option>
                 <option value="1"<c:if test="${vo.shOption eq 1}">selected</c:if>>코드번호</option>

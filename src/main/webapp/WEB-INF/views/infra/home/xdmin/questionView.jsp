@@ -18,62 +18,9 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <a href="#">AirLanguage</a>
-        </div>
-        <div class="search_box">
-            <div class="dropdown">
-                <div class="default_option">관심언어로 검색</div>  
-                <ul>
-                    <li>All</li>
-                    <li>Recent</li>
-                    <li>Popular</li>
-                </ul>
-            </div>
-            <div class="search_field">
-                <input type="text" class="input" placeholder="Search">
-                <i class="fas fa-search"></i>
-            </div>
-        </div>
-        <div class="nav_right">
-            <ul>
-                <li class="nr_li dd_main">
-                    <img src="https://t1.daumcdn.net/cfile/tistory/132C56244AAB40B35D">
-                    <!-- 메뉴리스트 -->
-                    <div class="dd_menu">
-                        <div class="dd_left">
-                            <ul>
-                                <li><i class="fa-solid fa-user"></i></li>
-                                <li><i class="fa-solid fa-gear"></i></li>
-                                <li><i class="fas fa-sign-out-alt"></i></li>
-                            </ul>
-                        </div>
-                        <div class="dd_right">
-                            <ul>
-                                <li>내정보</li>
-                                <li>설정</li>
-                                <li>Logout</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="nr_li">
-                    <i class="fa-solid fa-bell"></i>
-                </li>
-                <li class="nr_li">
-                    <i class="fa-solid fa-house"></i>
-                </li>
-                <li>
-                    <div class="btn_wraper">
-                        <div class="btn btn_1">
-                            <a href="">질문하기</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+<!-- Navbar s  -->
+<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
+<!-- Navbar e  -->    
 
     <!-- Contenedor Principal -->
 	<div class="comments-container">
@@ -172,8 +119,7 @@
                             <i class="fa-solid fa-bookmark"></i>
 						</div>
 						<div class="comment-content">
-							"나랏말싸미 듕귁에 달아 문자와로 서르 사맛디 아니할쎄 이런 젼차로 어린 백셩이 니르고져 홀 배 이셔도 마참내 제 뜨들 시러펴디 몯 할 노미 하니라 내 이랄 위하야 어엿비 너겨 새로 스믈 여듧 짜랄 맹가노니 사람마다 해여 수비 니겨 날로 쑤메 뼌한킈 하고져 할따라미니라 "
-                            을 영어로 번역해주세요
+							감사합니다
                         </div>
 					</div>
 				</div>

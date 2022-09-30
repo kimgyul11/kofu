@@ -14,8 +14,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/airLanguageHome")
 	public String airLanguageHome() {
-		
-	
 		return "infra/home/xdmin/airLanguageHome";
 	}
 	
@@ -25,11 +23,11 @@ public class HomeController {
 		return "infra/login/xdmin/login";
 	}
 	
-	@RequestMapping(value = "signup")
-	public String signup() {
-		
-		return "infra/login/xdmin/signup";
-	}
+	/*
+	 * @RequestMapping(value = "signup") public String signup() {
+	 * 
+	 * return "infra/login/xdmin/signup"; }
+	 */
 
 	@RequestMapping(value = "quelist")
 	public String quelist(Model model,HomeVo vo)throws Exception {

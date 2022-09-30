@@ -17,57 +17,9 @@
 <body>
 <form name="form"> 
 <input type="hidden" name="questionSeq">
-    <!-- 네비게이션바s -->
-<div class="navbar">
-	<div class="logo">
-		<a href="#">AirLanguage</a>
-	</div>
-	<!-- nav 검색창s -->
-	<div class="search_box">
-		<div class="dropdown">
-		<div class="default_option">관심언어로 검색</div>  
-			<ul>
-			    <li>한국어</li>
-			    <li>영어</li>
-			</ul>
-		</div>
-		<div class="search_field">
-			<input type="text" class="input" placeholder="Search">
-			<i class="fas fa-search"></i>
-		</div>
-	</div>
-	<!--nav 오른쪽 메뉴  -->
-	<div class="nav_right">
-		<ul>
-			<li class="nr_li dd_main">
-				<!-- <img src="https://t1.daumcdn.net/cfile/tistory/132C56244AAB40B35D"> -->
-				<div class="dd_menu">
-					<div class="dd_left">
-						<ul>
-							<li><i class="fa-solid fa-user"></i></li>
-							<li><i class="fa-solid fa-gear"></i></li>
-							<li><i class="fas fa-sign-out-alt"></i></li>
-						</ul>
-					</div>
-					<div class="dd_right">
-						<ul>
-							<li>내정보</li>
-							<li>설정</li>
-							<li>Logout</li>
-						</ul>
-					</div>
-				</div>
-	        </li>
-			<li class="nr_li"><i class="fa-solid fa-bell"></i></li>
-			<li class="nr_li"><i class="fa-solid fa-house"></i></li>
-			<li>
-				<div class="btn_wraper">
-					<div class="btn btn_1"><a href="">질문하기</a></div>
-				</div>
-	        </li>
-	    </ul>
-	</div>
-</div>
+<!-- Navbar s  -->
+<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
+<!-- Navbar e  -->    
 
 <div class="container">
 	<div class="texthead">
@@ -87,7 +39,8 @@
 	<div class="textbox">
 		<textarea name="content" id="content" placeholder="단어나 문장을 입력해보세요" value="<c:out value="${item.content }"/>"></textarea>
 	</div>
-	<input type="hidden"
+	
+	<input type="text" value="<c:out value="${sessId }"/>" id="userID" name="userID">
 	<ul class="buttonlist">
 	    <li><i class="fa-regular fa-image"></i></li>
 	    <li><i class="fa-solid fa-microphone"></i></li>

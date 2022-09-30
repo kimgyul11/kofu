@@ -75,6 +75,7 @@
 		</selectKey> 
 	</insert>
 	
+	<!-- 중복체크 -->
 	<select id="selectOneIdCheck" resultType="Integer">
 		select count(*) 
 		from airLanguage_member 

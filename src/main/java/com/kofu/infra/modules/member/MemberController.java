@@ -62,6 +62,12 @@ public class MemberController {
 		return "redirect:/member/memberlist";
 	}
 	
+	@RequestMapping(value = "signupView")
+	public String signupView() {
+		
+		return "infra/login/xdmin/signup";
+	}
+	
 	@RequestMapping(value = "signup")
 	public String signup(Member dto) throws Exception{
 		
@@ -71,6 +77,8 @@ public class MemberController {
 		return "infra/login/xdmin/logincomplete";
 	}
 	
+
+
 	
 	@ResponseBody
 	@RequestMapping(value = "checkId")
