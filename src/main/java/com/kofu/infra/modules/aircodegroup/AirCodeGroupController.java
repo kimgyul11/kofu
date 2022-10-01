@@ -24,7 +24,7 @@ public class AirCodeGroupController {
 		
 		System.out.println("vo.getShValue(): " + vo.getShValue());
 		System.out.println("vo.getShOption(): " + vo.getShOption());
-	
+		
 		vo.setParamsPaging(service.selectOneCounting(vo));
 		List<AirCodeGroup> list = service.selectList(vo);
 		model.addAttribute("list",list);
