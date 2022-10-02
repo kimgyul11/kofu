@@ -15,7 +15,7 @@ public class AirCodeController {
 	AirCodeServiceImpl service;
 	
 	
-	@RequestMapping(value = "codeList")
+	@RequestMapping(value = "/xdmin/codeList")
 	public String codeList(@ModelAttribute("vo")AirCodeVo vo,Model model)throws Exception{
 		List<AirCode> list=service.selectList(vo);
 		model.addAttribute("list",list);

@@ -13,6 +13,7 @@ public class AirCode {
 	private Integer cc_useNy;
 	//--ccg(코드그룹)영역	
 	private String ccgSeq;
+	private String ccgGroupNameKor;
 
 	//---------------------------------------------
 	
@@ -20,6 +21,15 @@ public class AirCode {
 	public String getCcSeq() {
 		return ccSeq;
 	}
+
+	public String getCcgGroupNameKor() {
+		return ccgGroupNameKor;
+	}
+
+	public void setCcgGroupNameKor(String ccgGroupNameKor) {
+		this.ccgGroupNameKor = ccgGroupNameKor;
+	}
+
 	public String getCcgSeq() {
 		return ccgSeq;
 	}

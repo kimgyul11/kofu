@@ -19,8 +19,7 @@ public class AirCodeDao {
 	
 	
 	
-	public List<AirCode>selectList(AirCodeVo vo)
-	{return sqlSession.selectList(namespace + ".selectList",vo);}
+	public List<AirCode>selectList(AirCodeVo vo){return sqlSession.selectList(namespace + ".selectList",vo);}
 	
 	
 }

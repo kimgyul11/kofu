@@ -1,0 +1,245 @@
+@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    font-family: 'SUIT-Medium';
+}
+body{
+    margin: 0; 
+    box-sizing: border-box;
+    height: 150vh;
+}    
+table{
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    table-layout: fixed;
+}
+a{
+    text-decoration: none;
+    color:white;
+}
+li{
+    list-style: none;
+}    
+table,th,td,tr{
+    border: 1px solid #e0e0e0;
+    border-collapse: collapse;
+}
+th{
+    height: 50px;
+    font-weight: bold;
+    background: #eceff1;
+    overflow: hidden;
+}
+td{
+    height: 30px;
+    overflow: hidden;
+}
+
+/* 왼쪽 사이드 메뉴s */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 120px;
+    padding: 0;
+    height: 100%;
+    width: 60px;
+    list-style-type: none;
+    background: #263238;
+    overflow: hidden;
+    transition: width .4s;
+}
+.side-menu:hover {
+    width: 170px;
+}
+.side-menu li {
+width: 300px;
+}
+.side-menu li i {
+font-size: 1rem;
+margin: 20px 30px 0 22px;
+}
+.side-menu li a {
+display: block;
+font-size: .9rem;
+text-decoration: none;
+color: #FFF;
+height: 60px;
+}
+.side-menu li a:hover{
+background: #fafafa;
+color: black;
+display: block;
+}
+/* 왼쪽사이드메뉴e */
+
+/* 네비게이션바s */
+.nav_warp{
+    height: 120px;
+    background: #263238;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+}
+.nav_list{
+    margin:45px 15px 0 15px;
+    display: flex;
+    justify-content: right;
+    padding-left: 0;
+}
+.nav_list li{
+    margin-left: 15px;
+    font-size: 1.5rem;
+}
+.nav_logo{
+    font-size: 1.5rem;
+    margin: 45px 0 0 15px;
+}
+/* 네비게이션바 e */
+
+/* 메인 컨테이너영역 */
+    /* 검색영역 */
+.search_wrap input {
+    width: 20%;
+    height: 30px;
+    margin: 15px;
+    border: 1px solid  #e0e0e0;
+    border-radius: 5px;
+    text-align: center;
+}
+select{
+    width:250px;
+    height: 34px;
+    margin:15px;
+    border: 1px solid  #e0e0e0;
+    border-radius: 5px;
+    text-align: center;
+}
+.search_wrap button{
+    width: 34px;
+    height: 34px;
+    margin-left: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+}
+/* 테이블s */
+.table_wrap{
+    padding: 250px 30px 50px 85px;
+    width: 80%;
+    margin: auto;
+}
+.search_wrap{
+    width: 80%;
+    margin: 0px auto 50px auto;
+}
+.tablelist{
+    width: 100%;
+    display: inline-block;
+    
+}
+.num, .checkbox{
+    width: 8%;
+}
+.codename{
+    width:19%;
+}
+/* 테이블e */
+
+/* 페이지네이션 s*/
+.pagination_wrap{
+    margin: auto;
+    text-align: center;
+}
+.pagination {
+list-style: none;
+display: inline-block;
+padding: 0;
+margin: 70px;
+}
+.pagination li {
+    display: inline;
+    text-align: center;
+}
+.pagination a {
+    float: left;
+    display: block;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 5px 12px;
+    color: #fff;
+    margin-left: -1px;
+    border: 1px solid transparent;
+    line-height: 1.5;
+}
+.pagination a.active {
+    cursor: default;
+}
+.pagination a:active {
+    outline: none;
+}
+.modal-2 li:first-child a {
+    -moz-border-radius: 50px 0 0 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px 0 0 50px;
+}
+.modal-2 li:last-child a {
+    -moz-border-radius: 0 50px 50px 0;
+    -webkit-border-radius: 0;
+    border-radius: 0 50px 50px 0;
+}
+.modal-2 a {
+    border-color: #ddd;
+    color: #999;
+    background: #fff;
+}
+.modal-2 a:hover {
+    color: #263238;
+    background-color: #eee;
+}
+.modal-2 a.active, .modal-2 a:active {
+    border-color: #263238;
+    background: #263238;
+    color: #fff;
+}
+/* 페이지네이션 e*/
+
+/* 버튼영역s */
+.button_wrap{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+.button_wrap .btn_reg{
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+.button_wrap .btn_reg:hover{
+    color: #fafafa;
+    background: #455a64;
+}
+.button_wrap .btn_delete{
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    color: #b71c1c;
+    background: white;
+    border: 1px solid #b71c1c;
+    border-radius: 5px;
+}
+.button_wrap .btn_delete:hover{
+    background: #b71c1c;
+    color: white;
+}
+/* 버튼영역e */
