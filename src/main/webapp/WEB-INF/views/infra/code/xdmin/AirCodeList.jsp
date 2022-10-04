@@ -15,23 +15,13 @@
     <title>AIRLANGUAGE</title>
 </head>
 <body>
-    <nav class="nav_warp">
-        <div class="nav_logo">
-            <a href=""><i class="fa-solid fa-plane-departure"></i>AirLanguage</a>
-        </div>
-        <ul class="nav_list">
-            <li><a href="#">프로필이미지</a></li>
-            <li><a href="#">로그아웃</a></li>
-        </ul>
-    </nav>
-
-    <!-- 사이드 메뉴 -->
-    <ul class="side-menu">
-        <li><a href="#"><i class="fa-solid fa-house"></i>홈</a></li>
-        <li><a href="#"><i class="fa-solid fa-folder"></i>코드관리</a></li>
-        <li><a href="#"><i class="fa-regular fa-folder"></i>코드그룹관리</a></li>
-        <li><a href="#"><i class="fa-solid fa-user-group"></i>멤버관리</a></li>
-    </ul>
+<form name="form" autocomplete="off">
+<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+<input type="hidden" name="ccSeq" value="<c:out value="${vo.ccSeq}"/>">
+    <!--네비게이션바,사이드메뉴s -->
+	<%@include file="../../../infra/includeV1/xdminMenu.jsp"%>
+	<!--네비게이션바,사이드메뉴e -->
 
     <div class="table_wrap">
         <div class="search_wrap">
@@ -75,7 +65,7 @@
                 <c:forEach items="${list }" var ="list" varStatus="status">
 	                <tr>
 	                    <td><input type="checkbox"></td>
-	                    <td><c:out value="${list.ccSeq }"/></td>
+	                    <td><a href="/xdmin/codeView?ccSeq=<c:out value="${list.ccSeq }"/>"><c:out value="${list.ccSeq }"/></a></td>
 	                    <td><c:out value="${list.cc_name }"/></td>
 	                    <td><c:out value="${list.cc_nameEng }"/></td>
 	                    <td><c:out value="${list.ccgGroupNameKor }"/></td>
@@ -90,30 +80,36 @@
         </div>
         <div class="button_wrap">
             <button class="btn_delete" type="button"><i class="fa-solid fa-trash"></i></button>
-            <button class="btn_reg"><i class="fa-solid fa-folder-plus"></i></button>
+            <button class="btn_reg" id="btnForm"><i class="fa-solid fa-folder-plus"></i></button>
         </div>
         <div class="pagination_wrap">
             <ul class="pagination modal-2">
-                <li><a href="#" class="prev">&laquo </a></li>
-                <li><a href="#">1</a></li>
-                <li> <a href="#">2</a></li>
-                <li> <a href="#" class="active">3</a></li>
-                <li> <a href="#">4</a></li>
-                <li> <a href="#">5</a></li>
-                <li> <a href="#">6</a></li>
-                <li> <a href="#">7</a></li>
-                <li> <a href="#">8</a></li>
-                <li> <a href="#">9</a></li>
-                <li><a href="#" class="next">  &raquo;</a></li>
-            </ul><br> 
-        </div>
-    </div>
+	            <c:if test="${vo.startPage gt vo.pageNumToShow}">
+	                <li> <a href="javascript:goList(${vo.startPage - 1})" class="prev">&laquo </a></li>
+	            </c:if>
+            	<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+	            	<c:choose>    
+	                <c:when test="${i.index eq vo.thisPage}">
+	                	<li> <a  class="active" href="javascript:goList(${i.index})">${i.index}</a></li>
+	                </c:when>
+	                <c:otherwise>
+	                	<li><a href="javascript:goList(${i.index})">${i.index}</a></li>
+	                </c:otherwise>
+	                </c:choose>
+				</c:forEach> 
+                <c:if test="${vo.endPage ne vo.totalPages}">   
+                	<li><a  class="next" href="javascript:goList(${vo.endPage + 1})">  &raquo;</a></li>
+                </c:if>	
+            </ul>
+            <br>
+       	</div>
+    </form>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script>
-    /* 달력 */
+    /* 달력 s*/
     $(document).ready(function () {
             $.datepicker.setDefaults($.datepicker.regional['ko']);
             $( "#startDate" ).datepicker({
@@ -150,8 +146,55 @@
                     $("#startDate").datepicker( "option", "maxDate", selectedDate );
                 }
             });
-    });
-</script>
+    	});/* 달력 e */
+    
+        var seq = $("input:hidden[name=ccSeq]");
+    	var goUrlForm = "/xdmin/codeView";
+    	var goUrlList = "/xdmin/codeList";
+    	var form = $("form[name=form]")
+    	
+    	
+    	$('#btnForm').on("click", function() {
+    		goForm(0);                
+    	});
+
+    	goForm = function(keyValue) {
+        	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+        	seq.val(keyValue);
+    		form.attr("action", goUrlForm).submit();
+    	}
+
+    	$("#btnReset").on("click", function() {
+    			$(location).attr("href",goUrlList);
+    	});
+    	
+    /* 페이지네이션 리스트*/
+    	goList = function(thisPage) {
+    		$("input:hidden[name=thisPage]").val(thisPage);
+    		form.attr("action", goUrlList).submit();
+    	}
+
+    /* 로그아웃 */
+        $("#btnLogout").on("click", function(){
+    	$.ajax({
+    		async: true 
+    		,cache: false
+    		,type: "post"
+    		,url: "/member/logoutProc"
+    		,data: {}
+    		,success: function(response) {
+    			if(response.rt == "success") {
+    				location.href = URL_LOGIN_FORM;
+    			} else {
+    				// by pass
+    			}
+    		}
+    		,error : function(jqXHR, textStatus, errorThrown){
+    			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+    		}
+    	});
+        });	
+	</script>
 
 </body>
 </html>

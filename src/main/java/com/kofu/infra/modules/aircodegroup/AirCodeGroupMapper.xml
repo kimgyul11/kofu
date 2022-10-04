@@ -56,19 +56,19 @@
 	
 	<!-- list 시작 -->
 	<select id="selectList" resultMap="resultMapObj">
-	<include refid="selectListUpperForMysql" />
-			SELECT
-				a.ccgSeq
-				,a.ccgGroupNameEng
-				,a.ccgGroupNameKor
-				,a.ccgDelNy
-				,a.ccgUseNy
-				,a.ccgInsertDate
-				,a.ccgModDate
-				,(SELECT COUNT(aa.ccg_seq) FROM cc aa WHERE aa.ccg_seq = a.ccgSeq) as countCCG
-			<include refid="selectCommon"/>
-				ORDER By a.ccgSeq DESC
-	<include refid="selectListLowerForMysql" />
+		<include refid="selectListUpperForMysql" />
+		SELECT
+			a.ccgSeq
+			,a.ccgGroupNameEng
+			,a.ccgGroupNameKor
+			,a.ccgDelNy
+			,a.ccgUseNy
+			,a.ccgInsertDate
+			,a.ccgModDate
+			,(SELECT COUNT(aa.ccg_seq) FROM cc aa WHERE aa.ccg_seq = a.ccgSeq) as countCCG
+		<include refid="selectCommon"/>
+			ORDER By a.ccgSeq DESC
+		<include refid="selectListLowerForMysql" />
 	</select><!--list 종료  -->
 	
 	

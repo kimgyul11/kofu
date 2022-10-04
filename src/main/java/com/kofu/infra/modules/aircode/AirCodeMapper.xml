@@ -7,13 +7,33 @@
 <mapper namespace="com.kofu.infra.modules.aircode.AirCodeMapper">
 
 	<resultMap id="resultMapObj" type="com.kofu.infra.modules.aircode.AirCode"></resultMap>
-<sql id="common">
-		FROM cc a
-		LEFT JOIN ccg b ON b.ccgSeq = a.ccg_seq
-	WHERE 1=1
-</sql>
+<!-- 공통영역 s -->	
+	<sql id="common">
+			FROM cc a
+			LEFT JOIN ccg b ON b.ccgSeq = a.ccg_seq
+		WHERE 1=1
+		<if test="startDate != null and !startDate.equals('') and endDate != null and !endDate.equals('')"> AND a.cc_InsertDate Between #{startDate} AND #{endDate}</if>
+		<if test="shDelNy != null and !shDelNy.equals('')">AND cc_useNy = #{shDelNy}</if>
+		<choose>
+			<when test="shOption == 1">AND ccSeq = #{shValue}</when>
+			<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND cc_nameEng LIKE CONCAT('%',#{shValue},'%')</when>
+			<otherwise></otherwise>
+		</choose>
+	</sql><!-- 공통영역 e -->
+	
+<!-- pagination s-->
+	<sql id="selectListUpperForMysql">
+		select aa.* from (
+	</sql>
+	<sql id="selectListLowerForMysql">	
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+	</sql><!-- pagination e-->
 
+<!-- 메인리스트s  -->
 <select id="selectList" resultMap="resultMapObj">
+	<include refid="selectListUpperForMysql" />
  	SELECT
  		a.ccSeq
  		,a.cc_name
@@ -25,18 +45,78 @@
  		,a.ccg_seq
  		,b.ccgSeq
  		,b.ccgGroupNamekor
-	<include refid='common'/> 
-	
-	<if test="startDate != null and !startDate.equals('') and endDate != null and !endDate.equals('')"> AND a.cc_InsertDate Between #{startDate} AND #{endDate}</if>
-		<if test="shDelNy != null and !shDelNy.equals('')">AND cc_useNy = #{shDelNy}</if>
-			<choose>
-				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
-				<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND cc_nameEng LIKE CONCAT('%',#{shValue},'%')</when>
-				<otherwise></otherwise>
-			</choose>
-	 
+	<include refid='common'/>
+	ORDER BY a.ccSeq DESC 
+	<include refid="selectListLowerForMysql" /> 
+</select><!-- 메인리스트e  -->
+
+<!-- 페이지네이션 페이지 카운트 시작 -->
+	<select id="selectOneCounting" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="common" />
+	</select><!-- 페이지네이션 페이지 카운트 종료  -->  
+
+<!--selectOne s  -->
+<select id="selectOne" resultMap="resultMapObj">
+	SELECT	
+		a.ccSeq
+		,a.cc_name
+		,a.cc_nameEng
+		,a.cc_InsertDate
+		,a.cc_ModeDate
+		,a.cc_useNy
+		,a.cc_delNy
+		,a.ccg_seq
+	FROM cc a
+	WHERE 1=1
+	AND ccSeq = #{ccSeq}	
 </select>
-	
+
+<!-- 생성 -->
+	<insert id="insert">
+		INSERT INTO cc(
+		    cc_nameEng
+		    ,cc_name
+		    ,cc_delNy
+		    ,cc_useNy
+		    ,cc_InsertDate
+		)
+		VALUES(
+			#{cc_nameEng}
+		    ,#{cc_name}
+		    ,#{cc_delNy}
+		    ,#{cc_useNy}
+		    ,now()
+			
+		)
+		<selectKey resultType="String" keyProperty="ccSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>	
+
+
+	<!--폼 수정  -->
+	<update id="update">
+		UPDATE cc
+		SET
+			cc_name = #{cc_name}
+			,cc_nameEng = #{cc_nameEng}
+			,cc_useNy = #{cc_useNy}
+			,cc_delNy = #{cc_delNy}
+			,cc_ModeDate = now()
+		WHERE
+			ccSeq = #{ccSeq}	
+	</update>
+	<!-- 폼 삭제 -->
+	<delete id="delete">
+		DELETE FROM cc WHERE ccSeq = #{ccSeq}
+	</delete>
+	<!--폼 DelNy = 1 로 변경  -->
+	<update id="uelete">
+		UPDATE cc
+		SET
+			cc_delNy = 1
+		WHERE ccSeq = #{ccSeq}
+	</update>	
 </mapper>
 	
