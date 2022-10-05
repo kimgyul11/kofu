@@ -1,5 +1,5 @@
 package com.kofu.infra.modules.airboard;
 
-public class AirBoardServiceImpl {
+public class AirBoardServiceImpl implements AirBoardService {
 
 }

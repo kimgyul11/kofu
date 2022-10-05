@@ -16,6 +16,6 @@
         <li><a href="#"><i class="fa-solid fa-house"></i>홈</a></li>
         <li><a href="/xdmin/codeList"><i class="fa-solid fa-folder"></i>코드관리</a></li>
         <li><a href="/AircodeGroup/codeGroupList"><i class="fa-regular fa-folder"></i>코드그룹관리</a></li>
-        <li><a href="#"><i class="fa-regular fa-user"></i>멤버관리</a></li>
+        <li><a href="/xdmini/airMemberList"><i class="fa-regular fa-user"></i>멤버관리</a></li>
         <li><a href="#"><i class="fa-solid fa-clipboard-list"></i>게시판관리</a></li>
     </ul>
