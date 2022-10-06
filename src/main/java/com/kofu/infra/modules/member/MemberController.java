@@ -27,7 +27,12 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
-
+	@RequestMapping(value = "mypage")
+	public String mypage() {
+	
+		return "infra/userInfo/mypage";
+	
+	}
 	@RequestMapping(value = "memberlist")
 	public String codeGroupList(Model model) throws Exception {
 

@@ -9,9 +9,37 @@ public class AirMembers {
 	private Integer user_gender;
 	private String user_favoriteLanguage;
 	private String user_name;
+	private String user_delNy;
+	private String user_useNy;
+	private String user_withdrawal;
+	private String user_level;
 	
 	
 	
+	public String getUser_level() {
+		return user_level;
+	}
+	public void setUser_level(String user_level) {
+		this.user_level = user_level;
+	}
+	public String getUser_withdrawal() {
+		return user_withdrawal;
+	}
+	public void setUser_withdrawal(String user_withdrawal) {
+		this.user_withdrawal = user_withdrawal;
+	}
+	public String getUser_delNy() {
+		return user_delNy;
+	}
+	public void setUser_delNy(String user_delNy) {
+		this.user_delNy = user_delNy;
+	}
+	public String getUser_useNy() {
+		return user_useNy;
+	}
+	public void setUser_useNy(String user_useNy) {
+		this.user_useNy = user_useNy;
+	}
 	public String getMemberSeq() {
 		return memberSeq;
 	}

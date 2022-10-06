@@ -11,6 +11,7 @@
     <select id="selectList" resultMap="resultMapObj">
     	SELECT
     		user_id
+    		,memberSeq
     		,user_name
     		,user_email
     		,user_signupDate
@@ -18,6 +19,8 @@
     		,user_useNy
     		,user_delNy
     		,user_favoriteLanguage
+			,user_withdrawal
+			,user_level
     	FROM airLanguage_member
     </select>
     

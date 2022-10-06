@@ -35,15 +35,15 @@
                 <option value="0">N</option>
                 <option value="1">Y</option>
             </select>
-            <input type="text" id="startDate">
-            <input type="text" id="endDate"><br>
+            <input type="text" id="startDate" placeholder="시작일을 입력해주세요.">
+            <input type="text" id="endDate" placeholder="종료일을 입력해주세요."><br>
             <select name="" id="">
                 <option value="">검색조건</option>
                 <option value="0">코드번호</option>
                 <option value="1">코드명(한글)</option>
                 <option value="2">코드명(영어)</option>
             </select>
-            <input type="text">
+            <input type="text"placeholder="검색어를 입력해주세요."> 
             <button type="button"><i class="fa-brands fa-searchengin"></i></button>
             <button ><i class="fa-solid fa-arrow-rotate-right"></i></button>
         </div>
@@ -80,9 +80,7 @@
         </div>
         <div class="button_wrap">
             <button class="btn_delete" type="button"><i class="fa-solid fa-trash"></i></button>
-            <button class="btn_reg" id="btnForm"><i class="fa-solid fa-folder-plus"></i></button>
-        </div>
-        <div class="pagination_wrap">
+            <div class="pagination_wrap">
             <ul class="pagination modal-2">
 	            <c:if test="${vo.startPage gt vo.pageNumToShow}">
 	                <li> <a href="javascript:goList(${vo.startPage - 1})" class="prev">&laquo </a></li>
@@ -101,8 +99,10 @@
                 	<li><a  class="next" href="javascript:goList(${vo.endPage + 1})">  &raquo;</a></li>
                 </c:if>	
             </ul>
-            <br>
-       	</div>
+       		</div>
+            <button class="btn_reg" id="btnForm"><i class="fa-solid fa-folder-plus"></i></button>
+        </div>
+        
     </form>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>

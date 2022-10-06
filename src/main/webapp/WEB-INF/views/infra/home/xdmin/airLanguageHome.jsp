@@ -100,9 +100,9 @@
         <span class="custom-select">
         <select id="shOption" name="shOption">
             <option value=""<c:if test="${empty vo.shOption}">selected</c:if>>언어를 선택하세요</option>
-            <option value="1"<c:if test="${vo.shOption eq 1}">selected</c:if>>영어</option>
-            <option value="2"<c:if test="${vo.shOption eq 2}">selected</c:if>>일본어</option>
-            <option value="3"<c:if test="${vo.shOption eq 3}">selected</c:if>>한국어</option>
+            <option value="9"<c:if test="${vo.shOption eq 9}">selected</c:if>>영어</option>
+            <option value="10"<c:if test="${vo.shOption eq 10}">selected</c:if>>일본어</option>
+            <option value="11"<c:if test="${vo.shOption eq 11}">selected</c:if>>한국어</option>
         </select>
         </span>
         <p>에 대한</p>

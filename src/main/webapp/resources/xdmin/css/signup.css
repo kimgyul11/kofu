@@ -43,11 +43,25 @@
 			height:100%;
 			object-fit:cover;
 		}
-		#profile-bottom{
-			width:150px;
+		/* #profile-bottom{
+			width:45%;
 			height:50x;
 			border:1px solid;
-			border-radius:10px;
+			border-radius:5px;
 			text-align:center;
 			margin:auto;
+		} */
+		.fileWrap{
+			margin:auto;
+			text-align: center;
 		}
+		label{
+			font-size:1.0rem;
+			letter-spacing:-1px;
+			padding:5px;
+			border:1px solid #f5f5f5;
+			background : #cfd8dc;
+			border-radius:5px;
+			width:25%;
+		}
+		

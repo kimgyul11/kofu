@@ -50,8 +50,9 @@
 							<div class="box">
 								<img class="profile" src="https://cdn.pixabay.com/photo/2017/02/25/22/04/user-icon-2098873_960_720.png">
 							</div>
-							<div id="profile-bottom">
-								이미지를 선택하세요
+							<div class="fileWrap">
+								<label for="imgupload">이미지 선택</label>
+								<input type="file" id="imgupload" style="display:none;"></input>
 							</div>
 							<hr>
 							<div class="row m-2">

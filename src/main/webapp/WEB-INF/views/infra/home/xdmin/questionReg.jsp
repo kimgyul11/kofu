@@ -17,6 +17,7 @@
 <body>
 <form name="form"> 
 <input type="hidden" name="questionSeq">
+<input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
@@ -29,18 +30,17 @@
 	<p>언어를 선택해주세요</p>
 	<select  id="language_select"name='language_select' placeholder="언어를 선택해주세요">
 		<option>선택</option>
-		<option value="1" <c:if test="${item.language_select eq 1 }">selected</c:if>>한국어</option>
-		<option value="2" <c:if test="${item.language_select eq 2 }">selected</c:if>>영어</option>
-		<option value="3" <c:if test="${item.language_select eq 3 }">selected</c:if>>프랑스어</option>
-		<option value="4" <c:if test="${item.language_select eq 4 }">selected</c:if>>일본어</option>
-		<option value="5" <c:if test="${item.language_select eq 5 }">selected</c:if>>베트남어</option>
+		<option value="9" <c:if test="${item.language_select eq 9 }">selected</c:if>>한국어</option>
+		<option value="10" <c:if test="${item.language_select eq 10 }">selected</c:if>>중국어</option>
+		<option value="11" <c:if test="${item.language_select eq 11 }">selected</c:if>>일본어</option>
+		<option value="12" <c:if test="${item.language_select eq 12 }">selected</c:if>>영어</option>
 	</select>
 	<p>에 대한 </p>
 	<div class="textbox">
 		<textarea name="content" id="content" placeholder="단어나 문장을 입력해보세요" value="<c:out value="${item.content }"/>"></textarea>
 	</div>
 	
-	<input type="text" value="<c:out value="${sessId }"/>" id="userID" name="userID">
+	
 	<ul class="buttonlist">
 	    <li><i class="fa-regular fa-image"></i></li>
 	    <li><i class="fa-solid fa-microphone"></i></li>

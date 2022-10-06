@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-
+<jsp:useBean id="CodeServiceImpl" class="com.kofu.infra.modules.code.CodeServiceImpl"/>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -24,6 +24,7 @@
 
     <!-- 질문리스트 시작-->
     <div class="container">
+    <c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
     <c:choose>
     	<c:when test="${fn:length(list) eq 0}">
 			<p>검색조건이 없습니다.
@@ -38,7 +39,11 @@
 		                </div>
 		            <div class="bubble">
 		                <ul class="bubble_head">
-		                    <li>질문 언어 :<c:out value="${list.language_select}"/></li>
+		                <li>
+		                <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
+		                   <c:if test="${list.language_select eq Language.ccSeq}"> 질문 언어 :<c:out value="${Language.cc_name }"/></c:if>
+		                </c:forEach>
+		                </li>
 		                    <li>작성자 : <c:out value="${list.userID }"/></li>
 		                    <li>작성일 : <c:out value="${list.writetime }"/></li>
 		                </ul>

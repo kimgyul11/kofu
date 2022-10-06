@@ -81,10 +81,10 @@
 	    FROM question
 	    WHERE 1=1
      	<choose>
-			<when test="shOption == 1">AND content LIKE CONCAT('%',#{shValue},'%'}</when>
-			<when test="shOption == 2">AND content LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND content LIKE CONCAT('%',#{shValue},'%')</when>
-		</choose>  
+			<when test="shOption == 9">AND  language_select = #{language_select} AND content LIKE CONCAT('%',#{shValue},'%'}</when>
+			<when test="shOption == 10">AND language_select = #{language_select} AND content LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 11">AND language_select = #{language_select} AND content LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>     
 	</select>	
 	
 </mapper>

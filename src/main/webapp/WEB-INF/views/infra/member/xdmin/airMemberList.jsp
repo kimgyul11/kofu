@@ -48,22 +48,31 @@
             <table>
                 <tr>
                     <th class="num"><input type="checkbox"></th>
-                    <th class="num">-</th>
-                    <th class="codename"></th>
+                    <th class="num">회원번호</th>
+                    <th class="num">등급</th>
+                    <th class="codename">아이디</th>
                     <th class="codename">이름</th>
+                    <th class="codename">이메일</th>
                     <th class="num">성별</th>
-                    <th class="num">사용여부</th>
-                    <th class="num">탈퇴여부</th>
+                    <th class="codename">관심언어</th>
+                    <th class="num">삭제여부</th>
+                    <th class="codename">가입일</th>
+                    <th class="codename">탈퇴일</th>
+                    
                 </tr>
                 <c:forEach items="${list}" var="list" varStatus="status">
 	                <tr>
 	                    <td><input type="checkbox"></td>
+	                    <td><c:out value="${list.memberSeq}"/></td>
+	                    <td><c:out value="${list.user_level}"/></td>
 	                    <td><c:out value="${list.user_id}"/></td>
+	                    <td><c:out value="${list.user_name}"/></td>
 	                    <td><c:out value="${list.user_email}"/></td>
-	                    <td><c:out value="${list.user_id}"/></td>
-	                    <td><c:out value="${list.user_id}"/></td>
-	                    <td><c:out value="${list.user_id}"/></td>
-	                    <td><c:out value="${list.user_id}"/></td>
+	                    <td><c:out value="${list.user_gender}"/></td>
+	                    <td><c:out value="${list.user_favoriteLanguage}"/></td>
+	                    <td><c:out value="${list.user_delNy}"/></td>
+	                    <td><c:out value="${list.user_signupDate}"/></td>
+	                    <td><c:out value="${list.user_withdrawal}"/></td>
 	                </tr> 
                 </c:forEach> 
             </table>

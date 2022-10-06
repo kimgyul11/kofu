@@ -12,6 +12,11 @@ public class HomeController {
 	@Autowired
 	HomeServiceImpl service;
 	
+	@RequestMapping(value = "/")
+	public String startHome() {
+		return "infra/home/xdmin/startpage";
+	}
+	
 	@RequestMapping(value = "/airLanguageHome")
 	public String airLanguageHome() {
 		return "infra/home/xdmin/airLanguageHome";
