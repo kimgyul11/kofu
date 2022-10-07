@@ -29,12 +29,13 @@
 	    	,a.language_select    
     	FROM question a
     	WHERE 1=1
-	   <!--  ORDER BY a.writetime DESC -->
+	   	ORDER BY a.writetime DESC
 	    
 	    <choose>
 			<when test="shOption == 9"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 9 </when>
 			<when test="shOption == 10">AND a.language_select = 10 AND content LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 11"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 11</when>
+			<when test="shOption == 11"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 12</when>
 		</choose>    
 	</select>
 	
