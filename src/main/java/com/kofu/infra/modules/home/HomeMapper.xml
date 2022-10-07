@@ -28,12 +28,13 @@
 	    	,a.userID
 	    	,a.language_select    
     	FROM question a
-	    ORDER BY a.writetime DESC
+    	WHERE 1=1
+	   <!--  ORDER BY a.writetime DESC -->
 	    
 	    <choose>
-			<when test="shOption == 1">AND content LIKE CONCAT('%',#{shValue},'%'}</when>
-			<when test="shOption == 2">AND content LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND content LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 9"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 9 </when>
+			<when test="shOption == 10">AND a.language_select = 10 AND content LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 11"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 11</when>
 		</choose>    
 	</select>
 	
@@ -71,7 +72,7 @@
 		</selectKey>
 	</insert>
 	
-	<!-- 빠른검색 -->
+<!-- 	
 	<select id="homeSearch" resultMap="resultMapObj">
 		SELECT
 			a.content
@@ -81,10 +82,11 @@
 	    FROM question
 	    WHERE 1=1
      	<choose>
-			<when test="shOption == 9">AND  language_select = #{language_select} AND content LIKE CONCAT('%',#{shValue},'%'}</when>
-			<when test="shOption == 10">AND language_select = #{language_select} AND content LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 11">AND language_select = #{language_select} AND content LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 9">AND  language_select = 9 AND content LIKE CONCAT('%',#{shValue},'%'}</when>
+			<when test="shOption == 10">AND language_select = 10 AND content LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 11">AND language_select = 11 AND content LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>     
-	</select>	
+	</select>	 
+	-->
 	
 </mapper>

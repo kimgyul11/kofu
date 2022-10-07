@@ -18,7 +18,11 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/airLanguageHome")
-	public String airLanguageHome() {
+	public String airLanguageHome(Model model,HomeVo vo) throws Exception {
+		 System.out.println("vo.getShValue(): " + vo.getShValue());
+		 System.out.println("vo.getShOption(): " + vo.getShOption());
+		 List<Home>list = service.homeSearch(vo);
+		 model.addAttribute("list", list);
 		return "infra/home/xdmin/airLanguageHome";
 	}
 	
@@ -89,12 +93,11 @@ public class HomeController {
 		return "redirect:quelist";
 	}
 	
-	@RequestMapping(value = "homeSearch")
-	public String homeSearch(Model model,HomeVo vo) throws Exception{
-		 System.out.println("vo.getShValue(): " + vo.getShValue());
-		 System.out.println("vo.getShOption(): " + vo.getShOption());
-		 List<Home>list = service.homeSearch(vo);
-		 model.addAttribute("list", list);
-		return "infra/home/xdmin/questionList";
-	}
+	/*
+	 * @RequestMapping(value = "homeSearch") public String homeSearch(Model
+	 * model,HomeVo vo) throws Exception{ System.out.println("vo.getShValue(): " +
+	 * vo.getShValue()); System.out.println("vo.getShOption(): " +
+	 * vo.getShOption()); List<Home>list = service.homeSearch(vo);
+	 * model.addAttribute("list", list); return "infra/home/xdmin/questionList"; }
+	 */
 }

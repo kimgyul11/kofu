@@ -50,10 +50,10 @@
 							<div class="box">
 								<img class="profile" src="https://cdn.pixabay.com/photo/2017/02/25/22/04/user-icon-2098873_960_720.png">
 							</div>
-							<!-- <div class="fileWrap">
+							<div class="fileWrap">
 								<label for="imgupload">이미지 선택</label>
 								<input type="file" id="imgupload" style="display:none;"></input>
-							</div> -->
+							</div>
 							<hr>
 							<div class="row m-2">
 							<p class="m-0">아이디</p>
@@ -175,6 +175,11 @@
 										<div class="file-list"></div>
 									</div>
 								</div>
+								<div class="col-12">
+									<input type="file" name="img" id="img" multiple="multiple">
+									<input type="file" name="img" id="img2" >
+									<button type="button" id="save" >제출</button>
+								</div>
 							</div>
 							<br>
 							<div class="d-flex gap-2 justify-content-center">
@@ -211,6 +216,8 @@
 			</div>
 		</div>
 	</div>
+	
+
 	</form>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -377,6 +384,60 @@ function submitForm() {
         }
     })
 }
+
+/* 밸리데이션 */
+ /* $("#save").on("click", function(){
+
+	var totalFilesize = 0;
+	var obj = document.querySelector("#img").files;
+	var obj2 = document.querySelector("#img2").files; 
+	var fileCount = obj.length;
+	var totalsize = 3;
+	var eachsize = 10*1024;
+	var totalfilesize = 100*1024;
+	var allowedMaxTotalFileNumber = 0;
+	var allowedEachFileSize = 0;
+	var allowedTotalFileSize =0;
+	var extArray1 = ["jpg","gif","png","jpeg","bmp","tif"];
+	
+	allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? totalsize : allowedMaxTotalfileNumber;
+	allowedEachFileSize = allowedEachFileSize == 0 ? eachsize : allowedEachFileSize;
+	allowedTotalFileSize = allowedTotalFileSize == 0 ? totalfilesize : allowedTotalFileSize;
+
+	//허용확장자
+	if(extArray1.indexOf(ext) == -1) {
+		alert("허용된 확장자가 아닙니다.");
+	//		$("#file"+seq).val("");
+		return false;
+	}
+	
+	//전체 파일 허용개수
+	if(allowedMaxTotalFileNumber<fileCount){
+		alert("전체 파일 갯수는" + allowedMaxTotalFileNumber +"개 까지 허용됩니다.")
+		return false;
+	}
+	
+	for(var i=0; i<obj.length;i++){
+		if(obj[i].size > (10*1024)){
+			alert("파일용량이 10MB를 초과하였습니다.");
+			return false;
+		}
+	} */
+	
+	
+/* 	alert(obj2);
+	alert(obj2.length);
+	
+	for(var i=0; i<obj2.length; i++){
+		alert(obj2[i].name + " : " + obj2[i].size)
+		
+		if (curFileCnt > remainFileCnt) {
+        alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
+    	}
+	} */
+	
+})
+
 	</script>
 </body>
 

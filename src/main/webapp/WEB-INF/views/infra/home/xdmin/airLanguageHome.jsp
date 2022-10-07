@@ -19,8 +19,7 @@
 </head>
 <body>
 <form name="form">
-<input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>"/>
-<input type="hidden" name="shValue" value="<c:out value="${vo.shValue}"/>"/>
+
     <!--  헤더영역 -->
     <header class="backcol">
         <nav class="navbar">
@@ -151,7 +150,7 @@
         </div>
     </main>
 </div>
-<!-- 카드영역 시작 -->
+	<!-- 카드영역 시작 -->
 <div class="card_head">
     <h1>어떤질문을 하면 좋을까요?</h1>
     <p>어떤질문을 해야할지 모르겠다면<div class=""></div></p>
@@ -177,7 +176,6 @@
         <a href="quelist">Move</a>
     </div>
 </div>
-
     <!-- 회원가입 페이지 -->
     <div class="signup_container">
         <div class="signup_head">
@@ -188,20 +186,14 @@
             <button>가입하기</button>
         </div>
     </div>
-
-
-
-
-
-
 </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
-var goUrlList = "homeSearch";
+var goUrlList = "quelist";
 var form = $("form[name=form]")
 	$("#btnForm").on("click", function() {
-			$(location).attr("href",goUrlList).submit();
+		form.attr("action", goUrlList).submit();
 	});
 	
 $("#btnLogout").on("click", function(){

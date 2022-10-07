@@ -6,23 +6,76 @@
 
 <mapper namespace="com.kofu.infra.modules.airmembers.AirMembersMapper">
     <resultMap id="resultMapObj" type="com.kofu.infra.modules.airmembers.AirMembers"></resultMap>
+	
+	<!-- 공통사항s -->
+	<sql id="memberCommon">
+		FROM airLanguage_member a
+		WHERE 1=1
+		<if test="startDate != null and !startDate.equals('') and endDate != null and !endDate.equals('')">
+			AND a.user_signupDate BETWEEN #{startDate} AND #{endDate}
+		</if>
+		<if test="shDelNy != null and !shDelNy.equals('')">AND user_delNy = #{shDelNy}</if>
+		<if test="shUseNy != null and !shUseNy.equals('')">AND user_useNy = #{shUseNy}</if>
+		<choose>
+			<when test="shOption == 1">AND memberSeq = #{shValue}</when>
+			<when test="shOption == 2">AND user_name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND user_id LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+	</sql><!-- 공통 검색 사항e -->
+	
+	<!-- pagination -->
+	<sql id="selectListUpperForMysql">
+		select aa.* from (
+	</sql>
+	<sql id="selectListLowerForMysql">	
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+	</sql>
+	
+
 
 	<!-- 리스트출력 -->
     <select id="selectList" resultMap="resultMapObj">
+    	<include refid="selectListUpperForMysql" />
     	SELECT
-    		user_id
-    		,memberSeq
-    		,user_name
-    		,user_email
-    		,user_signupDate
-    		,user_gender
-    		,user_useNy
-    		,user_delNy
-    		,user_favoriteLanguage
-			,user_withdrawal
-			,user_level
-    	FROM airLanguage_member
+    		a.user_id
+    		,a.memberSeq
+    		,a.user_name
+    		,a.user_email
+    		,a.user_signupDate
+    		,a.user_gender
+    		,a.user_useNy
+    		,a.user_delNy
+    		,a.user_favoriteLanguage
+			,a.user_withdrawal
+			,a.user_level
+    	<include refid="memberCommon" />
+    		ORDER BY a.memberSeq DESC
+    	<include refid="selectListLowerForMysql" />		
     </select>
     
+    <!-- 셀렉트원 -->
+    <select id="selectOne" resultMap="resultMapObj">
+    	SELECT
+    		a.user_id
+    		,a.memberSeq
+    		,a.user_name
+    		,a.user_email
+    		,a.user_signupDate
+    		,a.user_gender
+    		,a.user_useNy
+    		,a.user_delNy
+    		,a.user_favoriteLanguage
+			,a.user_withdrawal
+			,a.user_level
+		FROM airLanguage_member a
+		WHERE 1=1 
+			AND memberSeq = #{memberSeq}
+    </select>
     
+	<!-- 페이지네이션 페이지 카운트 시작 -->
+	<select id="selectOneCounting" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="memberCommon" />
+	</select><!-- 페이지네이션 페이지 카운트 종료  -->      
 </mapper>

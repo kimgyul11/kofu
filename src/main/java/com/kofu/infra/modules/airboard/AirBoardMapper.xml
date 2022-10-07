@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.kofu.infra.modules.airboard.AirBoardMapper">
+
+	<resultMap id="resultMapObj" type="com.kofu.infra.modules.airboard.AirBoard"></resultMap>
+<!-- 공통영역 -->
+<sql id='boardCommon'>
+	FROM question a
+	WHERE 1=1
+	
+</sql>
+
+	<select id="selectList" resultMap="resultMapObj">
+	SELECT
+		a.questionSeq
+		,a.content
+		,a.writetime
+		,a.lastModTime
+		,a.userID
+		,a.language_select
+		,a.lastModTime
+		,a.questionDelNy
+		FROM question a
+		
+	</select>
+
+</mapper>	

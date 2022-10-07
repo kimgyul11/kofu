@@ -16,32 +16,35 @@
 </head>
 <body>
 <form name="form" autocomplete="off">
+<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+<input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq}"/>">
 	<!--네비게이션바,사이드메뉴s -->
 	<%@include file="../../../infra/includeV1/xdminMenu.jsp"%>
 	<!--네비게이션바,사이드메뉴e -->
     <div class="table_wrap">
         <div class="search_wrap">
-            <select name="" id="">
-                <option value="">사용여부</option>
-                <option value="0">N</option>
-                <option value="1">Y</option>
+            <select name="shUseNy" id="shUseNy">
+                <option value="" <c:if test="${empty vo.shUseNy}">selected</c:if>>사용여부</option>
+				<option value='0' <c:if test="${vo.shUseNy eq 0}">selected</c:if>>N</option>
+				<option value='1' <c:if test="${vo.shUseNy eq 1}">selected</c:if>>Y</option>
             </select>
-            <select name="" id="">
-                <option value="">삭제여부</option>
-                <option value="0">N</option>
-                <option value="1">Y</option>
+            <select name='shDelNy' id='shDelNy'>
+                <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
+				<option value='0' <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
+				<option value='1' <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
             </select>
-            <input type="text" >
-            <input type="text" ><br>
-            <select name="" id="">
-                <option value="">검색조건</option>
-                <option value="0">코드번호</option>
-                <option value="1">코드그룹명(한글)</option>
-                <option value="2">코드그룹명(영어)</option>
+            <input type="text" id="startDate" placeholder="시작일을 선택" name="startDate"<c:out value="${vo.startDate }"/>>
+            <input type="text" id="endDate" placeholder="종료일을 선택" name="endDate" <c:out value="${vo.endDate }"/>><br>
+            <select name="shOption" id="shOption">
+                <option value=""<c:if test="${empty vo.shOption}">selected</c:if>>검색조건</option>
+                <option value="1"<c:if test="${vo.shOption eq 1}">selected</c:if>>회원번호</option>
+                <option value="2"<c:if test="${vo.shOption eq 2}">selected</c:if>>유저이름</option>
+                <option value="3"<c:if test="${vo.shOption eq 3}">selected</c:if>>유저아이디</option>
             </select>
-            <input type="text" id="shValue" name="shValue" placeholder="검색어를 입력해주세요." >
-            <button type="button"><i class="fa-brands fa-searchengin"></i></button>
-            <button ><i class="fa-solid fa-arrow-rotate-right"></i></button>
+            <input type="text" value="<c:out value="${vo.shValue }"/>" id="shValue" name="shValue" placeholder="검색어를 입력해주세요." >
+            <button type="submit"><i class="fa-brands fa-searchengin"></i></button>
+            <button id="btnReset" name="btnReset" type="button"><i class="fa-solid fa-arrow-rotate-right"></i></button>
         </div>
         <hr>
         <div class="tablelist">
@@ -60,39 +63,54 @@
                     <th class="codename">탈퇴일</th>
                     
                 </tr>
-                <c:forEach items="${list}" var="list" varStatus="status">
-	                <tr>
-	                    <td><input type="checkbox"></td>
-	                    <td><c:out value="${list.memberSeq}"/></td>
-	                    <td><c:out value="${list.user_level}"/></td>
-	                    <td><c:out value="${list.user_id}"/></td>
-	                    <td><c:out value="${list.user_name}"/></td>
-	                    <td><c:out value="${list.user_email}"/></td>
-	                    <td><c:out value="${list.user_gender}"/></td>
-	                    <td><c:out value="${list.user_favoriteLanguage}"/></td>
-	                    <td><c:out value="${list.user_delNy}"/></td>
-	                    <td><c:out value="${list.user_signupDate}"/></td>
-	                    <td><c:out value="${list.user_withdrawal}"/></td>
-	                </tr> 
-                </c:forEach> 
+                <c:choose>
+					<c:when test="${fn:length(list) eq 0}">
+						<tr>
+							<td colspan="11">검색결과가 없습니다.</td>
+						</tr>
+					</c:when>
+				    <c:otherwise>
+		                <c:forEach items="${list}" var="list" varStatus="status">
+			                <tr>
+			                    <td><input type="checkbox"></td>
+			                    <td><c:out value="${list.memberSeq}"/></td>
+			                    <td><c:out value="${list.user_level}"/></td>
+			                    <td><c:out value="${list.user_id}"/></td>
+			                    <td><c:out value="${list.user_name}"/></td>
+			                    <td><c:out value="${list.user_email}"/></td>
+			                    <td><c:out value="${list.user_gender}"/></td>
+			                    <td><c:out value="${list.user_favoriteLanguage}"/></td>
+			                    <td><c:out value="${list.user_delNy}"/></td>
+			                    <td><c:out value="${list.user_signupDate}"/></td>
+			                    <td><c:out value="${list.user_withdrawal}"/></td>
+			                </tr> 
+		                </c:forEach>
+	                </c:otherwise>
+	        	</c:choose> 
             </table>
         </div>
         <div class="button_wrap">
             <button class="btn_delete" type="button"><i class="fa-solid fa-trash"></i></button>
             <div class="pagination_wrap">
 	            <ul class="pagination modal-2">
-	                <li><a href="#" class="prev">&laquo </a></li>
-	                <li><a href="#">1</a></li>
-	                <li> <a href="#">2</a></li>
-	                <li> <a href="#" class="active">3</a></li>
-	                <li> <a href="#">4</a></li>
-	                <li> <a href="#">5</a></li>
-	                <li> <a href="#">6</a></li>
-	                <li> <a href="#">7</a></li>
-	                <li> <a href="#">8</a></li>
-	                <li> <a href="#">9</a></li>
-	                <li><a href="#" class="next">  &raquo;</a></li>
-	            </ul><br> 
+		            <c:if test="${vo.startPage gt vo.pageNumToShow}">
+		                <li> <a href="javascript:goList(${vo.startPage - 1})" class="prev">&laquo </a></li>
+		            </c:if>
+	            	<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+		            	<c:choose>    
+		                <c:when test="${i.index eq vo.thisPage}">
+		                	<li> <a  class="active" href="javascript:goList(${i.index})">${i.index}</a></li>
+		                </c:when>
+		                <c:otherwise>
+		                	<li><a href="javascript:goList(${i.index})">${i.index}</a></li>
+		                </c:otherwise>
+		                </c:choose>
+					</c:forEach> 
+	                <c:if test="${vo.endPage ne vo.totalPages}">   
+	                	<li><a  class="next" href="javascript:goList(${vo.endPage + 1})">  &raquo;</a></li>
+	                </c:if>	
+	            </ul>
+	            <br>
         	</div>
             <button class="btn_reg"><i class="fa-solid fa-folder-plus"></i></button>
         </div>
@@ -140,6 +158,29 @@
                 }
             });
     });
+    var seq = $("input:hidden[name=memberSeq]");
+	var goUrlForm = "/AircodeGroup/codeGroupView";
+	var goUrlList = "/xadmin/memberlist";
+	var form = $("form[name=form]")
+		$('#btnForm').on("click", function() {
+		goForm(0);                
+	});
+
+	goForm = function(keyValue) {
+    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+    	seq.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}
+
+	$("#btnReset").on("click", function() {
+			$(location).attr("href",goUrlList);
+	});
+	
+/* 페이지네이션 리스트*/
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlList).submit();
+	}
 
 </script>
 
