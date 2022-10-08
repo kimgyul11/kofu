@@ -62,13 +62,14 @@
                     <th class="codename">등록일</th>
                     <th class="codename">수정일</th>
                 </tr>
+                
                 <c:forEach items="${list }" var ="list" varStatus="status">
-	                <tr>
+	                <tr onclick="javascript:goForm(<c:out value="${list.ccSeq }"/>)" style="cursor:hand">
 	                    <td><input type="checkbox"></td>
-	                    <td><a href="/xdmin/codeView?ccSeq=<c:out value="${list.ccSeq }"/>"><c:out value="${list.ccSeq }"/></a></td>
+	                    <td><c:out value="${list.ccSeq }"/></a></td>
 	                    <td><c:out value="${list.cc_name }"/></td>
 	                    <td><c:out value="${list.cc_nameEng }"/></td>
-	                    <td><c:out value="${list.ccgGroupNameKor }"/></td>
+	                    <td><c:out value="${list.ccgGroupNamekor }"/></td>
 	                    <td><c:out value="${list.ccgSeq }"/></td>
 	                    <td><c:out value="${list.cc_useNy }"/></td>
 	                    <td><c:out value="${list.cc_delNy }"/></td>

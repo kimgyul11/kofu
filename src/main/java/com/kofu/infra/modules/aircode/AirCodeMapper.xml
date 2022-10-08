@@ -22,6 +22,8 @@
 		</choose>
 	</sql><!-- 공통영역 e -->
 	
+	
+	
 <!-- pagination s-->
 	<sql id="selectListUpperForMysql">
 		select aa.* from (
@@ -49,6 +51,14 @@
 	ORDER BY a.ccSeq DESC 
 	<include refid="selectListLowerForMysql" /> 
 </select><!-- 메인리스트e  -->
+
+<!--코드그룹셀렉리스트   -->
+<select id="ccgSelectView" resultMap="resultMapObj" >
+	SELECT
+		ccgSeq
+ 		ccgGroupNamekor
+ 	FROM ccg
+</select>
 
 <!-- 페이지네이션 페이지 카운트 시작 -->
 	<select id="selectOneCounting" resultType="Integer">
@@ -80,6 +90,7 @@
 		    ,cc_delNy
 		    ,cc_useNy
 		    ,cc_InsertDate
+		    ,ccg_seq
 		)
 		VALUES(
 			#{cc_nameEng}
@@ -87,7 +98,7 @@
 		    ,#{cc_delNy}
 		    ,#{cc_useNy}
 		    ,now()
-			
+			,#{ccg_seq}
 		)
 		<selectKey resultType="String" keyProperty="ccSeq" order="AFTER">
 			SELECT last_insert_id()

@@ -22,13 +22,13 @@
 	<!--네비게이션바,사이드메뉴e -->
     <div class="container">
         <div class="selectOneWrap">
-            <h1>코드그룹관리<i class="fa-solid fa-pen-fancy"></i></h1>
+            <h1>코드관리<i class="fa-solid fa-pen-fancy"></i></h1>
             <div class="inputlabel">코드명(한글)</div>
                 <input type="text" id="cc_name"name="cc_name" value="<c:out value ="${item.cc_name }"/>">
             <div class="inputlabel">코드명(영어)</div>
                 <input type="text" id="cc_nameEng"name="cc_nameEng" value="<c:out value ="${item.cc_nameEng }"/>"><br>
             <div class="inputlabel">삭제여부</div>
-                <select name="ccgDelNy" id="cc_delNy">
+                <select name="cc_delNy" id="cc_delNy">
                     <option value=""></option>
                     <option value="0"<c:if test="${item.cc_delNy eq 0 }">selected</c:if>>N</option>
                     <option value="1"<c:if test="${item.cc_delNy eq 1 }">selected</c:if>>Y</option>
@@ -38,11 +38,21 @@
                     <option value=""></option>
                     <option value="0"<c:if test="${item.cc_useNy eq 0 }">selected</c:if>>N</option>
                     <option value="1"<c:if test="${item.cc_useNy eq 1 }">selected</c:if>>Y</option>
-                </select><br>
-                
-            <select name="" id="">
-                <option value=""></option>
-            </select>
+                </select><br>	
+
+            <div class="inputlabel">코드그룹 </div>
+                <select  name="ccg_seq" id="ccg_seq">
+					<c:forEach items="${list}" var="list" varStatus="status">
+						<c:choose>
+							<c:when test="${empty item.ccSeq}">
+								<option value="<c:out value="${list.ccgSeq }"/>"><c:out value="${list.ccgGroupNamekor}"/></option>
+							</c:when>
+							<c:otherwise>
+								<option value="<c:out value="${list.ccgSeq }"/>" <c:if test="${list.ccgSeq eq item.ccg_seq}">selected</c:if>><c:out value="${list.ccgGroupNamekor}"/></option>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</select>
                 
            <%--  <div class="inputlabel">코드개수</div>    
             <input type="text" value="<c:out value ="${item.countCCG }"/>" readonly> --%>

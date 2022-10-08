@@ -10,6 +10,7 @@
 body{
     margin: 0; 
     box-sizing: border-box;
+
 }    
 table{
     width: 100%;
@@ -34,6 +35,7 @@ th{
     background: #eceff1;
     overflow: hidden;
 }
+
 td{
     height: 30px;
     overflow: hidden;
@@ -145,7 +147,6 @@ select{
 .tablelist{
     width: 100%;
     display: inline-block;
-    
 }
 .num, .checkbox{
     width: 8%;

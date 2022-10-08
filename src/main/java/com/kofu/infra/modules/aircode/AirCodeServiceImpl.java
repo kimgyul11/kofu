@@ -45,4 +45,8 @@ public class AirCodeServiceImpl implements AirCodeService {
 	public int delete(AirCodeVo vo) throws Exception{
 		return dao.delete(vo);
 	}
+	@Override
+	public List<AirCode> ccgSelectView() throws Exception{
+		return dao.ccgSelectView();
+	}
 }

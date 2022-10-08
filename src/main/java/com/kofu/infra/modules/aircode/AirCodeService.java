@@ -8,6 +8,7 @@ import java.util.List;
 public interface AirCodeService {
 
 	public List<AirCode> selectList(AirCodeVo vo) throws Exception;
+	public List<AirCode> ccgSelectView()throws Exception;
 	public AirCode selectOne(AirCodeVo vo) throws Exception;
 	public int selectOneCounting(AirCodeVo vo) throws Exception;
 	public int insert(AirCode dto) throws Exception;

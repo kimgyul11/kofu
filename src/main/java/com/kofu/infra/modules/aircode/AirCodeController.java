@@ -31,7 +31,9 @@ public class AirCodeController {
 		
 		AirCode item = service.selectOne(vo);
 		model.addAttribute("item",item);
-	
+		
+		List<AirCode> list = service.ccgSelectView();
+		model.addAttribute("list", list);
 		
 		return "infra/code/xdmin/AirCodeForm";
 	}
