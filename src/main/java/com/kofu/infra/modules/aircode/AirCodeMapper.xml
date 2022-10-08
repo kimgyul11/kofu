@@ -13,7 +13,8 @@
 			LEFT JOIN ccg b ON b.ccgSeq = a.ccg_seq
 		WHERE 1=1
 		<if test="startDate != null and !startDate.equals('') and endDate != null and !endDate.equals('')"> AND a.cc_InsertDate Between #{startDate} AND #{endDate}</if>
-		<if test="shDelNy != null and !shDelNy.equals('')">AND cc_useNy = #{shDelNy}</if>
+		<if test="shDelNy != null and !shDelNy.equals('')">AND cc_delNy = #{shDelNy}</if>
+		<if test="shUseNy != null and !shUseNy.equals('')">AND cc_useNy = #{shUseNy}</if>
 		<choose>
 			<when test="shOption == 1">AND ccSeq = #{shValue}</when>
 			<when test="shOption == 2">AND cc_name LIKE CONCAT('%',#{shValue},'%')</when>

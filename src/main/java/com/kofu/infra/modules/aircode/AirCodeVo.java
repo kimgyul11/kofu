@@ -6,12 +6,14 @@ public class AirCodeVo {
 	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;
+	private Integer shUseNy;
 	private String startDate;
 	private String endDate;
 	private String ccSeq;
 	
 //	---------------------- 페이징 -------------------------------------
 	
+
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 갯수
 	private int pageNumToShow = Constants.PAGE_NUM_TO_SHOW;		// 화면에 보여줄 페이징 번호 갯수
@@ -182,4 +184,13 @@ public void setParamsPaging(int totalRows) {
 	public void setCcSeq(String ccSeq) {
 		this.ccSeq = ccSeq;
 	}
+
+	public Integer getShUseNy() {
+		return shUseNy;
+	}
+
+	public void setShUseNy(Integer shUseNy) {
+		this.shUseNy = shUseNy;
+	}
+
 }
