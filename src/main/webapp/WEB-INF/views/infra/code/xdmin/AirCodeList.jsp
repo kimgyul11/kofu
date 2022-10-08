@@ -63,7 +63,13 @@
                     <th class="codename">등록일</th>
                     <th class="codename">수정일</th>
                 </tr>
-                
+               <c:choose>
+              	<c:when test="${fn:length(list) eq 0}">
+				<tr>
+					<td colspan ="10">검색결과가 없습니다.</td> 
+				</tr>
+	             </c:when>
+	             <c:otherwise> 	
                 <c:forEach items="${list }" var ="list" varStatus="status">
 	                <tr onclick="javascript:goForm(<c:out value="${list.ccSeq }"/>)" style="cursor:hand">
 	                    <td><input type="checkbox"></td>
@@ -78,6 +84,8 @@
 	                    <td><c:out value="${list.cc_ModeDate }"/></td>
 	                </tr>
                 </c:forEach>
+                </c:otherwise>
+                </c:choose>
             </table>
         </div>
         <div class="button_wrap">
