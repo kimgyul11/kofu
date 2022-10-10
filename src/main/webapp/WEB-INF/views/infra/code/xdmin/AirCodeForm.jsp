@@ -45,7 +45,8 @@
 					<c:forEach items="${list}" var="list" varStatus="status">
 						<c:choose>
 							<c:when test="${empty item.ccSeq}">
-								<option value="<c:out value="${list.ccgSeq }"/>"><c:out value="${list.ccgGroupNamekor}"/></option>
+								<%-- <option value="<c:out value="${list.ccgSeq }"/>"><c:out value="${list.ccgGroupNamekor}"/></option> --%>
+								<option value="<c:out value="${list.ccgSeq }"/>" <c:if test="${list.ccgSeq eq item.ccg_seq}">selected</c:if>><c:out value="${list.ccgGroupNamekor}"/></option>
 							</c:when>
 							<c:otherwise>
 								<option value="<c:out value="${list.ccgSeq }"/>" <c:if test="${list.ccgSeq eq item.ccg_seq}">selected</c:if>><c:out value="${list.ccgGroupNamekor}"/></option>
