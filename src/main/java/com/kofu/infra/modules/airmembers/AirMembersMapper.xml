@@ -32,8 +32,6 @@
 		limit #{rowNumToShow} offset #{startRnumForMysql}
 	</sql>
 	
-
-
 	<!-- 리스트출력 -->
     <select id="selectList" resultMap="resultMapObj">
     	<include refid="selectListUpperForMysql" />

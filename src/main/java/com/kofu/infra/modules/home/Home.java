@@ -1,6 +1,7 @@
 package com.kofu.infra.modules.home;
 
 public class Home {
+	
 	// 질문 리스트
 	private String content;
 	private String user_id;
@@ -15,6 +16,13 @@ public class Home {
 	private Integer questionDelNy;
 	
 	
+	//질문 답변
+	private String ansSeq;
+	private String ansWriteTime;
+	private String ansUserId;
+	private String ansContent;
+	
+	
 	
 	// -------------------------------------
 	
@@ -22,6 +30,30 @@ public class Home {
 	
 	public String getContent() {
 		return content;
+	}
+	public String getAnsSeq() {
+		return ansSeq;
+	}
+	public void setAnsSeq(String ansSeq) {
+		this.ansSeq = ansSeq;
+	}
+	public String getAnsWriteTime() {
+		return ansWriteTime;
+	}
+	public void setAnsWriteTime(String ansWriteTime) {
+		this.ansWriteTime = ansWriteTime;
+	}
+	public String getAnsUserId() {
+		return ansUserId;
+	}
+	public void setAnsUserId(String ansUserId) {
+		this.ansUserId = ansUserId;
+	}
+	public String getAnsContent() {
+		return ansContent;
+	}
+	public void setAnsContent(String ansContent) {
+		this.ansContent = ansContent;
 	}
 	public Integer getQuestionDelNy() {
 		return questionDelNy;

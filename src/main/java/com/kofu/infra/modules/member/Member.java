@@ -1,6 +1,11 @@
 package com.kofu.infra.modules.member;
 
-public class Member {
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.kofu.infra.common.base.Base;
+
+public class Member extends Base{
 	
 	private String memberSeq;
 	private String user_id;
@@ -15,9 +20,15 @@ public class Member {
 	private String user_email;
 	private String user_favoriteLanguage;
 	//-----------------------------------------------------------------------------
+	private MultipartFile[] uploadedImage;
 	
 	
-	
+	public MultipartFile[] getUploadedImage() {
+		return uploadedImage;
+	}
+	public void setUploadedImage(MultipartFile[] uploadedImage) {
+		this.uploadedImage = uploadedImage;
+	}
 	public Integer getUser_gender() {
 		return user_gender;
 	}

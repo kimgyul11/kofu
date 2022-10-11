@@ -25,4 +25,12 @@ public class HomeDao {
 		return result;
 	}
 	public List<Home> homeSearch(HomeVo vo){return sqlSession.selectList(namespace + ".homeSearch",vo);}
+	
+	
+	public Home selectOne(HomeVo vo) {
+		Home result = sqlSession.selectOne(namespace + ".selectOne", vo);
+		System.out.println("dao result :"+ result);
+		return result;
+		
+	}
 }

@@ -15,9 +15,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>AIRLANGUAGE</title>
 </head>
 <body>
+
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
@@ -33,24 +34,23 @@
 					<!-- 코멘트 전체 상자. -->
 					<div class="comment-box">
 						<div class="comment-head">
-							<h6 class="comment-name by-author"><a href="#">kimgiyul</a></h6>
-							<span>8월 15일 12:12</span>
+							<h6 class="comment-name by-author"><a href="#"><c:out value="${item.userID }"/></a></h6>
+							<span><c:out value="${item.writetime }"/></span>
 							<i class="fa-solid fa-comment"></i>
 							<i class="fa fa-heart"></i>
                             <i class="fa-solid fa-bookmark"></i>
 						</div>
 						<div class="comment-content">
-							"나랏말싸미 듕귁에 달아 문자와로 서르 사맛디 아니할쎄 이런 젼차로 어린 백셩이 니르고져 홀 배 이셔도 마참내 제 뜨들 시러펴디 몯 할 노미 하니라 내 이랄 위하야 어엿비 너겨 새로 스믈 여듧 짜랄 맹가노니 사람마다 해여 수비 니겨 날로 쑤메 뼌한킈 하고져 할따라미니라 "
-                            을 영어로 번역해주세요
+							<c:out value="${item.content }"/>
                         </div>
 					</div>
 				</div>
 				<!-- 답글달았을때 리스트입니다. -->
-				<ul class="comments-list reply-list">
+				<!-- <ul class="comments-list reply-list">
 					<li>
-						<!-- 이미지 -->
+						이미지
 						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-						<!-- Contenedor del Comentario -->
+						Contenedor del Comentario
 						<div class="comment-box">
 							<div class="comment-head">
 								<h6 class="comment-name"><a href="http://creaticode.com/blog">NON2312</a></h6>
@@ -66,9 +66,9 @@
 					</li>
 
 					<li>
-						<!-- 이미지 -->
+						이미지
 						<div class="comment-avatar"><img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt=""></div>
-						<!-- Contenedor del Comentario -->
+						Contenedor del Comentario
 						<div class="comment-box">
 							<div class="comment-head">
 								<h6 class="comment-name by-author"><a href="#">kimgiyul</a></h6>
@@ -82,7 +82,7 @@
 							</div>
 						</div>
 					</li>
-				</ul>
+				</ul> -->
 			</li>
 
             <!-- 메인레벨 답변 -->
@@ -93,44 +93,35 @@
 					<!-- Contenedor del Comentario -->
 					<div class="comment-box">
 						<div class="comment-head">
-							<h6 class="comment-name"><a href="http://creaticode.com/blog">NON2312</a></h6>
-							<span>8월15일 16:42</span>
+							<h6 class="comment-name"><a href="http://creaticode.com/blog"><c:out value="${item.ansUserId }"/></a></h6>
+							<span><c:out value="${item.ansWriteTime }"/></span>
 							<i class="fa-solid fa-comment"></i>
 							<i class="fa fa-heart"></i>
                             <i class="fa-solid fa-bookmark"></i>
 						</div>
 						<div class="comment-content">
-                            It's difficult to translate into English.
+                            <c:out value="${item.ansContent }"/>
                         </div>
 					</div>
 				</div>
 			</li>
-            <li>
-                <div class="comment-main-level">
-					<!-- 이미지 -->
-					<div class="comment-avatar"><img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt=""></div>
-					<!-- 코멘트 전체 상자. -->
-					<div class="comment-box">
-						<div class="comment-head">
-							<h6 class="comment-name by-author"><a href="#">kimgiyul</a></h6>
-							<span>8월 15일 12:12</span>
-							<i class="fa-solid fa-comment"></i>
-							<i class="fa fa-heart"></i>
-                            <i class="fa-solid fa-bookmark"></i>
-						</div>
-						<div class="comment-content">
-							감사합니다
-                        </div>
-					</div>
-				</div>
-            </li>
 		</ul>
-        
 	</div>
+	<div class="container">
+        <div class="box-container">
+            <div class="box">
+                <textarea name="" id="" cols="30" rows="10" placeholder="상대방을 비방하거나 비속어 사용시 계정이 정지될 수 있습니다."></textarea>
+            </div>
+            <button class="commentBtn" type="button">작성</button>
+            <button class="commentBtn" type="button">이미지</button>
+        </div>
+    </div>    
 
-
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script>
+    
+    	var seq = $("input:hidden[name=questionSeq]");
         var dd_main = document.querySelector(".dd_main");
     
         dd_main.addEventListener("click", function(){

@@ -10,14 +10,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>로그인</title>
+	<title>회원가입</title>
 	<!-- CDN : content Delivery Network  -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="stylesheet" href="/resources/xdmin/css/signup.css" />
 </head>
 <body class="ng-font2">
-<form name=form action="signup">
+<form name=form action="signup" enctype="multipart/form-data">
 <input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy">
 <input type="hidden" name="memberSeq">
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -168,18 +168,22 @@
 								  		<option value="하">하</option>
 									</select>
 								</div>
-								<div class="col-12 mt-2">
+								<!-- <div class="col-12 mt-2">
 									<div class="filewrap">
 										<label class="imguploadtwo"for="imguploadtwo">업로드 <i class="fa-solid fa-image"></i></label>
 										<input style="display: none;" type="file" id="imguploadtwo"onchange="addFile(this);" multiple />
 										<div class="file-list"></div>
 									</div>
-								</div>
-								<div class="col-12">
-									<input type="file" name="img" id="img" multiple="multiple">
-									<input type="file" name="img" id="img2" >
+								</div> 
+								<div class="col-12">         
+									<input type="file" name="uploadedImage" id="uploadedImage" multiple="multiple">
 									<button type="button" id="save" >제출</button>
 								</div>
+							</div>
+							-->
+							<div class="col-12">         
+								<input type="file" name="uploadedImage" id="uploadedImage" multiple="multiple">
+								<button type="button" id="save" >제출</button>
 							</div>
 							<br>
 							<div class="d-flex gap-2 justify-content-center">
@@ -245,8 +249,6 @@
 		
 		/* ajax ID*/
 		$("#user_id").on("focusout", function(){
-			
-			
 				$.ajax({
 					async: true 
 					,cache: false
@@ -285,9 +287,6 @@
 			
 		});
 		
-	/* 파일업로드s */
-var fileNo = 0;
-var filesArr = new Array();
 
 // Ver1.
 /* 첨부파일 추가 */
@@ -384,9 +383,8 @@ function submitForm() {
         }
     })
 }
-
 /* 밸리데이션 */
- /* $("#save").on("click", function(){
+ $("#save").on("click", function(){
 
 	var totalFilesize = 0;
 	var obj = document.querySelector("#img").files;
@@ -422,7 +420,7 @@ function submitForm() {
 			alert("파일용량이 10MB를 초과하였습니다.");
 			return false;
 		}
-	} */
+	}
 	
 	
 /* 	alert(obj2);

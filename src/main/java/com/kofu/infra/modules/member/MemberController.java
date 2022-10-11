@@ -75,9 +75,9 @@ public class MemberController {
 	
 	@RequestMapping(value = "signup")
 	public String signup(Member dto) throws Exception{
+		service.signup(dto);
 		
-		int result = service.signup(dto);
-		System.out.println("controller result: "+result);
+
 		
 		return "infra/login/xdmin/logincomplete";
 	}

@@ -18,6 +18,9 @@
     <title>AirLanguage</title>
 </head>
 <body>
+
+<form name = "form">
+<input type="hidden" name="questionSeq"/>
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
@@ -48,7 +51,7 @@
 		                    <li>작성일 : <c:out value="${list.writetime }"/></li>
 		                </ul>
 		                <div class="bubble_content">
-		                	<a href="queview">
+		                	<a href="javascript:goForm(<c:out value="${list.questionSeq }"/>)">
 		                    	<p><c:out value="${list.content }"/></p>
 		                    </a>
 		                </div>
@@ -74,11 +77,26 @@
             <a href="#">&raquo;</a>
         </div>
     </div>
-
+</form>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
-<script>
-    var dd_main = document.querySelector(".dd_main");
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
 
+	var goUrlForm = "/queview"
+	var form = $("form[name=form]")
+	var seq = $("input:hidden[name=questionSeq]");
+	
+	goForm = function(keyValue) {
+
+		/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+		seq.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}
+	
+	
+    var dd_main = document.querySelector(".dd_main");
+	
     dd_main.addEventListener("click", function(){
         this.classList.toggle("active");
     })

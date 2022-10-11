@@ -60,9 +60,11 @@ public class CodeServiceImpl implements CodeService{
 	@PostConstruct
 	public void selectListCachedCodeArrayList() throws Exception {
 		List<Code> codeListFromDb = (ArrayList<Code>) dao.selectListCachedCodeArrayList();
-//		codeListFromDb = (ArrayList<Code>) dao.selectListCachedCodeArrayList();
-		Code.cachedCodeArrayList.clear(); 
-		Code.cachedCodeArrayList.addAll(codeListFromDb);
+		codeListFromDb = (ArrayList<Code>) dao.selectListCachedCodeArrayList();
+		
+		  Code.cachedCodeArrayList.clear();
+		  Code.cachedCodeArrayList.addAll(codeListFromDb);
+		 
 		System.out.println("cachedCodeArrayList: " + Code.cachedCodeArrayList.size() + " chached !");
 	}
 	
