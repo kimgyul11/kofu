@@ -39,15 +39,16 @@ html{
 	letter-spacing: 2px;
 	font-size: 25px;
 	text-transform: uppercase;
-  margin-right: 200px;
+  	margin-right: 200px;
 }
 
 textarea{
     width: 100%;
-    height: 100%;
+    height: 90%;
     border: none;
     padding:10px;
     resize: none;
+
 }
 .container{
     width:100%;
@@ -56,19 +57,12 @@ textarea{
     position: fixed;
 }
 .box-container{
-    height: 200px;
-    width: 100%;
-    height:100%;
-    background:#444;
+    width: 40%;
+    height:70%;
+    background:#eeeeee;
     border-radius: 5px;
     padding: 15px;
-    
-}
-.box{
-    width: 100%;
-    border-radius: 5px;
-    background: #f8f8f8;
-    overflow-y: auto;
+    margin:auto;
 }
 .commentBtn{
     width: 50px;
