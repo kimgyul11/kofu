@@ -24,9 +24,14 @@
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
-
     <!-- 질문리스트 시작-->
     <div class="container">
+    	<ul class="menubuttonList">
+			<li><button>한국어</button>
+			<li><button>중국어</button>
+			<li><button>영어</button>
+			<li><button>일본어</button>
+		</ul>
     <c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
     <c:choose>
     	<c:when test="${fn:length(list) eq 0}">
@@ -64,8 +69,7 @@
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>
-    </div>
-    <div class="pagination_wrap">
+	<div class="pagination_wrap">
         <div class="pagination">
             <a href="#">&laquo;</a>
             <a href="#">1</a>
@@ -76,6 +80,7 @@
             <a href="#">6</a>
             <a href="#">&raquo;</a>
         </div>
+    </div>
     </div>
 </form>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
