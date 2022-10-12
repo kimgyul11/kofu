@@ -40,8 +40,9 @@ public class HomeController {
 	 */
 
 	@RequestMapping(value = "quelist")
-	public String quelist(Model model,HomeVo vo)throws Exception {
-		service.selectOne(vo);
+	public String quelist(@ModelAttribute("vo")HomeVo vo,Model model)throws Exception {
+		
+		vo.setParamsPaging(service.selectOenCount(vo));
 		List<Home>list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
@@ -50,7 +51,6 @@ public class HomeController {
 	@RequestMapping(value = "queview")
 	public String queview(@ModelAttribute("vo")HomeVo vo,Model model) throws Exception {
 		Home result = service.selectOne(vo);
-		
 		model.addAttribute("item",result);
 		return "infra/home/xdmin/questionView";
 	}

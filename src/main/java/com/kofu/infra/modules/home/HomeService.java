@@ -8,5 +8,5 @@ public interface HomeService {
 	public int insert(Home dto) throws Exception;
 	public List<Home> homeSearch(HomeVo vo) throws Exception;
 	public Home selectOne(HomeVo vo) throws Exception;
-	
+	public int selectOenCount(HomeVo vo) throws Exception;
 }

@@ -7,11 +7,19 @@
 <mapper namespace="com.kofu.infra.modules.home.HomeMapper">
 
     <resultMap id="resultMapObj" type="com.kofu.infra.modules.home.Home"></resultMap>
-	
+		<!-- pagination -->
+	<sql id="selectListUpperForMysql">
+		select aa.* from (
+	</sql>
+	<sql id="selectListLowerForMysql">	
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+	</sql>
 
 	
 	<!-- 홈화면 -->
 	<select id="selectList" resultMap="resultMapObj">
+	<include refid="selectListUpperForMysql" />
 	    SELECT
 	    	a.questionSeq
 			,a.content
@@ -26,7 +34,8 @@
 			<when test="shOption == 11"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 11</when>
 			<when test="shOption == 12"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 12</when>
 		</choose>
-	   	ORDER BY a.writetime DESC    
+			ORDER BY a.writetime DESC
+		<include refid="selectListLowerForMysql" />
 	</select>
 	
 	<!-- question view  -->
@@ -46,7 +55,12 @@
 			AND a.questionSeq = #{questionSeq}
 	</select>
 	
-	
+	<!-- 페이지 네이션 카운터 -->
+		<select id="selectOenCount" resultType="Integer">
+			SELECT COUNT(*)
+			FROM question
+			WHERE 1=1
+		</select>
 	<!-- 질문 등록  -->
 	<insert id="insert">
 		INSERT INTO question(

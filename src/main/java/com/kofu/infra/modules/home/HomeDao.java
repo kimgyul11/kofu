@@ -31,6 +31,8 @@ public class HomeDao {
 		Home result = sqlSession.selectOne(namespace + ".selectOne", vo);
 		System.out.println("dao result :"+ result);
 		return result;
-		
+	}
+	public int selectOenCount(HomeVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOenCount",vo);
 	}
 }

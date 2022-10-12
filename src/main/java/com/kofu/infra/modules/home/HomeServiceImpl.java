@@ -31,4 +31,9 @@ public class HomeServiceImpl implements HomeService{
 	public Home selectOne(HomeVo vo) throws Exception{
 		return dao.selectOne(vo);
 	}
+	
+	@Override
+	public int selectOenCount(HomeVo vo) throws Exception{
+		return dao.selectOenCount(vo);
+	}
 }

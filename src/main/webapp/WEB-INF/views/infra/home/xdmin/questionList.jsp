@@ -20,7 +20,10 @@
 <body>
 
 <form name = "form">
-<input type="hidden" name="questionSeq"/>
+<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+<input type="hidden" name="questionSeq"value="<c:out value="${vo.questionSeq}"/>">
+
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
@@ -38,59 +41,73 @@
 			<p>검색조건이 없습니다.
 	    </c:when>
 	    <c:otherwise>
-		    <c:forEach items="${list}" var="list" varStatus="status">
-		        <div class="quelist_box">
-		            <div class="quelist_profile">
-		                <a href="#">
-		                    <img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt="" class="">
-		                </a>
-		                </div>
-		            <div class="bubble">
-		                <ul class="bubble_head">
-		                <li>
-		                <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
-		                   <c:if test="${list.language_select eq Language.ccSeq}"> 질문 언어 :<c:out value="${Language.cc_name }"/></c:if>
-		                </c:forEach>
-		                </li>
-		                    <li>작성자 : <c:out value="${list.userID }"/></li>
-		                    <li>작성일 : <c:out value="${list.writetime }"/></li>
-		                </ul>
-		                <div class="bubble_content">
-		                	<a href="javascript:goForm(<c:out value="${list.questionSeq }"/>)">
-		                    	<p><c:out value="${list.content }"/></p>
-		                    </a>
-		                </div>
-		                <ul class="bubble_footer">
-		                    <li><a href=""><i class="fa-solid fa-bookmark"></i></a></li>
-		                    <li><a href=""><i class="fa-solid fa-comment"></i></a></li>
-		                </ul>
-		            </div>
-		        </div>
+			    <c:forEach items="${list}" var="list" varStatus="status">
+			        <div class="quelist_box">
+			            <div class="quelist_profile">
+			                <a href="#">
+			                    <img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt="" class="">
+			                </a>
+			                </div>
+			            <div class="bubble">
+			                <ul class="bubble_head">
+			                <li>
+			                <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
+			                   <c:if test="${list.language_select eq Language.ccSeq}"> 질문 언어 :<c:out value="${Language.cc_name }"/></c:if>
+			                </c:forEach>
+			                </li>
+			                    <li>작성자 : <c:out value="${list.userID }"/></li>
+			                    <li>작성일 : <c:out value="${list.writetime }"/></li>
+			                </ul>
+			                <div class="bubble_content">
+			                	<a href="javascript:goForm(<c:out value="${list.questionSeq }"/>)">
+			                    	<p><c:out value="${list.content }"/></p>
+			                    </a>
+			                </div>
+			                <ul class="bubble_footer">
+			                    <li><a href=""><i class="fa-solid fa-bookmark"></i></a></li>
+			                    <li><a href=""><i class="fa-solid fa-comment"></i></a></li>
+			                </ul>
+			            </div>
+			        </div>
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>
 	<div class="pagination_wrap">
-        <div class="pagination">
-            <a href="#">&laquo;</a>
-            <a href="#">1</a>
-            <a class="active" href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">&raquo;</a>
-        </div>
-    </div>
+		<ul class="pagination modal-2">
+			<c:if test="${vo.startPage gt vo.pageNumToShow}">
+			<li> <a href="javascript:goList(${vo.startPage - 1})" class="prev">&laquo </a></li>
+			</c:if>
+				<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+					<c:choose>    
+						<c:when test="${i.index eq vo.thisPage}">
+							<li> <a  class="active" href="javascript:goList(${i.index})">${i.index}</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="javascript:goList(${i.index})">${i.index}</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach> 
+			<c:if test="${vo.endPage ne vo.totalPages}">   
+				<li><a  class="next" href="javascript:goList(${vo.endPage + 1})">  &raquo;</a></li>
+			</c:if>	
+		</ul>
+		<br>
+	</div>
     </div>
 </form>
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
-
-	var goUrlForm = "/queview"
-	var form = $("form[name=form]")
 	var seq = $("input:hidden[name=questionSeq]");
+	var goUrlForm = "/queview";
+	var form = $("form[name=form]")
+	var goUrlList = "/quelist";
+	
+	/* 페이지네이션 리스트*/
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlList).submit();
+	}
 	
 	goForm = function(keyValue) {
 
