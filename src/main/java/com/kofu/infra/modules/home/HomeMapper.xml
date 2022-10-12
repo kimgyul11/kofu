@@ -49,6 +49,7 @@
 			,b.ansContent
 			,b.ansUserId
 			,b.ansWriteTime
+			,b.ansQuestionSeq
 		FROM  question a
 		LEFT JOIN answer b ON b.ansQuestionSeq = a.questionSeq
 		WHERE 1=1

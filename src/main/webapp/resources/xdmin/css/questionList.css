@@ -444,6 +444,7 @@ padding: 0;
 }
 .pagination a {
     float: left;
+    width:60px;
     display: block;
     font-size: 14px;
     text-decoration: none;

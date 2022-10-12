@@ -21,6 +21,7 @@ public class Home {
 	private String ansWriteTime;
 	private String ansUserId;
 	private String ansContent;
+	private String ansQuestionSeq;
 	
 	
 	
@@ -30,6 +31,12 @@ public class Home {
 	
 	public String getContent() {
 		return content;
+	}
+	public String getAnsQuestionSeq() {
+		return ansQuestionSeq;
+	}
+	public void setAnsQuestionSeq(String ansQuestionSeq) {
+		this.ansQuestionSeq = ansQuestionSeq;
 	}
 	public String getAnsSeq() {
 		return ansSeq;

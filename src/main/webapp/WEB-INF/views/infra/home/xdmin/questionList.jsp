@@ -58,11 +58,11 @@
 			                    <li>작성자 : <c:out value="${list.userID }"/></li>
 			                    <li>작성일 : <c:out value="${list.writetime }"/></li>
 			                </ul>
-			                <div class="bubble_content">
-			                	<a href="javascript:goForm(<c:out value="${list.questionSeq }"/>)">
+			                <a href="javascript:goForm(<c:out value="${list.questionSeq }"/>)">
+			                	<div class="bubble_content">
 			                    	<p><c:out value="${list.content }"/></p>
-			                    </a>
-			                </div>
+			                	</div>
+			                </a>
 			                <ul class="bubble_footer">
 			                    <li><a href=""><i class="fa-solid fa-bookmark"></i></a></li>
 			                    <li><a href=""><i class="fa-solid fa-comment"></i></a></li>

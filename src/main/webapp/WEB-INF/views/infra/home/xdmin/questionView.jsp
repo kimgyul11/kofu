@@ -18,7 +18,6 @@
     <title>AIRLANGUAGE</title>
 </head>
 <body>
-
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
@@ -64,59 +63,49 @@
 							</div>
 						</div>
 					</li>
-
-					<li>
-						이미지
-						<div class="comment-avatar"><img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt=""></div>
-						Contenedor del Comentario
-						<div class="comment-box">
-							<div class="comment-head">
-								<h6 class="comment-name by-author"><a href="#">kimgiyul</a></h6>
-								<span>8월 15일 18:45</span>
-								<i class="fa-solid fa-comment"></i>
-                                <i class="fa fa-heart"></i>
-                                <i class="fa-solid fa-bookmark"></i>
-							</div>
-							<div class="comment-content">
-								All right. I'll ask you another question
-							</div>
-						</div>
-					</li>
 				</ul> -->
 			</li>
-
+			
             <!-- 메인레벨 답변 -->
-			<li>
-				<div class="comment-main-level">
-					<!-- 이미지 -->
-					<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-					<!-- Contenedor del Comentario -->
-					<div class="comment-box">
-						<div class="comment-head">
-							<h6 class="comment-name"><a href="http://creaticode.com/blog"><c:out value="${item.ansUserId }"/></a></h6>
-							<span><c:out value="${item.ansWriteTime }"/></span>
-							<i class="fa-solid fa-comment"></i>
-							<i class="fa fa-heart"></i>
-                            <i class="fa-solid fa-bookmark"></i>
+            <c:choose>
+            <c:when test="${not empty item.ansQuestionSeq}">
+	            <li>
+					<div class="comment-main-level">
+						<!-- 이미지 -->
+						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+						<!-- Contenedor del Comentario -->
+						<div class="comment-box">
+							<div class="comment-head">
+								<h6 class="comment-name"><a href="http://creaticode.com/blog"><c:out value="${item.ansUserId }"/></a></h6>
+								<span><c:out value="${item.ansWriteTime }"/></span>
+								<i class="fa-solid fa-comment"></i>
+								<i class="fa fa-heart"></i>
+	                            <i class="fa-solid fa-bookmark"></i>
+							</div>
+							<div class="comment-content">
+	                            <c:out value="${item.ansContent }"/>
+	                        </div>
 						</div>
-						<div class="comment-content">
-                            <c:out value="${item.ansContent }"/>
-                        </div>
 					</div>
-				</div>
-			</li>
+				</li>
+			</c:when>
+				<c:otherwise>
+					<div class="hiddenComment">
+						<p><c:out value="${item.userID }"/>님이 당신의 답변을 기다리고 있습니다.
+					</div>
+				</c:otherwise>
+			</c:choose>
 		</ul>
+		<div class="container">
+	        <div class="box-container">
+	            <div class="box">
+	                <textarea name="" id="" cols="30" rows="10" placeholder="상대방을 비방하거나 비속어 사용시 계정이 정지될 수 있습니다."></textarea>
+	            </div>
+	            <button class="commentBtn" type="button">작성</button>
+	            <button class="commentBtn" type="button">이미지</button>
+	        </div>
+    	</div>   
 	</div>
-	<div class="container">
-        <div class="box-container">
-            <div class="box">
-                <textarea name="" id="" cols="30" rows="10" placeholder="상대방을 비방하거나 비속어 사용시 계정이 정지될 수 있습니다."></textarea>
-            </div>
-            <button class="commentBtn" type="button">작성</button>
-            <button class="commentBtn" type="button">이미지</button>
-        </div>
-    </div>    
-
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script>
