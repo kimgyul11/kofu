@@ -34,10 +34,13 @@
 					<div class="comment-box">
 						<div class="comment-head">
 							<h6 class="comment-name by-author"><a href="#"><c:out value="${item.userID }"/></a></h6>
-							<span><c:out value="${item.writetime }"/></span>
-							<i class="fa-solid fa-comment"></i>
-							<i class="fa fa-heart"></i>
-                            <i class="fa-solid fa-bookmark"></i>
+							<span><c:out value="${item.language_select }"/></span>
+							<ul class="iconlist">
+								<li><c:out value="${item.writetime }"/>
+								<li><i class="fa-solid fa-comment"></i>
+								<li><i class="fa fa-heart"></i>
+	                            <li><i class="fa-solid fa-bookmark"></i>
+							</ul>
 						</div>
 						<div class="comment-content">
 							<c:out value="${item.content }"/>
