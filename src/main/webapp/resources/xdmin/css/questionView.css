@@ -9,6 +9,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	list-style: none;
+	font-family: 'SUIT-Medium';
 }
 
 body {
@@ -42,13 +43,6 @@ html{
   	margin-right: 200px;
 }
 
-textarea{
-    width: 100%;
-    height: 90%;
-    border: none;
-    padding:10px;
-    resize: none;
-}
 .commentContainer{
     width:100%;
     height:100%;
@@ -330,8 +324,8 @@ ul {
 /* 댓글부분 전체 감싸는 박스 */
 .comments-container {
   padding-top: 30px;
-  margin: 0 auto 60px;
-  width: 768px;
+  margin: 0 auto 50px;
+  width: 45%;
   font-weight: bold;
 }
 
@@ -349,31 +343,9 @@ ul {
 .comments-list {
   margin-top: 30px;
   position: relative;
+  display:flex;
+  justify-content:space-around;
 }
-
-/* 프로필 연결 라인들 */
-/* .comments-list:before {
-  content: '';
-  width: 2px;
-  height: 100%;
-  background: #424242;
-  position: absolute;
-  left: 32px;
-  top: 0;
-}
-
-.comments-list:after {
-    content: '';
-    position: absolute;
-    background:#fafafa;
-    bottom: 0;
-    left: 27px;
-    width: 7px;
-    height: 7px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-} */
 
 .reply-list:before, .reply-list:after {display: none;}
 .reply-list li:before {
@@ -412,7 +384,6 @@ ul {
     height: 65px;
     position: relative;
     z-index: 99;
-    float: left;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 50px;
@@ -459,9 +430,9 @@ ul {
     display: block;
     border-width: 10px 12px 10px 0;
     border-style: solid;
-    border-color: transparent #FCFCFC;
+    border-color: transparent #212121;
     top: 8px;
-    left: -11px;
+    left: -10px;
 }
 
 
@@ -480,9 +451,8 @@ ul {
     border-radius: 15px;
 }
 .comment-box .comment-head {
-    background: #424242;
+    background: #212121;
     padding: 10px 12px;
-    border-bottom: 1px solid #E5E5E5;
     overflow: hidden;
     -webkit-border-radius: 4px 4px 0 0;
     -moz-border-radius: 4px 4px 0 0;
@@ -538,6 +508,7 @@ ul {
 .comment-box .comment-content {
     background: #FFF;
     padding: 12px;
+    border:1px solid #212121;
     font-size: 15px;
     min-height:150px;
     color: #595959;
@@ -547,11 +518,11 @@ ul {
 
 }
 
-.comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
+.comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #fff;}
 .comment-box .comment-name.by-author:after {
-    content: '글쓴이';
-    background: #212121;
-    color: #FFF;
+    content: 'Writer';
+    background: #fff;
+    color: #0288d1;
     font-size: 12px;
     padding: 3px 5px;
     font-weight: 700;
@@ -560,18 +531,57 @@ ul {
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
-/* 답변안달렸을때 나오는 화면 */
-.hiddenComment{
-	width:70%;
-	height:150px;
-	border:1px solid #bdbdbd;
-	margin:auto;
-	border-radius: 15px;
-	display:flex;
-	align-items: center;
-	justify-content: center;
-	font-size:1.4rem;
+
+/* 답변창 */
+
+.answerWrap{
+	width:100%;
+	height:100%;
+	border:1px solid #212121;
 	
+}
+.answerContent{
+	width:100%;
+	margin:auto;
+	height:200px;
+	padding:15px;
+}
+.answerContent textarea{
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding:10px;
+    resize: none;
+    margin:auto;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.answerContent textarea::placeholder{
+	color:#0d47a1;
+	font-weight: bold;
+	font-size:1.0rem;
+}
+.answerfooter{
+	display:flex;
+	justify-content: space-between;
+	background:#212121;
+	
+}
+.fileupload{
+	display:flex;
+}
+.answerbtn{
+	display:flex;
+	justify-content: end;
+}
+.answerbtn button{
+	width:100px;
+	height:40px;
+	border:1px solid;
+	border-radius: 10px;
+	margin:15px;
+	font-weight: bold;
+	font-size:1.5rem;	
 }
 /** =====================
 * Responsive

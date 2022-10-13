@@ -39,6 +39,7 @@
 	</select>
 	
 	<!-- question view  -->
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.questionSeq
@@ -59,9 +60,16 @@
 	<!-- 페이지 네이션 카운터 -->
 		<select id="selectOenCount" resultType="Integer">
 			SELECT COUNT(*)
-			FROM question
-			WHERE 1=1
+			FROM question a
+	    	WHERE 1=1
+		    <choose>
+				<when test="shOption == 9"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 9 </when>
+				<when test="shOption == 10">AND a.language_select = 10 AND content LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 11"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 11</when>
+				<when test="shOption == 12"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 12</when>
+			</choose>
 		</select>
+		
 	<!-- 질문 등록  -->
 	<insert id="insert">
 		INSERT INTO question(
@@ -83,21 +91,5 @@
 		</selectKey>
 	</insert>
 	
-<!-- 	
-	<select id="homeSearch" resultMap="resultMapObj">
-		SELECT
-			a.content
-	    	,a.writetime
-	    	,a.userID
-	    	,a.language_select
-	    FROM question
-	    WHERE 1=1
-     	<choose>
-			<when test="shOption == 9">AND  language_select = 9 AND content LIKE CONCAT('%',#{shValue},'%'}</when>
-			<when test="shOption == 10">AND language_select = 10 AND content LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 11">AND language_select = 11 AND content LIKE CONCAT('%',#{shValue},'%')</when>
-		</choose>     
-	</select>	 
-	-->
 	
 </mapper>

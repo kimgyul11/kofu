@@ -25,12 +25,13 @@
     <!-- Contenedor Principal -->
 	<div class="comments-container">
 		<ul id="comments-list" class="comments-list">
-            <!-- 메인레벨 질문 -->
-            <li>
+            <li><!-- 프로필이미지s -->
+				<div class="comment-avatar">
+					<img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt="">
+				</div>
+            </li><!-- 프로필이미지e -->
+            <li><!-- 질문s -->
 				<div class="comment-main-level">
-					<!-- 이미지 -->
-					<div class="comment-avatar"><img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt=""></div>
-					<!-- 코멘트 전체 상자. -->
 					<div class="comment-box">
 						<div class="comment-head">
 							<h6 class="comment-name by-author"><a href="#"><c:out value="${item.userID }"/></a></h6>
@@ -47,68 +48,95 @@
                         </div>
 					</div>
 				</div>
-				<!-- 답글달았을때 리스트입니다. -->
-				<!-- <ul class="comments-list reply-list">
-					<li>
-						이미지
-						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-						Contenedor del Comentario
-						<div class="comment-box">
-							<div class="comment-head">
-								<h6 class="comment-name"><a href="http://creaticode.com/blog">NON2312</a></h6>
-								<span>8월 15일 18:32</span>
-								<i class="fa-solid fa-comment"></i>
-                                <i class="fa fa-heart"></i>
-                                <i class="fa-solid fa-bookmark"></i>
-							</div>
-							<div class="comment-content">
-								Even Koreans won't know.
-							</div>
-						</div>
-					</li>
-				</ul> -->
-			</li>
-			
-            <!-- 메인레벨 답변 -->
-            <c:choose>
-            <c:when test="${not empty item.ansQuestionSeq}">
-	            <li>
-					<div class="comment-main-level">
-						<!-- 이미지 -->
-						<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-						<!-- Contenedor del Comentario -->
-						<div class="comment-box">
-							<div class="comment-head">
-								<h6 class="comment-name"><a href="http://creaticode.com/blog"><c:out value="${item.ansUserId }"/></a></h6>
-								<span><c:out value="${item.ansWriteTime }"/></span>
-								<i class="fa-solid fa-comment"></i>
-								<i class="fa fa-heart"></i>
-	                            <i class="fa-solid fa-bookmark"></i>
-							</div>
-							<div class="comment-content">
-	                            <c:out value="${item.ansContent }"/>
-	                        </div>
-						</div>
-					</div>
-				</li>
-			</c:when>
-				<c:otherwise>
-					<div class="hiddenComment">
-						<p><c:out value="${item.userID }"/>님이 당신의 답변을 기다리고 있습니다.
-					</div>
-				</c:otherwise>
-			</c:choose>
+			</li><!-- 질문e -->
 		</ul>
-		<div class="container">
-	        <div class="box-container">
-	            <div class="box">
-	                <textarea name="" id="" cols="30" rows="10" placeholder="상대방을 비방하거나 비속어 사용시 계정이 정지될 수 있습니다."></textarea>
-	            </div>
-	            <button class="commentBtn" type="button">작성</button>
-	            <button class="commentBtn" type="button">이미지</button>
-	        </div>
-    	</div>   
+		<!--답변창s -->
+		<div class="answerWrap">
+			<div class="answerContent">
+				<textarea placeholder="<c:out value="${item.userID }"/>님이 당신의 답변을 기다리고 있습니다."></textarea>
+			</div>
+			<div class="answerfooter">
+				<ul class="fileupload">
+					<li><input type="hidden">
+				</ul>
+				<ul class="answerbtn">
+					<li><button><i class="fa-regular fa-image"></i></button>
+					<li><button><i class="fa-regular fa-floppy-disk"></i></button>
+				</ul>
+			</div>
+		</div><!--답변창e -->
+		<br><br>
+		<hr>
+		<br><br>
+		
+		<c:if test="${not empty item.ansQuestionSeq}">
+<ul id="comments-list" class="comments-list">
+         <li><!-- 프로필이미지s -->
+	<div class="comment-avatar">
+		<img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt="">
 	</div>
+         </li><!-- 프로필이미지e -->
+         <li><!-- 질문s -->
+	<div class="comment-main-level">
+		<div class="comment-box">
+			<div class="comment-head">
+				<h6 class="comment-name by-author"><a href="#"><c:out value="${item.ansUserId}"/></a></h6>
+				<ul class="iconlist">
+					<li><c:out value="${item.ansWriteTime }"/>
+					<li><i class="fa-solid fa-comment"></i>
+					<li><i class="fa fa-heart"></i>
+                          <li><i class="fa-solid fa-bookmark"></i>
+				</ul>
+			</div>
+			<div class="comment-content">
+				<c:out value="${item.ansContent}"/>
+               </div>
+		</div>
+	</div>
+</li><!-- 질문e -->
+</ul>
+</c:if>
+<!-- 메인레벨 답변 -->
+	<c:choose>
+	<c:when test="${not empty item.ansQuestionSeq}">
+	<li>
+	<div class="comment-main-level">
+	<!-- 이미지 -->
+	<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+	<!-- Contenedor del Comentario -->
+	<div class="comment-box">
+		<div class="comment-head">
+			<h6 class="comment-name"><a href="http://creaticode.com/blog"><c:out value="${item.ansUserId }"/></a></h6>
+			<span><c:out value="${item.ansWriteTime }"/></span>
+			<i class="fa-solid fa-comment"></i>
+			<i class="fa fa-heart"></i>
+			<i class="fa-solid fa-bookmark"></i>
+		</div>
+		<div class="comment-content">
+			<c:out value="${item.ansContent }"/>
+		</div>
+	</div>
+</div>
+</li>
+</c:when>
+<c:otherwise></c:otherwise>
+</c:choose>
+
+
+
+
+
+
+
+
+
+
+	</div>
+	
+	
+	
+	
+	
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script>
