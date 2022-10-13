@@ -65,7 +65,7 @@
 			#{user_id}
 			,#{user_name}
 			,#{user_pw}
-			<!-- ,#{user_dob} -->
+<!-- 			,#{user_dob} -->
 			,#{user_email}
 			,#{user_favoriteLanguage}
 			,#{user_conutry}
