@@ -91,5 +91,23 @@
 		</selectKey>
 	</insert>
 	
+	<!-- 질문 답변  -->
+	<insert id="ansInsert">
+		INSERT INTO answer(
+			ansContent
+			,ansUserId
+			,ansWriteTime
+			,ansQuestionSeq
+		)
+		VALUES(
+			#{ansContent}
+			,#{ansUserId}
+			,now()
+			,${questionSeq}
+		)
+		<selectKey resultType="String" keyProperty="ansSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 	
 </mapper>

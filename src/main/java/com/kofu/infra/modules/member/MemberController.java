@@ -14,12 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kofu.infra.common.constants.Constants;
 import com.kofu.infra.common.util.UtilSecurity;
-
-
-
-
-
-
 @Controller
 @RequestMapping(value = "/member/")
 public class MemberController {

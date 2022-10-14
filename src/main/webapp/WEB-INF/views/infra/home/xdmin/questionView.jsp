@@ -18,6 +18,10 @@
     <title>AIRLANGUAGE</title>
 </head>
 <body>
+<form name="form">
+<input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
+<input type="text" value="<c:out value="${vo.questionSeq}"/>" name="questionSeq" >
+<input type="hidden" name="ansSeq">
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
@@ -53,7 +57,7 @@
 		<!--답변창s -->
 		<div class="answerWrap">
 			<div class="answerContent">
-				<textarea placeholder="<c:out value="${item.userID }"/>님이 당신의 답변을 기다리고 있습니다."></textarea>
+				<textarea name="ansContent" value="<c:out value="${item.ansContent }"/>" placeholder="<c:out value="${item.userID }"/>님이 당신의 답변을 기다리고 있습니다."></textarea>
 			</div>
 			<div class="answerfooter">
 				<ul class="fileupload">
@@ -61,7 +65,7 @@
 				</ul>
 				<ul class="answerbtn">
 					<li><button><i class="fa-regular fa-image"></i></button>
-					<li><button><i class="fa-regular fa-floppy-disk"></i></button>
+					<li><button type="button" id="btnsave"><i class="fa-regular fa-floppy-disk"></i></button>
 				</ul>
 			</div>
 		</div><!--답변창e -->
@@ -121,27 +125,12 @@
 </c:when>
 <c:otherwise></c:otherwise>
 </c:choose>
-
-
-
-
-
-
-
-
-
-
 	</div>
-	
-	
-	
-	
-	
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	</form>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script>
-    
-    	var seq = $("input:hidden[name=questionSeq]");
+
         var dd_main = document.querySelector(".dd_main");
     
         dd_main.addEventListener("click", function(){
@@ -155,6 +144,21 @@
         menu.classList.toggle('active');
         icons.classList.toggle('active');
         });  
+        
+        var form = $("form[name=form]");
+    	var seq = $("input:hidden[name=ansSeq]");
+        var goUrlInst = "answerInst";     
+        
+        $("#btnsave").on("click",function(){
+        	if (seq.val() == "0" || seq.val() == ""){
+    	   		// insert
+    	   		form.attr("action", goUrlInst).submit();
+    	   	} else {
+    	   		// update
+    	   		/* keyName.val(atob(keyName.val())); */
+    	   		form.attr("action", goUrlUpdt).submit();
+    	   	}
+    	 	});
     </script>
 </body>
 </html>

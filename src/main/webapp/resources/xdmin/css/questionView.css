@@ -537,7 +537,7 @@ ul {
 .answerWrap{
 	width:100%;
 	height:100%;
-	border:1px solid #212121;
+	border:1px solid #bdbdbd;
 	
 }
 .answerContent{
@@ -545,6 +545,7 @@ ul {
 	margin:auto;
 	height:200px;
 	padding:15px;
+	background:#bdbdbd;
 }
 .answerContent textarea{
     width: 100%;
@@ -564,7 +565,7 @@ ul {
 .answerfooter{
 	display:flex;
 	justify-content: space-between;
-	background:#212121;
+	background:#bdbdbd;
 	
 }
 .fileupload{

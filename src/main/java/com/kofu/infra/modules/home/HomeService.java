@@ -9,4 +9,5 @@ public interface HomeService {
 	public List<Home> homeSearch(HomeVo vo) throws Exception;
 	public Home selectOne(HomeVo vo) throws Exception;
 	public int selectOenCount(HomeVo vo) throws Exception;
+	public int ansInsert(Home dto) throws Exception;
 }

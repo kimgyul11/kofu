@@ -36,4 +36,8 @@ public class HomeServiceImpl implements HomeService{
 	public int selectOenCount(HomeVo vo) throws Exception{
 		return dao.selectOenCount(vo);
 	}
+	@Override
+	public int ansInsert(Home dto) throws Exception{
+		return dao.ansInsert(dto);
+	}
 }

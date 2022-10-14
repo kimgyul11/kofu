@@ -8,6 +8,7 @@ public class HomeVo {
 	private Integer shOption;
 	private String shValue;
 	private String questionSeq;
+	private String ansSeq;
 	//-------------------------------------------------------------------------------
 	public Integer getShOption() {
 		return shOption;
@@ -24,6 +25,12 @@ public class HomeVo {
 	
 //	---------------------- 페이징 -------------------------------------
 	
+	public String getAnsSeq() {
+		return ansSeq;
+	}
+	public void setAnsSeq(String ansSeq) {
+		this.ansSeq = ansSeq;
+	}
 	public String getQuestionSeq() {
 		return questionSeq;
 	}

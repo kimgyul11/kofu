@@ -35,4 +35,8 @@ public class HomeDao {
 	public int selectOenCount(HomeVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOenCount",vo);
 	}
+	public int ansInsert(Home dto) {
+		int result = sqlSession.insert(namespace + ".ansInsert" , dto);
+		return result;
+	}
 }

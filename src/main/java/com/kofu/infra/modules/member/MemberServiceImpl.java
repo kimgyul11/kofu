@@ -46,11 +46,12 @@ public class MemberServiceImpl implements MemberService{
 			  UtilUpload.upload(multipartFile, pathModule, dto);
 			  
 			  dto.setTableName("airLanguage_memberUploaded");
-			  dto.setType(2);
+			  dto.setType(1);
 			  dto.setDefaultNy(j == 0 ? 1 : 0); dto.setSort(j + 1);
 			  dto.setPseq(dto.getMemberSeq());
 			  
-			  dao.insertUploaded(dto); j++; } }
+			  dao.insertUploaded(dto); 
+			  j++; } }
 			  
 			 
 				return 1;

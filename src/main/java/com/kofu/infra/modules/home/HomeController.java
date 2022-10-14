@@ -51,6 +51,7 @@ public class HomeController {
 	@RequestMapping(value = "queview")
 	public String queview(@ModelAttribute("vo")HomeVo vo,Model model) throws Exception {
 		Home result = service.selectOne(vo);
+		
 		model.addAttribute("item",result);
 		return "infra/home/xdmin/questionView";
 	}
@@ -96,6 +97,13 @@ public class HomeController {
 		return "redirect:quelist";
 	}
 	
+	@RequestMapping(value = "answerInst")
+	public String answerInst(Home dto) throws Exception {
+		int result = service.ansInsert(dto);
+		System.out.println("controller result : " + result);
+		
+		return "redirect:queview";
+	}
 	/*
 	 * @RequestMapping(value = "homeSearch") public String homeSearch(Model
 	 * model,HomeVo vo) throws Exception{ System.out.println("vo.getShValue(): " +
