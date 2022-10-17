@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class HomeController {
@@ -98,10 +99,11 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "answerInst")
-	public String answerInst(Home dto) throws Exception {
+	public String answerInst(HomeVo vo ,Home dto,RedirectAttributes redirectAttributes) throws Exception {
 		int result = service.ansInsert(dto);
 		System.out.println("controller result : " + result);
 		
+		redirectAttributes.addFlashAttribute("vo",vo);
 		return "redirect:queview";
 	}
 	/*

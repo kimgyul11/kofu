@@ -42,8 +42,6 @@
 							<span><c:out value="${item.language_select }"/></span>
 							<ul class="iconlist">
 								<li><c:out value="${item.writetime }"/>
-								<li><i class="fa-solid fa-comment"></i>
-								<li><i class="fa fa-heart"></i>
 	                            <li><i class="fa-solid fa-bookmark"></i>
 							</ul>
 						</div>
