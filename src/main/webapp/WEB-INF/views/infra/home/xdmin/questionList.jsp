@@ -30,7 +30,7 @@
     <!-- 질문리스트 시작-->
     <div class="container">
     	<ul class="menubuttonList">
-			<li><button>한국어</button>
+			<li><button type="button"value="9"<c:if test="${vo.languageOption eq 9}">selected</c:if>>한국어</button>
 			<li><button>중국어</button>
 			<li><button>영어</button>
 			<li><button>일본어</button>
@@ -102,7 +102,7 @@
 	var goUrlForm = "/queview";
 	var form = $("form[name=form]")
 	var goUrlList = "/quelist";
-	
+	var gourlkor = "/queview";
 	/* 페이지네이션 리스트*/
 	goList = function(thisPage) {
 		$("input:hidden[name=thisPage]").val(thisPage);

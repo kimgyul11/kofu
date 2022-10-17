@@ -9,6 +9,14 @@ public class HomeVo {
 	private String shValue;
 	private String questionSeq;
 	private String ansSeq;
+	private Integer languageOption;
+	
+	public Integer getLanguageOption() {
+		return languageOption;
+	}
+	public void setLanguageOption(Integer languageOption) {
+		this.languageOption = languageOption;
+	}
 	//-------------------------------------------------------------------------------
 	public Integer getShOption() {
 		return shOption;

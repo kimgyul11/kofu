@@ -53,6 +53,8 @@ public class HomeController {
 	public String queview(@ModelAttribute("vo")HomeVo vo,Model model) throws Exception {
 		Home result = service.selectOne(vo);
 		
+		List<Home>list = service.selectList(vo);
+		model.addAttribute("list", list);
 		model.addAttribute("item",result);
 		return "infra/home/xdmin/questionView";
 	}

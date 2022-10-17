@@ -100,25 +100,26 @@
 </c:if>
 <!-- 메인레벨 답변 -->
 	<c:choose>
+	
 	<c:when test="${not empty item.ansQuestionSeq}">
+	<c:forEach items="${list}" var="list" varStatus="status">
 	<li>
 	<div class="comment-main-level">
-	<!-- 이미지 -->
-	<!-- Contenedor del Comentario -->
-	<div class="comment-box">
-		<div class="comment-head">
-			<h6 class="comment-name"><a href="http://creaticode.com/blog"><c:out value="${item.ansUserId }"/></a></h6>
-			<span><c:out value="${item.ansWriteTime }"/></span>
-			<i class="fa-solid fa-comment"></i>
-			<i class="fa fa-heart"></i>
-			<i class="fa-solid fa-bookmark"></i>
-		</div>
-		<div class="comment-content">
-			<c:out value="${item.ansContent }"/>
+		<div class="comment-box">
+			<div class="comment-head">
+				<h6 class="comment-name"><a href="http://creaticode.com/blog"><c:out value="${list.ansUserId }"/></a></h6>
+				<span><c:out value="${list.ansWriteTime }"/></span>
+				<i class="fa-solid fa-comment"></i>
+				<i class="fa fa-heart"></i>
+				<i class="fa-solid fa-bookmark"></i>
+			</div>
+			<div class="comment-content">
+				<c:out value="${list.ansContent }"/>
+			</div>
 		</div>
 	</div>
-</div>
-</li>
+	</li>
+	</c:forEach>
 </c:when>
 <c:otherwise></c:otherwise>
 </c:choose>
