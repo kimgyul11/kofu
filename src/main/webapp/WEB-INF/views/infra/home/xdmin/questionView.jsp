@@ -104,7 +104,6 @@
 	<li>
 	<div class="comment-main-level">
 	<!-- 이미지 -->
-	<div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
 	<!-- Contenedor del Comentario -->
 	<div class="comment-box">
 		<div class="comment-head">
