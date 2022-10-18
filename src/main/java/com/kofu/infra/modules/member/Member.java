@@ -18,7 +18,7 @@ public class Member extends Base{
 	private Integer user_gender;
 	private String user_addr;
 	private String user_email;
-	private String user_favoriteLanguage;
+	private Integer user_favoriteLanguage;
 	//-----------------------------------------------------------------------------
 	private MultipartFile[] uploadedImage;
 	
@@ -32,10 +32,11 @@ public class Member extends Base{
 	public Integer getUser_gender() {
 		return user_gender;
 	}
-	public String getUser_favoriteLanguage() {
+	
+	public Integer getUser_favoriteLanguage() {
 		return user_favoriteLanguage;
 	}
-	public void setUser_favoriteLanguage(String user_favoriteLanguage) {
+	public void setUser_favoriteLanguage(Integer user_favoriteLanguage) {
 		this.user_favoriteLanguage = user_favoriteLanguage;
 	}
 	public String getUser_pw() {

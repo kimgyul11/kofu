@@ -54,28 +54,32 @@ public class MemberController {
 	
 	@RequestMapping(value = "MemberInst")
 	public String memberInst(Member dto) throws Exception{
-		
 		int result = service.insert(dto);
 		System.out.println("controller result: "+result);
-		
 		return "redirect:/member/memberlist";
 	}
 	
 	@RequestMapping(value = "signupView")
 	public String signupView() {
-		
 		return "infra/login/xdmin/signup";
 	}
 	
 	@RequestMapping(value = "signup")
 	public String signup(Member dto) throws Exception{
 		service.signup(dto);
-		
-
-		
 		return "infra/login/xdmin/logincomplete";
 	}
 	
+	@RequestMapping(value = "airSignupView")
+	public String airSignup() {
+		return "infra/login/xdmin/airSignup";
+	}
+	
+	@RequestMapping(value = "airSignup")
+	public String airSignUp(Member dto) throws Exception{
+		service.airSignUp(dto);
+		return "infra/login/xdmin/logincomplete";
+	}
 
 
 	

@@ -50,7 +50,7 @@
 			SELECT last_insert_id()
 		</selectKey> 
 	</insert>
-	
+	<!-- 회원가입 -->
 	<insert id="signup">
 		INSERT INTO airLanguage_member(
 			user_id
@@ -75,6 +75,34 @@
 		</selectKey> 
 	</insert>
 	
+	<!--새로운 회원가입  -->
+	<insert id="airSignUp">
+		INSERT INTO airLanguage_member(
+			user_id
+			,user_name
+			,user_pw
+			,user_email
+			,user_favoriteLanguage
+			,lean_language
+			,user_gender
+			,user_signupDate
+			,user_dob
+		)
+		VALUES(
+			#{user_id}
+			,#{user_name}
+			,#{user_pw}
+			,#{user_email}
+			,#{user_favoriteLanguage}
+			,#{lean_language}
+			,#{user_gender}
+			,now()
+			,#{user_dob}
+		)
+		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
+				SELECT last_insert_id()
+		</selectKey> 
+	</insert>
 	
 	
 	

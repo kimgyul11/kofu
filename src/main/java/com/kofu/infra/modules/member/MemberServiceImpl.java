@@ -79,4 +79,34 @@ public class MemberServiceImpl implements MemberService{
 		Member result = dao.selectOneLogin(dto);
 		return result;
 	}
+	
+	
+	
+	@Override
+	public int airSignUp(Member dto) throws Exception{
+		try {
+			dto.setUser_pw(UtilSecurity.encryptSha256(dto.getUser_pw()));
+			dao.airSignUp(dto);
+						
+			  int j = 0; 
+			  System.out.println(dto.getUploadedImage()); 
+			  for(MultipartFile multipartFile : dto.getUploadedImage()) { 
+				  if(!multipartFile.isEmpty()) {
+			  String pathModule =this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			  UtilUpload.upload(multipartFile, pathModule, dto);
+			  
+			  dto.setTableName("airLanguage_memberUploaded");
+			  dto.setType(1);
+			  dto.setDefaultNy(j == 0 ? 1 : 0); dto.setSort(j + 1);
+			  dto.setPseq(dto.getMemberSeq());
+			  
+			  dao.insertUploaded(dto); 
+			  j++; } }
+			  
+			 
+				return 1;
+		}catch (Exception e) {
+			throw new Exception();
+		}
+	}
 }

@@ -1,0 +1,200 @@
+
+@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+    *{
+        margin: 0;
+        font-family: 'SUIT-Medium';
+    }
+    li{
+        list-style: none;
+    }
+    ul{
+        padding-left: 0;
+    }
+    /* 네비게이션 영역s */
+.navbar{
+	background: #000000;
+	width: 100%;
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+    flex-wrap: wrap;
+}
+.navbar .logo{
+	margin-left: 15px;
+}
+.nav_middel_menu{
+	display: flex;
+    align-items: center;
+	
+}
+
+.navbar .logo a{
+	text-decoration: none;
+	color: #fff;
+	font-weight: 700;
+	letter-spacing: 2px;
+	font-size: 25px;
+	text-transform: uppercase;
+}
+.nav_middel_menu {
+    margin: 15px;
+}
+.nav_middel_menu li{
+    margin-left: 15px;
+}
+.nav_search_box select{
+	width: 100px;
+	height: 30px;
+	border: none;
+	border-radius: 5px;
+}
+.nav_search_box input{
+	border: none;
+	height: 30px;
+	border-radius: 5px;
+	margin-left: 0;
+}
+.nav_middel_menu a{
+    color:white;
+    list-style: none;
+    text-decoration: none;
+}
+
+/* 네비게이션 영역s */
+
+
+    .profileWrap{
+        margin: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        overflow: hidden;
+
+    }
+    .profileCircle{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #ff5722;
+    }
+    .inputWrap{
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        height: 100%;
+        margin: auto;
+        padding: 35px;
+    }
+
+    .profileImgUpload label{
+        font-size: 15px;
+        font-weight: 200;
+        cursor: pointer;
+        text-align: center;
+        margin-top: 30px;
+    }
+    .profileImgUpload label:hover{
+        color: #ff5722;
+    }
+    .input_box{
+        width:60%;
+        background: white;
+        text-align: center;
+        padding: 30px;
+    }
+    .input_box input{
+        margin: 12px;
+        border: none;
+        border-bottom:1px solid #e0e0e0;
+        width: 40%;
+        height: 40px;
+        text-align: left;
+    }
+    .input_box input::placeholder{
+        margin-top: 0;
+        vertical-align: bottom;
+        color: #212121;
+    }
+    .btn_wrap{
+        margin-top: 50px;
+    }
+    .btn_wrap button{
+        width: 100px;
+        height: 35px;
+        background:black;
+        color: #fff;
+    }
+    .btn_wrap button:hover{
+        color: black;
+        background: #fff;
+    }
+    .radiowrap{
+        width: 40%;
+        margin: 12px auto;
+        text-align: left;
+    }
+    h1{
+        font-size: 14px;
+        font-weight: lighter;
+        color: #212121;
+    }
+    .radiowrap label {
+    font-size: 15px;
+    line-height: 1.2rem;
+    padding: 0.2em 0.4em;
+    cursor: pointer;
+    }
+    li [type="radio"] {
+        vertical-align: middle;
+        appearance: none;
+        border: max(2px, 0.1em) solid gray;
+        border-radius: 50%;
+        width: 1.25em;
+        height: 1.25em;
+        transition: border 0.2s ease-in-out;
+        
+    }
+    [type="radio"]:checked {
+    border: 0.4em solid tomato;
+    }
+
+    [type="radio"]:hover {
+    box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+    cursor: pointer;
+    }
+
+    [type="radio"]:focus-visible {
+    outline-offset: max(2px, 0.1em);
+    outline: max(2px, 0.1em) dotted #ff5722;
+    }
+
+    [type="file"]{
+        display: none;
+    }
+    .language_select_wrap{
+        width: 40%;
+        margin: auto;
+    }
+    .language_select_wrap select{
+        margin:12px 0px;
+        width: 100%;
+        height: 30px;
+        border: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .Feedback_ment{
+    	font-size: 12px;
+    	color:#ff5722;
+    }
+    .sucessFeedback_ment{
+    	color:#0d47a1;
+    	font-size:12px;
+    }
