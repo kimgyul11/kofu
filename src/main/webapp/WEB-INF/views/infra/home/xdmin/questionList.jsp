@@ -22,18 +22,17 @@
 <form name = "form">
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-<input type="hidden" name="questionSeq"value="<c:out value="${vo.questionSeq}"/>">
-
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
     <!-- 질문리스트 시작-->
     <div class="container">
     	<ul class="menubuttonList">
-			<li><button type="button"value="9"<c:if test="${vo.languageOption eq 9}">selected</c:if>>한국어</button>
-			<li><button>중국어</button>
-			<li><button>영어</button>
-			<li><button>일본어</button>
+			<li><button name="languageOption" type="submit" value="9">한국어</button>
+			<li><button name="languageOption" type="submit" value="10">중국어</button>
+			<li><button name="languageOption" type="submit" value="11">일본어</button>
+			<li><button name="languageOption" type="submit" value="12">영어</button>
+			<input type="hidden" name="languageOption" value="<c:out value="${vo.languageOption}"/>">
 		</ul>
     <c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
     <c:choose>
@@ -129,7 +128,10 @@
     toggleBtn.addEventListener('click', () => {
     menu.classList.toggle('active');
     icons.classList.toggle('active');
-    });  
+    });
+    
+
+    
 </script>
 </body>
 </html>
