@@ -87,7 +87,7 @@ svg{
 
 /* 배너 */
 .backcol{
-    height: 100vh;
+    height: 50vh;
     background-image: url('https://images.unsplash.com/photo-1564500617448-e541b1df7cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
 	background-size : cover;  
     width: 100%;
@@ -431,109 +431,6 @@ option {
     top: -250px;
     
 }
-
-
-.check{
-    opacity: 0;
-    animation: 1s check-ok forwards;
-    transition-timing-function: ease-in;
-    animation-delay: 3.5s;
-    transform-origin: 79% 25%;
-}
-
-@keyframes check-ok {
-    0%{
-    transform: translate(156.5 25.5);
-    transform: scale(1);
-    opacity: 0;
-    }
-        40%{
-    transform: translate(156.5 25.5);
-    transform: scale(1.1);
-    opacity: 1;
-    }  
-    100%{
-    transform: translate(156.5 25.5);
-    transform: scale(1.1);
-    opacity: 1;
-    } 
-}
-
-.pass-animate {
-    animation-iteration-count: 1;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-    opacity: 0;
-}
-.pass-1{
-    animation-name: pass-1;
-}
-
-@keyframes pass-1 {
-    0%{
-    transform: translateX(250px);
-    }
-    40%{
-    transform: translateX(0px);
-    }
-    60%{
-    transform: translateX(0px);
-    }  
-    100%{
-    transform: translateX(-230px);
-    } 
-}
-
-.pass-2{
-    animation-name: pass-1;
-    animation-delay: 1.2s;
-}
-
-@keyframes pass-1 {
-    0%{
-    transform: translateX(250px);
-    opacity: 1;
-    }
-    40%{
-    transform: translateX(0px);
-    opacity: 1;
-    }
-    60%{
-    transform: translateX(0px);
-    opacity: 1;
-    }  
-    100%{
-    transform: translateX(-230px);
-    opacity: 1;
-    } 
-}
-
-.passOK{
-    animation-name: passOK;
-    animation-delay: 2.4s;
-}
-
-@keyframes passOK {
-    0%{
-        transform: translateX(250px);
-        opacity: 1;
-    }
-    40%{
-        transform: translateX(0px);
-        opacity: 1;
-    }
-    60%{
-        transform: translateX(0px);
-        opacity: 1;
-    }  
-    100%{
-        transform: translateX(0px);
-        opacity: 1;
-    } 
-}
-
-
 
 
 @media screen and (max-width:768px) {    

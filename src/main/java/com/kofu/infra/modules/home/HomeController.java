@@ -34,12 +34,13 @@ public class HomeController {
 		return "infra/login/xdmin/login";
 	}
 	
-	/*
-	 * @RequestMapping(value = "signup") public String signup() {
-	 * 
-	 * return "infra/login/xdmin/signup"; }
-	 */
+	@RequestMapping(value = "airLogin")
+	public String airLogin() {
 
+		return "infra/login/xdmin/airLogin";
+	}
+	
+	
 	@RequestMapping(value = "quelist")
 	public String quelist(@ModelAttribute("vo")HomeVo vo,Model model)throws Exception {
 		

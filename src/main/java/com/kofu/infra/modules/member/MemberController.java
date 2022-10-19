@@ -70,6 +70,7 @@ public class MemberController {
 		return "infra/login/xdmin/logincomplete";
 	}
 	
+//	신규 회원가입 페이지
 	@RequestMapping(value = "airSignupView")
 	public String airSignup() {
 		return "infra/login/xdmin/airSignup";
@@ -99,30 +100,6 @@ public class MemberController {
 		return returnMap;
 	}
 	
-	
-//	9월 27일 로그인 구현
-//	@ResponseBody
-//	@RequestMapping(value = "loginProc")
-//	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
-//		Map<String, Object> returnMap = new HashMap<String, Object>();
-//		Member rtMember = service.selectOneId(dto);
-//		if (rtMember != null) {
-//			Member rtMember2 = service.selectOneLogin(dto);
-//			if (rtMember2 != null) {
-//				httpSession.setAttribute("sessSeq", rtMember2.getMemberSeq());
-//				httpSession.setAttribute("sessId", rtMember2.getUser_id());
-//				httpSession.setAttribute("sessName", rtMember2.getUser_name());
-//				returnMap.put("rt", "success");
-//			} else {
-//				returnMap.put("rt", "fail");
-//			}
-//		} else {
-//			returnMap.put("rt", "fail");
-//		}
-//		return returnMap;
-//	}
-//	
-
 	@ResponseBody
 	@RequestMapping(value = "loginProc")
 	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
