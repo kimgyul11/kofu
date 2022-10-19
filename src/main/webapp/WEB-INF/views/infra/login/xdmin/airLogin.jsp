@@ -15,6 +15,7 @@
     <title>AirLanguage</title>
 </head>
 <body>
+<form autocomplete="off">
     <div class="loginWrap">
         <div class="login_img">
             <div class="imgmove">
@@ -84,7 +85,7 @@
                             <br>
                             <li><a href="#">비밀번호 찾기</a></li>
                             <br>
-                            <li><a href="#">HOME</a></li>
+                            <li><a href="airLanguageHome">HOME</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -92,9 +93,13 @@
             </div>
         </div>
     </div>
+    </form>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
     <script>
+
+    
+
         $("#btnLogin").on("click", function(){
     
             $.ajax({

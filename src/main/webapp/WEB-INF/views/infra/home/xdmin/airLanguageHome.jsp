@@ -27,17 +27,11 @@
                 <i class="fa-solid fa-plane-departure"></i>
                 <span>Air Language</span>        
             </a>
-            <ul class="navbar_menu">
-                <li><a href="#">소개</a></li>
-                <li><a href="#">질문게시판</a></li>
-                <li><a href="#">공지사항</a></li>
-                <li><a href="#">1:1문의</a></li>
-            </ul>
             <ul class="navbar_linkicon">
             <c:choose>
             	<c:when test="${empty sessSeq }">
 	            	<li><a href="airLogin">로그인</a></li>
-	            	<li><a href="/member/signupView">신규가입</a></li>
+	            	<li><a href="/member/airSignupView">신규가입</a></li>
 	            </c:when>
 	            <c:otherwise>
 		            <li class="signinStatus"><a href="#"><c:out value="${sessId }"/>님 환영합니다.</a></li>
