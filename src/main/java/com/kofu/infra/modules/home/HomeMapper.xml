@@ -68,12 +68,6 @@
 			SELECT COUNT(*)
 			FROM question a
 	    	WHERE 1=1
-	    	<choose>
-	    		<when test="languageOption == 9"> AND a.language_select = 9 </when>
-				<when test="languageOption == 10">AND a.language_select = 10 </when>
-				<when test="languageOption == 11"> AND a.language_select = 11</when>
-				<when test="languageOption == 12"> AND a.language_select = 12</when>
-    		</choose>
 		    <choose>
 				<when test="shOption == 9"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 9 </when>
 				<when test="shOption == 10">AND a.language_select = 10 AND content LIKE CONCAT('%',#{shValue},'%')</when>

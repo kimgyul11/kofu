@@ -99,7 +99,7 @@
 <script type="text/javascript">
 	var seq = $("input:hidden[name=questionSeq]");
 	var goUrlForm = "/queview";
-	var form = $("form[name=form]")
+	var form = $("form[name=form]");
 	var goUrlList = "/quelist";
 	var gourlkor = "/queview";
 	/* 페이지네이션 리스트*/

@@ -20,7 +20,7 @@
 <body>
 <form name="form">
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
-<input type="text" value="<c:out value="${questionSeq}"/>" name="questionSeq" >
+<input type="text" value="<c:out value="${questionSeq}"/>" id="questionSeq" name="questionSeq" >
 
 <input type="hidden" name="ansSeq">
 <!-- Navbar s  -->
