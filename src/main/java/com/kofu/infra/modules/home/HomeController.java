@@ -55,7 +55,7 @@ public class HomeController {
 		Home result = service.selectOne(vo);
 		List<Home>homeList = service.selectAns(vo);
 		model.addAttribute("item",result);
-		model.addAttribute("list", homeList);
+		model.addAttribute("homeList", homeList);
 		return "infra/home/xdmin/questionView";
 	}
 	

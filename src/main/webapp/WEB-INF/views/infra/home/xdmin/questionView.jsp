@@ -19,10 +19,9 @@
 </head>
 <body>
 <form name="form">
-<input type="hidden" value="">
-<input type="text" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
+<input type="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
-<input type="text" value="<c:out value="${homeList.ansUserId}"/>">
+<input type="hidden" value="<c:out value="${vo.ansSeq}"/>" id="ansSeq" name="ansSeq" >
 
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
@@ -75,7 +74,7 @@
 		<br><br>
 
 <%-- 		<c:when test="${not empty homeList.ansQuestionSeq}"> --%>
-<%-- 		<c:if test="${not empty homeList.ansQuestionSeq}"> --%>
+			<c:if test="${not empty vo.questionSeq}">
 			<c:forEach items="${homeList}" var="homeList" varStatus="status">
 				<ul id="comments-list" class="comments-list">
 	         		<li><!-- 질문s -->
@@ -98,50 +97,7 @@
 					</li><!-- 질문e -->
 				</ul>
 		</c:forEach>
-		<c:forEach items="${homeList}" var="homeList" varStatus="status">
-			<div class="comment-main-level">
-				<div class="comment-box">
-					<div class="comment-head">
-						<h6 class="comment-name by-author"><a href="#"><c:out value="${homeList.ansUserId }"/></a></h6>
-						<span><c:out value="${item.language_select }"/></span>
-						<ul class="iconlist">
-							<li><c:out value="${homeList.ansWriteTime }"/>
-	                           <li><i class="fa-solid fa-bookmark"></i>
-						</ul>
-					</div>
-					<div class="comment-content">
-						<c:out value="${homeList.ansContent }"/>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-<%-- 	</c:when> --%>
-<%-- 	</c:if> --%>
-<%-- <!-- 메인레벨 답변 -->
-	<c:choose>
-	
-	<c:when test="${not empty item.ansQuestionSeq}">
-	<c:forEach items="${list}" var="list" varStatus="status">
-	<li>
-	<div class="comment-main-level">
-		<div class="comment-box">
-			<div class="comment-head">
-				<h6 class="comment-name"><a href="http://creaticode.com/blog"><c:out value="${list.ansUserId }"/></a></h6>
-				<span><c:out value="${list.ansWriteTime }"/></span>
-				<i class="fa-solid fa-comment"></i>
-				<i class="fa fa-heart"></i>
-				<i class="fa-solid fa-bookmark"></i>
-			</div>
-			<div class="comment-content">
-				<c:out value="${list.ansContent }"/>
-			</div>
-		</div>
-	</div>
-	</li>
-	</c:forEach>
-</c:when>
-<c:otherwise></c:otherwise>
-</c:choose> --%>
+		</c:if>
 	</div>
 	</form>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
