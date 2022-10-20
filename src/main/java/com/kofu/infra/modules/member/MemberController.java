@@ -25,8 +25,13 @@ public class MemberController {
 	public String mypage() {
 	
 		return "infra/userInfo/mypage";
-	
 	}
+	
+	@RequestMapping(value = "airMypage")
+	public String airMypage() {
+		return "infra/login/xdmin/airMypage";
+	}
+	
 	@RequestMapping(value = "memberlist")
 	public String codeGroupList(Model model) throws Exception {
 
