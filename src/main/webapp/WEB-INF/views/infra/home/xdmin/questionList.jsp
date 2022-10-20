@@ -20,6 +20,7 @@
 <body>
 
 <form name = "form">
+<input type="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 <!-- Navbar s  -->
@@ -32,7 +33,7 @@
 			<li><button name="languageOption" type="submit" value="10">중국어</button>
 			<li><button name="languageOption" type="submit" value="11">일본어</button>
 			<li><button name="languageOption" type="submit" value="12">영어</button>
-			<input type="hidden" name="languageOption" value="<c:out value="${vo.languageOption}"/>">
+			<%-- <input type="hidden" name="languageOption" value="<c:out value="${vo.languageOption}"/>"> --%>
 		</ul>
     <c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
     <c:choose>
@@ -54,8 +55,8 @@
 			                   <c:if test="${list.language_select eq Language.ccSeq}"> 질문 언어 :<c:out value="${Language.cc_name }"/></c:if>
 			                </c:forEach>
 			                </li>
-			                    <li>작성자 : <c:out value="${list.userID }"/></li>
-			                    <li>작성일 : <c:out value="${list.writetime }"/></li>
+			                    <li>작성자 : <c:out value="${userID }"/></li>
+			                    <li>작성일 : <c:out value="${writetime }"/></li>
 			                </ul>
 			                <a href="javascript:goForm(<c:out value="${list.questionSeq }"/>)">
 			                	<div class="bubble_content">
@@ -101,7 +102,8 @@
 	var goUrlForm = "/queview";
 	var form = $("form[name=form]");
 	var goUrlList = "/quelist";
-	var gourlkor = "/queview";
+
+	
 	/* 페이지네이션 리스트*/
 	goList = function(thisPage) {
 		$("input:hidden[name=thisPage]").val(thisPage);

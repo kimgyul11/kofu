@@ -19,10 +19,11 @@
 </head>
 <body>
 <form name="form">
+<input type="hidden" value="">
+<input type="text" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
-<input type="text" value="<c:out value="${questionSeq}"/>" id="questionSeq" name="questionSeq" >
+<input type="text" value="<c:out value="${homeList.ansUserId}"/>">
 
-<input type="hidden" name="ansSeq">
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
@@ -54,6 +55,7 @@
 			</li><!-- 질문e -->
 		</ul>
 		<!--답변창s -->
+
 		<div class="answerWrap">
 			<div class="answerContent">
 				<textarea name="ansContent" value="<c:out value="${item.ansContent }"/>" placeholder="<c:out value="${item.userID }"/>님이 당신의 답변을 기다리고 있습니다."></textarea>
@@ -68,38 +70,54 @@
 				</ul>
 			</div>
 		</div><!--답변창e -->
-		<br><br>
-		<hr>
-		<br><br>
 		
-		<c:if test="${not empty item.ansQuestionSeq}">
-<ul id="comments-list" class="comments-list">
-         <li><!-- 프로필이미지s -->
-	<div class="comment-avatar">
-		<img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt="">
-	</div>
-         </li><!-- 프로필이미지e -->
-         <li><!-- 질문s -->
-	<div class="comment-main-level">
-		<div class="comment-box">
-			<div class="comment-head">
-				<h6 class="comment-name by-author"><a href="#"><c:out value="${item.ansUserId}"/></a></h6>
-				<ul class="iconlist">
-					<li><c:out value="${item.ansWriteTime }"/>
-					<li><i class="fa-solid fa-comment"></i>
-					<li><i class="fa fa-heart"></i>
-                          <li><i class="fa-solid fa-bookmark"></i>
+		<br><br>
+		<br><br>
+
+<%-- 		<c:when test="${not empty homeList.ansQuestionSeq}"> --%>
+<%-- 		<c:if test="${not empty homeList.ansQuestionSeq}"> --%>
+			<c:forEach items="${homeList}" var="homeList" varStatus="status">
+				<ul id="comments-list" class="comments-list">
+	         		<li><!-- 질문s -->
+					<div class="comment-main-level">
+						<div class="comment-box">
+							<div class="comment-head">
+								<h6 class="comment-name by-author"><a href="#"><c:out value="${homeList.ansUserId}"/></a></h6>
+								<ul class="iconlist">
+									<li><c:out value="${homeList.ansWriteTime }"/>
+									<li><i class="fa-solid fa-comment"></i>
+									<li><i class="fa fa-heart"></i>
+		                          <li><i class="fa-solid fa-bookmark"></i>
+								</ul>
+							</div>
+							<div class="comment-content">
+								<c:out value="${homeList.ansContent}"/>
+			               </div>
+						</div>
+					</div>
+					</li><!-- 질문e -->
 				</ul>
+		</c:forEach>
+		<c:forEach items="${homeList}" var="homeList" varStatus="status">
+			<div class="comment-main-level">
+				<div class="comment-box">
+					<div class="comment-head">
+						<h6 class="comment-name by-author"><a href="#"><c:out value="${homeList.ansUserId }"/></a></h6>
+						<span><c:out value="${item.language_select }"/></span>
+						<ul class="iconlist">
+							<li><c:out value="${homeList.ansWriteTime }"/>
+	                           <li><i class="fa-solid fa-bookmark"></i>
+						</ul>
+					</div>
+					<div class="comment-content">
+						<c:out value="${homeList.ansContent }"/>
+					</div>
+				</div>
 			</div>
-			<div class="comment-content">
-				<c:out value="${item.ansContent}"/>
-               </div>
-		</div>
-	</div>
-</li><!-- 질문e -->
-</ul>
-</c:if>
-<!-- 메인레벨 답변 -->
+		</c:forEach>
+<%-- 	</c:when> --%>
+<%-- 	</c:if> --%>
+<%-- <!-- 메인레벨 답변 -->
 	<c:choose>
 	
 	<c:when test="${not empty item.ansQuestionSeq}">
@@ -123,7 +141,7 @@
 	</c:forEach>
 </c:when>
 <c:otherwise></c:otherwise>
-</c:choose>
+</c:choose> --%>
 	</div>
 	</form>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -53,14 +53,22 @@
 			,a.writetime
 			,a.userID
 			,a.language_select
-			,b.ansContent
-			,b.ansUserId
-			,b.ansWriteTime
-			,b.ansQuestionSeq
 		FROM  question a
-		LEFT JOIN answer b ON b.ansQuestionSeq = a.questionSeq
 		WHERE 1=1
 			AND a.questionSeq = #{questionSeq}
+	</select>
+	
+	<select id="selectAns" resultMap="resultMapObj">
+		SELECT
+			a.ansSeq
+			,a.ansWriteTime
+			,a.ansUserId
+			,a.ansContent
+			,a.ansQuestionSeq
+		FROM answer a
+		LEFT JOIN question b ON b.questionSeq = a.ansQuestionSeq
+		WHERE 1=1 
+			and a.ansQuestionSeq= #{questionSeq}
 	</select>
 	
 	<!-- 페이지 네이션 카운터 -->
@@ -68,6 +76,12 @@
 			SELECT COUNT(*)
 			FROM question a
 	    	WHERE 1=1
+   	    	<choose>
+	    		<when test="languageOption == 9"> AND a.language_select = 9 </when>
+				<when test="languageOption == 10">AND a.language_select = 10 </when>
+				<when test="languageOption == 11"> AND a.language_select = 11</when>
+				<when test="languageOption == 12"> AND a.language_select = 12</when>
+    		</choose>
 		    <choose>
 				<when test="shOption == 9"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 9 </when>
 				<when test="shOption == 10">AND a.language_select = 10 AND content LIKE CONCAT('%',#{shValue},'%')</when>

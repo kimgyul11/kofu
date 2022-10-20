@@ -22,6 +22,7 @@ public class HomeServiceImpl implements HomeService{
 		System.out.println("service result : "+ result );
 		return result;
 	}
+	
 	@Override
 	public List<Home> homeSearch(HomeVo vo) throws Exception{
 		return dao.selectList(vo);
@@ -36,8 +37,14 @@ public class HomeServiceImpl implements HomeService{
 	public int selectOenCount(HomeVo vo) throws Exception{
 		return dao.selectOenCount(vo);
 	}
+	
 	@Override
 	public int ansInsert(Home dto) throws Exception{
 		return dao.ansInsert(dto);
+	}
+	
+	@Override
+	public List<Home>selectAns(HomeVo vo) throws Exception{
+		return dao.selectAns(vo);
 	}
 }

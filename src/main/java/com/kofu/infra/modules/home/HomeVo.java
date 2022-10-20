@@ -10,7 +10,18 @@ public class HomeVo {
 	private String questionSeq;
 	private String ansSeq;
 	private Integer languageOption;
+	private String ansQuestionSeq;
 	
+	
+	
+	
+	
+	public String getAnsQuestionSeq() {
+		return ansQuestionSeq;
+	}
+	public void setAnsQuestionSeq(String ansQuestionSeq) {
+		this.ansQuestionSeq = ansQuestionSeq;
+	}
 	public Integer getLanguageOption() {
 		return languageOption;
 	}

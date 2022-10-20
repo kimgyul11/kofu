@@ -39,4 +39,7 @@ public class HomeDao {
 		int result = sqlSession.insert(namespace + ".ansInsert" , dto);
 		return result;
 	}
+	public List<Home> selectAns(HomeVo vo){
+		return sqlSession.selectList(namespace + ".selectAns",vo);
+	}
 }
