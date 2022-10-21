@@ -21,6 +21,7 @@
 <form name="form">
 <input type="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
+<input type="hidden" value="<c:out value="${sessId }"/>" id="ansUserId" name="ansUserId">
 <input type="hidden" value="<c:out value="${vo.ansSeq}"/>" id="ansSeq" name="ansSeq" >
 
 <!-- Navbar s  -->

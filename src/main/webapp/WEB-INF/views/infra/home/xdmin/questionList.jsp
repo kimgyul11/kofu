@@ -55,8 +55,8 @@
 			                   <c:if test="${list.language_select eq Language.ccSeq}"> 질문 언어 :<c:out value="${Language.cc_name }"/></c:if>
 			                </c:forEach>
 			                </li>
-			                    <li>작성자 : <c:out value="${userID }"/></li>
-			                    <li>작성일 : <c:out value="${writetime }"/></li>
+			                    <li>작성자 : <c:out value="${list.userID }"/></li>
+			                    <li>작성일 : <c:out value="${list.writetime }"/></li>
 			                </ul>
 			                <a href="javascript:goForm(<c:out value="${list.questionSeq }"/>)">
 			                	<div class="bubble_content">
@@ -118,20 +118,7 @@
 	}
 	
 	
-    var dd_main = document.querySelector(".dd_main");
-	
-    dd_main.addEventListener("click", function(){
-        this.classList.toggle("active");
-    })
-    const toggleBtn = document.querySelector('.default_option');
-    const menu = document.querySelector('.dropdown ul');
-    const icons = document.querySelector('.navbar_linkicon');
 
-    toggleBtn.addEventListener('click', () => {
-    menu.classList.toggle('active');
-    icons.classList.toggle('active');
-    });
-    
 
     
 </script>

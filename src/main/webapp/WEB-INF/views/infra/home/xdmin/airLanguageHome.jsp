@@ -19,7 +19,7 @@
 </head>
 <body>
 <form name="form">
-
+<input type="hidden" value="<c:out value="${vo.memberSeq}"/>" id="memberSeq" name="memberSeq" >
     <!--  헤더영역 -->
     <header class="backcol">
         <nav class="navbar">
@@ -34,7 +34,7 @@
 	            	<li><a href="/member/airSignupView">신규가입</a></li>
 	            </c:when>
 	            <c:otherwise>
-		            <li class="signinStatus"><a href="#"><c:out value="${sessId }"/>님 환영합니다.</a></li>
+		            <li class="signinStatus"><a href="/member/airMypage"><c:out value="${sessId }"/>님 환영합니다.</a></li>
 	                <li><a href="login" id="btnLogout">로그아웃</a></li>
                 </c:otherwise>
             </c:choose>

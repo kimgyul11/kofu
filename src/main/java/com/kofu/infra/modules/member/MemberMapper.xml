@@ -141,9 +141,18 @@
 	</select>
 	
 	<!--10월20일 마이페이지  -->
-	<select id="myPageSelect">
-		SELECT 
-			
+	<select id="myPageSelect" resultMap="resultMapObj">
+		SELECT
+			user_id
+			,user_name
+			,user_level
+			,lean_language
+			,user_gender
+			,user_favoriteLanguage
+		FROM
+			airLanguage_member
+		WHERE 1=1
+			AND memberSeq = #{memberSeq}
 	</select>
 	
 	

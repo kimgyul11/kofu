@@ -55,20 +55,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script>
-        var dd_main = document.querySelector(".dd_main");
-    
-        dd_main.addEventListener("click", function(){
-            this.classList.toggle("active");
-        })
-        const toggleBtn = document.querySelector('.default_option');
-        const menu = document.querySelector('.dropdown ul');
-        const icons = document.querySelector('.navbar_linkicon');
-    
-        toggleBtn.addEventListener('click', () => {
-        menu.classList.toggle('active');
-        icons.classList.toggle('active');
-        });
-        
+
     /* 질문 등록 */
     var form = $("form[name=form]");
     var seq = $("input:hidden[name=questionSeq]");

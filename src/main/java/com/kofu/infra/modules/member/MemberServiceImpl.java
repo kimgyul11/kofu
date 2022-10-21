@@ -109,4 +109,11 @@ public class MemberServiceImpl implements MemberService{
 			throw new Exception();
 		}
 	}
+	
+	@Override
+	public Member myPageSelect(MemberVo vo) throws Exception{
+		Member result = dao.myPageSelect(vo);
+		return result;
+	}
+	
 }

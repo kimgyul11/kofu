@@ -57,4 +57,10 @@ public class MemberDao {
 		return result;
 	}
 	
+	//마이페이지
+	public Member myPageSelect(MemberVo vo) {
+		Member result = sqlSession.selectOne(namespace + ".myPageSelect", vo);
+		return result;
+	}
+	
 }
