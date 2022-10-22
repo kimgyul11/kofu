@@ -52,10 +52,10 @@
         <div class="language_catagory_wrap">
             <p>언어별 선택 <i class="fa-solid fa-magnifying-glass"></i></p>
             <ul class="catagory_list">
-                <li class="list_item"><button name="languageOption" type="submit" value="9"><img src="https://cdn-icons-png.flaticon.com/512/330/330591.png" alt=""></ㅠ></li>
-                <li class="list_item"><button name="languageOption" type="submit" value="10"><img src="https://cdn-icons-png.flaticon.com/512/5111/5111624.png" alt=""></a></li>
-                <li class="list_item"><button name="languageOption" type="submit" value="11"><img src="https://cdn-icons-png.flaticon.com/512/555/555646.png" alt=""></a></li>
-                <li class="list_item"><button name="languageOption" type="submit" value="12"><img src="https://cdn-icons-png.flaticon.com/512/555/555526.png" alt=""></a></li>
+                <li class="list_item"><button name="languageOption" type="submit" value="9"><img src="https://cdn-icons-png.flaticon.com/512/330/330591.png" alt=""></li>
+                <li class="list_item"><button name="languageOption" type="submit" value="10"><img src="https://cdn-icons-png.flaticon.com/512/5111/5111624.png" alt=""></li>
+                <li class="list_item"><button name="languageOption" type="submit" value="11"><img src="https://cdn-icons-png.flaticon.com/512/555/555646.png" alt=""></li>
+                <li class="list_item"><button name="languageOption" type="submit" value="12"><img src="https://cdn-icons-png.flaticon.com/512/555/555526.png" alt=""></li>
             </ul>
         </div><!-- 언어별 버튼영역e-->
         
@@ -79,9 +79,11 @@
 			                    </li>
 			                    <li>
 			                        <ul class="box_info">
+			                        <li>
 			                        <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
-			                            <li><c:if test="${list.language_select eq Language.ccSeq}">질문 언어 :<c:out value="${Language.cc_name }"/></c:if></li>
+			                            <c:if test="${list.language_select eq Language.ccSeq}">질문 언어 :<c:out value="${Language.cc_name }"/></c:if>
 			                        </c:forEach>
+			                        </li>
 			                        	<li>작성일:<c:out value="${list.writetime }"/></li>    
 			                        </ul>
 			                    </li>

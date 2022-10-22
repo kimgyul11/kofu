@@ -194,7 +194,7 @@
 }
 .box_info{
     display: flex;
-    justify-content:end;
+	margin-left:0px;
 }
 .box_info li{
     margin-right: 15px;
