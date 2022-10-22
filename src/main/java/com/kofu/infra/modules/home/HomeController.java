@@ -1,5 +1,7 @@
 package com.kofu.infra.modules.home;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +50,14 @@ public class HomeController {
 		List<Home>list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
-		return "infra/home/xdmin/questionList";
+		return "infra/home/xdmin/airQuestionList";
+	}
+	
+	@RequestMapping(value = "AirQuestionList")
+	public String AirQuestionList(@ModelAttribute("vo")HomeVo vo,Model mode) throws Exception{
+		vo.setParamsPaging(service.selectOenCount(vo));
+		List<Home>list = service.selectList(vo);
+		return "infra/home/xdmin/airQuestionList";
 	}
 	@RequestMapping(value = "queview")
 	public String queview(@ModelAttribute("vo")HomeVo vo,Model model) throws Exception {
