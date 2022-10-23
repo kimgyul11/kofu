@@ -15,8 +15,8 @@
     <title>My page</title>
 </head>
 <body>
-<input type="text" value="<c:out value="${sessId }"/>" id="userID" name="userID">
-
+<form name=form>
+<input type="hidden" name="memberSeq" value="<c:out value="${sessId }"/>"  >
     <!-- 네비게이션바 영역 시작-->
     <div class="navbar">
         <div class="logo">
@@ -49,8 +49,8 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/1226/1226086.png" alt="">
                     </div>
                     <ul class="profile_input">
-                        <li><p>아이디</p><input type="text" readonly name="user_id" value="<c:out value="${item.user_id }"/>"></li>
-                        <li><p>이름</p><input type="text" readonly></li>
+                        <li><p>아이디</p><input type="text" readonly name="memberSeq" value="<c:out value="${sessId}"/>" ></li>
+                        <li><p>이름</p><input type="text" readonly value="<c:out value="${item.user_name }"/>" name="user_name"></li>
                         <li><p>성별</p><input type="text" readonly></li>
                         <li><p>주 언어</p><input type="text" readonly></li>
                         <li><p>배우는 언어</p><input type="text"readonly ></li>
@@ -84,7 +84,7 @@
         </div>
     </div>
 
-
+</form>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 
 </body>

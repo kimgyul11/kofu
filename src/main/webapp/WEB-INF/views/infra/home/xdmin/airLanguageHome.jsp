@@ -19,7 +19,8 @@
 </head>
 <body>
 <form name="form">
-<input type="hidden" value="<c:out value="${vo.memberSeq}"/>" id="memberSeq" name="memberSeq" >
+<input type="hidden" name="memberSeq" value="<c:out value="${sessId }"/>" >
+<input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq}"/>"/>
     <!--  헤더영역 -->
     <header class="backcol">
         <nav class="navbar">
