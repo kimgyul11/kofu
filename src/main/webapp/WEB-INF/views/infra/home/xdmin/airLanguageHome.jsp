@@ -21,36 +21,46 @@
 <form name="form">
 <input type="hidden" name="memberSeq" value="<c:out value="${sessId }"/>" >
 <input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq}"/>"/>
-    <!--  헤더영역 -->
-    <header class="backcol">
-        <nav class="navbar">
-            <a href="#" class="navbar_icon">
-                <i class="fa-solid fa-plane-departure"></i>
-                <span>Air Language</span>        
-            </a>
-            <ul class="navbar_linkicon">
+        <!-- 네비게이션바 영역 시작-->
+    <div class="navbar">
+        <div class="logo">
+            <a href="#">AirLanguage</a>
+        </div>
+        <div class="nav_search_box">
+            <select name="" id="" >
+                <option value="">언어선택</option>
+                <option value="">한국어</option>
+                <option value="">중국어</option>
+                <option value="">일본어</option>
+                <option value="">영어</option>
+            </select>
+            <input type="text" placeholder="단어를 입력해보세요.">
+        </div>
+        <ul class="nav_right_Wrap">
             <c:choose>
             	<c:when test="${empty sessSeq }">
-	            	<li><a href="airLogin">로그인</a></li>
-	            	<li><a href="/member/airSignupView">신규가입</a></li>
-	            </c:when>
-	            <c:otherwise>
+            		<li><a href="airLogin">로그인</a></li>
+            		<li><a href="/member/airSignupView">신규가입</a></li>
+            	</c:when>
+            	<c:otherwise>
+		            <li><a href="">게시판</a>		
+		            <li><a href="">질문하기</a>
 		            <li class="signinStatus"><a href="/member/airMypage"><c:out value="${sessId }"/>님 환영합니다.</a></li>
-	                <li><a href="login" id="btnLogout">로그아웃</a></li>
-                </c:otherwise>
+		            <li><a href="airLogin" id="btnLogout">로그아웃</a>
+            	</c:otherwise>
             </c:choose>
-                <li><a href="/quelist">게시판</a></li>
-            </ul>
-            <a href="#" class="navbar_togglebtn">
-                <i class="fa-solid fa-bars"></i>
-            </a>
-        </nav>
-        <div class="smallsep heading"></div>
+        </ul>
+    </div><!-- 네비게이션바 영역 종료-->
+    
+    
+    <!--  헤더영역 -->
         <div class="title">
             <h1>언제,어디서나 원어민과 함께</h1> 
             <h2>AIR LANGUAGE</h2>
+            <div class="imgbox">
+            	<img class="img" src="https://cdn-icons-png.flaticon.com/512/414/414876.png">
+            </div>
         </div>
-    </header>    
 
 <!-- 빠른검색 영역 -->
 <div class="search_warp">
@@ -58,20 +68,15 @@
         <h1>빠른검색</h1>
         <h2>원하는 단어를 빠르게 검색해보세요</h2>
     </div>
-    <div class="search_select">
-        <span class="custom-select">
-        <select id="shOption" name="shOption">
+        <select class="search_select" id="shOption" name="shOption">
             <option value=""<c:if test="${empty vo.shOption}">selected</c:if>>언어를 선택하세요</option>
             <option value="9"<c:if test="${vo.shOption eq 9}">selected</c:if>>한국어</option>
             <option value="10"<c:if test="${vo.shOption eq 10}">selected</c:if>>중국어</option>
             <option value="11"<c:if test="${vo.shOption eq 11}">selected</c:if>>일본어</option>
-            <option value="11"<c:if test="${vo.shOption eq 12}">selected</c:if>>한국어</option>
+            <option value="12"<c:if test="${vo.shOption eq 12}">selected</c:if>>영어</option>
         </select>
-        </span>
-        <p>에 대한</p>
-    </div>
     <div class="search_textbox">
-        <input type="text" name="shValue" id="shValue" value="<c:out value="${vo.shValue}"/>" placeholder="검색어를 입력하세요">
+        <input type="text" name="shValue" id="shValue" value="<c:out value="${vo.shValue}"/>" placeholder="단어를 입력하세요">
     </div>
     <div class="search_btn">
         <div class="button" type="button" onclick id="btnForm">검색하기</div>
@@ -114,6 +119,26 @@
         </div>
     </main>
 </div>
+<!-- 최근질문내역 -->
+<div class="queContainer">
+    <h1>최신 질문</h1>
+    <h3>최근에 올라온 질문을 확인해보세요</h3>
+    <div class="newQue_wrap" onclick="quelist">
+        <div class="newQus_items">
+            <div class="items_box">
+                <p>sad</p>
+                <div class="items_footer">1</div>
+            </div>
+        </div>
+        <div class="newQus_items">
+            <div class="items_box">
+                <p>sad</p>
+                <div class="items_footer">1</div>
+            </div>
+        </div>
+    </div>
+</div>    
+
 	<!-- 카드영역 시작 -->
 <div class="card_head">
     <h1>어떤질문을 하면 좋을까요?</h1>
@@ -141,15 +166,11 @@
     </div>
 </div>
     <!-- 회원가입 페이지 -->
-    <div class="signup_container">
-        <div class="signup_head">
-            <h3>지금 바로 가입</h3>
-        </div>
-        <div class="signup_body">
-            <img src="" alt="">
-            <button>가입하기</button>
-        </div>
-    </div>
+	<ul class="home_signup_wrap">
+        <li><p>지금 바로 가입하기</p></li>
+        <li><img src="https://cdn-icons-png.flaticon.com/512/1474/1474674.png" alt=""></li>
+        <li><button>move>></button></li>
+    </ul>
 </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
