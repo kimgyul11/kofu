@@ -19,8 +19,8 @@
 </head>
 <body>
 <form name="form">
-<input type="hidden" name="memberSeq" value="<c:out value="${sessId }"/>" >
-<input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq}"/>"/>
+<input type="hidden" name="memberSeq" value="<c:out value="${sessSeq }"/>" >
+<%-- <input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq}"/>"/> --%>
         <!-- 네비게이션바 영역 시작-->
     <div class="navbar">
         <div class="logo">
@@ -45,7 +45,10 @@
             	<c:otherwise>
 		            <li><a href="">게시판</a>		
 		            <li><a href="">질문하기</a>
-		            <li class="signinStatus"><a href="/member/airMypage"><c:out value="${sessId }"/>님 환영합니다.</a></li>
+		            <%-- <li class="signinStatus"><a href="/member/airMypage"><c:out value="${sessSeq }"/>님 환영합니다.</a></li> --%>
+		            <li class="signinStatus"><a onclick="location.href='/member/airMypage?memberSeq=<c:out value="${sessSeq}"/>'"><c:out value="${sessSeq }"/>님 환영합니다.</a></li>
+		            
+		            <li class="signinStatus"><a href="javascript:goForm(<c:out value="${sessSeq }"/>)"> <c:out value="${sessId }"/>님 환영합니다.</a></li>
 		            <li><a href="airLogin" id="btnLogout">로그아웃</a>
             	</c:otherwise>
             </c:choose>
@@ -200,6 +203,14 @@ $("#btnLogout").on("click", function(){
 		}
 	});
 });	
+
+var seq = $("input:hidden[name=memberSeq]");
+var goUrlForm = "/member/airMaypage";
+goForm = function(keyValue) {
+	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	seq.val(keyValue);
+	form.attr("action", goUrlForm).submit();
+}
 	
 </script>
 

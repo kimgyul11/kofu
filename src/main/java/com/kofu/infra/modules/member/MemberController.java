@@ -28,9 +28,10 @@ public class MemberController {
 		return "infra/userInfo/mypage";
 	}
 	
+	
+	
 	@RequestMapping(value = "airMypage")
 	public String airMypage(@ModelAttribute("vo")MemberVo vo,Model model) throws Exception {
-		
 		Member result = service.myPageSelect(vo);
 		model.addAttribute("item",result);
 		return "infra/login/xdmin/airMypage";

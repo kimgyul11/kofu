@@ -16,7 +16,7 @@
 </head>
 <body>
 <form name=form>
-<input type="hidden" name="memberSeq" value="<c:out value="${sessId }"/>"  >
+<input type="hidden" name="memberSeq" value="<c:out value="${sessSeq }"/>"  >
     <!-- 네비게이션바 영역 시작-->
     <div class="navbar">
         <div class="logo">
@@ -50,8 +50,8 @@
                     </div>
                     <ul class="profile_input">
                         <li><p>아이디</p><input type="text" readonly name="memberSeq" value="<c:out value="${sessId}"/>" ></li>
-                        <li><p>이름</p><input type="text" readonly value="<c:out value="${item.user_name }"/>" name="user_name"></li>
-                        <li><p>성별</p><input type="text" readonly></li>
+                        <li><p>이름</p><input type="text" readonly value="<c:out value="${sessName }"/>" name="user_name"></li>
+                        <li><p>성별</p><input type="text" readonly value="<c:out value="${item.user_gender }"/>"></li>
                         <li><p>주 언어</p><input type="text" readonly></li>
                         <li><p>배우는 언어</p><input type="text"readonly ></li>
                         <li><button>편집</button></li>
