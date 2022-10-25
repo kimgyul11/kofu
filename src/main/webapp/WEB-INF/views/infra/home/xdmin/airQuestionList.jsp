@@ -22,31 +22,9 @@
 <input type="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-    <!-- 네비게이션바 영역 시작-->
-    <div class="navbar">
-        <div class="logo">
-            <a href="#">AirLanguage</a>
-        </div>
-        <div class="nav_search_box">
-            <select name="" id="" >
-                <option value="">언어선택</option>
-                <option value="">한국어</option>
-                <option value="">중국어</option>
-                <option value="">일본어</option>
-                <option value="">영어</option>
-            </select>
-            <input type="text" placeholder="단어를 입력해보세요.">
-        </div>
-        <ul class="nav_right_Wrap">
-            <li><a href="">HOME</a>
-            <li><a href="">MY PAGE</a>
-            <li><a href="">로그아웃</a>
-            <li><a href="">질문하기</a>
-        </ul>
-    </div><!-- 네비게이션바 영역 종료-->
-
-
-
+	<!-- Navbar s  -->
+	<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
+	<!-- Navbar e  -->    
     <div class="container">
         <!-- 언어별 버튼영역 s -->
         <div class="language_catagory_wrap">
@@ -73,8 +51,12 @@
 			                    <li>
 			                        <ul class="box_profile">
 			                            <li class="profile_imgWrap"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt=""></li>
-			                            <li class="profile_idwrap"><c:out value="${list.userID }"/></li>
-			                            <li class="profile_lvwrap">LV.</li>
+			                            <li class="profile_idwrap"><c:out value="${list.user_id }"/></li>
+			                            <li class="profile_lvwrap">
+			                            	<c:choose>
+			                            		<c:when test="${list.user_level eq 1}"><h1>레벨1</h1></c:when>
+			                            	</c:choose>
+			                            </li>
 			                        </ul>
 			                    </li>
 			                    <li>

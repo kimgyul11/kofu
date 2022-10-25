@@ -24,9 +24,11 @@
 	    	a.questionSeq
 			,a.content
 	    	,a.writetime
-	    	,a.userID
-	    	,a.language_select    
+	    	,a.language_select
+	    	,b.user_level
+	    	,b.user_id
     	FROM question a
+    	LEFT JOIN airLanguage_member b ON b.memberSeq = a.userID
     	WHERE 1=1
     	<choose>
     		<when test="languageOption == 9"> AND a.language_select = 9 </when>
@@ -51,9 +53,11 @@
 			a.questionSeq
 			,a.content
 			,a.writetime
-			,a.userID
 			,a.language_select
+			,b.user_id
+			,b.user_level
 		FROM  question a
+		JOIN airLanguage_member b ON b.memberSeq = a.userID
 		WHERE 1=1
 			AND a.questionSeq = #{questionSeq}
 	</select>
@@ -67,6 +71,7 @@
 			,a.ansQuestionSeq
 		FROM answer a
 		LEFT JOIN question b ON b.questionSeq = a.ansQuestionSeq
+		LEFT JOIN airLanguage_member c ON a.ansUserId = c.memberSeq
 		WHERE 1=1 
 			and a.ansQuestionSeq= #{questionSeq}
 	</select>
@@ -95,14 +100,12 @@
 		INSERT INTO question(
 			content
 			,userID
-			,questionDelNy
 			,writetime
 			,language_select
 		)
 		VALUES(
 			#{content}
 			,#{userID}
-			,#{questionDelNy}
 			,now()
 			,#{language_select}
 		)

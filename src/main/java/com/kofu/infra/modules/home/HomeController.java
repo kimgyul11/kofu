@@ -54,6 +54,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "queview")
 	public String queview(@ModelAttribute("vo")HomeVo vo,Model model) throws Exception {
+		
 		Home result = service.selectOne(vo);
 		List<Home>homeList = service.selectAns(vo);
 		model.addAttribute("item",result);

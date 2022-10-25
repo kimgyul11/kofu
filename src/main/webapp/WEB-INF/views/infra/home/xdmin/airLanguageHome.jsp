@@ -21,39 +21,9 @@
 <form name="form">
 <input type="hidden" name="memberSeq" value="<c:out value="${sessSeq }"/>" >
 <%-- <input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq}"/>"/> --%>
-        <!-- 네비게이션바 영역 시작-->
-    <div class="navbar">
-        <div class="logo">
-            <a href="#">AirLanguage</a>
-        </div>
-        <div class="nav_search_box">
-            <select name="" id="" >
-                <option value="">언어선택</option>
-                <option value="">한국어</option>
-                <option value="">중국어</option>
-                <option value="">일본어</option>
-                <option value="">영어</option>
-            </select>
-            <input type="text" placeholder="단어를 입력해보세요.">
-        </div>
-        <ul class="nav_right_Wrap">
-            <c:choose>
-            	<c:when test="${empty sessSeq }">
-            		<li><a href="airLogin">로그인</a></li>
-            		<li><a href="/member/airSignupView">신규가입</a></li>
-            	</c:when>
-            	<c:otherwise>
-		            <li><a href="">게시판</a>		
-		            <li><a href="">질문하기</a>
-		            <%-- <li class="signinStatus"><a href="/member/airMypage"><c:out value="${sessSeq }"/>님 환영합니다.</a></li> --%>
-		            <li class="signinStatus"><a onclick="location.href='/member/airMypage?memberSeq=<c:out value="${sessSeq}"/>'"><c:out value="${sessSeq }"/>님 환영합니다.</a></li>
-		            
-		            <li class="signinStatus"><a href="javascript:goForm(<c:out value="${sessSeq }"/>)"> <c:out value="${sessId }"/>님 환영합니다.</a></li>
-		            <li><a href="airLogin" id="btnLogout">로그아웃</a>
-            	</c:otherwise>
-            </c:choose>
-        </ul>
-    </div><!-- 네비게이션바 영역 종료-->
+<!-- Navbar s  -->
+<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
+<!-- Navbar e  -->   
     
     
     <!--  헤더영역 -->
@@ -61,7 +31,7 @@
             <h1>언제,어디서나 원어민과 함께</h1> 
             <h2>AIR LANGUAGE</h2>
             <div class="imgbox">
-            	<img class="img" src="https://cdn-icons-png.flaticon.com/512/414/414876.png">
+            	<img class="img" src="https://cdn-icons-png.flaticon.com/512/476/476505.png">
             </div>
         </div>
 
@@ -92,7 +62,7 @@
 <div class="container">
     <div class="topline">
         <div class="topline_text">
-            <h1>AIR LANGUAGE를 소개합니다</h1>
+            <h1>AIR LANGUAGE소개영역</h1>
         </div>
     </div>
     <main class="middleBx">

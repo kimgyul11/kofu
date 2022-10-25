@@ -6,6 +6,7 @@ public class Home {
 	private String content;
 	private String user_id;
 	private String cc_name;
+	private Integer user_level;
 	
 	// 질문 작성
 	private String questionSeq;
@@ -31,6 +32,12 @@ public class Home {
 	
 	public String getContent() {
 		return content;
+	}
+	public Integer getUser_level() {
+		return user_level;
+	}
+	public void setUser_level(Integer user_level) {
+		this.user_level = user_level;
 	}
 	public String getAnsQuestionSeq() {
 		return ansQuestionSeq;

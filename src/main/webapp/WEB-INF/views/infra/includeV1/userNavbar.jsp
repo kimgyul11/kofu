@@ -1,57 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
+        <!-- 네비게이션바 영역 시작-->
     <div class="navbar">
         <div class="logo">
-            <a href="#">AirLanguage</a>
+            <a href="airLanguageHome">AirLanguage</a>
         </div>
-        <div class="search_box">
-            <div class="dropdown">
-                <div class="default_option">관심언어로 검색</div>  
-                <ul>
-                    <li>한국어</li>
-                    <li>영어</li>
-                </ul>
-            </div>
-            <div class="search_field">
-                <input type="text" class="input" placeholder="Search">
-                <i class="fas fa-search"></i>
-            </div>
+        <div class="nav_search_box">
+            <select name="" id="" >
+                <option value="">언어선택</option>
+                <option value="">한국어</option>
+                <option value="">중국어</option>
+                <option value="">일본어</option>
+                <option value="">영어</option>
+            </select>
+            <input type="text" placeholder="단어를 입력해보세요.">
         </div>
-        <div class="nav_right">
-            <ul>
-                <li class="nr_li dd_main">
-                    <img src="https://t1.daumcdn.net/cfile/tistory/132C56244AAB40B35D">
-                    <!-- 메뉴리스트 -->
-                    <div class="dd_menu">
-                        <div class="dd_left">
-                            <ul>
-                                <li><i class="fa-solid fa-user"></i></li>
-                                <li><i class="fa-solid fa-gear"></i></li>
-                                <li><i class="fas fa-sign-out-alt"></i></li>
-                            </ul>
-                        </div>
-                        <div class="dd_right">
-                            <ul>
-                                <li>내정보</li>
-                                <li>설정</li>
-                                <li>Logout</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="nr_li">
-                    <i class="fa-solid fa-bell"></i>
-                </li>
-                <li class="nr_li">
-                    <i class="fa-solid fa-house"></i>
-                </li>
-                <li>
-                    <div class="btn_wraper">
-                        <div class="btn btn_1">
-                            <a href="quereg">질문하기</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+        <ul class="nav_right_Wrap">
+            <c:choose>
+            	<c:when test="${empty sessSeq }">
+            		<li><a href="airLogin">로그인</a></li>
+            		<li><a href="/member/airSignupView">신규가입</a></li>
+            	</c:when>
+            	<c:otherwise>
+		            <li><a href="quelist">게시판</a>		
+		            <li><a href="quereg">질문하기</a>
+		            <%-- <li class="signinStatus"><a href="/member/airMypage"><c:out value="${sessSeq }"/>님 환영합니다.</a></li> --%>
+		            <li class="signinStatus"><a onclick="location.href='/member/airMypage?memberSeq=<c:out value="${sessSeq}"/>'"><c:out value="${sessId }"/>님 환영합니다.</a></li>
+		            <li><a href="airLogin" id="btnLogout">로그아웃</a>
+            	</c:otherwise>
+            </c:choose>
+        </ul>
+    </div><!-- 네비게이션바 영역 종료-->

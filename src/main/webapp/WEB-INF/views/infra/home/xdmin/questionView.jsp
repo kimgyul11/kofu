@@ -19,9 +19,10 @@
 </head>
 <body>
 <form name="form">
+
 <input type="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
-<input type="hidden" value="<c:out value="${sessId }"/>" id="ansUserId" name="ansUserId">
+<input type="hidden" value="<c:out value="${sessSeq }"/>" id="ansUserId" name="ansUserId">
 <input type="hidden" value="<c:out value="${vo.ansSeq}"/>" id="ansSeq" name="ansSeq" >
 
 <!-- Navbar s  -->
@@ -40,7 +41,7 @@
 				<div class="comment-main-level">
 					<div class="comment-box">
 						<div class="comment-head">
-							<h6 class="comment-name by-author"><a href="#"><c:out value="${item.userID }"/></a></h6>
+							<h6 class="comment-name by-author"><a href="#"><c:out value="${item.user_id }"/></a></h6>
 							<span><c:out value="${item.language_select }"/></span>
 							<ul class="iconlist">
 								<li><c:out value="${item.writetime }"/>
@@ -58,7 +59,7 @@
 
 		<div class="answerWrap">
 			<div class="answerContent">
-				<textarea name="ansContent" value="<c:out value="${item.ansContent }"/>" placeholder="<c:out value="${item.userID }"/>님이 당신의 답변을 기다리고 있습니다."></textarea>
+				<textarea name="ansContent" value="<c:out value="${dto.ansContent }"/>" placeholder="<c:out value="${item.user_id }"/>님이 당신의 답변을 기다리고 있습니다."></textarea>
 			</div>
 			<div class="answerfooter">
 				<ul class="fileupload">
@@ -105,19 +106,6 @@
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script>
 
-        var dd_main = document.querySelector(".dd_main");
-    
-        dd_main.addEventListener("click", function(){
-            this.classList.toggle("active");
-        })
-        const toggleBtn = document.querySelector('.default_option');
-        const menu = document.querySelector('.dropdown ul');
-        const icons = document.querySelector('.navbar_linkicon');
-    
-        toggleBtn.addEventListener('click', () => {
-        menu.classList.toggle('active');
-        icons.classList.toggle('active');
-        });  
         
         var form = $("form[name=form]");
     	var seq = $("input:hidden[name=ansSeq]");
