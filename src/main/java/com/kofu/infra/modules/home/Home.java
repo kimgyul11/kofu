@@ -15,15 +15,42 @@ public class Home {
 	private String writetime;
 	private String lastModTime;
 	private Integer questionDelNy;
+	private String bookmarkSeq;
 	
 	
+	public String getBookmarkSeq() {
+		return bookmarkSeq;
+	}
+	public void setBookmarkSeq(String bookmarkSeq) {
+		this.bookmarkSeq = bookmarkSeq;
+	}
 	//질문 답변
 	private String ansSeq;
 	private String ansWriteTime;
 	private String ansUserId;
 	private String ansContent;
 	private String ansQuestionSeq;
-	
+	private Integer question_questionSeq;
+	private Integer bookmark_useNy;
+	public Integer getQuestion_questionSeq() {
+		return question_questionSeq;
+	}
+	public void setQuestion_questionSeq(Integer question_questionSeq) {
+		this.question_questionSeq = question_questionSeq;
+	}
+	public Integer getBookmark_useNy() {
+		return bookmark_useNy;
+	}
+	public void setBookmark_useNy(Integer bookmark_useNy) {
+		this.bookmark_useNy = bookmark_useNy;
+	}
+	public String getBookmark_UserId() {
+		return bookmark_UserId;
+	}
+	public void setBookmark_UserId(String bookmark_UserId) {
+		this.bookmark_UserId = bookmark_UserId;
+	}
+	private String bookmark_UserId;
 	
 	
 	// -------------------------------------

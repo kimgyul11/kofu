@@ -16,29 +16,10 @@
 </head>
 <body>
 <form name=form>
-<input type="hidden" name="memberSeq" value="<c:out value="${sessSeq }"/>"  >
-    <!-- 네비게이션바 영역 시작-->
-    <div class="navbar">
-        <div class="logo">
-            <a href="#">AirLanguage</a>
-        </div>
-        <div class="nav_search_box">
-            <select name="" id="" >
-                <option value="">언어선택</option>
-                <option value="">한국어</option>
-                <option value="">중국어</option>
-                <option value="">일본어</option>
-                <option value="">영어</option>
-            </select>
-            <input type="text" placeholder="단어를 입력해보세요.">
-        </div>
-        <ul class="nav_right_Wrap">
-            <li><a href="">HOME</a>
-            <li><a href="">MY PAGE</a>
-            <li><a href="">로그아웃</a>
-            <li><a href="">질문하기</a>
-        </ul>
-    </div><!-- 네비게이션바 영역 종료-->
+<input type="hidden" name="memberSeq" id="memberSeq"value="<c:out value="${sessSeq }"/>"  >
+	<!-- Navbar s  -->
+	<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
+	<!-- Navbar e  -->  
     
     <!--메인 영역  -->
     <div class="container">

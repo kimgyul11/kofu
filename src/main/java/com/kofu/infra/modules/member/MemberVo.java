@@ -4,8 +4,16 @@ public class MemberVo {
 
 	private String memberSeq;
 	private String user_id;
+	private String bookmarkSeq;
 	
-	
+	public String getBookmarkSeq() {
+		return bookmarkSeq;
+	}
+
+	public void setBookmarkSeq(String bookmarkSeq) {
+		this.bookmarkSeq = bookmarkSeq;
+	}
+
 	public String getUser_id() {
 		return user_id;
 	}

@@ -28,36 +28,35 @@
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
-
-    <!-- Contenedor Principal -->
-	<div class="comments-container">
-		<ul id="comments-list" class="comments-list">
-            <li><!-- 프로필이미지s -->
-				<div class="comment-avatar">
-					<img src="https://post-phinf.pstatic.net/MjAxODA5MTBfMTk4/MDAxNTM2NTcwNjUwMDUy.F2G6NyAsR5sRYmOL-A8tQJxz6NuHVDARJ3g28EOBoNgg.g2JnkXNFM6A4C7ZloyowHQc_4skHr1PtOsKG0vA641sg.JPEG/%EC%84%B8%EC%A2%85.jpg?type=w1200" alt="">
-				</div>
-            </li><!-- 프로필이미지e -->
-            <li><!-- 질문s -->
-				<div class="comment-main-level">
-					<div class="comment-box">
-						<div class="comment-head">
-							<h6 class="comment-name by-author"><a href="#"><c:out value="${item.user_id }"/></a></h6>
-							<span><c:out value="${item.language_select }"/></span>
-							<ul class="iconlist">
-								<li><c:out value="${item.writetime }"/>
-	                            <li><i class="fa-solid fa-bookmark"></i>
-							</ul>
-						</div>
-						<div class="comment-content">
-							<c:out value="${item.content }"/>
-                        </div>
-					</div>
-				</div>
-			</li><!-- 질문e -->
-		</ul>
-		<!--답변창s -->
-
-		<div class="answerWrap">
+<!--질문창 s-->
+	<div class="container">
+        <div class="questionBox">
+            <ul class="queBox_head">
+                <ul class="head_left">
+                	<a href="#"><li class="qprofile"><img src="https://thumb.zumst.com/640x480/https://static.hubzum.zumst.com/hubzum/2020/07/06/10/db4a299640334858979ee4b349ae7a35.jpg" alt=""></li></a>	
+	                <li class="qid"><c:out value="${item.user_id }"/></li>
+	                <li class="qlevel">
+	                <c:choose>
+	               		<c:when test="${item.user_level eq 1}"><img src="https://cdn-icons-png.flaticon.com/512/4262/4262616.png" alt=""></c:when>
+	               		<c:when test="${item.user_level eq 2}"><img src="https://cdn-icons-png.flaticon.com/512/4262/4262616.png" alt=""></c:when>
+	               		<c:when test="${item.user_level eq 3}"><img src="https://cdn-icons-png.flaticon.com/512/4262/4262616.png" alt=""></c:when>
+	               	</c:choose>
+                </ul>	
+                </li>
+               	<ul class="head_right">
+                	<li><c:out value="${item.language_select }"/></li>
+                	<li><c:out value="${item.writetime }"/></li>
+           		</ul>
+            </ul>
+            <div class="queBox_body">
+                <p><c:out value="${item.content }"/></p>
+            </div>
+            <div class="queBox_footer">
+                <button><i class="fa-regular fa-bookmark"></i></button>
+            </div>
+        </div>
+        <!-- 답변창s -->
+        <div class="answerWrap">
 			<div class="answerContent">
 				<textarea name="ansContent" value="<c:out value="${dto.ansContent }"/>" placeholder="<c:out value="${item.user_id }"/>님이 당신의 답변을 기다리고 있습니다."></textarea>
 			</div>
@@ -71,7 +70,8 @@
 				</ul>
 			</div>
 		</div><!--답변창e -->
-		
+    </div>
+<!--질문창 e-->
 		<br><br>
 		<br><br>
 

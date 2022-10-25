@@ -19,9 +19,12 @@
 
 <body>
 <form name = "form">
-<input type="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
+
+<input type="hidden" value="<c:out value="${vo.questionSeq}"/>" name="questionSeq" >
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+<input type="hidden" name="bookmarkSeq" value="<c:out value="${vo.bookmarkSeq}"/>">
+<input type="hidden" name="bookmark_UserId" value="<c:out value="${sessSeq}"/>">
 	<!-- Navbar s  -->
 	<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 	<!-- Navbar e  -->    
@@ -38,6 +41,7 @@
         </div><!-- 언어별 버튼영역e-->
         
 		<!-- 본문영역 s -->
+
 		<c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>    	    
         <c:choose>
     		<c:when test="${fn:length(list) eq 0}">
@@ -61,22 +65,23 @@
 			                    </li>
 			                    <li>
 			                        <ul class="box_info">
-			                        <li>
-			                        <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
-			                            <c:if test="${list.language_select eq Language.ccSeq}">질문 언어 :<c:out value="${Language.cc_name }"/></c:if>
-			                        </c:forEach>
-			                        </li>
+				                        <li>
+					                        <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
+					                            <c:if test="${list.language_select eq Language.ccSeq}">질문 언어 :<c:out value="${Language.cc_name }"/></c:if>
+					                        </c:forEach>
+				                        </li>
 			                        	<li>작성일:<c:out value="${list.writetime }"/></li>    
 			                        </ul>
 			                    </li>
 			                </ul>
-			                <a href="javascript:goForm(<c:out value="${list.questionSeq }"/>)">
-			                    <div class="box_body">
-			                        <p><c:out value="${list.content }"/></p>  
-			                    </div>
-			                </a>  
+				                <a href="javascript:goForm(<c:out value="${list.questionSeq }"/>)">
+				                    <div class="box_body">
+				                        <p><c:out value="${list.content }"/></p>  
+				                    </div>
+				                </a>
 			                <ul class="box_footer">
-			                    <button><i class="fa-regular fa-bookmark"></i></button>
+			                	<input type="hidden" value="<c:out value="${list.questionSeq}"/>" name="question_questionSeq" >
+			                    <button type="button" id="bookmarkInst"><i class="fa-regular fa-bookmark"></i></button>
 			                    <button><i class="fa-regular fa-message"></i></button>
 			                </ul>
 			            </div>
@@ -114,6 +119,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	var seq = $("input:hidden[name=questionSeq]");
+	var bookSeq = $("input:hidden[name=bookmarkSeq]");
 	var goUrlForm = "/queview";
 	var form = $("form[name=form]");
 	var goUrlList = "/quelist";
@@ -132,8 +138,11 @@
 		form.attr("action", goUrlForm).submit();
 	}
 	
-	
-
+    var goUrlInst = "qlbookmark"; 			/* #-> */
+    
+	$("#bookmarkInst").on("click", function(){
+		form.attr("action", goUrlInst).submit();
+	});
 
     
 </script>

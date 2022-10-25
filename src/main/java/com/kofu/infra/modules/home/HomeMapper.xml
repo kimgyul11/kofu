@@ -133,4 +133,26 @@
 		</selectKey>
 	</insert>
 	
+		<!-- 북마크 -->
+	<insert id="bookmarkInst">
+		INSERT INTO bookmark(
+			bookmark_useNy
+			,question_questionSeq
+			,bookmark_UserId
+		)
+		VALUES(
+			1
+			,#{question_questionSeq}
+			,#{bookmark_UserId}
+		)
+		<selectKey resultType="String" keyProperty="bookmarkSeq" order="AFTER">
+				SELECT last_insert_id()
+		</selectKey> 
+	</insert>
+	<!-- 북마크 리스트 -->
+	<select id="bookmarkList">
+		
+	</select>
+	
+	
 </mapper>

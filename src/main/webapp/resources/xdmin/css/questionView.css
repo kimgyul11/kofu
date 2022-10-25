@@ -85,6 +85,116 @@ html{
     text-decoration: none;
 	font-size: 1.1rem;
 }/* 네비게이션 영역e */
+
+
+.container{
+	padding-top: 150px;
+    width: 50%;
+    margin: auto;
+}
+.questionBox{
+    width: 100%;
+    height: 300px;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+
+}
+.queBox_head{
+    width: 100%;
+    height: 50px;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding-left: 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.queBox_head li{
+    margin-left: 15px ;
+}
+.queBox_head .writer{
+    width: 50px;
+    height: 30px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.queBox_head .writer p{
+    color: #000;
+    font-weight: bold;
+}
+.queBox_head .qprofile{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #fff;
+}
+.queBox_head .qprofile img{
+    width: 100%;
+    height: 100%;
+}
+.queBox_head .qlevel{
+    width: 40px;
+    height: 40px;
+    border: 1px solid;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #fff;
+}
+.queBox_head .qlevel img{
+    width: 100%;
+    height: 100%;
+}
+.queBox_head .qid{
+	color:tomato;
+}
+.head_left{
+	display:flex;
+	align-items: center;
+}
+.head_right{
+	display:flex;
+	justify-content: end;
+}
+.queBox_body{
+    width: 100%;
+    height: 200px;
+    border-bottom: 1px solid #e0e0e0;
+    overflow: auto;
+}
+.queBox_body p{
+    padding: 15px;
+}
+.queBox_footer{
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 30px;
+}
+.queBox_footer button{
+	width:50px;
+	height:40px;
+	background:#fff;
+	border:none;
+	border-radius: 15px;
+	cursor: pointer;
+	
+}
+.queBox_footer button i{
+	font-size:20px;
+}
+.queBox_footer button:hover{
+	color:tomato;
+}
+
+
+
 .commentContainer{
     width:100%;
     height:100%;
@@ -363,97 +473,6 @@ ul {
 
 
 
-/* 댓글부분 전체 감싸는 박스 */
-.comments-container {
-  padding-top: 30px;
-  margin: 0 auto 50px;
-  width: 45%;
-  font-weight: bold;
-}
-
-.comments-container h1 {
-  font-size: 36px;
-  color: #283035;
-  font-weight: 400;
-}
-
-.comments-container h1 a {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.comments-list {
-  margin-top: 30px;
-  position: relative;
-  display:flex;
-  justify-content:space-around;
-}
-
-.reply-list:before, .reply-list:after {display: none;}
-.reply-list li:before {
-    content: '';
-    width: 60px;
-    height: 2px;
-    background: #424242;
-    position: absolute;
-    top: 25px;
-    left: -55px;
-}
-
-
-.comments-list li {
-    margin-bottom: 15px;
-    display: block;
-    position: relative;
-}
-
-.comments-list li:after {
-    content: '';
-    display: block;
-    clear: both;
-    height: 0;
-    width: 0;
-}
-
-.reply-list {
-    padding-left: 88px;
-    clear: both;
-    margin-top: 15px;
-}
-/* 프로필 이미지 영역s */
-.comments-list .comment-avatar {
-    width: 65px;
-    height: 65px;
-    position: relative;
-    z-index: 99;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 50px;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    overflow: hidden;
-}/* 프로필이미지 영역 e */
-
-
-
-.comments-list .comment-avatar img {
-    width: 100%;
-    height: 100%;
-}
-
-.reply-list .comment-avatar {
-    width: 50px;
-    height: 50px;
-}
-
-.comment-main-level:after {
-    content: '';
-    width: 0;
-    height: 0;
-    display: block;
-    clear: both;
-}
 /* 코멘트 박스 */
 .comments-list .comment-box {
     width: 680px;
@@ -577,6 +596,7 @@ ul {
 /* 답변창 */
 
 .answerWrap{
+	margin-top:90px;
 	width:100%;
 	height:100%;
 	

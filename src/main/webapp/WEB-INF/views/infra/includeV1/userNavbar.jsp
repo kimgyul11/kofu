@@ -25,7 +25,7 @@
 		            <li><a href="quelist">게시판</a>		
 		            <li><a href="quereg">질문하기</a>
 		            <%-- <li class="signinStatus"><a href="/member/airMypage"><c:out value="${sessSeq }"/>님 환영합니다.</a></li> --%>
-		            <li class="signinStatus"><a onclick="location.href='/member/airMypage?memberSeq=<c:out value="${sessSeq}"/>'"><c:out value="${sessId }"/>님 환영합니다.</a></li>
+		            <li class="signinStatus"><a onclick="location.href='/airMypage?memberSeq=<c:out value="${sessSeq}"/>'"><c:out value="${sessId }"/>님 환영합니다.</a></li>
 		            <li><a href="airLogin" id="btnLogout">로그아웃</a>
             	</c:otherwise>
             </c:choose>

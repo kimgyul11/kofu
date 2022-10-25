@@ -181,7 +181,8 @@ goForm = function(keyValue) {
 	seq.val(keyValue);
 	form.attr("action", goUrlForm).submit();
 }
-	
+
+
 </script>
 
 </body>

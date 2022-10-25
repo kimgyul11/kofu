@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class HomeDao {
 
@@ -42,4 +43,9 @@ public class HomeDao {
 	public List<Home> selectAns(HomeVo vo){
 		return sqlSession.selectList(namespace + ".selectAns",vo);
 	}
+	public int bookmarkInst(Home dto) {
+		int result=sqlSession.insert(namespace + ".bookmarkInst", dto);
+		return result;
+	}
+	
 }

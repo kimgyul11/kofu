@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 @Controller
 public class HomeController {
 	@Autowired
@@ -111,6 +112,7 @@ public class HomeController {
 		redirectAttributes.addFlashAttribute("vo",vo);
 		return "redirect:queview";
 	}
+	
 	/*
 	 * @RequestMapping(value = "homeSearch") public String homeSearch(Model
 	 * model,HomeVo vo) throws Exception{ System.out.println("vo.getShValue(): " +
@@ -118,4 +120,15 @@ public class HomeController {
 	 * vo.getShOption()); List<Home>list = service.homeSearch(vo);
 	 * model.addAttribute("list", list); return "infra/home/xdmin/questionList"; }
 	 */
+	
+	@RequestMapping(value = "qlbookmark")
+	public String bookmarkInst(Home dto,HomeVo vo,RedirectAttributes redirectAttributes) throws Exception{
+		int result = service.bookmarkInst(dto);
+		vo.setQuestionSeq(dto.getQuestionSeq());
+		
+		redirectAttributes.addFlashAttribute("vo",vo);
+		
+		System.out.println("controller result: "+result);
+		return "redirect:/quelist";
+	}
 }

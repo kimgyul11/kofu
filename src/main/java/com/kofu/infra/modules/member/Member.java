@@ -19,10 +19,20 @@ public class Member extends Base{
 	private String user_addr;
 	private String user_email;
 	private Integer user_favoriteLanguage;
+
+
+	
 	//-----------------------------------------------------------------------------
+	
+	
+	
+	
 	private MultipartFile[] uploadedImage;
 	
 	
+
+
+
 	public MultipartFile[] getUploadedImage() {
 		return uploadedImage;
 	}

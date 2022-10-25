@@ -156,6 +156,7 @@
 			AND memberSeq = #{memberSeq}
 	</select>
 	
+
 	
 	
 	

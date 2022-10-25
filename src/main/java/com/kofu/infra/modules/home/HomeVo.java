@@ -11,11 +11,18 @@ public class HomeVo {
 	private String ansSeq;
 	private Integer languageOption;
 	private String ansQuestionSeq;
+	private String bookmarkSeq;
 	
 	
 	
 	
 	
+	public String getBookmarkSeq() {
+		return bookmarkSeq;
+	}
+	public void setBookmarkSeq(String bookmarkSeq) {
+		this.bookmarkSeq = bookmarkSeq;
+	}
 	public String getAnsQuestionSeq() {
 		return ansQuestionSeq;
 	}
