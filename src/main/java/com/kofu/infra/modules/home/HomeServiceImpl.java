@@ -24,6 +24,8 @@ public class HomeServiceImpl implements HomeService{
 		return result;
 	}
 	
+
+
 	@Override
 	public List<Home> homeSearch(HomeVo vo) throws Exception{
 		return dao.selectList(vo);
@@ -52,5 +54,9 @@ public class HomeServiceImpl implements HomeService{
 	@Override
 	public int bookmarkInst(Home dto) throws Exception {
 		return dao.bookmarkInst(dto);
+	}
+	@Override
+	public List<Home> mypageQueSelect(HomeVo vo) throws Exception {
+		return dao.mypageQueSelect(vo);
 	}
 }

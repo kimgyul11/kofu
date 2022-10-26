@@ -3,7 +3,22 @@ package com.kofu.infra.common.base;
 import java.util.Date;
 
 public class Base {
-//	uploaded
+// 질문,답변리스트
+	private String content;
+	private String user_id;
+	private String cc_name;
+	private Integer user_level;
+
+	
+	private String questionSeq;
+	private String userID;
+	private String language_select;
+	private String writetime;
+	private String lastModTime;
+	private Integer questionDelNy;
+	private String bookmarkSeq;
+
+	//	uploaded
 	private String tableName;
 	
 	private String seq;
@@ -179,4 +194,71 @@ public class Base {
 	}
 	
 	
+	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getCc_name() {
+		return cc_name;
+	}
+	public void setCc_name(String cc_name) {
+		this.cc_name = cc_name;
+	}
+	public Integer getUser_level() {
+		return user_level;
+	}
+	public void setUser_level(Integer user_level) {
+		this.user_level = user_level;
+	}
+	public String getQuestionSeq() {
+		return questionSeq;
+	}
+	public void setQuestionSeq(String questionSeq) {
+		this.questionSeq = questionSeq;
+	}
+	public String getUserID() {
+		return userID;
+	}
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+	public String getLanguage_select() {
+		return language_select;
+	}
+	public void setLanguage_select(String language_select) {
+		this.language_select = language_select;
+	}
+	public String getWritetime() {
+		return writetime;
+	}
+	public void setWritetime(String writetime) {
+		this.writetime = writetime;
+	}
+	public String getLastModTime() {
+		return lastModTime;
+	}
+	public void setLastModTime(String lastModTime) {
+		this.lastModTime = lastModTime;
+	}
+	public Integer getQuestionDelNy() {
+		return questionDelNy;
+	}
+	public void setQuestionDelNy(Integer questionDelNy) {
+		this.questionDelNy = questionDelNy;
+	}
+	public String getBookmarkSeq() {
+		return bookmarkSeq;
+	}
+	public void setBookmarkSeq(String bookmarkSeq) {
+		this.bookmarkSeq = bookmarkSeq;
+	}
 }

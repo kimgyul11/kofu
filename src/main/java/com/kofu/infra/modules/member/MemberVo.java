@@ -5,7 +5,16 @@ public class MemberVo {
 	private String memberSeq;
 	private String user_id;
 	private String bookmarkSeq;
-	
+	private String questionSeq;
+	private String userID;
+	public String getQuestionSeq() {
+		return questionSeq;
+	}
+
+	public void setQuestionSeq(String questionSeq) {
+		this.questionSeq = questionSeq;
+	}
+
 	public String getBookmarkSeq() {
 		return bookmarkSeq;
 	}

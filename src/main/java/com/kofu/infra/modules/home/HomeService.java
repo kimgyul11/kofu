@@ -13,4 +13,5 @@ public interface HomeService {
 	public int ansInsert(Home dto) throws Exception;
 	public List<Home>selectAns(HomeVo vo) throws Exception;
 	public int bookmarkInst(Home dto) throws Exception;
+	public List<Home> mypageQueSelect(HomeVo vo) throws Exception;
 }

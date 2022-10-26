@@ -25,6 +25,8 @@ public class MemberController {
 	
 	@RequestMapping(value = "/airMypage")
 	public String airMypage(@ModelAttribute("vo")MemberVo vo,Model model) throws Exception {
+		List<Member> list = service.mypageQueSelect(vo);
+		model.addAttribute("list",list);
 		Member result = service.myPageSelect(vo);
 		model.addAttribute("item",result);
 		return "infra/login/xdmin/airMypage";

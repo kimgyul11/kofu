@@ -2,6 +2,7 @@ package com.kofu.infra.modules.member;
 
 import java.util.List;
 
+
 public interface MemberService {
 	
 	public List<Member> selectList() throws Exception;
@@ -13,5 +14,6 @@ public interface MemberService {
 	public Member selectOneLogin(Member dto) throws Exception;
 	public int airSignUp(Member dto) throws Exception;
 	public Member myPageSelect(MemberVo vo) throws Exception;
+	public List<Member> mypageQueSelect(MemberVo vo) throws Exception;
 
 }

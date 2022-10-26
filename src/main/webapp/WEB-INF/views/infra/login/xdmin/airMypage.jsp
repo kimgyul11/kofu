@@ -33,8 +33,8 @@
                         <li><p>아이디</p><input type="text" readonly name="memberSeq" value="<c:out value="${sessId}"/>" ></li>
                         <li><p>이름</p><input type="text" readonly value="<c:out value="${sessName }"/>" name="user_name"></li>
                         <li><p>성별</p><input type="text" readonly value="<c:out value="${item.user_gender }"/>"></li>
-                        <li><p>주 언어</p><input type="text" readonly></li>
-                        <li><p>배우는 언어</p><input type="text"readonly ></li>
+                        <li><p>주 언어</p><input type="text" readonly value="<c:out value="${item.lean_language }"/>"></li>
+                        <li><p>배우는 언어</p><input type="text"readonly value="<c:out value="${item.user_favoriteLanguage }"/>" ></li>
                         <li><button>편집</button></li>
                     </ul>
                 </div>
@@ -45,7 +45,7 @@
                         <h1>나의 이력 리스트</h1>
                         <li>
                             <p>질문내역</p>
-                            <a href="#"><div class="write_input_item">질문내역 카운트되는곳</div></a>
+                            <a href="#"><div class="write_input_item">질문내역 카운트되는곳 </div></a>
                         </li>
                         <li>
                             <p>답변내역</p>

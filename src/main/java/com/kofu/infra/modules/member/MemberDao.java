@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 
+
 @Repository
 public class MemberDao {
 	
@@ -61,6 +62,10 @@ public class MemberDao {
 	public Member myPageSelect(MemberVo vo) {
 		Member result = sqlSession.selectOne(namespace + ".myPageSelect", vo);
 		return result;
+	}
+	//마이페이지 질문리스트
+	public List<Member> mypageQueSelect(MemberVo vo){
+		return sqlSession.selectList(namespace + ".mypageQueSelect",vo);
 	}
 	
 

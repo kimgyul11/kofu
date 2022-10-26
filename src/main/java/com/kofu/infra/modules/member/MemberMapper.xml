@@ -156,8 +156,18 @@
 			AND memberSeq = #{memberSeq}
 	</select>
 	
-
-	
-	
+	<!-- 마이페이지 질문 리스트 -->
+	<select id="mypageQueSelect" resultMap="resultMapObj">
+		select
+			a.questionSeq
+	   		,a.content
+		    ,a.userID
+		    ,a.language_select
+		    ,a.writetime
+		FROM question a
+		WHERE 1=1
+			AND 
+			a.userID = #{userID};
+	</select>
 	
 </mapper>	
