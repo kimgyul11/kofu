@@ -12,26 +12,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kofu.infra.common.constants.Constants;
 import com.kofu.infra.common.util.UtilSecurity;
 @Controller
-@RequestMapping(value = "/member/")
+@RequestMapping(value = "/")
 public class MemberController {
 
 	@Autowired
 	MemberServiceImpl service;
 	
-	@RequestMapping(value = "mypage")
-	public String mypage() {
+
 	
-		return "infra/userInfo/mypage";
-	}
-	
-	
-	
-	@RequestMapping(value = "airMypage")
+	@RequestMapping(value = "/airMypage")
 	public String airMypage(@ModelAttribute("vo")MemberVo vo,Model model) throws Exception {
 		Member result = service.myPageSelect(vo);
 		model.addAttribute("item",result);
@@ -41,7 +34,7 @@ public class MemberController {
 	
 	
 	
-	@RequestMapping(value = "memberlist")
+	@RequestMapping(value = "/member/memberlist")
 	public String codeGroupList(Model model) throws Exception {
 
 		List<Member> list = service.selectList();
@@ -50,12 +43,12 @@ public class MemberController {
 		return "infra/member/xdmin/memberlist";
 	}
 	
-	@RequestMapping(value = "memberform")
+	@RequestMapping(value = "/member/memberform")
 	public String memberForm() {
 		return "infra/member/xdmin/memberForm";
 	}
 	
-	@RequestMapping(value = "memberView")
+	@RequestMapping(value = "/member/memberView")
 	public String memberView(MemberVo vo, Model model) throws Exception{
 		
 		
@@ -66,31 +59,31 @@ public class MemberController {
 		return "infra/member/xdmin/memberForm";
 	}
 	
-	@RequestMapping(value = "MemberInst")
+	@RequestMapping(value = "/member/MemberInst")
 	public String memberInst(Member dto) throws Exception{
 		int result = service.insert(dto);
 		System.out.println("controller result: "+result);
 		return "redirect:/member/memberlist";
 	}
 	
-	@RequestMapping(value = "signupView")
+	@RequestMapping(value = "/member/signupView")
 	public String signupView() {
 		return "infra/login/xdmin/signup";
 	}
 	
-	@RequestMapping(value = "signup")
+	@RequestMapping(value = "/member/signup")
 	public String signup(Member dto) throws Exception{
 		service.signup(dto);
 		return "infra/login/xdmin/logincomplete";
 	}
 	
 //	신규 회원가입 페이지
-	@RequestMapping(value = "airSignupView")
+	@RequestMapping(value = "/member/airSignupView")
 	public String airSignup() {
 		return "infra/login/xdmin/airSignup";
 	}
 	
-	@RequestMapping(value = "airSignup")
+	@RequestMapping(value = "/member/airSignup")
 	public String airSignUp(Member dto) throws Exception{
 		service.airSignUp(dto);
 		return "infra/login/xdmin/logincomplete";
@@ -99,7 +92,7 @@ public class MemberController {
 
 	
 	@ResponseBody
-	@RequestMapping(value = "checkId")
+	@RequestMapping(value = "/member/checkId")
 	public Map<String, Object> checkId(Member dto) throws Exception {
 
 		Map<String, Object> returnMap = new HashMap<String, Object>();
@@ -115,7 +108,7 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "loginProc")
+	@RequestMapping(value = "/member/loginProc")
 	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 
@@ -141,7 +134,7 @@ public class MemberController {
 	}	
 	
 	@ResponseBody
-	@RequestMapping(value = "logoutProc")
+	@RequestMapping(value = "/member/logoutProc")
 	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		httpSession.invalidate();
