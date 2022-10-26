@@ -12,9 +12,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/xdmin/css/questionView.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
     <title>AIRLANGUAGE</title>
 </head>
 <body>
@@ -41,8 +38,8 @@
 	               		<c:when test="${item.user_level eq 2}"><img src="https://cdn-icons-png.flaticon.com/512/4262/4262616.png" alt=""></c:when>
 	               		<c:when test="${item.user_level eq 3}"><img src="https://cdn-icons-png.flaticon.com/512/4262/4262616.png" alt=""></c:when>
 	               	</c:choose>
+                	</li>
                 </ul>	
-                </li>
                	<ul class="head_right">
                 	<li><c:out value="${item.language_select }"/></li>
                 	<li><c:out value="${item.writetime }"/></li>
@@ -80,22 +77,22 @@
 			<c:forEach items="${homeList}" var="homeList" varStatus="status">
 				<ul id="comments-list" class="comments-list">
 	         		<li><!-- 질문s -->
-					<div class="comment-main-level">
-						<div class="comment-box">
-							<div class="comment-head">
-								<h6 class="comment-name by-author"><a href="#"><c:out value="${homeList.ansUserId}"/></a></h6>
-								<ul class="iconlist">
-									<li><c:out value="${homeList.ansWriteTime }"/>
-									<li><i class="fa-solid fa-comment"></i>
-									<li><i class="fa fa-heart"></i>
-		                          <li><i class="fa-solid fa-bookmark"></i>
-								</ul>
+						<div class="comment-main-level">
+							<div class="comment-box">
+								<div class="comment-head">
+									<h6 class="comment-name by-author"><a href="#"><c:out value="${homeList.ansUserId}"/></a></h6>
+									<ul class="iconlist">
+										<li><c:out value="${homeList.ansWriteTime }"/>
+										<li><i class="fa-solid fa-comment"></i>
+										<li><i class="fa fa-heart"></i>
+			                          	<li><i class="fa-solid fa-bookmark"></i>
+									</ul>
+								</div>
+								<div class="comment-content">
+									<c:out value="${homeList.ansContent}"/>
+				               </div>
 							</div>
-							<div class="comment-content">
-								<c:out value="${homeList.ansContent}"/>
-			               </div>
 						</div>
-					</div>
 					</li><!-- 질문e -->
 				</ul>
 		</c:forEach>

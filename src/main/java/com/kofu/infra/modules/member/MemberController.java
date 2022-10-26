@@ -22,7 +22,6 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
-
 	
 	@RequestMapping(value = "/airMypage")
 	public String airMypage(@ModelAttribute("vo")MemberVo vo,Model model) throws Exception {

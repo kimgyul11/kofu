@@ -30,11 +30,8 @@ public class HomeController {
 		return "infra/home/xdmin/airLanguageHome";
 	}
 	
-	@RequestMapping(value = "login")
-	public String login() {
-
-		return "infra/login/xdmin/login";
-	}
+	
+	
 	
 	@RequestMapping(value = "airLogin")
 	public String airLogin() {
@@ -45,6 +42,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "quelist")
 	public String quelist(@ModelAttribute("vo")HomeVo vo,Model model)throws Exception {
+		
 		
 		vo.setParamsPaging(service.selectOenCount(vo));
 		List<Home>list = service.selectList(vo);
@@ -63,32 +61,13 @@ public class HomeController {
 		return "infra/home/xdmin/questionView";
 	}
 	
-//	@RequestMapping(value = "questionlist")  
-//	public String questionList(Model model) throws Exception {
-//
-//		List<Home>list = service.selectList();
-//		model.addAttribute("list", list);
-//
-//		return "infra/codegroup/xdmin/questionList";
-//	}
-	
 	@RequestMapping(value = "complete")
 	public String complete() {
 		
 		return "infra/login/xdmin/logincomplete";
 	}
 	
-	@RequestMapping(value = "mypage")
-	public String mypage() {
-		
-		return "infra/userInfo/mypage";
-	}
-	
-	@RequestMapping(value = "mypagemod")
-	public String mypagemod() {
-		
-		return "infra/userInfo/mypageMod";
-	}
+//	-----------------------------------질문작성페이지------------------------------------------
 	@RequestMapping(value = "quereg")
 	public String quereg() {
 		
@@ -103,7 +82,8 @@ public class HomeController {
 		
 		return "redirect:quelist";
 	}
-	
+
+// -------------------------------------답변작성페이지------------------------------------------
 	@RequestMapping(value = "answerInst")
 	public String answerInst(HomeVo vo ,Home dto,RedirectAttributes redirectAttributes) throws Exception {
 		int result = service.ansInsert(dto);
@@ -113,13 +93,6 @@ public class HomeController {
 		return "redirect:queview";
 	}
 	
-	/*
-	 * @RequestMapping(value = "homeSearch") public String homeSearch(Model
-	 * model,HomeVo vo) throws Exception{ System.out.println("vo.getShValue(): " +
-	 * vo.getShValue()); System.out.println("vo.getShOption(): " +
-	 * vo.getShOption()); List<Home>list = service.homeSearch(vo);
-	 * model.addAttribute("list", list); return "infra/home/xdmin/questionList"; }
-	 */
 	
 	@RequestMapping(value = "qlbookmark")
 	public String bookmarkInst(Home dto,HomeVo vo,RedirectAttributes redirectAttributes) throws Exception{

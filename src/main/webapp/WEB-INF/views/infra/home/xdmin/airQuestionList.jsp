@@ -19,7 +19,6 @@
 
 <body>
 <form name = "form">
-
 <input type="hidden" value="<c:out value="${vo.questionSeq}"/>" name="questionSeq" >
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
@@ -91,28 +90,26 @@
 		</c:choose>
 	
 		<div class="pagination_wrap">
-		<ul class="pagination modal-2">
-			<c:if test="${vo.startPage gt vo.pageNumToShow}">
-			<li> <a href="javascript:goList(${vo.startPage - 1})" class="prev">&laquo </a></li>
-			</c:if>
-				<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
-					<c:choose>    
-						<c:when test="${i.index eq vo.thisPage}">
-							<li> <a  class="active" href="javascript:goList(${i.index})">${i.index}</a></li>
-						</c:when>
-						<c:otherwise>
-							<li><a href="javascript:goList(${i.index})">${i.index}</a></li>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach> 
-			<c:if test="${vo.endPage ne vo.totalPages}">   
-				<li><a  class="next" href="javascript:goList(${vo.endPage + 1})">  &raquo;</a></li>
-			</c:if>	
-		</ul>
-		<br>
-	</div>
-
-	
+			<ul class="pagination modal-2">
+				<c:if test="${vo.startPage gt vo.pageNumToShow}">
+				<li> <a href="javascript:goList(${vo.startPage - 1})" class="prev">&laquo </a></li>
+				</c:if>
+					<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+						<c:choose>    
+							<c:when test="${i.index eq vo.thisPage}">
+								<li> <a  class="active" href="javascript:goList(${i.index})">${i.index}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="javascript:goList(${i.index})">${i.index}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach> 
+				<c:if test="${vo.endPage ne vo.totalPages}">   
+					<li><a  class="next" href="javascript:goList(${vo.endPage + 1})">  &raquo;</a></li>
+				</c:if>	
+			</ul>
+			<br>
+		</div>
 	</div>
 	</form>
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
@@ -143,8 +140,6 @@
 	$("#bookmarkInst").on("click", function(){
 		form.attr("action", goUrlInst).submit();
 	});
-
-    
 </script>
 </body>
 </html>
