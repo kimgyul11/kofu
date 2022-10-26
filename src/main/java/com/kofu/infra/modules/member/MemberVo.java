@@ -35,6 +35,14 @@ public class MemberVo {
 		return memberSeq;
 	}
 
+	public String getUserID() {
+		return userID;
+	}
+
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+
 	public void setMemberSeq(String memberSeq) {
 		this.memberSeq = memberSeq;
 	}

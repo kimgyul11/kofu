@@ -167,7 +167,7 @@
 		FROM question a
 		WHERE 1=1
 			AND 
-			a.userID = #{userID};
+			a.userID = #{memberSeq};
 	</select>
 	
 </mapper>	

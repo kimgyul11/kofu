@@ -16,7 +16,7 @@
 </head>
 <body>
 <form name=form>
-<input type="hidden" name="memberSeq" id="memberSeq"value="<c:out value="${sessSeq }"/>"  >
+<input type="hidden" name="memberSeq" id="memberSeq" value="<c:out value="${sessSeq }"/>"  >
 	<!-- Navbar s  -->
 	<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 	<!-- Navbar e  -->  
@@ -45,7 +45,11 @@
                         <h1>나의 이력 리스트</h1>
                         <li>
                             <p>질문내역</p>
-                            <a href="#"><div class="write_input_item">질문내역 카운트되는곳 </div></a>
+                            <a href="#"><div class="write_input_item">질문내역 카운트되는곳 ${fn:length(list)}</div></a>
+                            <c:forEach items="${list}" var ="list" varStatus="status">
+	        					<input type="text" name="content"  value="<c:out value="${list.content }"/>"  >
+	        					<input type="text" name="questionSeq"  value="<c:out value="${list.questionSeq }"/>"  >         
+			                </c:forEach>
                         </li>
                         <li>
                             <p>답변내역</p>

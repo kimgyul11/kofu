@@ -55,8 +55,4 @@ public class HomeServiceImpl implements HomeService{
 	public int bookmarkInst(Home dto) throws Exception {
 		return dao.bookmarkInst(dto);
 	}
-	@Override
-	public List<Home> mypageQueSelect(HomeVo vo) throws Exception {
-		return dao.mypageQueSelect(vo);
-	}
 }
