@@ -19,7 +19,7 @@
             <c:choose>
             	<c:when test="${empty sessSeq }">
             		<li><a href="/airLogin">로그인</a></li>
-            		<li><a href="/airSignupView">신규가입</a></li>
+            		<li><a href="/member/airSignupView">신규가입</a></li>
             	</c:when>
             	<c:otherwise>
 		            <li><a href="/quelist">게시판</a>		

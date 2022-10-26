@@ -12,4 +12,5 @@ public class XdminController {
 		return "infra/xdminpage/xdminLogin";
 	}
 	
+	
 }

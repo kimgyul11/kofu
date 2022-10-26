@@ -18,26 +18,9 @@
 <body>
 <form name="form" action="airSignup" method="post" enctype="multipart/form-data">
 <input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy">
-    <div class="navbar">
-        <div class="logo">
-            <a href="#">AirLanguage</a>
-        </div>
-        <ul class="nav_middel_menu">
-            <li class="nav_search_box">
-                <select name="" id="" >
-                    <option value="">언어선택</option>
-                    <option value="">한국어</option>
-                    <option value="">중국어</option>
-                    <option value="">일본어</option>
-                    <option value="">영어</option>
-                </select>
-                <input type="text">
-            </li>
-            <li><a href="#">리스트</a></li>
-            <li><a href="#">리스트</a></li>
-            <li><a href="#">리스트</a></li>
-        </ul>
-    </div>
+	<!-- Navbar s  -->
+	<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
+	<!-- Navbar e  -->      
     <div class="inputWrap">
         <ul class="input_box">
             <li>

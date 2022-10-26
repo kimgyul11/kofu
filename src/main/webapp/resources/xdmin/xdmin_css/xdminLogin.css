@@ -16,7 +16,6 @@ body {
 	font-size: 16px;
 	font-weight: 400;
 	color: #666666;
-	background: linear-gradient(#81d4fa, #fafafa);
 }
 
 .wrapper {
@@ -37,7 +36,7 @@ body {
   height: auto;
   display: flex;
   background: #ffffff;
-  box-shadow: 0 0 5px #999999;
+  border:1px solid #e0e0e0;
 }
 
 .credit {

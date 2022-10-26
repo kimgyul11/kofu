@@ -15,62 +15,10 @@
     <title>회원가입 완료</title>
 </head>
 <body>
-    <!-- 네비게이션바 -->
-    <div class="navbar">
-        <div class="logo">
-            <a href="#">AirLanguage</a>
-        </div>
-        <div class="search_box">
-            <div class="dropdown">
-                <div class="default_option">관심언어로 검색</div>  
-                <ul>
-                    <li>한국어</li>
-                    <li>영어</li>
-                </ul>
-            </div>
-            <div class="search_field">
-                <input type="text" class="input" placeholder="Search">
-                <i class="fas fa-search"></i>
-            </div>
-        </div>
-        <div class="nav_right">
-            <ul>
-                <li class="nr_li dd_main">
-                    <!-- 메뉴리스트 -->
-                    <div class="dd_menu">
-                        <div class="dd_left">
-                            <ul>
-                                <li><i class="fa-solid fa-user"></i></li>
-                                <li><i class="fa-solid fa-gear"></i></li>
-                                <li><i class="fas fa-sign-out-alt"></i></li>
-                            </ul>
-                        </div>
-                        <div class="dd_right">
-                            <ul>
-                                <li>내정보</li>
-                                <li>설정</li>
-                                <li>Logout</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="nr_li">
-                    <i class="fa-solid fa-bell"></i>
-                </li>
-                <li class="nr_li">
-                    <i class="fa-solid fa-house"></i>
-                </li>
-                <li>
-                    <div class="btn_wraper">
-                        <div class="btn btn_1">
-                            <a href="">질문하기</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    
+	<!-- Navbar s  -->
+	<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
+	<!-- Navbar e  -->   
+	   
     <!-- 완료박스 -->
 <div class="complate_wrap">
     <div class="left_img">
@@ -79,7 +27,7 @@
     <div class="center_text">
         <h1>회원가입이 완료되었습니다!</h1>
         <h2>지금바로 AirLanguage로 떠나보세요</h2>
-            <a href="/login"><button class="learn-more">
+            <a href="/airLogin"><button class="learn-more">
                 <span class="circle" aria-hidden="true">
                 <span class="icon arrow"></span>
                 </span>

@@ -65,16 +65,7 @@ public class MemberController {
 		return "redirect:/member/memberlist";
 	}
 	
-	@RequestMapping(value = "/member/signupView")
-	public String signupView() {
-		return "infra/login/xdmin/signup";
-	}
-	
-	@RequestMapping(value = "/member/signup")
-	public String signup(Member dto) throws Exception{
-		service.signup(dto);
-		return "infra/login/xdmin/logincomplete";
-	}
+
 	
 //	신규 회원가입 페이지
 	@RequestMapping(value = "/member/airSignupView")

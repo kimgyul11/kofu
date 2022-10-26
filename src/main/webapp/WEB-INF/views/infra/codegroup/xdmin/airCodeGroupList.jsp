@@ -62,7 +62,7 @@
 		                </c:forEach>
 	                </c:otherwise>
 	        	</c:choose>
-            </table>
+            </table>	
         </div>
         <div class="button_wrap">
             <button class="btn_delete" type="button"><i class="fa-solid fa-trash"></i></button>
