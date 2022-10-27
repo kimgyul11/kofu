@@ -16,7 +16,7 @@
 </head>
 <body>
 <form name=form>
-<input type="hidden" name="memberSeq" id="memberSeq" value="<c:out value="${sessSeq }"/>"  >
+<input type="hidden" name="memberSeq"  value="<c:out value="${sessSeq }"/>"  >
 	<!-- Navbar s  -->
 	<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 	<!-- Navbar e  -->  
@@ -53,7 +53,7 @@
                         </li>
                         <li>
                             <p>답변내역</p>
-                            <a href="#"><div class="write_input_item">답변내역 카운트되는곳</div></a>
+                            <a href="#"><div class="write_input_item">답변내역 카운트되는곳 ${fn:length(queList)}</div></a>
                         </li>
                         <li>
                             <p>좋아요 받은 답변</p>

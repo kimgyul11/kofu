@@ -67,6 +67,10 @@ public class MemberDao {
 	public List<Member> mypageQueSelect(MemberVo vo){
 		return sqlSession.selectList(namespace + ".mypageQueSelect",vo);
 	}
+	//마이페이지 답변리스트
+	public List<Member> mypageAnsSelect(MemberVo vo){
+		return sqlSession.selectList(namespace + ".mypageAnsSelect", vo);
+	}
 	
 
 }

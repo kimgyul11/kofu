@@ -27,6 +27,10 @@ public class MemberController {
 	public String airMypage(@ModelAttribute("vo")MemberVo vo,Model model) throws Exception {
 		List<Member> list = service.mypageQueSelect(vo);
 		model.addAttribute("list",list);
+		
+		List<Member> queList = service.mypageAnsSelect(vo);
+		model.addAttribute("queList",queList);
+		
 		Member result = service.myPageSelect(vo);
 		model.addAttribute("item",result);
 		return "infra/login/xdmin/airMypage";
@@ -52,9 +56,11 @@ public class MemberController {
 	@RequestMapping(value = "/member/memberView")
 	public String memberView(MemberVo vo, Model model) throws Exception{
 		
-		
 		List<Member> list = service.selectList();
 		model.addAttribute("list", list);
+		
+
+		
 		Member result = service.selectOne(vo);
 		model.addAttribute("item",result);
 		return "infra/member/xdmin/memberForm";

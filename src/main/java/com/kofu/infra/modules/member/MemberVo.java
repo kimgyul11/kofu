@@ -4,9 +4,30 @@ public class MemberVo {
 
 	private String memberSeq;
 	private String user_id;
+	private String ansUserId;
+	private String ansSeq;
 	private String bookmarkSeq;
 	private String questionSeq;
 	private String userID;
+	
+	
+	
+	public String getAnsUserId() {
+		return ansUserId;
+	}
+
+	public void setAnsUserId(String ansUserId) {
+		this.ansUserId = ansUserId;
+	}
+
+	public String getAnsSeq() {
+		return ansSeq;
+	}
+
+	public void setAnsSeq(String ansSeq) {
+		this.ansSeq = ansSeq;
+	}
+
 	public String getQuestionSeq() {
 		return questionSeq;
 	}

@@ -198,13 +198,17 @@ option {
     
 }
 .button{
-    height: 30px;
+    height: 35px;
     border: 1px solid #eeeeee;
     font-size: 20px;
     font-weight: 300;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .button:hover{
+	transition: all 1.0s ease;
     background: black;
     color: white;
 }

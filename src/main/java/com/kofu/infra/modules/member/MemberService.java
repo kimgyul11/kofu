@@ -15,5 +15,6 @@ public interface MemberService {
 	public int airSignUp(Member dto) throws Exception;
 	public Member myPageSelect(MemberVo vo) throws Exception;
 	public List<Member> mypageQueSelect(MemberVo vo) throws Exception;
+	public List<Member> mypageAnsSelect(MemberVo vo) throws Exception;
 
 }

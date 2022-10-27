@@ -17,6 +17,11 @@ public class Base {
 	private String lastModTime;
 	private Integer questionDelNy;
 	private String bookmarkSeq;
+	private String ansQuestionSeq;
+	private String ansUserId;
+	private String ansContent;
+	private String ansWriteTime;
+	private String ansSeq;
 
 	//	uploaded
 	private String tableName;
@@ -48,8 +53,39 @@ public class Base {
 	private Date modDateTime;
 	private Date modDateTimeSvr;
 	// ----------
+	
 	public String getTableName() {
 		return tableName;
+	}
+	public String getAnsUserId() {
+		return ansUserId;
+	}
+	public void setAnsUserId(String ansUserId) {
+		this.ansUserId = ansUserId;
+	}
+	public String getAnsContent() {
+		return ansContent;
+	}
+	public void setAnsContent(String ansContent) {
+		this.ansContent = ansContent;
+	}
+	public String getAnsWriteTime() {
+		return ansWriteTime;
+	}
+	public void setAnsWriteTime(String ansWriteTime) {
+		this.ansWriteTime = ansWriteTime;
+	}
+	public String getAnsSeq() {
+		return ansSeq;
+	}
+	public void setAnsSeq(String ansSeq) {
+		this.ansSeq = ansSeq;
+	}
+	public String getAnsQuestionSeq() {
+		return ansQuestionSeq;
+	}
+	public void setAnsQuestionSeq(String ansQuestionSeq) {
+		this.ansQuestionSeq = ansQuestionSeq;
 	}
 	public void setTableName(String tableName) {
 		this.tableName = tableName;

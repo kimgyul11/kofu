@@ -119,6 +119,11 @@ public class MemberServiceImpl implements MemberService{
 	public List<Member> mypageQueSelect(MemberVo vo) throws Exception {
 		return dao.mypageQueSelect(vo);
 	}
+	@Override
+	public List<Member> mypageAnsSelect(MemberVo vo) throws Exception {
+		return dao.mypageAnsSelect(vo);
+	}
+	
 
 	
 
