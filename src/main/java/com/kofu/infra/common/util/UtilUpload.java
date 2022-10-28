@@ -18,8 +18,18 @@ public class UtilUpload {
 		String pathModule = className;
 		String nowString = UtilDateTime.nowString();
 		String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 
-		String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
+		String osPath;
 		String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
+		
+		String os = System.getProperty("os.name").toLowerCase();
+		
+		if (os.contains("win")) {
+			osPath = Constants.UPLOAD_PATH_PREFIX_WINDOW;
+		}
+		else {
+			osPath = Constants.UPLOAD_PATH_PREFIX_LINUX;
+		}
+		String path = osPath + "/" + pathModule + "/" + pathDate + "/";
 		
 		createPath(path);
 		  
