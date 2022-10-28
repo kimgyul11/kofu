@@ -27,6 +27,7 @@
 	    	,a.language_select
 	    	,b.user_level
 	    	,b.user_id
+	    	<!-- 이미지 uuid -->
     	FROM question a
     	LEFT JOIN airLanguage_member b ON b.memberSeq = a.userID
     	WHERE 1=1
