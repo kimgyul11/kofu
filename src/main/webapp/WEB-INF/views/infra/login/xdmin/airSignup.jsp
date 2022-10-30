@@ -14,6 +14,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
    	<link rel="stylesheet" href="/resources/xdmin/css/airSignup.css" />
     <title>signup</title>
+
+
 </head>
 <body>
 <form name="form" action="airSignup" method="post" enctype="multipart/form-data">
@@ -29,28 +31,34 @@
                         <img class="profileImg"src="" alt="">
                     </div>
                     <div class="profileImgUpload">
-                        <input id="uploadedImage" name="uploadedImage" type="file" >
+                        <input id="uploadedImage" name="uploadedImage" type="file" id="upload_file" accept="image/*"  >
                         <label for="uploadedImage">이미지선택<i class="fa-regular fa-file-image"></i></label>
                     </div>
                 </div>
             </li>
-            <li><input type="text" name="user_id" id="user_id"placeholder="아이디를 입력하세요"></li>
+            <li>
+            <input type="text" name="user_id" id="user_id"placeholder="아이디를 입력하세요" >
+            <input type="hidden" id="ifmmIdAllowedNy" name="ifmmIdAllowedNy" value="0">
+            </li>
+            
             <div class="Feedback_ment" id="ifmmIdFeedback"></div>
      
-            <li><input type="password" name="user_pw" placeholder="비밀번호를 입력해주세요">
-            <li><input type="password" placeholder="비밀번호 재입력">
+            <li><input type="password" id="ifmmPassword" name="user_pw" placeholder="비밀번호를 입력해주세요">
+            <div class="Feedback_ment" id="ifmmPasswordFeedback"></div>
+            <li><input type="password" id="ifmmPasswordChk"placeholder="비밀번호 재입력">
+            <div class="Feedback_ment" id="ifmmPasswordChkFeedback"></div>
             <li><input type="text" name="user_name" placeholder="이름">
             <li>
                 <div class="radiowrap">
                     <h1>성별을 선택하세요</h1>
-                    <input type="radio" id="man" name="contact" value="man" />
+                    <input type="radio" id="man" name="user_gender" value="17" />
                     <label for="man">남성</label>
-                    <input type="radio" id="girl" name="contact" value="girl" />
+                    <input type="radio" id="girl" name="user_gender" value="18" />
                     <label for="girl">여성</label>
                 </div>  
             </li>
             <li><input type="text" name="user_email" placeholder="이메일">
-            <li><input type="text" name="user_dob" placeholder="생년월일">
+            <li><input type="date" name="user_dob" id="user_dob" placeholder="생년월일">
             <li class="language_select_wrap">
                 <select name="user_favoriteLanguage" id="user_favoriteLanguage" >
                     <option value="">주요 언어 선택</option>
@@ -83,6 +91,38 @@
 	<script type="text/javascript">	
 		/* ajax ID*/
 		$("#user_id").on("focusout", function(){
+			var id = $("#user_id").val();
+			var num = id.search(/[0-9]/g);
+			var eng = id.search(/[a-z]/ig);
+			if(id.length < 1){
+				document.getElementById("user_id").classList.add('is-invalid');
+				document.getElementById("ifmmIdFeedback").classList.remove('valid-feedback');
+				document.getElementById("ifmmIdFeedback").classList.add('invalid-feedback');
+				document.getElementById("ifmmIdFeedback").innerText = "아이디를 입력해주세요.";
+				document.getElementById("ifmmIdAllowedNy").value = 0;
+				return false;
+			}else if(id.length < 4 || id.length > 15){
+				document.getElementById("user_id").classList.add('is-invalid');
+				document.getElementById("ifmmIdFeedback").classList.remove('valid-feedback');
+				document.getElementById("ifmmIdFeedback").classList.add('invalid-feedback');
+				document.getElementById("ifmmIdFeedback").innerText = "영문, 숫자 포함 4~15자를 입력해주세요.";
+				document.getElementById("ifmmIdAllowedNy").value = 0;
+				return false;
+			} else if(id.search(/\s/) != -1){
+				document.getElementById("user_id").classList.add('is-invalid');
+				document.getElementById("ifmmIdFeedback").classList.remove('valid-feedback');
+				document.getElementById("ifmmIdFeedback").classList.add('invalid-feedback');
+				document.getElementById("ifmmIdFeedback").innerText = "공백 없이 입력해주세요.";
+				document.getElementById("ifmmIdAllowedNy").value = 0;
+				return false;
+			} else if(num < 0 || eng < 0){
+				document.getElementById("user_id").classList.add('is-invalid');
+				document.getElementById("ifmmIdFeedback").classList.remove('valid-feedback');
+				document.getElementById("ifmmIdFeedback").classList.add('invalid-feedback');
+				document.getElementById("ifmmIdFeedback").innerText = "영문,숫자 중 2가지 이상을 혼합하여 입력해주세요.";
+				document.getElementById("ifmmIdAllowedNy").value = 0;
+				return false;
+			}
 				$.ajax({
 					async: true 
 					,cache: false
@@ -97,7 +137,7 @@
 							document.getElementById("user_id").classList.add('is-valid');
 		
 							document.getElementById("ifmmIdFeedback").classList.remove('invalid-feedback');
-							document.getElementById("ifmmIdFeedback").classList.add('valid-feedback');
+							document.getElementById("ifmmIdFeedback").classList.add('sucessFeedback_ment');
 							document.getElementById("ifmmIdFeedback").innerText = "사용할 수 있는 아이디입니다.";
 							
 							document.getElementById("ifmmIdAllowedNy").value = 1;
@@ -117,6 +157,90 @@
 					}
 				});
 		});
+		
+		
+		$("#ifmmPassword").on("focusout", function(){
+			var pw = $("#ifmmPassword").val();
+			var num = pw.search(/[0-9]/g);
+			var eng = pw.search(/[a-z]/ig);
+			var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+			
+			if(pw.length < 10 || pw.length > 20){
+				document.getElementById("ifmmPassword").classList.add('is-invalid');
+				document.getElementById("ifmmPasswordFeedback").classList.remove('valid-feedback');
+				document.getElementById("ifmmPasswordFeedback").classList.add('invalid-feedback');
+				document.getElementById("ifmmPasswordFeedback").innerText = "10자리 ~ 20자리 이내로 입력해주세요.";
+				document.getElementById("ifmmPasswordAllowedNy").value = 0;
+				return false;
+			}else if(pw.search(/\s/) != -1){
+				document.getElementById("ifmmPassword").classList.add('is-invalid');
+				document.getElementById("ifmmPasswordFeedback").classList.remove('valid-feedback');
+				document.getElementById("ifmmPasswordFeedback").classList.add('invalid-feedback');
+				document.getElementById("ifmmPasswordFeedback").innerText = "비밀번호는 공백 없이 입력해주세요.";
+				document.getElementById("ifmmPasswordAllowedNy").value = 0;
+				return false;
+			}else if( (num < 0 && eng < 0) || (eng < 0 && spe < 0) || (spe < 0 && num < 0) ){
+				document.getElementById("ifmmPassword").classList.add('is-invalid');
+				document.getElementById("ifmmPasswordFeedback").classList.remove('valid-feedback');
+				document.getElementById("ifmmPasswordFeedback").classList.add('invalid-feedback');
+				document.getElementById("ifmmPasswordFeedback").innerText = "영문,숫자, 특수문자 중 2가지 이상을 혼합하여 입력해주세요.";
+				document.getElementById("ifmmPasswordAllowedNy").value = 0;
+				return false;
+			}else {
+				document.getElementById("ifmmPassword").classList.add('is-valid');
+				document.getElementById("ifmmPassword").classList.remove('is-invalid');
+				document.getElementById("ifmmPasswordFeedback").classList.remove('invalid-feedback');
+				document.getElementById("ifmmPasswordFeedback").classList.add('valid-feedback');
+				document.getElementById("ifmmPasswordFeedback").innerText = "사용 가능 합니다.";
+				document.getElementById("ifmmPasswordAllowedNy").value = 1;
+			}
+		});
+		$("#ifmmPasswordChk").on("focusout", function(){
+			if($('#ifmmPassword').val() != $('#ifmmPasswordChk').val()){
+				document.getElementById("ifmmPasswordChk").classList.add('is-invalid');
+				document.getElementById("ifmmPasswordChkFeedback").classList.remove('valid-feedback');
+				document.getElementById("ifmmPasswordChkFeedback").classList.add('invalid-feedback');
+				document.getElementById("ifmmPasswordChkFeedback").innerText = "비밀번호가 일치하지 않습니다.";
+				document.getElementById("ifmmPasswordChkAllowedNy").value = 0;
+	        } else{
+	        	document.getElementById("ifmmPasswordChk").classList.add('is-valid');
+				document.getElementById("ifmmPasswordChk").classList.remove('is-invalid');
+				document.getElementById("ifmmPasswordChkFeedback").classList.remove('invalid-feedback');
+				document.getElementById("ifmmPasswordChkFeedback").classList.add('valid-feedback');
+				document.getElementById("ifmmPasswordChkFeedback").innerText = "비밀번호가 일치합니다.";
+				document.getElementById("ifmmPasswordChkAllowedNy").value = 1;
+	        }
+		});
+		
+		const reader = new FileReader();
+		reader.onload = (readerEvent) => {
+		    document.querySelector("#img_section").setAttribute("src", readerEvent.target.result);
+		    //파일을 읽는 이벤트가 발생하면 img_section의 src 속성을 readerEvent의 결과물로 대체함
+		};
+		document.querySelector("#upload_file").addEventListener("change", (changeEvent) => {
+		    //upload_file 에 이벤트리스너를 장착
+		    const imgFile = changeEvent.target.files[0];
+		    reader.readAsDataURL(imgFile);
+		    //업로드한 이미지의 URL을 reader에 등록
+		})
+		const exampleModal = document.getElementById('exampleModal')
+			exampleModal.addEventListener('show.bs.modal', event => {
+			// Button that triggered the modal
+		const button = event.relatedTarget
+			// Extract info from data-bs-* attributes
+		const recipient = button.getAttribute('data-bs-whatever')
+			// If necessary, you could initiate an AJAX request here
+			// and then do the updating in a callback.
+			//
+			// Update the modal's content.
+		const modalTitle = exampleModal.querySelector('.modal-title')
+		const modalBodyInput = exampleModal.querySelector('.modal-body input')
+			
+			modalTitle.textContent = `New message to ${recipient}`
+			modalBodyInput.value = recipient
+		})
+		
+
 	</script>
 </body>
 

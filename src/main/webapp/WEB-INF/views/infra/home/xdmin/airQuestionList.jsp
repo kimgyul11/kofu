@@ -140,6 +140,8 @@
 	$("#bookmarkInst").on("click", function(){
 		form.attr("action", goUrlInst).submit();
 	});
+    
+
 </script>
 </body>
 </html>

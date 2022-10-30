@@ -16,8 +16,44 @@ public class Home {
 	private String lastModTime;
 	private Integer questionDelNy;
 	private String bookmarkSeq;
+	private String likeSeq;
+	private String likeUserId;
+	private String likeTime;
+	private String likeAnswerSeq;
+	private String likeUseNy;
 	
 	
+	
+	public String getLikeSeq() {
+		return likeSeq;
+	}
+	public void setLikeSeq(String likeSeq) {
+		this.likeSeq = likeSeq;
+	}
+	public String getLikeUserId() {
+		return likeUserId;
+	}
+	public void setLikeUserId(String likeUserId) {
+		this.likeUserId = likeUserId;
+	}
+	public String getLikeTime() {
+		return likeTime;
+	}
+	public void setLikeTime(String likeTime) {
+		this.likeTime = likeTime;
+	}
+	public String getLikeAnswerSeq() {
+		return likeAnswerSeq;
+	}
+	public void setLikeAnswerSeq(String likeAnswerSeq) {
+		this.likeAnswerSeq = likeAnswerSeq;
+	}
+	public String getLikeUseNy() {
+		return likeUseNy;
+	}
+	public void setLikeUseNy(String likeUseNy) {
+		this.likeUseNy = likeUseNy;
+	}
 	public String getBookmarkSeq() {
 		return bookmarkSeq;
 	}

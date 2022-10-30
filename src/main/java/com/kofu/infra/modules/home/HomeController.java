@@ -104,4 +104,13 @@ public class HomeController {
 		System.out.println("controller result: "+result);
 		return "redirect:/quelist";
 	}
+	//-------------------------좋아요 버튼  -------------------
+	
+	@RequestMapping(value = "likebutton")
+	public String likeInsert(Home dto,HomeVo vo,RedirectAttributes redirectAttributes) throws Exception{
+		int result = service.likeInsert(dto);
+		
+		System.out.println("controller result: "+result);
+		return "redirect:/queview";
+	}
 }

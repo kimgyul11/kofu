@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+
 @Service
 public class HomeServiceImpl implements HomeService{
 
@@ -55,4 +56,10 @@ public class HomeServiceImpl implements HomeService{
 	public int bookmarkInst(Home dto) throws Exception {
 		return dao.bookmarkInst(dto);
 	}
+	@Override
+	public int likeInsert(Home dto) throws Exception {
+		return dao.likeInsert(dto);
+	}
+	
+
 }

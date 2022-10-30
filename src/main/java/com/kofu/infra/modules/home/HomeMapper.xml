@@ -167,6 +167,22 @@
 		
 	</select>
 	
-
+	
+	<!-- 좋아요버튼  -->
+	<insert id ="likeInsert">
+		INSERT INTO answer_like
+			likeUseNy
+			,likeAnswerSeq
+			,likeTime
+			,likeUserId
+		VALUE
+			1
+			,#{likeAnswerSeq}
+			,now()
+			,#{likeUserId}
+			<selectKey resultType="String" keyProperty="likeSeq" order="AFTER">
+				SELECT last_insert_id()
+		</selectKey> 
+	</insert>
 	
 </mapper>

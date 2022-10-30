@@ -12,11 +12,20 @@ public class HomeVo {
 	private Integer languageOption;
 	private String ansQuestionSeq;
 	private String bookmarkSeq;
+	private String likeAnwserSeq;
 	
 	
 	
 	
 	
+	
+
+	public String getLikeAnwserSeq() {
+		return likeAnwserSeq;
+	}
+	public void setLikeAnwserSeq(String likeAnwserSeq) {
+		this.likeAnwserSeq = likeAnwserSeq;
+	}
 	public String getBookmarkSeq() {
 		return bookmarkSeq;
 	}

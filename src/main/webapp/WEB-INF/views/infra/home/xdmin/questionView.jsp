@@ -15,13 +15,13 @@
     <title>AIRLANGUAGE</title>
 </head>
 <body>
-<form name="form">
-
+<form name="form" action="">
 <input type="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
 <input type="hidden" value="<c:out value="${sessSeq }"/>" id="ansUserId" name="ansUserId">
-<input type="hidden" value="<c:out value="${vo.ansSeq}"/>" id="ansSeq" name="ansSeq" >
-
+<input type="hidden" value="<c:out value="${homelist.ansSeq}"/>" id="ansSeq" name="ansSeq" >
+<input type="hidden" value="<c:out value="${sessSeq}"/>" id="likeUserId" name="likeUserId" >
+<input type="hidden" value="<c:out value="${dto.likeSeq}"/>" id="likeSeq" name="likeSeq" >
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
@@ -67,47 +67,45 @@
 				</ul>
 			</div>
 		</div><!--답변창e -->
+		<br><br>
+		<br><br>
+	<c:if test="${not empty vo.questionSeq}">
+		<c:forEach items="${homeList}" var="homeList" varStatus="status">
+		    <div class="answerbox">
+		        <ul class="answer-header">
+		            <li class="profile-item">
+		                <figure class="user-photo"style="background-image: url(http://t1.daumcdn.net/friends/prod/editor/dc8b3d02-a15a-4afa-a88b-989cf2a50476.jpg);"></figure>
+		            </li> 
+		            <li class="profile-item"><c:out value="${homeList.ansUserId}"/></li>
+		            <li class="profile-item"><c:out value="${homeList.ansWriteTime }"/></li>
+		        </ul>
+		        <div class="answer-body">
+		            <p><c:out value="${homeList.ansContent}"/></p>
+		        </div>
+		        <div class="footer">
+		            <button>신고하기</button>
+		            <button type="button" id="like">좋아요</button>
+		            <input type="text" value="<c:out value="${homeList.ansSeq }"/>"
+		        </div>
+		    </div>
+		</c:forEach>
+	</c:if>
     </div>
 <!--질문창 e-->
-		<br><br>
-		<br><br>
-
-<%-- 		<c:when test="${not empty homeList.ansQuestionSeq}"> --%>
-			<c:if test="${not empty vo.questionSeq}">
-			<c:forEach items="${homeList}" var="homeList" varStatus="status">
-				<ul id="comments-list" class="comments-list">
-	         		<li><!-- 질문s -->
-						<div class="comment-main-level">
-							<div class="comment-box">
-								<div class="comment-head">
-									<h6 class="comment-name by-author"><a href="#"><c:out value="${homeList.ansUserId}"/></a></h6>
-									<ul class="iconlist">
-										<li><c:out value="${homeList.ansWriteTime }"/>
-										<li><i class="fa-solid fa-comment"></i>
-										<li><i class="fa fa-heart"></i>
-			                          	<li><i class="fa-solid fa-bookmark"></i>
-									</ul>
-								</div>
-								<div class="comment-content">
-									<c:out value="${homeList.ansContent}"/>
-				               </div>
-							</div>
-						</div>
-					</li><!-- 질문e -->
-				</ul>
-		</c:forEach>
-		</c:if>
+		
 	</div>
 	</form>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script>
 
-        
+
         var form = $("form[name=form]");
     	var seq = $("input:hidden[name=ansSeq]");
         var goUrlInst = "answerInst";     
-        
+    	var goLikeInst = "likebutton";
+    	var bookSeq = $("input:hidden[name=likeSeq]");
+    	
         $("#btnsave").on("click",function(){
         	if (seq.val() == "0" || seq.val() == ""){
     	   		// insert
@@ -118,6 +116,13 @@
     	   		form.attr("action", goUrlUpdt).submit();
     	   	}
     	 	});
+        
+
+    	$("#like").on("click",function(){
+    		form.attr("action".goLikeInst).submit();
+  	 	});
+    	
+        
     </script>
 </body>
 </html>

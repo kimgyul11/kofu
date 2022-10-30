@@ -205,9 +205,15 @@
         border: none;
         border-bottom: 1px solid #e0e0e0;
     }
+    .feedback{
+    color:balck;
+    font-size:12px;
+    }
+    
     .Feedback_ment{
     	font-size: 12px;
     	color:#ff5722;
+    	display:block;
     }
     .sucessFeedback_ment{
     	color:#0d47a1;

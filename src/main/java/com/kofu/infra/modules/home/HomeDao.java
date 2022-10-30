@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 
+
 @Repository
 public class HomeDao {
 
@@ -47,6 +48,9 @@ public class HomeDao {
 		int result=sqlSession.insert(namespace + ".bookmarkInst", dto);
 		return result;
 	}
-	
+	// 좋아요등록 
+	public int likeInsert(Home dto) {
+		return sqlSession.insert(namespace + ".likeInsert",dto);
+	}
 
 }

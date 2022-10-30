@@ -3,6 +3,8 @@ package com.kofu.infra.modules.home;
 import java.util.List;
 
 
+
+
 public interface HomeService {
 	
 	public List<Home> selectList(HomeVo vo) throws Exception;
@@ -13,4 +15,5 @@ public interface HomeService {
 	public int ansInsert(Home dto) throws Exception;
 	public List<Home>selectAns(HomeVo vo) throws Exception;
 	public int bookmarkInst(Home dto) throws Exception;
+	public int likeInsert(Home dto)throws Exception;
 }

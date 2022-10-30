@@ -8,7 +8,6 @@ public class Base {
 	private String user_id;
 	private String cc_name;
 	private Integer user_level;
-
 	
 	private String questionSeq;
 	private String userID;
