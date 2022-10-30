@@ -21,7 +21,7 @@
 <input type="hidden" value="<c:out value="${sessSeq }"/>" id="ansUserId" name="ansUserId">
 <input type="hidden" value="<c:out value="${homelist.ansSeq}"/>" id="ansSeq" name="ansSeq" >
 <input type="hidden" value="<c:out value="${sessSeq}"/>" id="likeUserId" name="likeUserId" >
-<input type="hidden" value="<c:out value="${dto.likeSeq}"/>" id="likeSeq" name="likeSeq" >
+
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
@@ -81,11 +81,11 @@
 		        </ul>
 		        <div class="answer-body">
 		            <p><c:out value="${homeList.ansContent}"/></p>
+		            <input type="text" value="<c:out value="${homeList.ansSeq}"/>" name="likeAnswerSeq" >
 		        </div>
 		        <div class="footer">
 		            <button>신고하기</button>
 		            <button type="button" id="like">좋아요</button>
-		            <input type="text" value="<c:out value="${homeList.ansSeq }"/>"
 		        </div>
 		    </div>
 		</c:forEach>
@@ -104,7 +104,8 @@
     	var seq = $("input:hidden[name=ansSeq]");
         var goUrlInst = "answerInst";     
     	var goLikeInst = "likebutton";
-    	var bookSeq = $("input:hidden[name=likeSeq]");
+    	var likeSeq = $("input:hidden[name=likeSeq]");
+    	
     	
         $("#btnsave").on("click",function(){
         	if (seq.val() == "0" || seq.val() == ""){
@@ -119,7 +120,7 @@
         
 
     	$("#like").on("click",function(){
-    		form.attr("action".goLikeInst).submit();
+    		form.attr("action",goLikeInst).submit();
   	 	});
     	
         

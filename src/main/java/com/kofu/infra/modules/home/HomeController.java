@@ -110,6 +110,7 @@ public class HomeController {
 	public String likeInsert(Home dto,HomeVo vo,RedirectAttributes redirectAttributes) throws Exception{
 		int result = service.likeInsert(dto);
 		
+		redirectAttributes.addFlashAttribute("vo",vo);
 		System.out.println("controller result: "+result);
 		return "redirect:/queview";
 	}

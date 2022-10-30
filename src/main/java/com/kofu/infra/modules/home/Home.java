@@ -9,6 +9,7 @@ public class Home {
 	private Integer user_level;
 	
 	// 질문 작성
+	private String ansSeq;
 	private String questionSeq;
 	private String userID;
 	private String language_select;
@@ -19,7 +20,7 @@ public class Home {
 	private String likeSeq;
 	private String likeUserId;
 	private String likeTime;
-	private String likeAnswerSeq;
+	private Integer likeAnswerSeq;
 	private String likeUseNy;
 	
 	
@@ -42,10 +43,11 @@ public class Home {
 	public void setLikeTime(String likeTime) {
 		this.likeTime = likeTime;
 	}
-	public String getLikeAnswerSeq() {
+	
+	public Integer getLikeAnswerSeq() {
 		return likeAnswerSeq;
 	}
-	public void setLikeAnswerSeq(String likeAnswerSeq) {
+	public void setLikeAnswerSeq(Integer likeAnswerSeq) {
 		this.likeAnswerSeq = likeAnswerSeq;
 	}
 	public String getLikeUseNy() {
@@ -61,7 +63,7 @@ public class Home {
 		this.bookmarkSeq = bookmarkSeq;
 	}
 	//질문 답변
-	private String ansSeq;
+
 	private String ansWriteTime;
 	private String ansUserId;
 	private String ansContent;

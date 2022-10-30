@@ -89,6 +89,8 @@
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script type="text/javascript">	
+	
+	
 		/* ajax ID*/
 		$("#user_id").on("focusout", function(){
 			var id = $("#user_id").val();
