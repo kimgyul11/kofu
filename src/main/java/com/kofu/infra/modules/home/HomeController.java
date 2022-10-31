@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+
 @Controller
 public class HomeController {
 	@Autowired
@@ -114,4 +115,14 @@ public class HomeController {
 		System.out.println("controller result: "+result);
 		return "redirect:/queview";
 	}
+	
+	//-----------------------좋아요 삭제버튼----------------------
+	@RequestMapping(value = "likedelete")
+	public String likedelete(HomeVo vo,RedirectAttributes redirectAttributes)throws Exception{
+		service.likedelete(vo);
+		redirectAttributes.addFlashAttribute("vo",vo);
+		return "redirect:/queview";
+	}
+	
+
 }

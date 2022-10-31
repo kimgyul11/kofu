@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kofu.infra.modules.member.Member;
+
 
 
 @Service
@@ -59,6 +61,11 @@ public class HomeServiceImpl implements HomeService{
 	@Override
 	public int likeInsert(Home dto) throws Exception {
 		return dao.likeInsert(dto);
+	}
+
+	@Override
+	public int likedelete(HomeVo vo) throws Exception {
+		return dao.likedelete(vo);
 	}
 	
 

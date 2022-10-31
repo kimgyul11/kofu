@@ -52,5 +52,7 @@ public class HomeDao {
 	public int likeInsert(Home dto) {
 		return sqlSession.insert(namespace + ".likeInsert",dto);
 	}
+	//like삭제
+	public int likedelete(HomeVo vo) {return sqlSession.delete(namespace + "likedelete" , vo);}
 
 }

@@ -184,7 +184,20 @@
 			)
 			<selectKey resultType="String" keyProperty="likeSeq" order="AFTER">
 				SELECT last_insert_id()
-		</selectKey> 
+			</selectKey> 
 	</insert>
-	
+		
+	<!-- 좋아요 제거  -->
+	<delete id ="likedelete">
+		DELETE FROM answer_like WHERE likeSeq = #{likeSeq}
+	</delete>
+	<!-- 질문수정 -->
+	<update id="questionUdt">
+		UPDATE question
+		SET
+			content = #{content}
+		WHERE
+			questionSeq = #{questionSeq}	
+			
+	</update>
 </mapper>

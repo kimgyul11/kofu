@@ -16,4 +16,5 @@ public interface HomeService {
 	public List<Home>selectAns(HomeVo vo) throws Exception;
 	public int bookmarkInst(Home dto) throws Exception;
 	public int likeInsert(Home dto)throws Exception;
+	public int likedelete(HomeVo vo)throws Exception;
 }

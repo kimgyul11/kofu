@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -47,11 +48,11 @@
            		</ul>
             </ul>
             <div class="queBox_body">
-                <p><c:out value="${item.content }"/></p>
+                <textarea><c:out value="${item.content }"/></textarea>
             </div>
             <div class="queBox_footer">
          	 	<c:if test="${item.user_id eq sessId }">
-           			<button>수정하기</button>
+           			<button>저장하기</button>
               	</c:if>
                 <button><i class="fa-regular fa-bookmark"></i></button>
             </div>
@@ -97,7 +98,6 @@
     </div>
 <!--질문창 e-->
 		
-	</div>
 	</form>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
