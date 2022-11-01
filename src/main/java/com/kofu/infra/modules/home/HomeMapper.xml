@@ -43,12 +43,17 @@
 			<when test="shOption == 11"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 11</when>
 			<when test="shOption == 12"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 12</when>
 		</choose>
+		<choose>
+			<when test="navShOption == 9"> AND content LIKE CONCAT('%',#{navShValue},'%') AND a.language_select = 9 </when>
+			<when test="navShOption == 10">AND a.language_select = 10 AND content LIKE CONCAT('%',#{navShValue},'%')</when>
+			<when test="navShOption == 11"> AND content LIKE CONCAT('%',#{navShValue},'%') AND a.language_select = 11</when>
+			<when test="navShOption == 12"> AND content LIKE CONCAT('%',#{navShValue},'%') AND a.language_select = 12</when>
+		</choose>
 			ORDER BY a.writetime DESC
 		<include refid="selectListLowerForMysql" />
 	</select>
 	
 	<!-- question view  -->
-	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.questionSeq
@@ -61,18 +66,6 @@
 		JOIN airLanguage_member b ON b.memberSeq = a.userID
 		WHERE 1=1
 			AND a.questionSeq = #{questionSeq}
-		<choose>
-    		<when test="languageOption == 9"> AND a.language_select = 9 </when>
-			<when test="languageOption == 10">AND a.language_select = 10 </when>
-			<when test="languageOption == 11"> AND a.language_select = 11</when>
-			<when test="languageOption == 12"> AND a.language_select = 12</when>
-    	</choose>
-	    <choose>
-			<when test="shOption == 9"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 9 </when>
-			<when test="shOption == 10">AND a.language_select = 10 AND content LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 11"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 11</when>
-			<when test="shOption == 12"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 12</when>
-		</choose>
 	</select>
 	
 	<select id="selectAns" resultMap="resultMapObj">

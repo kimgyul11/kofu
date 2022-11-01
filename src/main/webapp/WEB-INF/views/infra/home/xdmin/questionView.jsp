@@ -16,11 +16,12 @@
 </head>
 <body>
 <form name="form" action="">
-<input type="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
+<input text="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
 <input type="hidden" value="<c:out value="${sessSeq }"/>" id="ansUserId" name="ansUserId">
 <input type="hidden" value="<c:out value="${homelist.ansSeq}"/>" id="ansSeq" name="ansSeq" >
 <input type="hidden" value="<c:out value="${sessSeq}"/>" id="likeUserId" name="likeUserId" >
+
 
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>

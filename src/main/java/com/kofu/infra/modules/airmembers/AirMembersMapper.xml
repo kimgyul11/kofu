@@ -45,7 +45,6 @@
     		,a.user_useNy
     		,a.user_delNy
     		,a.user_favoriteLanguage
-			,a.user_withdrawal
 			,a.user_level
     	<include refid="memberCommon" />
     		ORDER BY a.memberSeq DESC
@@ -64,7 +63,6 @@
     		,a.user_useNy
     		,a.user_delNy
     		,a.user_favoriteLanguage
-			,a.user_withdrawal
 			,a.user_level
 		FROM airLanguage_member a
 		WHERE 1=1 

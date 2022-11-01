@@ -15,17 +15,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/resources/xdmin/css/home.css" />
+    <link rel="stylesheet" href="/resources/xdmin/css/style.css" />
     <title>HOME</title>
 </head>
 <body>
 <form name="form">
 <input type="hidden" name="memberSeq" value="<c:out value="${sessSeq }"/>" >
-<%-- <input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq}"/>"/> --%>
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->   
-    
-    
     <!--  헤더영역 -->
         <div class="title">
             <h1>언제,어디서나 원어민과 함께</h1> 
@@ -52,7 +50,7 @@
         <input type="text" name="shValue" id="shValue" value="<c:out value="${vo.shValue}"/>" placeholder="단어를 입력하세요">
     </div>
     <div class="search_btn">
-        <div class="button" type="button" onclick id="btnForm">검색하기</div>
+        <div class="button" type="button" id="btnsearch">검색하기</div>
     </div>
 </div>
 
@@ -149,10 +147,16 @@
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
 var goUrlList = "quelist";
-var form = $("form[name=form]")
+var form = $("form[name=form]");
 	$("#btnForm").on("click", function() {
 		form.attr("action", goUrlList).submit();
 	});
+	
+	$("#btnsearch").on("click", function() {
+		form.attr("action", goUrlList).submit();
+	});
+	
+	
 	
 $("#btnLogout").on("click", function(){
 	$.ajax({

@@ -40,9 +40,9 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "/member/memberlist")
-	public String codeGroupList(Model model) throws Exception {
+	public String codeGroupList(Model model,MemberVo vo) throws Exception {
 
-		List<Member> list = service.selectList();
+		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/member/xdmin/memberlist";
@@ -56,7 +56,7 @@ public class MemberController {
 	@RequestMapping(value = "/member/memberView")
 	public String memberView(MemberVo vo, Model model) throws Exception{
 		
-		List<Member> list = service.selectList();
+		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 

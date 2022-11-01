@@ -14,12 +14,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/xdmin/css/airQuestionList.css">
+    <link rel="stylesheet" href="/resources/xdmin/css/style.css">
     <title>AIRLANGUAGE</title>
 </head>
 
 <body>
 <form name = "form">
-<input type="hidden" value="<c:out value="${vo.questionSeq}"/>" name="questionSeq" >
+<input type="hidden" name="questionSeq" value="<c:out value="${vo.questionSeq}"/>"  >
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 <input type="hidden" name="bookmarkSeq" value="<c:out value="${vo.bookmarkSeq}"/>">

@@ -7,6 +7,8 @@ public class HomeVo {
 
 	private Integer shOption;
 	private String shValue;
+	private Integer navShOption;
+	private String navShValue;
 	private String questionSeq;
 	private String ansSeq;
 	private Integer languageOption;
@@ -21,6 +23,18 @@ public class HomeVo {
 	
 
 
+	public Integer getNavShOption() {
+		return navShOption;
+	}
+	public void setNavShOption(Integer navShOption) {
+		this.navShOption = navShOption;
+	}
+	public String getNavShValue() {
+		return navShValue;
+	}
+	public void setNavShValue(String navShValue) {
+		this.navShValue = navShValue;
+	}
 	public String getLikeAnswerSeq() {
 		return likeAnswerSeq;
 	}
