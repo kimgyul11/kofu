@@ -34,7 +34,7 @@
 	
 	<!-- 리스트출력 -->
     <select id="selectList" resultMap="resultMapObj">
-    	<include refid="selectListUpperForMysql" />
+    	<!-- <include refid="selectListUpperForMysql" /> -->
     	SELECT
     		a.user_id
     		,a.memberSeq
@@ -48,7 +48,7 @@
 			,a.user_level
     	<include refid="memberCommon" />
     		ORDER BY a.memberSeq DESC
-    	<include refid="selectListLowerForMysql" />		
+    	<!-- <include refid="selectListLowerForMysql" />		 -->
     </select>
     
     <!-- 셀렉트원 -->
