@@ -191,6 +191,13 @@
 			content = #{content}
 		WHERE
 			questionSeq = #{questionSeq}	
-			
+	</update>
+	<!-- 답변 채택  -->
+	<update id="answerSelect">
+		UPDATE answer
+		SET
+			ansSelect = 1
+		WHERE
+			ansSeq = #{ansSeq}
 	</update>
 </mapper>

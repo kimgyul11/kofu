@@ -67,5 +67,11 @@ public class HomeServiceImpl implements HomeService{
 		return dao.likedelete(vo);
 	}
 	
+//답변 채택하기
+	@Override
+	public int answerSelect(Home dto) throws Exception {
+		return dao.answerSelect(dto);
+	}
+	
 
 }

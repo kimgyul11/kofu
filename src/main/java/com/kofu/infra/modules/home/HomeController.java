@@ -31,12 +31,8 @@ public class HomeController {
 		return "infra/home/xdmin/airLanguageHome";
 	}
 	
-	
-	
-	
 	@RequestMapping(value = "airLogin")
 	public String airLogin() {
-
 		return "infra/login/xdmin/airLogin";
 	}
 	
@@ -124,5 +120,12 @@ public class HomeController {
 		return "redirect:/queview";
 	}
 	
+	//---------------------답변 채택하기--------------------
+	@RequestMapping(value = "answerSelect")
+	public String answerSelect(HomeVo vo,Home dto,RedirectAttributes redirectAttributes) throws Exception{
+		service.answerSelect(dto);
+		redirectAttributes.addFlashAttribute("vo",vo);
+		return "redirect:/queview";
+	}
 
 }

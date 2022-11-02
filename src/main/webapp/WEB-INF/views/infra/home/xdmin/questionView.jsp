@@ -16,12 +16,10 @@
 </head>
 <body>
 <form name="form" action="">
-<input text="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
+<input type="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
 <input type="hidden" value="<c:out value="${sessSeq }"/>" id="ansUserId" name="ansUserId">
-<input type="hidden" value="<c:out value="${homelist.ansSeq}"/>" id="ansSeq" name="ansSeq" >
 <input type="hidden" value="<c:out value="${sessSeq}"/>" id="likeUserId" name="likeUserId" >
-
 
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
@@ -76,6 +74,7 @@
 		<br><br>
 	<c:if test="${not empty vo.questionSeq}">
 		<c:forEach items="${homeList}" var="homeList" varStatus="status">
+		<input type="text" value="<c:out value="${homeList.ansSeq}"/>" id="ansSeq" name="ansSeq" >
 		    <div class="answerbox">
 		        <ul class="answer-header">
 		            <li class="profile-item">
@@ -86,9 +85,12 @@
 		        </ul>
 		        <div class="answer-body">
 		            <p><c:out value="${homeList.ansContent}"/></p>
-		            <input type="text" value="<c:out value="${homeList.ansSeq}"/>" name="likeAnswerSeq" >
+		            
 		        </div>
 		        <div class="footer">
+		        <c:if test="${item.user_id eq sessId }">
+           			<button id="answerSelect">채택하기</button>
+              	</c:if>
 		            <button>신고하기</button>
 		            <button type="button" id="like">좋아요</button>
 		        </div>
@@ -110,11 +112,14 @@
         var goUrlInst = "answerInst";     
     	var goLikeInst = "likebutton";
     	var likeSeq = $("input:hidden[name=likeSeq]");
+    	var goUrlSelect = "answerSelect";
+    	var SelectSeq = $("input:hidden[name=questionSeq]");
     	
     	
         $("#btnsave").on("click",function(){
         	if (seq.val() == "0" || seq.val() == ""){
     	   		// insert
+    	   		alert("작성완료");
     	   		form.attr("action", goUrlInst).submit();
     	   	} else {
     	   		// update
@@ -123,6 +128,9 @@
     	   	}
     	 	});
         
+        $("#answerSelect").on("click" , function(){
+	   		form.attr("action", goUrlSelect).submit();
+        })
 
     	$("#like").on("click",function(){
     		form.attr("action",goLikeInst).submit();

@@ -53,6 +53,8 @@ public class HomeDao {
 		return sqlSession.insert(namespace + ".likeInsert",dto);
 	}
 	//like삭제
-	public int likedelete(HomeVo vo) {return sqlSession.delete(namespace + "likedelete" , vo);}
+	public int likedelete(HomeVo vo) {return sqlSession.delete(namespace + ".likedelete" , vo);}
 
+	//답변채택
+	public int answerSelect(Home dto) {return sqlSession.update(namespace + ".answerSelect",dto);}
 }
