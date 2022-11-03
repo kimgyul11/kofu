@@ -57,21 +57,19 @@ public class HomeController {
 		return "infra/home/xdmin/airQuestionList";
 	}
 	
+	//질문 상세화면------------------------------------------------------------------
 	@RequestMapping(value = "queview")
 	public String queview(@ModelAttribute("vo")HomeVo vo,Model model) throws Exception {
 		
 		Home result = service.selectOne(vo);
 		List<Home>homeList = service.selectAns(vo);
+		vo.getAnsSeq();
+		
 		model.addAttribute("item",result);
 		model.addAttribute("homeList", homeList);
 		return "infra/home/xdmin/questionView";
 	}
-	
-	@RequestMapping(value = "complete")
-	public String complete() {
-		
-		return "infra/login/xdmin/logincomplete";
-	}
+
 	
 //	-----------------------------------질문작성페이지------------------------------------------
 	@RequestMapping(value = "quereg")

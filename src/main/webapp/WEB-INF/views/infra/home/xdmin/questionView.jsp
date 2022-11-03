@@ -74,7 +74,6 @@
 		<br><br>
 	<c:if test="${not empty vo.questionSeq}">
 		<c:forEach items="${homeList}" var="homeList" varStatus="status">
-		<input type="text" value="<c:out value="${homeList.ansSeq}"/>" id="ansSeq" name="ansSeq" >
 		    <div class="answerbox">
 		        <ul class="answer-header">
 		            <li class="profile-item">
@@ -89,7 +88,8 @@
 		        </div>
 		        <div class="footer">
 		        <c:if test="${item.user_id eq sessId }">
-           			<button id="answerSelect">채택하기</button>
+		        	<input type="hidden" value="<c:out value="${homeList.ansSeq}"/>"  name="ansSeq" >
+           			<button id="select">채택하기</button>
               	</c:if>
 		            <button>신고하기</button>
 		            <button type="button" id="like">좋아요</button>
@@ -108,13 +108,12 @@
 
 
         var form = $("form[name=form]");
-    	var seq = $("input:hidden[name=ansSeq]");
+    	var seq = $("input:text[name=ansSeq]");
         var goUrlInst = "answerInst";     
     	var goLikeInst = "likebutton";
     	var likeSeq = $("input:hidden[name=likeSeq]");
     	var goUrlSelect = "answerSelect";
-    	var SelectSeq = $("input:hidden[name=questionSeq]");
-    	
+    	var selectSeq = $("input:hidden[name=ansSeq]");
     	
         $("#btnsave").on("click",function(){
         	if (seq.val() == "0" || seq.val() == ""){
@@ -128,9 +127,14 @@
     	   	}
     	 	});
         
-        $("#answerSelect").on("click" , function(){
+        //답변채택
+        $("#select").on("click" ,function(){
+        	form.attr("action",goUrlSelect).submit();
+        }
+        
+     /*    $("#answerSelect").on("click" , function(){
 	   		form.attr("action", goUrlSelect).submit();
-        })
+        }) */
 
     	$("#like").on("click",function(){
     		form.attr("action",goLikeInst).submit();

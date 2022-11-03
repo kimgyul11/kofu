@@ -140,5 +140,11 @@ public class MemberController {
 		return returnMap;
 	}
 	
+	//로그인 완료--------------------------------------------------------------
+	@RequestMapping(value = "complete")
+	public String complete() {
+		
+		return "infra/login/xdmin/logincomplete";
+	}
 
 }

@@ -116,7 +116,7 @@
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
-	var seq = $("input:hidden[name=questionSeq]");
+	var questionSeq = $("input:hidden[name=questionSeq]");
 	var bookSeq = $("input:hidden[name=bookmarkSeq]");
 	var goUrlForm = "/queview";
 	var form = $("form[name=form]");
@@ -129,10 +129,9 @@
 		form.attr("action", goUrlList).submit();
 	}
 	
+	/* 게시글로 이동하기 */
 	goForm = function(keyValue) {
-
-		/* if(keyValue != 0) seq.val(btoa(keyValue)); */
-		seq.val(keyValue);
+		questionSeq.val(keyValue);
 		form.attr("action", goUrlForm).submit();
 	}
 	
