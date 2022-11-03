@@ -7,7 +7,7 @@ public class AirMembers {
 	private String user_signupDate;
 	private String user_id;
 	private Integer user_gender;
-	private String user_favoriteLanguage;
+	private Integer user_favoriteLanguage;
 	private String user_name;
 	private String user_delNy;
 	private String user_useNy;
@@ -77,10 +77,10 @@ public class AirMembers {
 	public void setUser_gender(Integer user_gender) {
 		this.user_gender = user_gender;
 	}
-	public String getUser_favoriteLanguage() {
+	public Integer getUser_favoriteLanguage() {
 		return user_favoriteLanguage;
 	}
-	public void setUser_favoriteLanguage(String user_favoriteLanguage) {
+	public void setUser_favoriteLanguage(Integer user_favoriteLanguage) {
 		this.user_favoriteLanguage = user_favoriteLanguage;
 	}
 	public String getUser_name() {

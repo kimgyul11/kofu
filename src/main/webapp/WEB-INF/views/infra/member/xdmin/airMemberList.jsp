@@ -19,6 +19,7 @@
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 <input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq}"/>">
+	<form name="form">
 	<!--네비게이션바,사이드메뉴s -->
 	<%@include file="../../../infra/includeV1/xdminMenu.jsp"%>
 	<!--네비게이션바,사이드메뉴e -->
@@ -114,7 +115,9 @@
         	</div>
             <button class="btn_reg"><i class="fa-solid fa-folder-plus"></i></button>
         </div>
+        <button id="btnExcel">다운로드</button>
     </div>
+    </form>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -158,6 +161,8 @@
                 }
             });
     });
+    
+    var excelUri = "/excelDownload"
     var seq = $("input:hidden[name=memberSeq]");
 	var goUrlForm = "/AircodeGroup/codeGroupView";
 	var goUrlList = "/xadmin/memberlist";
@@ -165,7 +170,14 @@
 		$('#btnForm').on("click", function() {
 		goForm(0);                
 	});
-
+	
+	
+	
+	//엑셀다운로드
+	$("#btnExcel").click(function() {
+		form.attr("action", excelUri).submit();
+	});
+	
 	goForm = function(keyValue) {
     	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
     	seq.val(keyValue);

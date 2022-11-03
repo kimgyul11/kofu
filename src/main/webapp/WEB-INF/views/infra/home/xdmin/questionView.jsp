@@ -88,8 +88,8 @@
 		        </div>
 		        <div class="footer">
 		        <c:if test="${item.user_id eq sessId }">
-		        	<input type="hidden" value="<c:out value="${homeList.ansSeq}"/>"  name="ansSeq" >
-           			<button id="select">채택하기</button>
+		        	<input type="text" value="<c:out value="${homeList.ansSeq}"/>"  name="ansSeq" >
+           			<button onclick="ansselect()"> 채택하기 </button>
               	</c:if>
 		            <button>신고하기</button>
 		            <button type="button" id="like">좋아요</button>
@@ -115,6 +115,9 @@
     	var goUrlSelect = "answerSelect";
     	var selectSeq = $("input:hidden[name=ansSeq]");
     	
+    	
+    	
+    	
         $("#btnsave").on("click",function(){
         	if (seq.val() == "0" || seq.val() == ""){
     	   		// insert
@@ -128,7 +131,7 @@
     	 	});
         
         //답변채택
-        $("#select").on("click" ,function(){
+        ansselect = function(){
         	form.attr("action",goUrlSelect).submit();
         }
         

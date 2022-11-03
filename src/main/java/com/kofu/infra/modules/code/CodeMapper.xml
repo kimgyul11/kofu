@@ -133,6 +133,7 @@
 		WHERE ccSeq = #{ccSeq}	
 	</update>
 	
+	<!-- 코드 띄우기 -->
 	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
 		SELECT 
 			ccSeq

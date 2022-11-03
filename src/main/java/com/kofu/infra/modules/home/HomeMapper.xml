@@ -75,6 +75,7 @@
 			,a.ansUserId
 			,a.ansContent
 			,a.ansQuestionSeq
+			,a.ansSelect
 		FROM answer a
 		LEFT JOIN question b ON b.questionSeq = a.ansQuestionSeq
 		LEFT JOIN airLanguage_member c ON a.ansUserId = c.memberSeq

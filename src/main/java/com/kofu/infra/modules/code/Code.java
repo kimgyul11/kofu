@@ -15,7 +15,6 @@ public class Code {
 	private String cc_InsertDate;
 	private String cc_ModDate;
 	
-	
 	private Integer UseNY;
 	private String ccgSeq;
 	private String ccg_groupname;
