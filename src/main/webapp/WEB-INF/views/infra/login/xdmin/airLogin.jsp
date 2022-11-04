@@ -16,6 +16,7 @@
 </head>
 <body>
 <form autocomplete="off">
+	
     <div class="loginWrap">
         <div class="login_img">
             <div class="imgmove">
@@ -75,7 +76,7 @@
                     <li>
                         <ul class="loginbtnWrap">
                             <li class="loginbtn"><a href="#"><img class="loginbtn_img" src="https://cdn-icons-png.flaticon.com/512/8142/8142645.png"></a></li>
-                            <li class="loginbtn"><img class="loginbtn_img" src="https://cdn-icons-png.flaticon.com/512/4494/4494622.png"></li>
+                            <li class="loginbtn" id="kakaoBtn"><img class="loginbtn_img" src="https://cdn-icons-png.flaticon.com/512/4494/4494622.png"></li>
                             <li class="loginbtn"><a href="/member/airSignupView"><img class="loginbtn_img" src="https://cdn-icons-png.flaticon.com/512/6159/6159448.png"></a></li>
                         </ul>
                     </li>
@@ -93,12 +94,17 @@
             </div>
         </div>
     </div>
+    <form name="form">
+		<input type="hidden" name="user_name"/>
+		<input type="hidden" name="snsId"/>
+		<input type="hidden" name="user_email"/>
+		<input type="hidden" name="token"/>
+	</form>
     </form>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
-    <script>
-
-    
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script type="text/javascript">
 
         $("#btnLogin").on("click", function(){
     
@@ -123,6 +129,73 @@
                 }
             });
         });
+        
+        
+        Kakao.init('5c3c7104a83d9002a7ea31b4428c735d'); // test 용
+    	console.log(Kakao.isInitialized());
+/*     	Kakao.init('ec2655da82c3779d622f0aff959060e6');
+    	console.log(Kakao.isInitialized()); */
+    	
+    	$("#kakaoBtn").on("click", function() {
+    		/* Kakao.Auth.authorize({
+   		      redirectUri: 'http://localhost:8080/member/kakaoCallback',
+   		    }); */
+    		
+    		Kakao.Auth.login({
+   		      success: function (response) {
+   		        Kakao.API.request({
+   		          url: '/v2/user/me',
+   		          success: function (response) {
+   		        	  
+   		        	  var accessToken = Kakao.Auth.getAccessToken();
+   		        	  Kakao.Auth.setAccessToken(accessToken);
+
+   		        	  var account = response.kakao_account;
+   		        	  
+   		        	  console.log(response)
+   		        	  console.log("email : " + account.email);
+   		        	  console.log("name : " + account.name);
+   		        	  console.log("nickname : " + account.profile.nickname);
+  	        	  
+	  	        	  $("input[name=snsId]").val("카카오로그인");
+	  	        	  $("input[name=user_name]").val(account.profile.nickname);
+	  	        	  $("input[name=user_email]").val(account.email);
+	  	        	  $("input[name=token]").val(accessToken);
+	  	        	  
+	  	       
+	  	        	  
+	  	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
+					
+	  	        	  $.ajax({
+						async: true
+						,cache: false
+						,type:"POST"
+						,url: "/member/kakaoLoginProc"
+						,data: {"user_name": $("input[name=user_name]").val(), "snsId": $("input[name=snsId]").val(),  "user_email": $("input[name=user_email]").val(), "token": $("input[name=token]").val()}
+						,success : function(response) {
+							if (response.rt == "fail") {
+								alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+								return false;
+							} else {
+								window.location.href = "/airLanguageHome";
+							}
+						},
+						error : function(jqXHR, status, error) {
+							alert("알 수 없는 에러 [ " + error + " ]");
+						}
+					});
+   		          },
+   		          fail: function (error) {
+   		            console.log(error)
+   		          },
+   		        })
+   		      },
+   		      fail: function (error) {
+   		        console.log(error)
+   		      },
+   		    })
+		});
+        
     </script>    
 </body>
 </html>

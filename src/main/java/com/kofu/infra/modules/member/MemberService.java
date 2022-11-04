@@ -17,5 +17,9 @@ public interface MemberService {
 	public List<Member> mypageQueSelect(MemberVo vo) throws Exception;
 	public List<Member> mypageAnsSelect(MemberVo vo) throws Exception;
 	
+	//카카오 로그인
+	public Member snsLoginCheck(Member dto) throws Exception;
+	public int kakaoInst(Member dto) throws Exception;
+	
 
 }

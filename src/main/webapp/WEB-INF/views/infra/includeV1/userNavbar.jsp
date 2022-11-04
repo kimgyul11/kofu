@@ -5,16 +5,7 @@
         <div class="logo">
             <a href="/airLanguageHome">AirLanguage</a>
         </div>
-        <!-- <div class="nav_search_box">
-            <select name="" id="" >
-	            <option value="">언어 선택</option>
-	            <option value="9">한국어</option>
-	            <option value="10">중국어</option>
-	            <option value="11">일본어</option>
-	            <option value="12">영어</option>
-            </select>
-            <input type="text" name="" placeholder="단어를 입력해보세요.">
-        </div> -->
+   
 		<div class="wrap">
 			<%-- <div class="search">
 				<select id="navShOption" name="navShOption"class="select-option">
@@ -28,6 +19,7 @@
 			 <button type="button"  class="searchButton" id="btnForm"><i class="fa fa-search"></i></button>
 	   		</div> --%>
 		</div>
+		
         <ul class="nav_right_Wrap">
             <c:choose>
             	<c:when test="${empty sessSeq }">
@@ -38,7 +30,7 @@
 		            <li><a href="/quelist">게시판</a>		
 		            <li><a href="/quereg">질문하기</a>
 		            <%-- <li class="signinStatus"><a href="/member/airMypage"><c:out value="${sessSeq }"/>님 환영합니다.</a></li> --%>
-		            <li class="signinStatus"><a onclick="location.href='airMypage?memberSeq=<c:out value="${sessSeq}"/>'"><c:out value="${sessId }"/>님 환영합니다.</a></li>
+		            <li class="signinStatus"><a onclick="location.href='airMypage?memberSeq=<c:out value="${sessSeq}"/>'"><c:out value="${sessId}"/>님 환영합니다.</a></li>
 		            <li><a href="airLogin" id="btnLogout">로그아웃</a>
             	</c:otherwise>
             </c:choose>

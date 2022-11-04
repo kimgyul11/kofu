@@ -19,7 +19,7 @@ public class Member extends Base{
 	private String user_addr;
 	private String user_email;
 	private Integer user_favoriteLanguage;
-
+	private String snsId;
 
 	
 	//-----------------------------------------------------------------------------
@@ -27,6 +27,12 @@ public class Member extends Base{
 	
 	
 	
+	public String getSnsId() {
+		return snsId;
+	}
+	public void setSnsId(String snsId) {
+		this.snsId = snsId;
+	}
 	private MultipartFile[] uploadedImage;
 	
 	

@@ -105,9 +105,37 @@
 	</insert>
 	
 	
-	
-	
-	
+	<!-- 카카오 로그인 체크 -->
+	<select id="snsLoginCheck" resultMap="resultMapObj">
+		SELECT
+			a.memberSeq
+			,a.user_name
+		FROM
+			airLanguage_member a
+		WHERE 1=1
+			AND a.user_id = #{snsId} AND a.user_name = #{user_name}
+	</select>
+
+	<!-- 카카오 계정 insert -->
+	<insert id="kakaoInst">
+		INSERT INTO airLanguage_member(
+			user_id
+			,user_name
+			,user_email
+		)
+		VALUE(
+			#{snsId}
+			,#{user_name}
+			,#{user_email}
+		)
+		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
+				SELECT last_insert_id()
+		</selectKey> 
+	</insert>
+
+
+
+
 	<!-- 중복체크 -->
 	<select id="selectOneIdCheck" resultType="Integer">
 		select count(*) 
@@ -115,6 +143,8 @@
 		where 1=1
 			and user_id = #{user_id}
 	</select>
+	
+	
 	
 	
 	<!-- 9월 27일 로그인  -->

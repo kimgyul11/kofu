@@ -73,5 +73,16 @@ public class MemberDao {
 	}
 	
 
+	//카카오 로그인 관련
+	//아이디 체크
+	public Member snsLoginCheck(Member dto) {
+		Member result =sqlSession.selectOne(namespace + ".snsLoginCheck",dto);
+		return result;
+	}
+	//카카오 회원가입
+	public int kakaoInst(Member dto) {
+		int result = sqlSession.insert(namespace + ".kakaoInst", dto);
+		return result;
+	}
 
 }
