@@ -110,6 +110,8 @@
 		SELECT
 			a.memberSeq
 			,a.user_name
+			,a.user_email
+			,a.user_id
 		FROM
 			airLanguage_member a
 		WHERE 1=1

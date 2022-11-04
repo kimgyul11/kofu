@@ -63,8 +63,6 @@ public class HomeController {
 		
 		Home result = service.selectOne(vo);
 		List<Home>homeList = service.selectAns(vo);
-		vo.setAnsSeq(dto.getAnsSeq());
-		System.out.println(dto.getAnsSeq());
 		
 		model.addAttribute("item",result);
 		model.addAttribute("homeList", homeList);

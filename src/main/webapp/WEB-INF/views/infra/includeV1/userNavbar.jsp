@@ -19,7 +19,10 @@
 			 <button type="button"  class="searchButton" id="btnForm"><i class="fa fa-search"></i></button>
 	   		</div> --%>
 		</div>
-		
+		<c:out value="${sessName}"/>
+		<c:out value="${sessId}"/>
+		<c:out value="${sessEmail}"/>
+		<c:out value="${sessSeq}"/>
         <ul class="nav_right_Wrap">
             <c:choose>
             	<c:when test="${empty sessSeq }">

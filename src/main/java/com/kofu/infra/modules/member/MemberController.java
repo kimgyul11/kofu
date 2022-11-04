@@ -161,19 +161,13 @@ public class MemberController {
 			
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
-		     httpSession.setAttribute("sessSeq", dto.getMemberSeq());    
-		     httpSession.setAttribute("sessId", dto.getUser_id());
-		     httpSession.setAttribute("sessName", dto.getUser_name());
-		     httpSession.setAttribute("sessEmail", dto.getUser_email()); 
+            session(dto, httpSession); 
 			returnMap.put("rt", "success");
 		} else {
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 			
 			// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
-		     httpSession.setAttribute("sessSeq", dto.getMemberSeq());    
-		     httpSession.setAttribute("sessId", dto.getUser_id());
-		     httpSession.setAttribute("sessName", dto.getUser_name());
-		     httpSession.setAttribute("sessEmail", dto.getUser_email());
+			session(kakaoLogin, httpSession);
 			returnMap.put("rt", "success");
 		}
 		return returnMap;

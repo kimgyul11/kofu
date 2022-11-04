@@ -73,6 +73,7 @@
 		<br><br>
 		<br><br>
 	<c:if test="${not empty vo.questionSeq}">
+		<input type="hidden" name="ansSeq">
 		<c:forEach items="${homeList}"  var="homeList" varStatus="status">
 		    <div class="answerbox">
 		        <ul class="answer-header">
@@ -86,12 +87,10 @@
 		            <p><c:out value="${homeList.ansContent}"/></p>
 		            
 		        </div>
-		        <input type="text" value="<c:out value="${homeList.ansSeq}"/>">
 		        <div class="footer">
 		        <c:if test="${item.user_id eq sessId }">
-		        	<input type="text" value="<c:out value="${homeList.ansSeq}"/>"  name="ansSeq">
-		        	<input type="hidden" value="<c:out value="${homeList.ansSeq}"/>"  name="likeAnswerSeq"> 
-           			<button onclick="ansselect()"> 채택하기 </button>
+           			<!-- <button type="button" id="pick"> 채택하기 </button>4일 내가한거 -->
+           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택하기</button> 
               	</c:if>
 		            <button>신고하기</button>
 		            <button type="button" id="like">좋아요</button>
@@ -110,13 +109,12 @@
 
 
         var form = $("form[name=form]");
-    	var seq = $("input:text[name=ansSeq]");
+    	var seq = $("input:hidden[name=ansSeq]");
         var goUrlInst = "answerInst";     
     	var goLikeInst = "likebutton";
     	var likeSeq = $("input:hidden[name=likeSeq]");
     	var goUrlSelect = "answerSelect";
     	var selectSeq = $("input:hidden[name=ansSeq]");
-    	
     	
     	
     	
@@ -126,26 +124,19 @@
     	   		form.attr("action", goUrlInst).submit();
     	 	});
    
-        //답변채택
-        ansselect = function(){
-        	form.attr("action",goUrlSelect).submit();
-        }
-        
-        $(document).ready(function(){ 
-			$("input[name='ansSeq']").on("click" , function(){
-				ansSeq = 
-				form.attr("action",goUrlSelect).submit();
-			}); 
-		}); 
-        
-     /*    $("#answerSelect").on("click" , function(){
-	   		form.attr("action", goUrlSelect).submit();
-        }) */
 
     	$("#like").on("click",function(){
     		form.attr("action",goLikeInst).submit();
   	 	});
     	
+     
+		function anspikc(keyValue){
+	    	seq.val(keyValue);
+			form.attr("action", goUrlSelect).submit();
+		}
+     
+     
+     
         
     </script>
 </body>
