@@ -63,7 +63,7 @@
 			,b.user_id
 			,b.user_level
 		FROM  question a
-		JOIN airLanguage_member b ON b.memberSeq = a.userID
+		LEFT JOIN airLanguage_member b ON b.memberSeq = a.userID
 		WHERE 1=1
 			AND a.questionSeq = #{questionSeq}
 	</select>

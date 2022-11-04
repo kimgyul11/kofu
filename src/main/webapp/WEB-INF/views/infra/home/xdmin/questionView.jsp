@@ -16,10 +16,10 @@
 </head>
 <body>
 <form name="form" action="">
-<input type="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq" >
+<input type="text" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq">
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
 <input type="hidden" value="<c:out value="${sessSeq }"/>" id="ansUserId" name="ansUserId">
-<input type="hidden" value="<c:out value="${sessSeq}"/>" id="likeUserId" name="likeUserId" >
+<input type="text" value="<c:out value="${sessSeq}"/>" id="likeUserId" name="likeUserId" >내 아이디
 
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
@@ -73,7 +73,7 @@
 		<br><br>
 		<br><br>
 	<c:if test="${not empty vo.questionSeq}">
-		<c:forEach items="${homeList}" var="homeList" varStatus="status">
+		<c:forEach items="${homeList}"  var="homeList" varStatus="status">
 		    <div class="answerbox">
 		        <ul class="answer-header">
 		            <li class="profile-item">
@@ -86,9 +86,11 @@
 		            <p><c:out value="${homeList.ansContent}"/></p>
 		            
 		        </div>
+		        <input type="text" value="<c:out value="${homeList.ansSeq}"/>">
 		        <div class="footer">
 		        <c:if test="${item.user_id eq sessId }">
-		        	<input type="text" value="<c:out value="${homeList.ansSeq}"/>"  name="ansSeq" >
+		        	<input type="text" value="<c:out value="${homeList.ansSeq}"/>"  name="ansSeq">
+		        	<input type="hidden" value="<c:out value="${homeList.ansSeq}"/>"  name="likeAnswerSeq"> 
            			<button onclick="ansselect()"> 채택하기 </button>
               	</c:if>
 		            <button>신고하기</button>
@@ -119,21 +121,22 @@
     	
     	
         $("#btnsave").on("click",function(){
-        	if (seq.val() == "0" || seq.val() == ""){
     	   		// insert
     	   		alert("작성완료");
     	   		form.attr("action", goUrlInst).submit();
-    	   	} else {
-    	   		// update
-    	   		/* keyName.val(atob(keyName.val())); */
-    	   		form.attr("action", goUrlUpdt).submit();
-    	   	}
     	 	});
-        
+   
         //답변채택
         ansselect = function(){
         	form.attr("action",goUrlSelect).submit();
         }
+        
+        $(document).ready(function(){ 
+			$("input[name='ansSeq']").on("click" , function(){
+				ansSeq = 
+				form.attr("action",goUrlSelect).submit();
+			}); 
+		}); 
         
      /*    $("#answerSelect").on("click" , function(){
 	   		form.attr("action", goUrlSelect).submit();

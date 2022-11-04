@@ -59,14 +59,17 @@ public class HomeController {
 	
 	//질문 상세화면------------------------------------------------------------------
 	@RequestMapping(value = "queview")
-	public String queview(@ModelAttribute("vo")HomeVo vo,Model model) throws Exception {
+	public String queview(@ModelAttribute("vo")HomeVo vo,Model model,RedirectAttributes redirectAttributes,Home dto) throws Exception {
 		
 		Home result = service.selectOne(vo);
 		List<Home>homeList = service.selectAns(vo);
-		vo.getAnsSeq();
+		vo.setAnsSeq(dto.getAnsSeq());
+		System.out.println(dto.getAnsSeq());
 		
 		model.addAttribute("item",result);
 		model.addAttribute("homeList", homeList);
+		
+		redirectAttributes.addFlashAttribute("vo",vo);
 		return "infra/home/xdmin/questionView";
 	}
 
@@ -84,6 +87,7 @@ public class HomeController {
 		int result = service.insert(dto);
 		System.out.println("controller result: "+ result);
 		
+		
 		return "redirect:quelist";
 	}
 
@@ -91,6 +95,7 @@ public class HomeController {
 	@RequestMapping(value = "answerInst")
 	public String answerInst(HomeVo vo ,Home dto,RedirectAttributes redirectAttributes) throws Exception {
 		int result = service.ansInsert(dto);
+		vo.setAnsSeq(dto.getAnsSeq());
 		System.out.println("controller result : " + result);
 		
 		redirectAttributes.addFlashAttribute("vo",vo);
@@ -106,7 +111,7 @@ public class HomeController {
 		redirectAttributes.addFlashAttribute("vo",vo);
 		
 		System.out.println("controller result: "+result);
-		return "redirect:/quelist";
+		return "redirect:/queview";
 	}
 	//-------------------------좋아요 버튼  -------------------
 	
