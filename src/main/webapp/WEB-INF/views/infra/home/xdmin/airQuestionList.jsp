@@ -81,7 +81,6 @@
 				                </a>
 			                <ul class="box_footer">
 			                	<input type="hidden" value="<c:out value="${list.questionSeq}"/>" name="question_questionSeq" >
-			                    <button type="button" id="bookmarkInst"><i class="fa-regular fa-bookmark"></i></button>
 			                    <button><i class="fa-regular fa-message"></i></button>
 			                </ul>
 			            </div>

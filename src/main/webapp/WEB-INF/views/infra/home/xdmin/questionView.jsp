@@ -19,7 +19,6 @@
 <input type="text" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq">
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
 <input type="hidden" value="<c:out value="${sessSeq }"/>" id="ansUserId" name="ansUserId">
-<input type="text" value="<c:out value="${sessSeq}"/>" id="likeUserId" name="likeUserId" >내 아이디
 
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
@@ -76,22 +75,24 @@
 		<input type="hidden" name="ansSeq">
 		<c:forEach items="${homeList}"  var="homeList" varStatus="status">
 		    <div class="answerbox">
-		        <ul class="answer-header">
-		            <li class="profile-item">
-		                <figure class="user-photo"style="background-image: url(http://t1.daumcdn.net/friends/prod/editor/dc8b3d02-a15a-4afa-a88b-989cf2a50476.jpg);"></figure>
-		            </li> 
-		            <li class="profile-item"><c:out value="${homeList.ansUserId}"/></li>
-		            <li class="profile-item"><c:out value="${homeList.ansWriteTime }"/></li>
-		        </ul>
+		    	<div class="answer-hearderWrap">
+			        <ul class="answer-header">
+			            <li class="profile-item">
+			                <figure class="user-photo"style="background-image: url(http://t1.daumcdn.net/friends/prod/editor/dc8b3d02-a15a-4afa-a88b-989cf2a50476.jpg);"></figure>
+			            </li> 
+			            <li class="profile-item"><c:out value="${homeList.user_id}"/></li>
+			            <li class="profile-item"><c:out value="${homeList.ansWriteTime }"/></li>
+			        </ul>
+			        <c:if test="${homeList.ansSelect eq 1 }"><div class="picbox"><img src="https://cdn-icons-png.flaticon.com/512/610/610333.png"></div></c:if> 
+		        </div>
 		        <div class="answer-body">
 		            <p><c:out value="${homeList.ansContent}"/></p>
-		            
 		        </div>
 		        <div class="footer">
-		        <c:if test="${item.user_id eq sessId }">
-           			<!-- <button type="button" id="pick"> 채택하기 </button>4일 내가한거 -->
-           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택하기</button> 
-              	</c:if>
+			        <c:if test="${item.user_id eq sessId }">
+	           			<!-- <button type="button" id="pick"> 채택하기 </button>4일 내가한거 -->
+	           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택하기</button> 
+	              	</c:if>
 		            <button>신고하기</button>
 		            <button type="button" id="like">좋아요</button>
 		        </div>
@@ -132,6 +133,7 @@
      
 		function anspikc(keyValue){
 	    	seq.val(keyValue);
+	    	alert('채택이 완료되었습니다.');
 			form.attr("action", goUrlSelect).submit();
 		}
      

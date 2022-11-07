@@ -58,7 +58,6 @@
         </div>
         <div class="login_input_wrap">
             <div class="input_box">
-                    <div class="headerimg"><img src="https://cdn-icons-png.flaticon.com/512/3282/3282340.png" alt=""></div>
                     <h1>로그인</h1>
                 <ul class="input_item">
                     <li><input type="text" id="user_id" placeholder="아이디를 입력해주세요"></li>
@@ -90,7 +89,6 @@
                         </ul>
                     </li>
                 </ul>
-                <div class="footerimg"><img src="https://cdn-icons-png.flaticon.com/512/2028/2028454.png" alt=""></div>
             </div>
         </div>
     </div>

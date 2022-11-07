@@ -64,7 +64,6 @@
 			                	</div>
 			                </a>
 			                <ul class="bubble_footer">
-			                    <li><a href=""><i class="fa-solid fa-bookmark"></i></a></li>
 			                    <li><a href=""><i class="fa-solid fa-comment"></i></a></li>
 			                </ul>
 			            </div>

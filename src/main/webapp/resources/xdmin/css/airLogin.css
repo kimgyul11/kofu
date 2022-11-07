@@ -6,10 +6,11 @@
 }
 *{
     font-family: 'SUIT-Medium';
-}
-body{
     box-sizing: border-box;
     margin: 0;
+}
+ul{
+    padding-left: 0;
 }
 li{
     list-style: none;
@@ -21,7 +22,7 @@ a{
 .loginWrap{
     background: #fff;
     display: flex ;
-    height: 100vh;
+    height: 100vh;	
 }
 
 .login_img{
@@ -32,10 +33,6 @@ a{
     color: white;
 }
 
-
-ul{
-    padding-left: 0;
-}
 /* 로그인 영역 */
 
 .login_input_wrap{
@@ -49,16 +46,7 @@ ul{
 .input_box_header{
     display: flex;
 }
-.headerimg{
-    width: 150px;
-    height: 150px;
-    position: relative;
-    right: 50%;
-}
-.headerimg img{
-    width: 100%;
-    height: 100%;
-}
+
 .input_box{
     width: 60%;
     height: 65%;
@@ -67,13 +55,9 @@ ul{
     align-items: center;
     justify-self:center;
     text-align: center;
-    padding-bottom: 30%;
 }
 .input_box h1{
     font-weight: lighter;
-}
-.input_item {
-    padding-left: 0;
 }
 .input_item  input{
     width: 100%;
@@ -277,29 +261,29 @@ ul{
     display: inline-block;
     width: 40px;
     height: 20px;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  /* The slider */
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+/* The slider */
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 16px;
@@ -309,27 +293,73 @@ ul{
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(19px);
-    -ms-transform: translateX(19px);
-    transform: translateX(19px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
+}
+
+input:checked + .slider {
+background-color: #2196F3;
+}
+
+input:focus + .slider {
+box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+-webkit-transform: translateX(19px);
+-ms-transform: translateX(19px);
+transform: translateX(19px);
+}
+
+/* Rounded sliders */
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}
+
+
+@media(max-width:768px){
+    .loginWrap{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .login_img{
+        background-image: url('https://images.unsplash.com/photo-1564500617448-e541b1df7cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        max-height: 250px;
+        width: 100%;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .loginWrap{
+        background: #fff;
+        display: flex ;
+    }
+    .imgmove h1,h2{
+        font-size: 1.2rem;
+        font-weight: lighter;
+    }
+    .imgmove svg{
+        display: none;
+    }
+    .input_box{
+        width: 100%;
+    }
+    .login_input_wrap{
+        width: 100%;
+        max-height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .input_item{
+        width: 60%;
+    }
+    .input_item input{
+        margin-top:35px;
+    }
+}

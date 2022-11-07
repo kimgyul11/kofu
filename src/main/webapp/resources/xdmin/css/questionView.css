@@ -94,6 +94,8 @@ html{
 }
 .questionBox{
     width: 100%;
+    max-width:900px;
+    margin:auto;
     height: 300px;
     border: 1px solid #e0e0e0;
     border-radius: 15px;
@@ -345,8 +347,9 @@ html{
 /* 답변창 */
 
 .answerWrap{
-	margin-top:90px;
+	margin:90px auto 0 auto;
 	width:100%;
+	max-width:900px;
 	height:100%;
 	
 }
@@ -404,18 +407,18 @@ html{
 
 
 .answerbox{
-            width: 100%;
-           	border-radius:5px;
-            border: 1px solid;
-            margin-bottom:50px;
-        }
+	width: 100%;
+	border-radius:5px;
+	border: 1px solid;
+	margin:0px auto 50px auto;
+	max-width:900px;
+	
+}
 .answer-header{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: 70px;
-    background: #000;
-    color: #fff;
+ 
 }
 .profile-item{
     display: flex;
@@ -452,9 +455,25 @@ html{
     margin: 5px;
     border: none;
     border-radius: 5px;
-
 }
 
+.picbox{
+	width:80px;
+	height:80px;
+	border-radius:50%;
+	overflow: hidden;
+}
+.picbox img{
+	width:100%;
+	height:100%;
+}
+.answer-hearderWrap{
+	display: flex;
+	justify-content: space-between;
+   height: 70px;
+    background: #000;
+    color: #fff;
+}
 
 
 
