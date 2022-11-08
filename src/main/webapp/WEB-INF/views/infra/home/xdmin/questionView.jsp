@@ -83,7 +83,7 @@
 			            <li class="profile-item"><c:out value="${homeList.user_id}"/></li>
 			            <li class="profile-item"><c:out value="${homeList.ansWriteTime }"/></li>
 			        </ul>
-			        <c:if test="${homeList.ansSelect eq 1 }"><div class="picbox"><img src="https://cdn-icons-png.flaticon.com/512/610/610333.png"></div></c:if> 
+			        <c:if test="${homeList.ansSelect eq 1 }"><div class="picbox"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135728.png"></div></c:if> 
 		        </div>
 		        <div class="answer-body">
 		            <p><c:out value="${homeList.ansContent}"/></p>
@@ -124,8 +124,6 @@
     	   		alert("작성완료");
     	   		form.attr("action", goUrlInst).submit();
     	 	});
-   
-
     	$("#like").on("click",function(){
     		form.attr("action",goLikeInst).submit();
   	 	});

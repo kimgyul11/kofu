@@ -94,11 +94,11 @@ html{
 }
 .questionBox{
     width: 100%;
-    max-width:900px;
+    max-width:750px;
     margin:auto;
     height: 300px;
     border: 1px solid #e0e0e0;
-    border-radius: 15px;
+    border-radius: 5px;
 
 }
 .queBox_head{
@@ -110,8 +110,8 @@ html{
     align-items: center;
     justify-content:space-between;
     padding-left: 0;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .queBox_head li{
     margin-left: 15px ;
@@ -349,7 +349,7 @@ html{
 .answerWrap{
 	margin:90px auto 0 auto;
 	width:100%;
-	max-width:900px;
+	max-width:750px;
 	height:100%;
 	
 }
@@ -411,7 +411,7 @@ html{
 	border-radius:5px;
 	border: 1px solid;
 	margin:0px auto 50px auto;
-	max-width:900px;
+	max-width:750px;
 	
 }
 .answer-header{
@@ -458,8 +458,8 @@ html{
 }
 
 .picbox{
-	width:80px;
-	height:80px;
+	width:60px;
+	height:60px;
 	border-radius:50%;
 	overflow: hidden;
 }
@@ -470,7 +470,8 @@ html{
 .answer-hearderWrap{
 	display: flex;
 	justify-content: space-between;
-   height: 70px;
+	align-items:center;
+   	height: 70px;
     background: #000;
     color: #fff;
 }
