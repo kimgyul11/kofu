@@ -71,34 +71,34 @@
 		</div><!--답변창e -->
 		<br><br>
 		<br><br>
-	<c:if test="${not empty vo.questionSeq}">
-		<input type="hidden" name="ansSeq">
-		<c:forEach items="${homeList}"  var="homeList" varStatus="status">
-		    <div class="answerbox">
-		    	<div class="answer-hearderWrap">
-			        <ul class="answer-header">
-			            <li class="profile-item">
-			                <figure class="user-photo"style="background-image: url(http://t1.daumcdn.net/friends/prod/editor/dc8b3d02-a15a-4afa-a88b-989cf2a50476.jpg);"></figure>
-			            </li> 
-			            <li class="profile-item"><c:out value="${homeList.user_id}"/></li>
-			            <li class="profile-item"><c:out value="${homeList.ansWriteTime }"/></li>
-			        </ul>
-			        <c:if test="${homeList.ansSelect eq 1 }"><div class="picbox"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135728.png"></div></c:if> 
-		        </div>
-		        <div class="answer-body">
-		            <p><c:out value="${homeList.ansContent}"/></p>
-		        </div>
-		        <div class="footer">
-			        <c:if test="${item.user_id eq sessId }">
-	           			<!-- <button type="button" id="pick"> 채택하기 </button>4일 내가한거 -->
-	           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택하기</button> 
-	              	</c:if>
-		            <button>신고하기</button>
-		            <button type="button" id="like">좋아요</button>
-		        </div>
-		    </div>
-		</c:forEach>
-	</c:if>
+		<c:if test="${not empty vo.questionSeq}">
+			<input type="hidden" name="ansSeq">
+			<c:forEach items="${homeList}"  var="homeList" varStatus="status">
+			    <div class="answerbox">
+			    	<div class="answer-hearderWrap">
+				        <ul class="answer-header">
+				            <li class="profile-item">
+				                <figure class="user-photo"style="background-image: url(http://t1.daumcdn.net/friends/prod/editor/dc8b3d02-a15a-4afa-a88b-989cf2a50476.jpg);"></figure>
+				            </li> 
+				            <li class="profile-item"><c:out value="${homeList.user_id}"/></li>
+				            <li class="profile-item"><c:out value="${homeList.ansWriteTime }"/></li>
+				        </ul>
+				        <c:if test="${homeList.ansSelect eq 1 }"><div class="picbox"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135728.png"></div></c:if> 
+			        </div>
+			        <div class="answer-body">
+			            <p><c:out value="${homeList.ansContent}"/></p>
+			        </div>
+			        <div class="footer">
+				        <c:if test="${item.user_id eq sessId }">
+		           			<!-- <button type="button" id="pick"> 채택하기 </button>4일 내가한거 -->
+		           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택하기</button> 
+		              	</c:if>
+			            <button>신고하기</button>
+			            <button type="button" id="like">좋아요</button>
+			        </div>
+			    </div>
+			</c:forEach>
+		</c:if>
     </div>
 <!--질문창 e-->
 		

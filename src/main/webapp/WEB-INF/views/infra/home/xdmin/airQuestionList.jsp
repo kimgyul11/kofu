@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/resources/xdmin/css/style.css">
     <title>AIRLANGUAGE</title>
 </head>
-
 <body>
 <form name = "form">
 <input type="hidden" name="questionSeq" value="<c:out value="${vo.questionSeq}"/>"  >
@@ -39,9 +38,7 @@
                 <li class="list_item"><button name="languageOption" type="submit" value="12"><img src="https://cdn-icons-png.flaticon.com/512/555/555526.png" alt=""></li>
             </ul>
         </div><!-- 언어별 버튼영역e-->
-        
 		<!-- 본문영역 s -->
-
 		<c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>    	    
         <c:choose>
     		<c:when test="${fn:length(list) eq 0}">
@@ -120,8 +117,6 @@
 	var goUrlForm = "/queview";
 	var form = $("form[name=form]");
 	var goUrlList = "/quelist";
-
-	
 	/* 페이지네이션 리스트*/
 	goList = function(thisPage) {
 		$("input:hidden[name=thisPage]").val(thisPage);
@@ -139,8 +134,6 @@
 	$("#bookmarkInst").on("click", function(){
 		form.attr("action", goUrlInst).submit();
 	});
-    
-
 </script>
 </body>
 </html>
