@@ -15,8 +15,9 @@
     <title>My page</title>
 </head>
 <body>
-<form name=form>
+<form name="form">
 <input type="hidden" name="memberSeq"  value="<c:out value="${sessSeq }"/>"  >
+<input type="hidden" name="questionSeq">
 	<!-- Navbar s  -->
 	<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 	<!-- Navbar e  -->  
@@ -47,13 +48,17 @@
                             <p>질문내역</p>
                             <a href="#"><div class="write_input_item">질문내역 카운트되는곳 ${fn:length(list)}</div></a>
                             <c:forEach items="${list}" var ="list" varStatus="status">
+                            	<button type="button" onclick="goview(<c:out value="${list.questionSeq}"/>);">이동</button>
 	        					<input type="text" name="content"  value="<c:out value="${list.content }"/>"  >
-	        					<input type="text" name="questionSeq"  value="<c:out value="${list.questionSeq }"/>"  >         
 			                </c:forEach>
                         </li>
                         <li>
                             <p>답변내역</p>
-                            <a href="#"><div class="write_input_item">답변내역 카운트되는곳 ${fn:length(queList)}</div></a>
+                            <a href="#"><div class="write_input_item">답변내역 카운트되는곳 ${fn:length(ansList)}</div></a>
+                            <c:forEach items="${ansList}" var ="ansList" varStatus="status">
+                            	<button type="button" onclick="goans(<c:out value="${ansList.questionSeq}"/>);">이동</button>
+	        					<input type="text"  value="<c:out value="${ansList.ansContent }"/>"  >
+			                </c:forEach>
                         </li>
                         <li>
                             <p>좋아요 받은 답변</p>
@@ -71,6 +76,30 @@
 
 </form>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript">
+		var goUrlView = "/queview";
+		
+		var questionSeq = $("input:hidden[name=questionSeq]");
+		var form = $("form[name=form]");
+		
+		var goUrlAnsView = "/queview";
 
+		//내가 작성한 질문
+		function goview(keyValue){
+			questionSeq.val(keyValue);
+			form.attr("action", goUrlView).submit();
+		}
+		
+		//내가 답변한 질문
+		function goans(keyValue){
+			questionSeq.val(keyValue);
+			form.attr("action", goUrlAnsView).submit();
+		}
+		
+		
+		
+		
+	</script>	
 </body>
 </html>

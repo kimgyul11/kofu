@@ -28,8 +28,8 @@ public class MemberController {
 		List<Member> list = service.mypageQueSelect(vo);
 		model.addAttribute("list",list);
 		
-		List<Member> queList = service.mypageAnsSelect(vo);
-		model.addAttribute("queList",queList);
+		List<Member> ansList = service.mypageAnsSelect(vo);
+		model.addAttribute("ansList",ansList);
 		
 		Member result = service.myPageSelect(vo);
 		model.addAttribute("item",result);

@@ -210,10 +210,21 @@
 			,a.ansUserId
 			,a.ansContent
 			,a.ansWriteTime
+			,b.questionSeq
 		FROM answer a
+		LEFT JOIN question b ON b.questionSeq = a.ansQuestionSeq
 		WHERE 1=1
 			AND a.ansUserId = #{memberSeq};
 	</select>
-	
+	<select id="mypagePickSelect">
+		SELECT 
+			a.ansContent
+			,a.ansWriteTime
+		FROM answer a
+		LEFT JOIN question b on b.questionSeq = a.ansQuestionSeq 
+		where 1=1
+			and a.ansSelect = 1
+			and a.ansUserId = #{memberSeq};
+	</select>	
 
 </mapper>	
