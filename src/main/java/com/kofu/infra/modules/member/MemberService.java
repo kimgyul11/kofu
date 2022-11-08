@@ -13,9 +13,13 @@ public interface MemberService {
 	public Member selectOneId(Member dto) throws Exception;
 	public Member selectOneLogin(Member dto) throws Exception;
 	public int airSignUp(Member dto) throws Exception;
+	
+	
+	//마이페이지 영역
 	public Member myPageSelect(MemberVo vo) throws Exception;
 	public List<Member> mypageQueSelect(MemberVo vo) throws Exception;
 	public List<Member> mypageAnsSelect(MemberVo vo) throws Exception;
+	public List<Member> mypagePickSelect(MemberVo vo) throws Exception;
 	
 	//카카오 로그인
 	public Member snsLoginCheck(Member dto) throws Exception;

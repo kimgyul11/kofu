@@ -66,7 +66,11 @@
                         </li>
                         <li>
                             <p>채택된 게시물</p>
-                            <a href="#"><div class="write_input_item">채택된 게시물 카운트되는곳</div></a>
+                            <a href="#"><div class="write_input_item">채택된 게시물 카운트되는곳${fn:length(pickList)}</div></a>
+                            <c:forEach items="${pickList}" var ="pickList" varStatus="status">
+                            	<button type="button" onclick="goans(<c:out value="${pickList.questionSeq}"/>);">이동</button>
+	        					<input type="text" value="<c:out value="${pickList.ansContent }"/>">
+			                </c:forEach>
                         </li>                  
                     </ul>
                 </div>
@@ -79,11 +83,12 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript">
 		var goUrlView = "/queview";
+		var goUrlAnsView = "/queview";
 		
 		var questionSeq = $("input:hidden[name=questionSeq]");
 		var form = $("form[name=form]");
 		
-		var goUrlAnsView = "/queview";
+		
 
 		//내가 작성한 질문
 		function goview(keyValue){

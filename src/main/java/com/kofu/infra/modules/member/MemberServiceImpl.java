@@ -123,6 +123,10 @@ public class MemberServiceImpl implements MemberService{
 	public List<Member> mypageAnsSelect(MemberVo vo) throws Exception {
 		return dao.mypageAnsSelect(vo);
 	}
+	@Override
+	public List<Member> mypagePickSelect(MemberVo vo) throws Exception {
+		return dao.mypagePickSelect(vo);
+	}
 	
 	
 	//카카오 관련

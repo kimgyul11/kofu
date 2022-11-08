@@ -33,7 +33,10 @@ public class MemberController {
 		
 		Member result = service.myPageSelect(vo);
 		model.addAttribute("item",result);
-		return "infra/login/xdmin/airMypage";
+		
+		List<Member> pickList = service.mypagePickSelect(vo);
+		model.addAttribute("pickList",pickList);
+	return "infra/login/xdmin/airMypage";
 	}
 	
 	

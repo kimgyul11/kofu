@@ -216,13 +216,17 @@
 		WHERE 1=1
 			AND a.ansUserId = #{memberSeq};
 	</select>
-	<select id="mypagePickSelect">
+	
+	<!-- 마이페이지 채택 리스트 -->
+	<select id="mypagePickSelect" resultMap="resultMapObj">
 		SELECT 
-			a.ansContent
+			b.questionSeq
+			,a.ansContent
 			,a.ansWriteTime
 		FROM answer a
 		LEFT JOIN question b on b.questionSeq = a.ansQuestionSeq 
 		where 1=1
+			and a.ansQuestionSeq = b.questionSeq
 			and a.ansSelect = 1
 			and a.ansUserId = #{memberSeq};
 	</select>	
