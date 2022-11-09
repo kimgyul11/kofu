@@ -70,6 +70,8 @@ public class HomeController {
 		
 		List<Home>homeList = service.selectAns(vo);
 		model.addAttribute("homeList", homeList);
+		vo.setAnsSeq(dto.getAnsSeq());
+		System.out.println(vo.getAnsSeq());
 			
 		redirectAttributes.addFlashAttribute("vo",vo);
 		return "infra/home/xdmin/questionView";
