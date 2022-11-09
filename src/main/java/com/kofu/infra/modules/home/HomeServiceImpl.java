@@ -63,11 +63,19 @@ public class HomeServiceImpl implements HomeService{
 	}
 
 	@Override
-	public int likedelete(HomeVo vo) throws Exception {
-		return dao.likedelete(vo);
+	public int likedelete(Home dto) throws Exception {
+		return dao.likedelete(dto);
 	}
 	
-//답변 채택하기
+	
+	
+	
+@Override
+	public int likeCheck(Home dto) throws Exception {
+		return dao.likeCheck(dto);
+	}
+
+	//답변 채택하기
 	@Override
 	public int answerSelect(Home dto) throws Exception {
 		return dao.answerSelect(dto);

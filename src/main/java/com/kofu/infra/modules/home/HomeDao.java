@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 
 
+
 @Repository
 public class HomeDao {
 
@@ -52,9 +53,12 @@ public class HomeDao {
 	public int likeInsert(Home dto) {
 		return sqlSession.insert(namespace + ".likeInsert",dto);
 	}
-	//like삭제
-	public int likedelete(HomeVo vo) {return sqlSession.delete(namespace + ".likedelete" , vo);}
+	//좋아요 삭제
+	public int likedelete(Home dto) {return sqlSession.delete(namespace + ".likedelete" , dto);}
 
+	//좋아요 ajax-count
+	public int likeCheck(Home dto) { return sqlSession.selectOne(namespace+".likeCheck", dto); }
+	
 	//답변채택
 	public int answerSelect(Home dto) {return sqlSession.update(namespace + ".answerSelect",dto);}
 }

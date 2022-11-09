@@ -19,6 +19,7 @@
 <input type="text" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq">
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
 <input type="hidden" value="<c:out value="${sessSeq }"/>" id="ansUserId" name="ansUserId">
+<input type="hidden" value="<c:out value="${sessSeq }"/>" id="likeUserId" name="likeUserId">
 
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
@@ -74,6 +75,9 @@
 		<c:if test="${not empty vo.questionSeq}">
 			<input type="hidden" name="ansSeq">
 			<c:forEach items="${homeList}"  var="homeList" varStatus="status">
+			<input type="hidden" name="likeAnswerSeq" id="likeAnswerSeq"value="<c:out value="${homeList.ansSeq }"/>">
+			<input type="hidden" value="<c:out value="${homeList.likeSeq }"/>" id="likeSeq" name="likeSeq">
+			
 			    <div class="answerbox">
 			    	<div class="answer-hearderWrap">
 				        <ul class="answer-header">
@@ -94,7 +98,15 @@
 		           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택하기</button> 
 		              	</c:if>
 			            <button>신고하기</button>
-			            <button type="button" id="like">좋아요</button>
+			              <input type="text" value="<c:out value="${homeList.likeUseNy }"/>" id="likeUseNy" name="likeUseNy">
+			            <c:choose>
+							<c:when test="${likeCheck eq 0   }">
+								<button type="button" id="likeInst">♡</button>
+							</c:when>
+							<c:otherwise>
+								<button type="button" id="likeInst">♥</button>
+							</c:otherwise>
+						</c:choose>
 			        </div>
 			    </div>
 			</c:forEach>
@@ -134,7 +146,32 @@
 	    	alert('채택이 완료되었습니다.');
 			form.attr("action", goUrlSelect).submit();
 		}
-     
+		
+		
+		//좋아요버튼 ajax.
+		$("#likeInst").on("click", function(){
+ 			$.ajax({
+				async: false
+				,cache: false
+				,type: "post"
+				,url: "/likeProc"
+				,data: {"likeUserId" : $("#likeUserId").val(), "likeAnswerSeq" : $("#likeAnswerSeq").val(),"likeSeq" : $("#likeSeq").val(),"likeUseNy" : $("#likeUseNy").val() } 
+				,success: function(response) {
+					if(response.rt == "success") {
+						alert("좋아요등록완료");
+						$('#likeInst').text("♥ ")
+					} else if(response.rt == "delete"){
+						alert("좋아요삭제");
+						$('#likeInst').text('♡');
+					} else{
+						alert("오류");
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			}); 
+		});
      
      
         

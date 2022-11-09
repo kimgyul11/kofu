@@ -77,9 +77,12 @@
 			,a.ansQuestionSeq
 			,a.ansSelect
 			,c.user_id
+			,d.likeSeq
+			,d.likeUseNy
 		FROM answer a
 		LEFT JOIN question b ON b.questionSeq = a.ansQuestionSeq
 		LEFT JOIN airLanguage_member c ON a.ansUserId = c.memberSeq
+		LEFT JOIN answer_like d ON a.ansSeq = d.likeAnswerSeq
 		WHERE 1=1 
 			and a.ansQuestionSeq= #{questionSeq}
 	</select>
@@ -186,6 +189,18 @@
 	<delete id ="likedelete">
 		DELETE FROM answer_like WHERE likeSeq = #{likeSeq}
 	</delete>
+	
+	<!-- 좋아요 ajax-count -->
+		<select id="likeCheck" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			answer_like
+		WHERE 1=1
+			and likeAnswerSeq = #{likeAnswerSeq}
+			and likeUserId = #{likeUserId}
+		</select>
+		
 	<!-- 질문수정 -->
 	<update id="questionUdt">
 		UPDATE question

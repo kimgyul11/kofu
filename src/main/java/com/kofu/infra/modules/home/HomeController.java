@@ -10,11 +10,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -59,14 +62,15 @@ public class HomeController {
 	
 	//질문 상세화면------------------------------------------------------------------
 	@RequestMapping(value = "queview")
-	public String queview(@ModelAttribute("vo")HomeVo vo,Model model,RedirectAttributes redirectAttributes,Home dto) throws Exception {
+	public String queview(Home dto,@ModelAttribute("vo") HomeVo vo,Model model,RedirectAttributes redirectAttributes) throws Exception {
+		
 		
 		Home result = service.selectOne(vo);
-		List<Home>homeList = service.selectAns(vo);
-		
 		model.addAttribute("item",result);
-		model.addAttribute("homeList", homeList);
 		
+		List<Home>homeList = service.selectAns(vo);
+		model.addAttribute("homeList", homeList);
+			
 		redirectAttributes.addFlashAttribute("vo",vo);
 		return "infra/home/xdmin/questionView";
 	}
@@ -123,11 +127,31 @@ public class HomeController {
 	}
 	
 	//-----------------------좋아요 삭제버튼----------------------
-	@RequestMapping(value = "likedelete")
-	public String likedelete(HomeVo vo,RedirectAttributes redirectAttributes)throws Exception{
-		service.likedelete(vo);
-		redirectAttributes.addFlashAttribute("vo",vo);
-		return "redirect:/queview";
+//	@RequestMapping(value = "likedelete")
+//	public String likedelete(HomeVo vo,RedirectAttributes redirectAttributes)throws Exception{
+//		service.likedelete();
+//		return "redirect:/queview";
+//	}
+//	
+	//----------------------------좋아요 ajax-----------------------
+	@ResponseBody
+	@RequestMapping(value = "/likeProc")
+	public Map<String, Object> wishProc(Home dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		int ckWish = service.likeCheck(dto);
+		
+		if(ckWish == 0) {
+			service.likeInsert(dto);
+			returnMap.put("rt", "success");
+		} else if(ckWish == 1) {
+			service.likedelete(dto);
+			returnMap.put("rt", "delete");
+		} else {
+			returnMap.put("rt", "fail");
+			
+		}
+		return returnMap;
 	}
 	
 	//---------------------답변 채택하기--------------------
@@ -137,6 +161,7 @@ public class HomeController {
 		redirectAttributes.addFlashAttribute("vo",vo);
 		return "redirect:/queview";
 	}
+	
 	//-------------------------api테스트----------------------
 	@RequestMapping(value = "/test/publicCorona1List")
 	public String publicCorona1List(Model model) throws Exception {
