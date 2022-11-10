@@ -25,37 +25,36 @@
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->   
     <!--  헤더영역 -->
-        <div class="title">
-            <h1>언제,어디서나 원어민과 함께</h1> 
-            <h2>AIR LANGUAGE</h2>
-            <div class="imgbox">
-            	<img class="img" src="https://cdn-icons-png.flaticon.com/512/476/476505.png">
-            </div>
-        </div>
-
-<!-- 빠른검색 영역 -->
-<div class="search_warp">
-    <div class="search_haed">
-        <h1>빠른검색</h1>
-        <h2>원하는 단어를 빠르게 검색해보세요</h2>
-    </div>
-        <select class="search_select" id="shOption" name="shOption">
-            <option value=""<c:if test="${empty vo.shOption}">selected</c:if>>언어를 선택하세요</option>
-            <option value="9"<c:if test="${vo.shOption eq 9}">selected</c:if>>한국어</option>
-            <option value="10"<c:if test="${vo.shOption eq 10}">selected</c:if>>중국어</option>
-            <option value="11"<c:if test="${vo.shOption eq 11}">selected</c:if>>일본어</option>
-            <option value="12"<c:if test="${vo.shOption eq 12}">selected</c:if>>영어</option>
-        </select>
-    <div class="search_textbox">
-        <input type="text" name="shValue" id="shValue" value="<c:out value="${vo.shValue}"/>" placeholder="단어를 입력하세요">
-    </div>
-    <div class="search_btn">
-        <div class="button" type="button" id="btnsearch">검색하기</div>
+<div class="title">
+    <h1>언제,어디서나 원어민과 함께</h1> 
+    <h2>AIR LANGUAGE</h2>
+    <div class="imgbox">
+    	<img class="img" src="https://cdn-icons-png.flaticon.com/512/476/476505.png">
     </div>
 </div>
-
-
-
+<div class="searchbar">
+    <ul class="search__option">
+        <li class="btn">
+            <input type="radio" id="ko" name="shOption" value="9" <c:if test="${vo.shOption eq 9}">selected</c:if>>
+            <label class="listitem" for="ko"><img src="https://cdn-icons-png.flaticon.com/512/5111/5111586.png" alt=""></label>
+        </li>
+        <li class="btn">
+            <input type="radio" id="cn" name="shOption" value="10" <c:if test="${vo.shOption eq 10}">selected</c:if>>
+            <label class="listitem" for="cn"><img src="https://cdn-icons-png.flaticon.com/512/323/323363.png" alt=""></label>
+        </li>
+        <li class="btn">
+            <input type="radio" id="jp" name="shOption" value="11" <c:if test="${vo.shOption eq 11}">selected</c:if>>
+            <label class="listitem" for="jp"><img src="https://cdn-icons-png.flaticon.com/512/323/323308.png" alt=""></label>
+        </li>
+        <li class="btn">
+            <input type="radio" id="en" name="shOption" value="12" <c:if test="${vo.shOption eq 12}">selected</c:if>>
+            <label class="listitem" for="en"><img src="https://cdn-icons-png.flaticon.com/512/197/197484.png" alt=""></label>
+        </li>
+    </ul>
+    <div class="search__value">
+        <input type="text" placeholder="검색어를 입력하세요" name="shValue" value="<c:out value="${vo.shValue}"/>" onkeyup="enterkey();">
+    </div>
+</div>
 <!-- 소개영역 -->
 <div class="container">
     <div class="topline">
@@ -155,6 +154,17 @@ var form = $("form[name=form]");
 	$("#btnsearch").on("click", function() {
 		form.attr("action", goUrlList).submit();
 	});
+	
+function enterkey() {
+	if (window.event.keyCode == 13) {
+	     // 엔터키가 눌렸을 때 실행할 내용
+	     if($("input[name=shOption]:radio:checked").length < 1){
+			alert("언어를 선택해 주세요!");
+	     }else{
+		 form.attr("action", goUrlList).submit();
+	     }
+	}
+}
 	
 	
 	

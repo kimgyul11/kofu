@@ -57,6 +57,8 @@ public class MemberDao {
 		int result = sqlSession.insert(namespace + ".airSignUp", dto);
 		return result;
 	}
+	// 이미지 업로드
+	public Member profileImg(MemberVo vo){return sqlSession.selectOne(namespace + ".profileImg" , vo);}
 	
 	//마이페이지
 	public Member myPageSelect(MemberVo vo) {

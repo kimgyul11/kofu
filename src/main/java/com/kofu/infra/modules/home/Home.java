@@ -1,6 +1,10 @@
 package com.kofu.infra.modules.home;
 
-public class Home {
+import org.springframework.web.multipart.MultipartFile;
+
+import com.kofu.infra.common.base.Base;
+
+public class Home extends Base {
 	
 	//공통코드
 	private String cc_name;
@@ -50,7 +54,17 @@ public class Home {
 	private Integer likeAnswerSeq;
 	private String likeUseNy;
 	
-//----------------------------------------------api테스트영역 시작-----------
+	
+	//다중이미지 업로드
+	private MultipartFile[] uploadedImage;
+	
+public MultipartFile[] getUploadedImage() {
+		return uploadedImage;
+	}
+	public void setUploadedImage(MultipartFile[] uploadedImage) {
+		this.uploadedImage = uploadedImage;
+	}
+	//----------------------------------------------api테스트영역 시작-----------
 	public Object header;
 	public String resultCode;
 	public String resultMsg;

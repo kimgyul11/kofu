@@ -24,7 +24,6 @@ public class Base {
 
 	//	uploaded
 	private String tableName;
-	
 	private String seq;
 	private Integer type;
 	private Integer defaultNy;

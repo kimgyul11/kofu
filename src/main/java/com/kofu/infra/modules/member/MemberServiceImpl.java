@@ -60,7 +60,14 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}	
 
+	
 
+	@Override
+	public Member profileImg(MemberVo vo) throws Exception {
+		return dao.profileImg(vo);
+	}
+	
+	
 	@Override
 	public int selectOneIdCheck(Member dto) throws Exception{
 		int result = dao.selectOneIdCheck(dto);

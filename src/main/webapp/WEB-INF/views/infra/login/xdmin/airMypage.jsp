@@ -28,7 +28,7 @@
             <div class="mypage_left_Wrap">
                 <div class="profile_box">
                     <div class="profile">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1226/1226086.png" alt="">
+                        <img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>">
                     </div>
                     <ul class="profile_input">
                         <li><p>아이디</p><input type="text" readonly name="memberSeq" value="<c:out value="${sessId}"/>" ></li>

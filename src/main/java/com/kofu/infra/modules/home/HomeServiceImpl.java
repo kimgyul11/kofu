@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 
 
-
 @Service
 public class HomeServiceImpl implements HomeService{
 
@@ -19,12 +18,12 @@ public class HomeServiceImpl implements HomeService{
 		return dao.selectList(vo);
 	}
 	
-	@Override
-	public int insert(Home dto) throws Exception{
-		int result = dao.insert(dto);
-		System.out.println("service result : "+ result );
-		return result;
-	}
+	
+	  @Override
+	  public int insert(Home dto) throws Exception{ 
+	  int result = dao.insert(dto); System.out.println("service result : "+ result ); 
+	  return result; }
+	 
 	
 
 

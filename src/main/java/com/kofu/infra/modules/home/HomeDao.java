@@ -22,11 +22,16 @@ public class HomeDao {
 	
 	public List<Home> selectList(HomeVo vo){return sqlSession.selectList(namespace + ".selectList",vo);}
 	
+	//질문작성
 	public int insert(Home dto) {
 		int result = sqlSession.insert(namespace + ".insert" ,dto);
 		System.out.println("dao result :"+result);
 		return result;
 	}
+	//질문이미지 업로드
+	public int insertImgUploaded(Home dto) {return sqlSession.insert("Base" + ".insertUploaded",dto);}
+	
+	
 	public List<Home> homeSearch(HomeVo vo){return sqlSession.selectList(namespace + ".homeSearch",vo);}
 	
 	
@@ -35,20 +40,34 @@ public class HomeDao {
 		System.out.println("dao result :"+ result);
 		return result;
 	}
+	
+	//페이지네이션 카운트
 	public int selectOenCount(HomeVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOenCount",vo);
 	}
+	
+	//답변작성
 	public int ansInsert(Home dto) {
 		int result = sqlSession.insert(namespace + ".ansInsert" , dto);
 		return result;
 	}
+	
+	//답변리스트
 	public List<Home> selectAns(HomeVo vo){
 		return sqlSession.selectList(namespace + ".selectAns",vo);
 	}
+	
+	
+	//북마크
 	public int bookmarkInst(Home dto) {
 		int result=sqlSession.insert(namespace + ".bookmarkInst", dto);
 		return result;
 	}
+	
+	
+	
+	
+	
 	// 좋아요등록 
 	public int likeInsert(Home dto) {
 		return sqlSession.insert(namespace + ".likeInsert",dto);

@@ -25,6 +25,9 @@ public class MemberController {
 	
 	@RequestMapping(value = "/airMypage")
 	public String airMypage(@ModelAttribute("vo")MemberVo vo,Model model) throws Exception {
+		Member profile = service.profileImg(vo);
+		model.addAttribute("profile",profile);
+		
 		List<Member> list = service.mypageQueSelect(vo);
 		model.addAttribute("list",list);
 		
@@ -80,7 +83,8 @@ public class MemberController {
 	
 //	신규 회원가입 페이지
 	@RequestMapping(value = "/member/airSignupView")
-	public String airSignup() {
+	public String airSignup(Model model,MemberVo vo) throws Exception {
+		
 		return "infra/login/xdmin/airSignup";
 	}
 	

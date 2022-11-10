@@ -103,7 +103,25 @@
 				SELECT last_insert_id()
 		</selectKey> 
 	</insert>
-	
+	<!--프로필 이미지  -->
+	<select id="profileImg" resultMap="resultMapObj">
+		select
+			a.memberSeq
+			,a.user_id
+			,a.user_name
+			,a.user_level
+			,a.lean_language
+			,a.user_gender
+			,a.user_favoriteLanguage
+			,b.*
+		FROM
+			airLanguage_member a
+		LEFT JOIN airLanguage_memberUploaded b ON  b.pseq = a.memberSeq 
+		WHERE a.memberSeq = #{memberSeq}
+		
+			
+				
+	</select>
 	
 	<!-- 카카오 로그인 체크 -->
 	<select id="snsLoginCheck" resultMap="resultMapObj">
@@ -175,17 +193,19 @@
 	<!--10월20일 마이페이지  -->
 	<select id="myPageSelect" resultMap="resultMapObj">
 		SELECT
-			memberSeq
-			,user_id
-			,user_name
-			,user_level
-			,lean_language
-			,user_gender
-			,user_favoriteLanguage
+			a.memberSeq
+			,a.user_id
+			,a.user_name
+			,a.user_level
+			,a.lean_language
+			,a.user_gender
+			,a.user_favoriteLanguage
+			,b.*
 		FROM
-			airLanguage_member
+			airLanguage_member a 
+		LEFT JOIN airLanguage_memberUploaded b ON a.memberSeq = b.pseq
 		WHERE 1=1
-			AND memberSeq = #{memberSeq}
+			AND a.memberSeq = #{memberSeq}
 	</select>
 	
 	<!-- 마이페이지 질문 리스트 -->

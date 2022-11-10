@@ -28,7 +28,7 @@
             <li>
                 <div class="profileWrap">
                     <div class="profileCircle">
-                        <img class="profileImg"src="" alt="">
+                        <img class="profileImg"src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>" >
                     </div>
                     <div class="profileImgUpload">
                         <input id="uploadedImage" name="uploadedImage" type="file" id="upload_file" accept="image/*"  >
