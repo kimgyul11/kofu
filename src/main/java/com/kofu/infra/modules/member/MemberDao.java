@@ -77,6 +77,8 @@ public class MemberDao {
 	public List<Member> mypagePickSelect(MemberVo vo){
 		return sqlSession.selectList(namespace + ".mypagePickSelect", vo);
 	}
+	//마이페이지 수정
+	public int mypageMod(Member dto) {return sqlSession.update(namespace + ".mypageMod",dto);}
 	
 
 	//카카오 로그인 관련

@@ -249,6 +249,16 @@
 			and a.ansQuestionSeq = b.questionSeq
 			and a.ansSelect = 1
 			and a.ansUserId = #{memberSeq};
-	</select>	
+	</select>
+	
+		<!--마이페이지 수정  -->
+	<update id="mypageMod">
+		UPDATE airLanguage_member
+		SET
+			lean_language = #{lean_language},
+			user_favoriteLanguage = #{user_favoriteLanguage},
+		WHERE
+			memberSeq = #{memberSeq}	
+	</update>	
 
 </mapper>	

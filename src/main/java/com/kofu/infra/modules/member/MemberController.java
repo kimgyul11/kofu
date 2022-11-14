@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kofu.infra.common.constants.Constants;
 import com.kofu.infra.common.util.UtilSecurity;
@@ -41,6 +42,15 @@ public class MemberController {
 		model.addAttribute("pickList",pickList);
 	return "infra/login/xdmin/airMypage";
 	}
+	
+	@RequestMapping(value = "/mypageMod")
+	public String mypageMod(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.mypageMod(dto);
+		return "redirect:/airMypage";
+	}
+	
+	
 	
 	
 	

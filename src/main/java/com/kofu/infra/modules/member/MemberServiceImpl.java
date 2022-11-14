@@ -136,6 +136,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	
+	@Override
+	public int mypageMod(Member dto) throws Exception {
+		return dao.mypageMod(dto);
+	}
 	//카카오 관련
 	@Override
 	public Member snsLoginCheck(Member dto) throws Exception {
