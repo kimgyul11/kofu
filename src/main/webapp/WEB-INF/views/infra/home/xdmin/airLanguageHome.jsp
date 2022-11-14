@@ -159,6 +159,7 @@ function enterkey() {
 	     // 엔터키가 눌렸을 때 실행할 내용
 	     if($("input[name=shOption]:radio:checked").length < 1){
 			alert("언어를 선택해 주세요!");
+			$("#search").focus();
 	     }else if($("#search").val() == ""){
 	    	 alert("검색어를 입력해주세요");
 	         $("#search").focus();

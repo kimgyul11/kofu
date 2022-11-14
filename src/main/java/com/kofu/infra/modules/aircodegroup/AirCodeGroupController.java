@@ -31,6 +31,23 @@ public class AirCodeGroupController {
 		return "infra/codegroup/xdmin/airCodeGroupList";
 	}
 	
+	//ajax 로 리스트구현
+	@RequestMapping(value = "/AircodeGroup/codegroupAjaxList")
+	public String codegroupAjaxList(@ModelAttribute("vo")AirCodeGroupVo vo,Model model)throws Exception{
+		
+		return "infra/codegroup/xdmin/airCodeGroupAjaxList";
+	}
+	//ajax 로 리스트구현
+		@RequestMapping(value = "/AircodeGroup/codegroupAjaxLita")
+		public String codegroupAjaxLita(@ModelAttribute("vo")AirCodeGroupVo vo,Model model)throws Exception{
+	
+			vo.setParamsPaging(service.selectOneCounting(vo));
+			List<AirCodeGroup> list = service.selectList(vo);
+			model.addAttribute("list",list);
+			return "infra/codegroup/xdmin/airCodeGroupList";
+		}
+	
+	
 	@RequestMapping(value = "/AircodeGroup/codeGroupReg")
 	public String codeGroupReg(@ModelAttribute("vo") AirCodeGroupVo vo,Model model) throws Exception{
 		
