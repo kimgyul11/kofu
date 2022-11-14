@@ -25,4 +25,8 @@ public interface HomeService {
 	
 	//--------- 답변채택--------------------------------
 	public int answerSelect(Home dto)throws Exception;
+	
+	//삭제영역
+	public int questionDelete(Home dto)throws Exception;
+	public int answerDelete(Home dto)throws Exception;
 }

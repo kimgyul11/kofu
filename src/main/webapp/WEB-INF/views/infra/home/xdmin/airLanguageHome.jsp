@@ -13,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/resources/xdmin/css/home.css" />
     <link rel="stylesheet" href="/resources/xdmin/css/style.css" />
     <title>HOME</title>
@@ -52,7 +51,7 @@
         </li>
     </ul>
     <div class="search__value">
-        <input type="text" placeholder="검색어를 입력하세요" name="shValue" value="<c:out value="${vo.shValue}"/>" onkeyup="enterkey();">
+        <input type="text" placeholder="검색어를 입력하세요" name="shValue" value="<c:out value="${vo.shValue}"/>" id="search" onkeyup="enterkey();">
     </div>
 </div>
 <!-- 소개영역 -->
@@ -160,8 +159,12 @@ function enterkey() {
 	     // 엔터키가 눌렸을 때 실행할 내용
 	     if($("input[name=shOption]:radio:checked").length < 1){
 			alert("언어를 선택해 주세요!");
+	     }else if($("#search").val() == ""){
+	    	 alert("검색어를 입력해주세요");
+	         $("#search").focus();
+	         return false;
 	     }else{
-		 form.attr("action", goUrlList).submit();
+	    	 form.attr("action", goUrlList).submit();	 
 	     }
 	}
 }

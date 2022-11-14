@@ -217,5 +217,15 @@
 		WHERE
 			ansSeq = #{ansSeq}
 	</update>
+	<!--질문 삭제 -->
+	<delete id="questionDelete">
+		DELETE FROM question WHERE questionSeq =  #{questionSeq}
+	</delete>
+	<!-- 답변삭제 -->
+	<delete id="answerDelete">
+		DELETE FROM answer WHERE ansSeq = #{ansSeq}
+	</delete>
+	
+
 	
 </mapper>

@@ -164,6 +164,28 @@ public class HomeController {
 		return "redirect:/queview";
 	}
 	
+	
+	//질문삭제
+	@RequestMapping(value = "ansDelete")
+	public String answerDelete(Home dto) throws Exception{
+		service.answerDelete(dto);
+		return "quelist";
+	}
+	//답변삭제
+	@RequestMapping(value = "questionDelete")
+	public String questionDelete(Home dto) throws Exception{
+		service.questionDelete(dto);
+		return "quelist";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//-------------------------api테스트----------------------
 	@RequestMapping(value = "/test/publicCorona1List")
 	public String publicCorona1List(Model model) throws Exception {

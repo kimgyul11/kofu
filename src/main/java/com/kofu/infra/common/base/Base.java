@@ -2,8 +2,14 @@ package com.kofu.infra.common.base;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Base {
-// 질문,답변리스트
+//이미지업로드 
+	private MultipartFile[] uploadedImage;
+	
+
+	// 질문,답변리스트
 	private String content;
 	private String user_id;
 	private String cc_name;
@@ -294,5 +300,12 @@ public class Base {
 	}
 	public void setBookmarkSeq(String bookmarkSeq) {
 		this.bookmarkSeq = bookmarkSeq;
+	}
+	
+	public MultipartFile[] getUploadedImage() {
+		return uploadedImage;
+	}
+	public void setUploadedImage(MultipartFile[] uploadedImage) {
+		this.uploadedImage = uploadedImage;
 	}
 }

@@ -69,7 +69,17 @@ public class HomeServiceImpl implements HomeService{
 	
 	
 	
-@Override
+	@Override
+	public int questionDelete(Home dto) throws Exception {
+		return dao.questionDelete(dto);
+	}
+	@Override
+	public int answerDelete(Home dto) throws Exception {
+		return dao.answerDelete(dto);
+	}
+
+
+	@Override
 	public int likeCheck(Home dto) throws Exception {
 		return dao.likeCheck(dto);
 	}
