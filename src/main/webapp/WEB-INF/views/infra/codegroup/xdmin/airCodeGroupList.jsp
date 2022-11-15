@@ -27,12 +27,43 @@
         <%@include file="../../../infra/includeV1/adminSearch.jsp"%>
         <!-- 조건 검색창e -->
         <hr>
-        
-        
-       <div id="lita"></div>		<!-- #-> -->
-       
-       
-       
+		<div class="tablelist">
+            <table>
+                <tr>
+                    <th class="num"><input type="checkbox"></th>
+                    <th class="num">#</th>
+                    <th class="codename">코드그룹명(한글)</th>
+                    <th class="codename">코드그룹명(영어)</th>
+                    <th class="num">코드수</th>
+                    <th class="num">사용여부</th>
+                    <th class="num">삭제여부</th>
+                    <th class="codename">등록일</th>
+                    <th class="codename">수정일</th>
+                </tr>
+				<c:choose>
+					<c:when test="${fn:length(list) eq 0}">
+						<tr>
+							<td colspan="9">검색결과가 없습니다.</td>
+						</tr>
+					</c:when>
+				    <c:otherwise>
+		                <c:forEach items="${list}" var="list" varStatus="status">
+			                <tr>
+			                    <td><input type="checkbox"></td>
+			                    <td><a href="/AircodeGroup/codeGroupView?ccgSeq=<c:out value="${list.ccgSeq }"/>"><c:out value="${list.ccgSeq }"/></a></td>
+			                    <td><c:out value="${list.ccgGroupNameKor }"/></td>
+			                    <td><c:out value="${list.ccgGroupNameEng }"/></td>
+			                    <td><c:out value="${list.countCCG }"/></td>
+			                    <td><c:out value="${list.ccgUseNy }"/></td>
+			                    <td><c:out value="${list.ccgDelNy }"/></td>
+			                    <td><c:out value="${list.ccgInsertDate }"/></td>
+			                    <td><c:out value="${list.ccgModDate }"/></td>
+			                </tr>
+		                </c:forEach>
+	                </c:otherwise>
+	        	</c:choose>
+            </table>
+        </div>
         <div class="button_wrap">
             <button class="btn_delete" type="button"><i class="fa-solid fa-trash"></i></button>
             <div class="pagination_wrap">
@@ -152,27 +183,6 @@
 });	
 
 
-	function setLita() {
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			/* ,dataType:"json" */
-			,url: goUrlLita
-			,data : $("#formList").serialize()
-			/* ,data : {  } */
-			,success: function(response) {
-				$("#lita").empty();
-				$("#lita").append(response);
-				window.location.hash = '#page' + page;
-				page++;
-
-			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-		});
-	}
 </script>
 
 </body>

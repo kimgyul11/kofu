@@ -15,7 +15,6 @@
     <title>AIRLANGUAGE</title>
 </head>
 <body>
-<form name="form" autocomplete="off">
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 <input type="hidden" name="ccgSeq" value="<c:out value="${vo.ccgSeq}"/>">
@@ -57,12 +56,34 @@
 		</c:choose>
 	</table>	
 </div>
-</form>
+		<div class="button_wrap">
+            <button class="btn_delete" type="button"><i class="fa-solid fa-trash"></i></button>
+            <div class="pagination_wrap">
+	            <ul class="pagination modal-2">
+		            <c:if test="${vo.startPage gt vo.pageNumToShow}">
+		                <li> <a href="javascript:goList(${vo.startPage - 1})" class="prev">&laquo </a></li>
+		            </c:if>
+	            	<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+		            	<c:choose>    
+		                <c:when test="${i.index eq vo.thisPage}">
+		                	<li> <a  class="active" href="javascript:goList(${i.index})">${i.index}</a></li>
+		                </c:when>
+		                <c:otherwise>
+		                	<li><a href="javascript:goList(${i.index})">${i.index}</a></li>
+		                </c:otherwise>
+		                </c:choose>
+					</c:forEach> 
+	                <c:if test="${vo.endPage ne vo.totalPages}">   
+	                	<li><a  class="next" href="javascript:goList(${vo.endPage + 1})">  &raquo;</a></li>
+	                </c:if>	
+	            </ul>
+	            <br>
+        	</div>
+            <button class="btn_reg"  id="btnForm"><i class="fa-solid fa-folder-plus"></i></button>
+        </div>
 <script type="text/javascript">
 var seq = $("input:hidden[name=ccgSeq]");
 var goUrlForm = "/AircodeGroup/codeGroupView";
-var goUrlList = "/AircodeGroup/codeGroupList";
-var form = $("form[name=form]")
 
 $('#btnForm').on("click", function() {
 		goForm(0);                
@@ -81,8 +102,13 @@ $('#btnForm').on("click", function() {
 /* 페이지네이션 리스트*/
 	goList = function(thisPage) {
 		$("input:hidden[name=thisPage]").val(thisPage);
-		form.attr("action", goUrlList).submit();
+		setLita();
 	}
+	
+	$("#changeRowNum").on("change", function(){
+		$("input:hidden[name=rowNumToShow]").val($("#changeRowNum option:selected").val());
+		setLita();
+	}); 
 </script>
 </body>
 </html>

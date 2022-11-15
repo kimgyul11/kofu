@@ -35,6 +35,7 @@ public class AirCodeGroupController {
 	@RequestMapping(value = "/AircodeGroup/codegroupAjaxList")
 	public String codegroupAjaxList(@ModelAttribute("vo")AirCodeGroupVo vo,Model model)throws Exception{
 		
+		
 		return "infra/codegroup/xdmin/airCodeGroupAjaxList";
 	}
 	//ajax 로 리스트구현
@@ -42,9 +43,11 @@ public class AirCodeGroupController {
 		public String codegroupAjaxLita(@ModelAttribute("vo")AirCodeGroupVo vo,Model model)throws Exception{
 	
 			vo.setParamsPaging(service.selectOneCounting(vo));
+			
 			List<AirCodeGroup> list = service.selectList(vo);
 			model.addAttribute("list",list);
-			return "infra/codegroup/xdmin/airCodeGroupList";
+			
+			return "infra/codegroup/xdmin/airCodeGroupAjaxLita";
 		}
 	
 	
