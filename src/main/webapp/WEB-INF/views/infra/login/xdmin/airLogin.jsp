@@ -74,12 +74,13 @@
                     <li>OR</li><br>
                     <li>
                         <ul class="loginbtnWrap">
-                            <li class="loginbtn"><a href="#"><img class="loginbtn_img" src="https://cdn-icons-png.flaticon.com/512/8142/8142645.png"></a></li>
+                            <li class="loginbtn" id="naverBtn"><img class="loginbtn_img" src="https://cdn-icons-png.flaticon.com/512/8142/8142645.png"></li>
                             <li class="loginbtn" id="kakaoBtn"><img class="loginbtn_img" src="https://cdn-icons-png.flaticon.com/512/4494/4494622.png"></li>
                             <li class="loginbtn"><a href="/member/airSignupView"><img class="loginbtn_img" src="https://cdn-icons-png.flaticon.com/512/6159/6159448.png"></a></li>
                         </ul>
                     </li>
                     <li>
+                     
                         <ul class="findwrap">
                             <li><a href="#">아이디 찾기</a></li>
                             <br>
@@ -99,6 +100,8 @@
 		<input type="hidden" name="token"/>
 	</form>
     </form>
+   
+    <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -127,6 +130,9 @@
                 }
             });
         });
+        
+        
+        //-----------------------------카카오로그인------------------------------------------------
         
         
         Kakao.init('5c3c7104a83d9002a7ea31b4428c735d'); // test 용
@@ -194,6 +200,69 @@
    		    })
 		});
         
+    	//네이버로그인---------------------------------------------------------------------
+    	/* naver login test s */
+   		
+   		/* var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "b8EhDTV3tvvAE_gRRBoJ",
+				callbackUrl: "http://localhost:8080/userLogin",
+				isPopup: false,
+				loginButton: {color: "green", type: 3, height: 70} 
+			}
+		); */
+		   $("#naverBtn").on("click", function() {
+				var naverLogin = new naver.LoginWithNaverId(
+						{
+							clientId: "aFywpcUOCSvdpR7BZ5St",
+							callbackUrl: "http://localhost:8080/airLogin",
+							isPopup: true
+						}
+					);
+					
+					naverLogin.init();
+					
+					naverLogin.getLoginStatus(function (status) {
+						
+						if(!status)
+							naverLogin.authorize();
+		                else
+		                    setLoginStatus();  //하늘님 메소드 실행 -> Ajax
+					});
+
+	   		function setLoginStatus() {
+
+				
+				$.ajax({
+					async: true
+					,cache: false
+					,type:"POST"
+					,url: "/member/naverLoginProc"
+					,data: {"user_name": naverLogin.user.name, "snsId": "네이버로그인", "user_email": naverLogin.user.email}
+				,success : function(response) {
+						if (response.rt == "fail") {
+							alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+							return false;
+						} else {
+							window.location.href = "/airLanguageHome";
+						}
+					},
+					error : function(jqXHR, status, error) {
+						alert("알 수 없는 에러 [ " + error + " ]");
+					}
+				});
+			}
+		   });
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
     </script>    
 </body>
 </html>

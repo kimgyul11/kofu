@@ -200,6 +200,22 @@ goForm = function(keyValue) {
 	form.attr("action", goUrlForm).submit();
 }
 
+$("#signOutBtn").on("click", function() {
+	$.ajax({
+		type: "POST"
+		,url: "/logoutProc"
+		,data: {}
+		,success : function(response) {
+			if (response.rt == "success") {
+				window.location.href = "/";
+			} else {
+				localStorage.clear();
+				window.location.href = "/";
+			}
+		}
+	});
+});
+
 
 </script>
 

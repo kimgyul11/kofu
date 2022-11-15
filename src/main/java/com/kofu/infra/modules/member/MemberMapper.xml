@@ -142,11 +142,13 @@
 			user_id
 			,user_name
 			,user_email
+			,user_gender
 		)
 		VALUE(
 			#{snsId}
 			,#{user_name}
 			,#{user_email}
+			,#{user_gender}
 		)
 		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
 				SELECT last_insert_id()
