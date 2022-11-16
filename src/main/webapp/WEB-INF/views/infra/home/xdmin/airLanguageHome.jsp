@@ -30,28 +30,28 @@
     	<img class="img" src="https://cdn-icons-png.flaticon.com/512/476/476505.png">
     </div>
     <div class="searchbar">
-    <ul class="search__option">
-        <li class="btn">
-            <input type="radio" id="ko" name="shOption" value="9" <c:if test="${vo.shOption eq 9}">selected</c:if>>
-            <label class="listitem" for="ko"><img src="https://cdn-icons-png.flaticon.com/512/5111/5111586.png" alt=""></label>
-        </li>
-        <li class="btn">
-            <input type="radio" id="cn" name="shOption" value="10" <c:if test="${vo.shOption eq 10}">selected</c:if>>
-            <label class="listitem" for="cn"><img src="https://cdn-icons-png.flaticon.com/512/323/323363.png" alt=""></label>
-        </li>
-        <li class="btn">
-            <input type="radio" id="jp" name="shOption" value="11" <c:if test="${vo.shOption eq 11}">selected</c:if>>
-            <label class="listitem" for="jp"><img src="https://cdn-icons-png.flaticon.com/512/323/323308.png" alt=""></label>
-        </li>
-        <li class="btn">
-            <input type="radio" id="en" name="shOption" value="12" <c:if test="${vo.shOption eq 12}">selected</c:if>>
-            <label class="listitem" for="en"><img src="https://cdn-icons-png.flaticon.com/512/197/197484.png" alt=""></label>
-        </li>
-    </ul>
-    <div class="search__value">
-        <input type="text" placeholder="검색어를 입력하세요" name="shValue" value="<c:out value="${vo.shValue}"/>" id="search" onkeyup="enterkey();">
-    </div>
-</div>
+	    <ul class="search__option">
+	        <li class="btn">
+	            <input type="radio" id="ko" name="shOption" value="9" <c:if test="${vo.shOption eq 9}">selected</c:if>>
+	            <label class="listitem" for="ko"><img src="https://cdn-icons-png.flaticon.com/512/5111/5111586.png" alt=""></label>
+	        </li>
+	        <li class="btn">
+	            <input type="radio" id="cn" name="shOption" value="10" <c:if test="${vo.shOption eq 10}">selected</c:if>>
+	            <label class="listitem" for="cn"><img src="https://cdn-icons-png.flaticon.com/512/323/323363.png" alt=""></label>
+	        </li>
+	        <li class="btn">
+	            <input type="radio" id="jp" name="shOption" value="11" <c:if test="${vo.shOption eq 11}">selected</c:if>>
+	            <label class="listitem" for="jp"><img src="https://cdn-icons-png.flaticon.com/512/323/323308.png" alt=""></label>
+	        </li>
+	        <li class="btn">
+	            <input type="radio" id="en" name="shOption" value="12" <c:if test="${vo.shOption eq 12}">selected</c:if>>
+	            <label class="listitem" for="en"><img src="https://cdn-icons-png.flaticon.com/512/197/197484.png" alt=""></label>
+	        </li>
+	    </ul>
+	    <div class="search__value">
+	        <input type="text" placeholder="검색어를 입력하세요" name="shValue" value="<c:out value="${vo.shValue}"/>" id="search" onkeyup="enterkey();">
+	    </div>
+	</div>
 </div>
 
 
@@ -121,21 +121,6 @@ goForm = function(keyValue) {
 	form.attr("action", goUrlForm).submit();
 }
 
-$("#signOutBtn").on("click", function() {
-	$.ajax({
-		type: "POST"
-		,url: "/logoutProc"
-		,data: {}
-		,success : function(response) {
-			if (response.rt == "success") {
-				window.location.href = "/";
-			} else {
-				localStorage.clear();
-				window.location.href = "/";
-			}
-		}
-	});
-});
 
 //미디어쿼리 버튼
 const toggleBtn = document.querySelector('.navbar__toogleBtn');

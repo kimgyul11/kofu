@@ -41,39 +41,44 @@
                 </div>
             </div>
             <div class="mypage_right_Wrap">
-                <div class="write_box">
-                    <ul class="write_input">
-                        <h1>나의 이력 리스트</h1>
-                        <li>
-                            <p>질문내역</p>
-                            <a href="#"><div class="write_input_item">질문내역 카운트되는곳 ${fn:length(list)}</div></a>
-                            <c:forEach items="${list}" var ="list" varStatus="status">
-                            	<button type="button" onclick="goview(<c:out value="${list.questionSeq}"/>);">이동</button>
-	        					<input type="text" name="content"  value="<c:out value="${list.content }"/>"  >
-			                </c:forEach>
-                        </li>
-                        <li>
-                            <p>답변내역</p>
-                            <a href="#"><div class="write_input_item">답변내역 카운트되는곳 ${fn:length(ansList)}</div></a>
-                            <c:forEach items="${ansList}" var ="ansList" varStatus="status">
-                            	<button type="button" onclick="goans(<c:out value="${ansList.questionSeq}"/>);">이동</button>
-	        					<input type="text"  value="<c:out value="${ansList.ansContent }"/>"  >
-			                </c:forEach>
-                        </li>
-                        <li>
-                            <p>좋아요 받은 답변</p>
-                            <a href="#"><div class="write_input_item">좋아요내역 카운트되는곳</div></a>
-                        </li>
-                        <li>
-                            <p>채택된 게시물</p>
-                            <a href="#"><div class="write_input_item">채택된 게시물 카운트되는곳${fn:length(pickList)}</div></a>
-                            <c:forEach items="${pickList}" var ="pickList" varStatus="status">
-                            	<button type="button" onclick="goans(<c:out value="${pickList.questionSeq}"/>);">이동</button>
-	        					<input type="text" value="<c:out value="${pickList.ansContent }"/>">
-			                </c:forEach>
-                        </li>                  
-                    </ul>
-                </div>
+				<ul id="ac">
+					<li class="menu1">
+						<p>질문내역
+					    <span>총 질문 수: ${fn:length(list)}</span>
+						<c:forEach items="${list}" var ="list" varStatus="status">
+							<ul class="menu2">
+							    <li onclick="goview(<c:out value="${list.questionSeq}"/>);"><c:out value="${list.content }"/></li>
+							</ul>
+						</c:forEach>
+					</li>
+					<li class="menu1">
+						<p>답변내역
+					    <span href="#">총 답변 수: ${fn:length(ansList)}</span>
+						<c:forEach items="${ansList}" var ="ansList" varStatus="status">
+							<ul class="menu2">
+							    <li onclick="goans(<c:out value="${ansList.questionSeq}"/>);"><c:out value="${ansList.ansContent }"/></li>
+							</ul>
+						</c:forEach>
+					</li>
+					<li class="menu1">
+						<p>채택내역
+					    <span>총 채택 수 : ${fn:length(pickList)} </span>
+						<c:forEach items="${pickList}" var ="pickList" varStatus="status">
+							<ul class="menu2">
+			    				<li onclick="goans(<c:out value="${pickList.questionSeq}"/>);"><c:out value="${pickList.ansContent }"/></li>
+							</ul>
+						</c:forEach>
+					</li>
+					 <li class="menu1">
+					 	<p>북마크 내역
+					     <span>북마크 게시물</span>
+					     <ul class="menu2">
+					         <li>Sub-Menu1</li>
+					         <li>Sub-Menu2</li>
+					         <li>Sub-Menu3</li>
+					     </ul>
+					 </li>
+				</ul>
             </div>
         </div>
     </div>
@@ -102,8 +107,23 @@
 			form.attr("action", goUrlAnsView).submit();
 		}
 		
+		//아코디언 메뉴
+		$('.menu1').click(function(){
+        $('.menu2').slideUp();
+        if ($(this).children('.menu2').is(':hidden')){
+        $(this).children('.menu2').slideDown();
+        } else{
+        $(this).children('.menu2').slideUp();
+        }
+    	});
 		
-		
+		//미디어쿼리 버튼
+		const toggleBtn = document.querySelector('.navbar__toogleBtn');
+		const menu = document.querySelector('.nav_right_Wrap');
+
+		toggleBtn.addEventListener('click', () =>{
+		    menu.classList.toggle('active');
+		});
 		
 	</script>	
 </body>
