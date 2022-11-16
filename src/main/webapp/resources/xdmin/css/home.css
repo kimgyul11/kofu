@@ -7,23 +7,22 @@
 *{
 	    font-family: 'SUIT-Medium';
          margin: 0;
+         box-sizing: border-box;
 }
-body{
-    box-sizing: border-box;
-}
+
 a{
     text-decoration: none;
     color:var(--text-color);   
 }
-    li{
-        list-style: none;
-    }
-    ul{
-        padding-left: 0;
-    }
+li{
+    list-style: none;
+}
+ul{
+    padding-left: 0;
+}
 
 .navbar{
-	background:black;
+	background:#fff;
 	width: 100%;
 	height: 80px;
 	display: flex;
@@ -36,7 +35,7 @@ a{
 }
 .navbar .logo a{
 	text-decoration: none;
-	color: #fff;
+	color: #000;
 	font-weight: 700;
 	letter-spacing: 2px;
 	font-size: 25px;
@@ -69,26 +68,31 @@ a{
 .nav_right_Wrap{
 	display: flex;
     align-items: center;
-    margin: 15px;
 }
 
-.nav_right_Wrap li a{
+.nav_right_Wrap li{
     padding: 7px;
     text-align: center;
-    border-radius: 15px;
+    margin:15px;
+    cursor: pointer;
 }
-.nav_right_Wrap li a:hover{
-    color: black;
-    background-color: #fff;
-    border-radius: 5px;
+.nav_right_Wrap li:hover{
+    color: #fff;
+    background-color: #42a5f5;
 }
 
 .nav_right_Wrap a{
-    color:white;
+    color:#000;
     list-style: none;
     text-decoration: none;
 	font-size: 1.1rem;
-}/* 네비게이션 영역e */
+}
+.navbar__toogleBtn{
+    display: none;
+}
+
+
+/* 네비게이션 영역e */
 
 
 
@@ -107,25 +111,19 @@ a{
 	flex-direction:column;
 	justify-content:center;
 	text-align: center;
-	height:550px;
-    margin:30px auto;
-    width:550px;
-    border-radius: 50%;
-   background-image: url('https://images.unsplash.com/photo-1564500617448-e541b1df7cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-    background-size : cover;  
+	height:450px;
+    margin:150px auto 0px auto;
+    width:100%
 }
 .imgbox{
-display:flex;
-justify-content: center;
+	display:flex;
+	justify-content: center;
 }
 .img{
 	width:150px;
 	height: 150px;
 }
-.imgbox:nth-child(1){
-	justify-content: center;
-	position: relative;
-	}
+
 .title h1 {
 	font-size: 2.5rem;
 	font-weight: lighter;
@@ -134,7 +132,7 @@ justify-content: center;
 	margin-bottom: 28px;
 	margin: 15px;
 	padding: 0;
-	color: #fff;
+	color: #000;
 }
 .title h2 {
 	color: #000;
@@ -146,13 +144,13 @@ justify-content: center;
 /* 빠른검색영역 */ 
 .searchbar{
     width: 30%;
-    height:50px;
+    height:45px;
     border: 1px solid #e0e0e0;
     border-radius: 55px;
     padding: 5px;
     display: flex;
     justify-content: space-around;
-    margin: auto;
+    margin: 20px auto 150px auto;
 }
 .search__option{
     display: flex;
@@ -527,4 +525,45 @@ option {
     text-align: center;
 }/* 회원가입e */
 
-
+@media (max-width:768px){
+    .navbar{
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
+        padding: 8px 12px;
+        width:100%;
+        border-bottom: 2px solid;
+    }
+    .navbar__toogleBtn{
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 22px;
+        font-size: 24px;
+        color: #000;
+    }
+   	.navbar .logo{
+        margin-left: 0;
+    }
+    .nav_right_Wrap{
+        display: none;
+        margin-right: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .nav_right_Wrap.active{
+        display: flex;
+    }
+    .nav_right_Wrap li{
+    	margin:5px;
+    	width:100%;
+    	padding:5px;
+    	border-radius: 15px;
+    }
+    .searchbar{
+    	width:90%;
+    }
+}    

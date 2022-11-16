@@ -19,10 +19,6 @@
 			 <button type="button"  class="searchButton" id="btnForm"><i class="fa fa-search"></i></button>
 	   		</div> --%>
 		</div>
-		<c:out value="${sessName}"/>
-		<c:out value="${sessId}"/>
-		<c:out value="${sessEmail}"/>
-		<c:out value="${sessSeq}"/>
         <ul class="nav_right_Wrap">
             <c:choose>
             	<c:when test="${empty sessSeq }">
@@ -39,3 +35,6 @@
             </c:choose>
         </ul>
     </div><!-- 네비게이션바 영역 종료-->
+        <a href="#" class="navbar__toogleBtn">
+   			<i class="fa-solid fa-bars"></i>
+		</a>

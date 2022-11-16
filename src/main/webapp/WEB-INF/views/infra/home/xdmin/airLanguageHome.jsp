@@ -23,15 +23,13 @@
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->   
-    <!--  헤더영역 -->
 <div class="title">
     <h1>언제,어디서나 원어민과 함께</h1> 
     <h2>AIR LANGUAGE</h2>
     <div class="imgbox">
     	<img class="img" src="https://cdn-icons-png.flaticon.com/512/476/476505.png">
     </div>
-</div>
-<div class="searchbar">
+    <div class="searchbar">
     <ul class="search__option">
         <li class="btn">
             <input type="radio" id="ko" name="shOption" value="9" <c:if test="${vo.shOption eq 9}">selected</c:if>>
@@ -54,92 +52,15 @@
         <input type="text" placeholder="검색어를 입력하세요" name="shValue" value="<c:out value="${vo.shValue}"/>" id="search" onkeyup="enterkey();">
     </div>
 </div>
-<!-- 소개영역 -->
-<div class="container">
-    <div class="topline">
-        <div class="topline_text">
-            <h1>AIR LANGUAGE소개영역</h1>
-        </div>
-    </div>
-    <main class="middleBx">
-        <div class="box">
-            <div class="imgBx">
-                <img src="/resources/images/talking.png" >
-            </div>
-            <div class="content">
-                <h2>-언어교환 플랫폼-<br><span>무엇이든 묻고 답하며 서로 성장해 나가는 언어교환 플랫폼</span></h2>
-            </div>
-        </div>
-        <div class="box">
-            <div class="imgBx">
-                <img src="/resources/images/human.png" >
-            </div>
-            <div class="content">
-                <h2>원어민들에게 묻는다<br><span></span></h2>
-            </div>
-        </div>
-        <div class="box">
-            <div class="imgBx">
-                <img src="/resources/images/jigsaw.png" >
-            </div>
-            <div class="content">
-                <h2>-상황에 맞는 표현-<br><span>적절한 상황에 어떻게 쓰이면<br> 좋을지 물어보세요</span></h2>
-            </div>
-        </div>
-    </main>
 </div>
-<!-- 최근질문내역 -->
-<div class="queContainer">
-    <h1>최신 질문</h1>
-    <h3>최근에 올라온 질문을 확인해보세요</h3>
-    <div class="newQue_wrap" onclick="quelist">
-        <div class="newQus_items">
-            <div class="items_box">
-                <p>sad</p>
-                <div class="items_footer">1</div>
-            </div>
-        </div>
-        <div class="newQus_items">
-            <div class="items_box">
-                <p>sad</p>
-                <div class="items_footer">1</div>
-            </div>
-        </div>
-    </div>
-</div>    
 
-	<!-- 카드영역 시작 -->
-<div class="card_head">
-    <h1>어떤질문을 하면 좋을까요?</h1>
-    <p>어떤질문을 해야할지 모르겠다면<div class=""></div></p>
-</div>
-<div class="card_container">
-    <div class="card">
-        <img src="https://cdn.pixabay.com/photo/2020/08/09/15/55/notebook-5475884_1280.jpg">
-        <h4>일기를 쓰거나</h4>
-        <p>일본어로 일기를 써보았는데 어떤가요?<br>"過去に住んでいる人は進歩しなかった証拠過去に住んでいる人は進歩しなかった証拠"
-        </p>
-        <a href="quelist"><p>Move<p></a>
-    </div>
-    <div class="card">
-        <img src="https://cdn.pixabay.com/photo/2022/08/19/01/06/ferris-wheel-7395944_1280.jpg">
-        <h4>이런질문을 해보거나</h4>
-        <p>이번에 한국으로 여행을 가는데 서울에 있는<br> 놀이공원을 알려주세요<br>-</p>   
-        <a href="quelist">Move</a>
-    </div>
-    <div class="card">
-        <img src="https://cdn.pixabay.com/photo/2022/01/23/18/31/minion-6961629_1280.jpg">
-        <h4>이런질문도 해보세요</h4>
-        <p>"제 한국어 발음 어떤가요?"<br>"私の日本語の発音はどうですか？"<br>"How Do I Look"</p> 
-        <a href="quelist">Move</a>
-    </div>
-</div>
-    <!-- 회원가입 페이지 -->
-	<ul class="home_signup_wrap">
-        <li><p>지금 바로 가입하기</p></li>
-        <li><img src="https://cdn-icons-png.flaticon.com/512/1474/1474674.png" alt=""></li>
-        <li><button>move>></button></li>
-    </ul>
+
+
+
+
+
+
+
 </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
@@ -216,7 +137,13 @@ $("#signOutBtn").on("click", function() {
 	});
 });
 
+//미디어쿼리 버튼
+const toggleBtn = document.querySelector('.navbar__toogleBtn');
+const menu = document.querySelector('.nav_right_Wrap');
 
+toggleBtn.addEventListener('click', () =>{
+    menu.classList.toggle('active');
+});
 </script>
 
 </body>

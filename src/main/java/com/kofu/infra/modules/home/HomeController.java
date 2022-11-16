@@ -38,8 +38,8 @@ public class HomeController {
 	public String airLanguageHome(Model model,HomeVo vo) throws Exception {
 		 System.out.println("vo.getShValue(): " + vo.getShValue());
 		 System.out.println("vo.getShOption(): " + vo.getShOption());
-		 List<Home>list = service.homeSearch(vo);
-		 model.addAttribute("list", list);
+		 service.homeSearch(vo);
+		
 		return "infra/home/xdmin/airLanguageHome";
 	}
 	
