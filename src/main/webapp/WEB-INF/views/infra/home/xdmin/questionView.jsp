@@ -75,7 +75,7 @@
 		<c:if test="${not empty vo.questionSeq}">
 			<input type="hidden" name="ansSeq">
 			<c:forEach items="${homeList}"  var="homeList" varStatus="status">
-			<input text="hidden" name="likeAnswerSeq" id="likeAnswerSeq"value="<c:out value="${homeList.ansSeq }"/>">
+			<input text="hidden" class="likeAnswerSeq" name="likeAnswerSeq" id="likeAnswerSeq"value="<c:out value="${homeList.ansSeq }"/>">
 			<input text="hidden" value="<c:out value="${homeList.likeSeq }"/>" id="likeSeq" name="likeSeq">
 			
 			    <div class="answerbox">
@@ -149,14 +149,16 @@
 		
 		
 		//좋아요버튼 ajax.
-		$("#likeInst").on("click", function(){
- 			$.ajax({
+		$(this).(".likeAnswerSeq").on("click", function(){
+ 			
+			$.ajax({
 				async: false
 				,cache: false
 				,type: "post"
 				,url: "/likeProc"
 				,data: {"likeUserId" : $("#likeUserId").val(), "likeAnswerSeq" : $("#likeAnswerSeq").val(),"likeSeq" : $("#likeSeq").val(),"likeUseNy" : $("#likeUseNy").val() } 
-				,success: function(response) {
+ 				,context:this	
+ 				,success: function(response) {
 					if(response.rt == "success") {
 						alert("좋아요등록완료");
 						$('#likeInst').text("♥ ")

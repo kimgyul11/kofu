@@ -151,7 +151,6 @@ public class HomeController {
 			returnMap.put("rt", "delete");
 		} else {
 			returnMap.put("rt", "fail");
-			
 		}
 		return returnMap;
 	}
