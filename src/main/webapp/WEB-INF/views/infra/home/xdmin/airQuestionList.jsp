@@ -18,7 +18,7 @@
     <title>AIRLANGUAGE</title>
 </head>
 <body>
-<form name = "form">
+<form name = "form" action="">
 <input type="hidden" name="questionSeq">
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">

@@ -149,7 +149,7 @@
 		
 		
 		//좋아요버튼 ajax.
-		$(this).(".likeAnswerSeq").on("click", function(){
+		$(".likeAnswerSeq").on("click", function(){
  			
 			$.ajax({
 				async: false
