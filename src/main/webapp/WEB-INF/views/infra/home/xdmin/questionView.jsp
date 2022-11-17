@@ -94,7 +94,6 @@
 			        </div>
 			        <div class="footer">
 				        <c:if test="${item.user_id eq sessId }">
-		           			<!-- <button type="button" id="pick"> 채택하기 </button>4일 내가한거 -->
 		           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택하기</button> 
 		              	</c:if>
 			            <button>신고하기</button>
@@ -139,15 +138,11 @@
     	$("#like").on("click",function(){
     		form.attr("action",goLikeInst).submit();
   	 	});
-    	
-     
 		function anspikc(keyValue){
 	    	seq.val(keyValue);
 	    	alert('채택이 완료되었습니다.');
 			form.attr("action", goUrlSelect).submit();
 		}
-		
-		
 		//좋아요버튼 ajax.
 		$(".likeAnswerSeq").on("click", function(){
  			
@@ -174,9 +169,6 @@
 				}
 			}); 
 		});
-     
-     
-        
     </script>
 </body>
 </html>

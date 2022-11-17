@@ -43,6 +43,18 @@ public class MemberController {
 	return "infra/login/xdmin/airMypage";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/mypageform")
+	public Map<String, Object> mypageform(Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		service.mypageMod(dto);
+		returnMap.put("rt", "success");
+
+		return returnMap;
+	}
+	
+	
 	@RequestMapping(value = "/mypageMod")
 	public String mypageMod(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		

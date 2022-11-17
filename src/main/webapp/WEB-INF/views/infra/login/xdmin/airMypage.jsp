@@ -16,7 +16,7 @@
 </head>
 <body>
 <form name="form">
-<input type="hidden" name="memberSeq"  value="<c:out value="${sessSeq }"/>"  >
+<input type="hidden" id="memberSeq" name="memberSeq"  value="<c:out value="${sessSeq }"/>"  >
 <input type="hidden" name="questionSeq">
 	<!-- Navbar s  -->
 	<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
@@ -31,12 +31,26 @@
                         <img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>">
                     </div>
                     <ul class="profile_input">
-                        <li><p>아이디</p><input type="text" readonly name="memberSeq" value="<c:out value="${sessId}"/>" ></li>
+                        <li><p>아이디</p><input type="text" readonly value="<c:out value="${sessId}"/>" ></li>
                         <li><p>이름</p><input type="text" readonly value="<c:out value="${sessName }"/>" name="user_name"></li>
                         <li><p>성별</p><input type="text" readonly value="<c:out value="${item.user_gender }"/>"></li>
-                        <li><p>주 언어</p><input type="text" readonly value="<c:out value="${item.lean_language }"/>"></li>
-                        <li><p>배우는 언어</p><input type="text"readonly value="<c:out value="${item.user_favoriteLanguage }"/>" ></li>
-                        <li><button>편집</button></li>
+                        <li><p>주 언어</p>
+                        	<select id='lean_language' name='lean_language' >
+								<option value='9' <c:if test="${item.lean_language eq 9}">selected</c:if>>한국어</option>
+								<option value='10' <c:if test="${item.lean_language eq 10}">selected</c:if>>중국어</option>
+								<option value='11' <c:if test="${item.lean_language eq 11}">selected</c:if>>일본어</option>
+								<option value='12' <c:if test="${item.lean_language eq 12}">selected</c:if>>영어</option>
+							</select>
+                        </li>
+                        <li><p>배우는 언어</p>
+                        <select id='user_favoriteLanguage' name='user_favoriteLanguage' >
+							<option value='9' <c:if test="${item.user_favoriteLanguage eq 9}">selected</c:if>>한국어</option>
+							<option value='10' <c:if test="${item.user_favoriteLanguage eq 10}">selected</c:if>>중국어</option>
+							<option value='11' <c:if test="${item.user_favoriteLanguage eq 11}">selected</c:if>>일본어</option>
+							<option value='12' <c:if test="${item.user_favoriteLanguage eq 12}">selected</c:if>>영어</option>
+						</select>
+                        </li>
+                        <li><button id="btnform">저장</button></li>
                     </ul>
                 </div>
             </div>
@@ -93,8 +107,25 @@
 		var questionSeq = $("input:hidden[name=questionSeq]");
 		var form = $("form[name=form]");
 		
+		//마이페이지 수정 ajax.
+		$("#btnform").on("click", function(){
+ 			
+			$.ajax({
+				async: false
+				,cache: false
+				,type: "post"
+				,url: "/mypageform"
+				,data: {"lean_language" : $("#lean_language").val(), "user_favoriteLanguage" : $("#user_favoriteLanguage").val(), "memberSeq" : $("#memberSeq").val()} 
+ 				,success: function(response) {
+					alert("수정이 완료되었습니다.")
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			}); 
+		});
 		
-
+		
 		//내가 작성한 질문
 		function goview(keyValue){
 			questionSeq.val(keyValue);

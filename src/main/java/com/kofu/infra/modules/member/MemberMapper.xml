@@ -258,9 +258,9 @@
 		UPDATE airLanguage_member
 		SET
 			lean_language = #{lean_language},
-			user_favoriteLanguage = #{user_favoriteLanguage},
-		WHERE
-			memberSeq = #{memberSeq}	
+			user_favoriteLanguage = #{user_favoriteLanguage}
+		WHERE 1=1
+		AND memberSeq = #{memberSeq}	
 	</update>	
 
 </mapper>	
