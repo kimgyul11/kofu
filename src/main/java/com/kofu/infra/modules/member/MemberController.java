@@ -43,6 +43,7 @@ public class MemberController {
 	return "infra/login/xdmin/airMypage";
 	}
 	
+	//마이페이지 업데이트
 	@ResponseBody
 	@RequestMapping(value = "/mypageform")
 	public Map<String, Object> mypageform(Member dto, HttpSession httpSession) throws Exception {
