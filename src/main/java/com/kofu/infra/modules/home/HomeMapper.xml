@@ -187,7 +187,7 @@
 		
 	<!-- 좋아요 제거  -->
 	<delete id ="likedelete">
-		DELETE FROM answer_like WHERE likeSeq = #{likeSeq}
+		DELETE FROM answer_like WHERE likeAnswerSeq = #{likeAnswerSeq}
 	</delete>
 	
 	<!-- 좋아요 ajax-count -->

@@ -117,24 +117,7 @@ public class HomeController {
 		System.out.println("controller result: "+result);
 		return "redirect:/queview";
 	}
-	//-------------------------좋아요 버튼  -------------------
-	
-	@RequestMapping(value = "likebutton")
-	public String likeInsert(Home dto,HomeVo vo,RedirectAttributes redirectAttributes) throws Exception{
-		int result = service.likeInsert(dto);
-		
-		redirectAttributes.addFlashAttribute("vo",vo);
-		System.out.println("controller result: "+result);
-		return "redirect:/queview";
-	}
-	
-	//-----------------------좋아요 삭제버튼----------------------
-//	@RequestMapping(value = "likedelete")
-//	public String likedelete(HomeVo vo,RedirectAttributes redirectAttributes)throws Exception{
-//		service.likedelete();
-//		return "redirect:/queview";
-//	}
-//	
+
 	//----------------------------좋아요 ajax-----------------------
 	@ResponseBody
 	@RequestMapping(value = "/likeProc")
@@ -154,6 +137,27 @@ public class HomeController {
 		}
 		return returnMap;
 	}
+	
+	//-------------------------북마크 ajax-------------------------
+	@ResponseBody
+	@RequestMapping(value = "/bookmark")
+	public Map<String, Object> bookmark(Home dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		int ckWish = service.likeCheck(dto);
+		
+		if(ckWish == 0) {
+			service.likeInsert(dto);
+			returnMap.put("rt", "success");
+		} else if(ckWish == 1) {
+			service.likedelete(dto);
+			returnMap.put("rt", "delete");
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		return returnMap;
+	}
+	
 	
 	//---------------------답변 채택하기--------------------
 	@RequestMapping(value = "answerSelect")

@@ -99,11 +99,11 @@
 			            <button>신고하기</button>
 			              <input type="text" value="<c:out value="${homeList.likeUseNy }"/>" id="likeUseNy" name="likeUseNy">
 			            <c:choose>
-							<c:when test="${likeCheck eq 0   }">
-								<button type="button" id="likeInst">♡</button>
+							<c:when test="${homeList.likeUseNy eq 0   }">
+								<button class="likeInst" type="button" onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);">♡</button>
 							</c:when>
 							<c:otherwise>
-								<button type="button" id="likeInst">♥</button>
+								<button class="likeInst" type="button"  onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);">♥</button>
 							</c:otherwise>
 						</c:choose>
 			        </div>
@@ -123,11 +123,9 @@
         var form = $("form[name=form]");
     	var seq = $("input:hidden[name=ansSeq]");
         var goUrlInst = "answerInst";     
-    	var goLikeInst = "likebutton";
     	var likeSeq = $("input:hidden[name=likeSeq]");
     	var goUrlSelect = "answerSelect";
     	var selectSeq = $("input:hidden[name=ansSeq]");
-    	
     	
     	
         $("#btnsave").on("click",function(){
@@ -144,7 +142,34 @@
 			form.attr("action", goUrlSelect).submit();
 		}
 		//좋아요버튼 ajax.
-		$(".likeAnswerSeq").on("click", function(){
+		
+		function goLike(keyValue) {
+			
+		$.ajax({
+				async: false
+				,cache: false
+				,type: "post"
+				,url: "/likeProc"
+				,data: {"likeUserId" : $("#likeUserId").val(), "likeAnswerSeq" : JSON.stringify(keyValue)} 
+ 				,success: function(response) {
+					if(response.rt == "success") {
+						alert("좋아요등록완료");
+						$('.likeInst').text("♥ ")
+					} else if(response.rt == "delete"){
+						alert("좋아요삭제");
+						$('.likeInst').text('♡');
+					} else{
+						alert("오류");
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+
+	}
+		
+		/* $(".likeAnswerSeq").on("click", function(){
  			
 			$.ajax({
 				async: false
@@ -168,7 +193,7 @@
 					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 				}
 			}); 
-		});
+		}); */
     </script>
 </body>
 </html>

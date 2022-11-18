@@ -51,7 +51,7 @@ public class Home extends Base {
 	private String likeSeq;
 	private String likeUserId;
 	private String likeTime;
-	private Integer likeAnswerSeq;
+	private String likeAnswerSeq;
 	private String likeUseNy;
 	
 	
@@ -261,10 +261,12 @@ public String getAirline() {
 		this.likeTime = likeTime;
 	}
 	
-	public Integer getLikeAnswerSeq() {
+
+	
+	public String getLikeAnswerSeq() {
 		return likeAnswerSeq;
 	}
-	public void setLikeAnswerSeq(Integer likeAnswerSeq) {
+	public void setLikeAnswerSeq(String likeAnswerSeq) {
 		this.likeAnswerSeq = likeAnswerSeq;
 	}
 	public String getLikeUseNy() {

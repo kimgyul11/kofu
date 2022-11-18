@@ -75,7 +75,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	
-	// 9월 27일 
+	// 9월 27일 --로그인
 	@Override
 	public  Member selectOneId(Member dto) throws Exception{
 		Member result = dao.selectOneId(dto);
