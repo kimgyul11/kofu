@@ -20,6 +20,7 @@
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
 <input type="hidden" value="<c:out value="${sessSeq }"/>" id="ansUserId" name="ansUserId">
 <input type="hidden" value="<c:out value="${sessSeq }"/>" id="likeUserId" name="likeUserId">
+<input type="hidden" name="bookmark_UserId" id="bookmark_UserId" value="<c:out value="${sessSeq}"/>">
 
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
@@ -52,7 +53,7 @@
          	 	<c:if test="${item.user_id eq sessId }">
            			<button>수정하기</button>
               	</c:if>
-                <button><i class="fa-regular fa-bookmark"></i></button>
+                <button type="button" id="bookInst"><i class="fa-regular fa-bookmark"></i></button>
             </div>
         </div>
         <!-- 답변창s -->
@@ -99,7 +100,7 @@
 			            <button>신고하기</button>
 			              <input type="text" value="<c:out value="${homeList.likeUseNy }"/>" id="likeUseNy" name="likeUseNy">
 			            <c:choose>
-							<c:when test="${homeList.likeUseNy eq 0   }">
+							<c:when test="${empty homeList.likeUseNy}">
 								<button class="likeInst" type="button" onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);">♡</button>
 							</c:when>
 							<c:otherwise>
@@ -112,14 +113,11 @@
 		</c:if>
     </div>
 <!--질문창 e-->
-		
 	</div>
 	</form>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
     <script>
-
-
         var form = $("form[name=form]");
     	var seq = $("input:hidden[name=ansSeq]");
         var goUrlInst = "answerInst";     
@@ -142,9 +140,7 @@
 			form.attr("action", goUrlSelect).submit();
 		}
 		//좋아요버튼 ajax.
-		
 		function goLike(keyValue) {
-			
 		$.ajax({
 				async: false
 				,cache: false
@@ -154,10 +150,10 @@
  				,success: function(response) {
 					if(response.rt == "success") {
 						alert("좋아요등록완료");
-						$('.likeInst').text("♥ ")
+						$().text("♥")
 					} else if(response.rt == "delete"){
 						alert("좋아요삭제");
-						$('.likeInst').text('♡');
+						$().text('♡');
 					} else{
 						alert("오류");
 					}
@@ -166,25 +162,24 @@
 					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 				}
 			});
-
-	}
+		}
 		
-		/* $(".likeAnswerSeq").on("click", function(){
- 			
-			$.ajax({
+		
+		//북마크  ajax.
+		$("#bookInst").on("click",function(){
+		$.ajax({
 				async: false
 				,cache: false
 				,type: "post"
 				,url: "/likeProc"
-				,data: {"likeUserId" : $("#likeUserId").val(), "likeAnswerSeq" : $("#likeAnswerSeq").val(),"likeSeq" : $("#likeSeq").val(),"likeUseNy" : $("#likeUseNy").val() } 
- 				,context:this	
+				,data: {"bookmark_UserId" : $("#bookmark_UserId").val(), "question_questionSeq" :$('#question_questionSeq')} 
  				,success: function(response) {
 					if(response.rt == "success") {
-						alert("좋아요등록완료");
-						$('#likeInst').text("♥ ")
+						alert("북마크에 추가되었습니다.");
+						$('#bookInst').text("♥")
 					} else if(response.rt == "delete"){
 						alert("좋아요삭제");
-						$('#likeInst').text('♡');
+						$('#bookInst').text('♡');
 					} else{
 						alert("오류");
 					}
@@ -192,8 +187,8 @@
 				,error : function(jqXHR, textStatus, errorThrown){
 					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 				}
-			}); 
-		}); */
+			});
+		});
     </script>
 </body>
 </html>

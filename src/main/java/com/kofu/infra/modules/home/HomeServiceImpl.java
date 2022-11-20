@@ -52,10 +52,25 @@ public class HomeServiceImpl implements HomeService{
 		return dao.selectAns(vo);
 	}
 	
+	
+	//-------bookmark 영역-------------
+	
 	@Override
 	public int bookmarkInst(Home dto) throws Exception {
 		return dao.bookmarkInst(dto);
 	}
+	
+	@Override
+	public int bookmarkcheck(Home dto) throws Exception {
+		return dao.bookmarkcheck(dto);
+	}
+	
+	@Override
+	public int bookmarkDel(Home dto) throws Exception {
+		return dao.bookmarkDel(dto);
+	}
+
+
 	@Override
 	public int likeInsert(Home dto) throws Exception {
 		return dao.likeInsert(dto);
@@ -69,6 +84,12 @@ public class HomeServiceImpl implements HomeService{
 	
 	
 	
+	@Override
+	public List<Home> likeListCnt(Home dto) throws Exception {
+		return dao.likeListCnt(dto);
+	}
+
+
 	@Override
 	public int questionDelete(Home dto) throws Exception {
 		return dao.questionDelete(dto);

@@ -45,6 +45,15 @@ public class HomeDao {
 		int result=sqlSession.insert(namespace + ".bookmarkInst", dto);
 		return result;
 	}
+	//북마크 체크 
+	public int bookmarkcheck(Home dto) { return sqlSession.selectOne(namespace +".bookmarkcheck", dto);}
+	
+	//북마크 제거
+	public int bookmarkDel(Home  dto) { return sqlSession.delete(namespace + ".bookmarkDel",dto);}
+	
+	
+	
+	
 	//질문삭제
 	public int questionDelete(Home dto) {
 		return sqlSession.delete(namespace + ".questionDelete",dto);
@@ -92,7 +101,8 @@ public class HomeDao {
 	//좋아요 ajax-count
 	public int likeCheck(Home dto) { return sqlSession.selectOne(namespace+".likeCheck", dto); }
 	
-	
+	//좋아요리스트카운트 	
+	public List<Home> likeListCnt(Home dto){return sqlSession.selectList(namespace + ".likeListCnt",dto);}
 	
 
 

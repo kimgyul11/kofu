@@ -160,12 +160,31 @@
 				SELECT last_insert_id()
 		</selectKey> 
 	</insert>
-	<!-- 북마크 리스트 -->
-	<select id="bookmarkList">
-		
+	<!-- 북마크 check -->
+	<select id="bookmarkcheck" resultMap="resultMapObj">
+		SELECT 
+			COUNT(*)
+		FROM 
+			bookmark
+		WHERE 1=1
+			AND question_questionSeq=#{question_questionSeq} 
+			AND bookmark_UserId = #{bookmark_UserId}
 	</select>
+	<!-- 북마크 제거  -->
+		<delete id="bookmarkDel">
+			DELETE FROM bookmark WHERE question_questionSeq=#{question_questionSeq} 
+		</delete>
 	
 	
+<!-- 좋아요버튼 리스트카운트 -->
+<select id="likeListCnt" resultMap="resultMapObj">
+	select
+		*
+	from
+		answer_like
+	where 1=1
+		and likeAnswerSeq = #{likeAnswerSeq}
+</select>
 	<!-- 좋아요버튼  -->
 	<insert id ="likeInsert">
 		INSERT INTO answer_like(

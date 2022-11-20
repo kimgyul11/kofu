@@ -15,13 +15,16 @@ public interface HomeService {
 	public int selectOenCount(HomeVo vo) throws Exception;
 	public int ansInsert(Home dto) throws Exception;
 	public List<Home>selectAns(HomeVo vo) throws Exception;
+	//----------------북마크 영역-----------------------
 	public int bookmarkInst(Home dto) throws Exception;
-	
+	public int bookmarkcheck(Home dto)throws Exception;
+	public int bookmarkDel(Home dto)throws Exception;
 	
 	//-------좋아요버튼 영역------------------------------
 	public int likeInsert(Home dto)throws Exception;
 	public int likedelete(Home dto)throws Exception;
 	public int likeCheck(Home dto) throws Exception;
+	public List<Home>likeListCnt(Home dto)throws Exception;
 	
 	//--------- 답변채택--------------------------------
 	public int answerSelect(Home dto)throws Exception;

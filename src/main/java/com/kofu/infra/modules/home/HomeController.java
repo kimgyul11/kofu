@@ -121,16 +121,24 @@ public class HomeController {
 	//----------------------------좋아요 ajax-----------------------
 	@ResponseBody
 	@RequestMapping(value = "/likeProc")
-	public Map<String, Object> wishProc(Home dto, HttpSession httpSession) throws Exception {
+	public Map<String, Object> wishProc(Home dto, HttpSession httpSession,Model model) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		int ckWish = service.likeCheck(dto);
 		
 		if(ckWish == 0) {
 			service.likeInsert(dto);
+			List<Home> WList = service.likeListCnt(dto);
+			model.addAttribute("WList",WList);
+			
+			returnMap.put("WList",WList);
 			returnMap.put("rt", "success");
 		} else if(ckWish == 1) {
 			service.likedelete(dto);
+			List<Home> WList = service.likeListCnt(dto);
+			model.addAttribute("WList",WList);
+			
+			returnMap.put("WList",WList);
 			returnMap.put("rt", "delete");
 		} else {
 			returnMap.put("rt", "fail");
@@ -140,17 +148,17 @@ public class HomeController {
 	
 	//-------------------------북마크 ajax-------------------------
 	@ResponseBody
-	@RequestMapping(value = "/bookmark")
-	public Map<String, Object> bookmark(Home dto, HttpSession httpSession) throws Exception {
+	@RequestMapping(value = "/bookmarkproc")
+	public Map<String, Object> bookmarkproc(Home dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		int ckWish = service.likeCheck(dto);
+		int ckbookmark = service.bookmarkcheck(dto);
 		
-		if(ckWish == 0) {
-			service.likeInsert(dto);
+		if(ckbookmark == 0) {
+			service.bookmarkInst(dto);
 			returnMap.put("rt", "success");
-		} else if(ckWish == 1) {
-			service.likedelete(dto);
+		} else if(ckbookmark == 1) {
+			service.bookmarkDel(dto);
 			returnMap.put("rt", "delete");
 		} else {
 			returnMap.put("rt", "fail");
