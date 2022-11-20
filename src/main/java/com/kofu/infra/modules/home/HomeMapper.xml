@@ -160,8 +160,8 @@
 				SELECT last_insert_id()
 		</selectKey> 
 	</insert>
-	<!-- 북마크 check -->
-	<select id="bookmarkcheck" resultMap="resultMapObj">
+	<!-- 북마크 count -->
+	<select id="bookmarkcheck" resultType="Integer">
 		SELECT 
 			COUNT(*)
 		FROM 
@@ -170,9 +170,22 @@
 			AND question_questionSeq=#{question_questionSeq} 
 			AND bookmark_UserId = #{bookmark_UserId}
 	</select>
+	<!--북마크 체크 -->
+	<select id="bookmarklist" resultMap="resultMapObj">
+	select 
+	bookmarkSeq
+	,question_questionSeq
+	,bookmark_UserId
+	,bookmark_useNy
+		FROM bookmark 
+		WHERE 1=1
+			and question_questionSeq = #{questionSeq}
+			and bookmark_UserId = #{bookmark_UserId} 
+	</select>
+	
 	<!-- 북마크 제거  -->
 		<delete id="bookmarkDel">
-			DELETE FROM bookmark WHERE question_questionSeq=#{question_questionSeq} 
+			DELETE FROM bookmark WHERE question_questionSeq = #{question_questionSeq}
 		</delete>
 	
 	

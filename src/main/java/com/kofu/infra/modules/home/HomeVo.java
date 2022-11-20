@@ -16,6 +16,9 @@ public class HomeVo {
 	private String bookmarkSeq;
 	private String likeSeq;
 	private String likeAnswerSeq;
+	private String bookmark_UserId;
+	private String userID;
+	
 	
 	
 	
@@ -23,6 +26,18 @@ public class HomeVo {
 	
 
 
+	public String getUserID() {
+		return userID;
+	}
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+	public String getBookmark_UserId() {
+		return bookmark_UserId;
+	}
+	public void setBookmark_UserId(String bookmark_UserId) {
+		this.bookmark_UserId = bookmark_UserId;
+	}
 	public Integer getNavShOption() {
 		return navShOption;
 	}

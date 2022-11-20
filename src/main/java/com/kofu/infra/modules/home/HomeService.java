@@ -19,7 +19,7 @@ public interface HomeService {
 	public int bookmarkInst(Home dto) throws Exception;
 	public int bookmarkcheck(Home dto)throws Exception;
 	public int bookmarkDel(Home dto)throws Exception;
-	
+	public List<Home>bookmarklist(HomeVo vo)throws Exception;
 	//-------좋아요버튼 영역------------------------------
 	public int likeInsert(Home dto)throws Exception;
 	public int likedelete(Home dto)throws Exception;

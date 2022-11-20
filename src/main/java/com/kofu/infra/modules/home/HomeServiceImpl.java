@@ -72,6 +72,12 @@ public class HomeServiceImpl implements HomeService{
 
 
 	@Override
+	public List<Home> bookmarklist(HomeVo vo) throws Exception {
+		return dao.bookmarklist(vo);
+	}
+
+
+	@Override
 	public int likeInsert(Home dto) throws Exception {
 		return dao.likeInsert(dto);
 	}

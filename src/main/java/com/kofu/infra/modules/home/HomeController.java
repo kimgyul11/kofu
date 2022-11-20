@@ -62,16 +62,21 @@ public class HomeController {
 	
 	//질문 상세화면------------------------------------------------------------------
 	@RequestMapping(value = "queview")
-	public String queview(Home dto,@ModelAttribute("vo") HomeVo vo,Model model,RedirectAttributes redirectAttributes) throws Exception {
+	public String queview(Home dto,@ModelAttribute("vo") HomeVo vo,Model model,RedirectAttributes redirectAttributes,HttpSession httpSession) throws Exception {
+		vo.setBookmark_UserId((String) httpSession.getAttribute("sessSeq"));
+		
+		List<Home>bookmar = service.bookmarklist(vo);
+		model.addAttribute("bookmar",bookmar);
 		
 		
 		Home result = service.selectOne(vo);
 		model.addAttribute("item",result);
 		
+		
 		List<Home>homeList = service.selectAns(vo);
 		model.addAttribute("homeList", homeList);
+		
 		vo.setAnsSeq(dto.getAnsSeq());
-		System.out.println(vo.getAnsSeq());
 			
 		redirectAttributes.addFlashAttribute("vo",vo);
 		return "infra/home/xdmin/questionView";

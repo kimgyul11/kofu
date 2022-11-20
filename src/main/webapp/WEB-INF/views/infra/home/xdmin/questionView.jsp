@@ -15,12 +15,12 @@
     <title>AIRLANGUAGE</title>
 </head>
 <body>
-<form name="form" action="">
-<input type="text" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq">
+<form name="form">
+<input type="hidden" value="<c:out value="${vo.questionSeq}"/>" id="questionSeq" name="questionSeq">
 <input type="hidden" value="<c:out value="${sessId }"/>" id="userID" name="userID">
 <input type="hidden" value="<c:out value="${sessSeq }"/>" id="ansUserId" name="ansUserId">
 <input type="hidden" value="<c:out value="${sessSeq }"/>" id="likeUserId" name="likeUserId">
-<input type="hidden" name="bookmark_UserId" id="bookmark_UserId" value="<c:out value="${sessSeq}"/>">
+<input type="hidden" value="<c:out value="${sessSeq}"/>" id="bookmark_UserId" name="bookmark_UserId">
 
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
@@ -49,13 +49,29 @@
             <div class="queBox_body">
                 <p><c:out value="${item.content }"/></p>
             </div>
+            
             <div class="queBox_footer">
          	 	<c:if test="${item.user_id eq sessId }">
            			<button>수정하기</button>
               	</c:if>
-                <button type="button" id="bookInst"><i class="fa-regular fa-bookmark"></i></button>
             </div>
         </div>
+        <input type="text" value="<c:out value="${vo.bookmarkSeq}"/>" id="bookmarkSeq" name="bookmarkSeq">
+
+        
+        <c:if test="${empty vo.bookmarkSeq}">
+        	비어있는거 확
+        </c:if>
+        <c:forEach items="${bookmar}"  var="bookmar" varStatus="status">
+              	<c:choose>
+							<c:when test="${empty bookmarkSeq}">
+								<button type="button" id="bookInst"><i class="fa-regular fa-bookmark"></i></button>
+							</c:when>
+							<c:otherwise>
+                				<button type="button" id="bookInst"><i class="fa-solid fa-bookmark"></i></button>
+                			</c:otherwise>
+            	</c:choose>		
+        </c:forEach>
         <!-- 답변창s -->
         <div class="answerWrap">
 			<div class="answerContent">
@@ -171,15 +187,18 @@
 				async: false
 				,cache: false
 				,type: "post"
-				,url: "/likeProc"
-				,data: {"bookmark_UserId" : $("#bookmark_UserId").val(), "question_questionSeq" :$('#question_questionSeq')} 
+				,url: "/bookmarkproc"
+				,data: {"bookmark_UserId" : $("#bookmark_UserId").val(), "question_questionSeq" :$('#questionSeq').val()} 
  				,success: function(response) {
+ 					var bookmarkicon = "";
 					if(response.rt == "success") {
+						bookmarkicon += '<i class="fa-solid fa-bookmark"></i>';
 						alert("북마크에 추가되었습니다.");
-						$('#bookInst').text("♥")
+						$('#bookInst').html(bookmarkicon)
 					} else if(response.rt == "delete"){
-						alert("좋아요삭제");
-						$('#bookInst').text('♡');
+						alert("북마크삭제");
+						bookmarkicon +='<i class="fa-regular fa-bookmark"></i>';
+						$('#bookInst').html(bookmarkicon);
 					} else{
 						alert("오류");
 					}
