@@ -65,7 +65,6 @@ public class HomeController {
 	public String queview(Home dto,@ModelAttribute("vo") HomeVo vo,Model model,RedirectAttributes redirectAttributes) throws Exception {
 		
 		
-		
 		Home result = service.selectOne(vo);
 		model.addAttribute("item",result);
 		

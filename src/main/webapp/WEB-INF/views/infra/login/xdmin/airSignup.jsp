@@ -14,8 +14,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
    	<link rel="stylesheet" href="/resources/xdmin/css/airSignup.css" />
     <title>signup</title>
-
-
 </head>
 <body>
 <form name="form" action="airSignup" method="post" enctype="multipart/form-data">
