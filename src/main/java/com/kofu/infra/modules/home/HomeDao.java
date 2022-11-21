@@ -52,7 +52,7 @@ public class HomeDao {
 	public int bookmarkDel(Home  dto) { return sqlSession.delete(namespace + ".bookmarkDel",dto);}
 	
 	//북마크 리스트
-	public List<Home> bookmarklist(HomeVo vo){return sqlSession.selectList(namespace +".bookmarklist",vo);	}
+	public Home bookmarklist(Home dto){return sqlSession.selectOne(namespace +".bookmarklist",dto);	}
 	
 	
 	//질문삭제

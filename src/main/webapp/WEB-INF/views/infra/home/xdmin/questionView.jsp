@@ -56,22 +56,15 @@
               	</c:if>
             </div>
         </div>
-        <input type="text" value="<c:out value="${vo.bookmarkSeq}"/>" id="bookmarkSeq" name="bookmarkSeq">
-
-        
-        <c:if test="${empty vo.bookmarkSeq}">
-        	비어있는거 확
-        </c:if>
-        <c:forEach items="${bookmar}"  var="bookmar" varStatus="status">
-              	<c:choose>
-							<c:when test="${empty bookmarkSeq}">
-								<button type="button" id="bookInst"><i class="fa-regular fa-bookmark"></i></button>
-							</c:when>
-							<c:otherwise>
-                				<button type="button" id="bookInst"><i class="fa-solid fa-bookmark"></i></button>
-                			</c:otherwise>
-            	</c:choose>		
-        </c:forEach>
+        <input type="text" value="<c:out value="${vo.questionSeq}"/>" id="bookmarkSeq" name="bookmarkSeq">
+   			<c:choose>
+			<c:when test="${empty bookmar.bookmarkSeq}">
+				<button type="button" id="bookInst"><i class="fa-regular fa-bookmark"></i></button>
+			</c:when>
+			<c:otherwise>
+   				<button type="button" id="bookInst"><i class="fa-solid fa-bookmark"></i></button>
+   			</c:otherwise>
+          	</c:choose>		
         <!-- 답변창s -->
         <div class="answerWrap">
 			<div class="answerContent">
