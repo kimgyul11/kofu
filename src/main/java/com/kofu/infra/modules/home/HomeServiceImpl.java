@@ -53,7 +53,7 @@ public class HomeServiceImpl implements HomeService{
 	}
 	
 	
-	//-------bookmark 영역-------------
+	//-------bookmark S-------------
 	
 	@Override
 	public int bookmarkInst(Home dto) throws Exception {
@@ -74,9 +74,11 @@ public class HomeServiceImpl implements HomeService{
 	@Override
 	public Home bookmarklist(Home dto) throws Exception {
 		return dao.bookmarklist(dto);
-	}
+	}//------------------- bookmark E----------------
 
 
+	
+	
 	@Override
 	public int likeInsert(Home dto) throws Exception {
 		return dao.likeInsert(dto);

@@ -152,7 +152,7 @@
 			,bookmark_UserId
 		)
 		VALUES(
-			1
+			1R
 			,#{question_questionSeq}
 			,#{bookmark_UserId}
 		)
@@ -171,7 +171,6 @@
 			AND bookmark_UserId = #{bookmark_UserId}
 	</select>
 	<!--북마크 체크 -->
-	
 	<select id="bookmarklist" resultMap="resultMapObj">
 	select 
 	bookmarkSeq
