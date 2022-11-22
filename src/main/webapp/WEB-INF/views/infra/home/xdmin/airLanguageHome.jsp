@@ -20,6 +20,7 @@
 <body>
 <form name="form">
 <input type="hidden" name="memberSeq" value="<c:out value="${sessSeq }"/>" >
+
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->   
