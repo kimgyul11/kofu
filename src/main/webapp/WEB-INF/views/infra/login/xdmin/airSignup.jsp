@@ -26,11 +26,11 @@
             <li>
                 <div class="profileWrap">
                     <div class="profileCircle">
-                        <img class="profileImg"src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>" >
+                        <img class="profileImg"src="https://cdn-icons-png.flaticon.com/512/456/456283.png"><%-- <c:out value="${item.path}"/><c:out value="${item.uuidName}"/>" --%>
                     </div>
                     <div class="profileImgUpload">
-                        <input id="uploadedImage" name="uploadedImage" type="file" id="upload_file" accept="image/*"  >
-                        <label for="uploadedImage">이미지선택<i class="fa-regular fa-file-image"></i></label>
+                        <input name="uploadedImage" type="file" id="upload_file" accept="image/*"  >
+                        <label for="upload_file">이미지선택<i class="fa-regular fa-file-image"></i></label>
                     </div>
                 </div>
             </li>
@@ -212,35 +212,19 @@
 	        }
 		});
 		
-		const reader = new FileReader();
-		reader.onload = (readerEvent) => {
-		    document.querySelector("#img_section").setAttribute("src", readerEvent.target.result);
-		    //파일을 읽는 이벤트가 발생하면 img_section의 src 속성을 readerEvent의 결과물로 대체함
-		};
-		document.querySelector("#upload_file").addEventListener("change", (changeEvent) => {
-		    //upload_file 에 이벤트리스너를 장착
-		    const imgFile = changeEvent.target.files[0];
-		    reader.readAsDataURL(imgFile);
-		    //업로드한 이미지의 URL을 reader에 등록
-		})
-		const exampleModal = document.getElementById('exampleModal')
-			exampleModal.addEventListener('show.bs.modal', event => {
-			// Button that triggered the modal
-		const button = event.relatedTarget
-			// Extract info from data-bs-* attributes
-		const recipient = button.getAttribute('data-bs-whatever')
-			// If necessary, you could initiate an AJAX request here
-			// and then do the updating in a callback.
-			//
-			// Update the modal's content.
-		const modalTitle = exampleModal.querySelector('.modal-title')
-		const modalBodyInput = exampleModal.querySelector('.modal-body input')
-			
-			modalTitle.textContent = `New message to ${recipient}`
-			modalBodyInput.value = recipient
-		})
-		
+		// 이미지 업로드
+	  const fileDOM = document.querySelector('#upload_file');
+	  const preview = document.querySelector(".profileImg");
 
+	  fileDOM.addEventListener('change', () => {
+	    const reader = new FileReader();
+	    reader.onload = ({ target }) => {
+	      preview.src = target.result;
+	    };
+	    reader.readAsDataURL(fileDOM.files[0]);
+	  });
+	  		
+	
 	</script>
 </body>
 
