@@ -148,7 +148,10 @@
  
  
 <br>
-<br>   
+<br>
+<c:forEach items="${oracleList}" var="oracleList" varStatus="status">
+  	<c:out value="${oracleList.JOB_TITLE}"/>
+  </c:forEach>   
     <!--테이블 시작  -->
     <div class="contaner"
     <div style="width:80%;margin:auto; text-align: center; height:700px;">

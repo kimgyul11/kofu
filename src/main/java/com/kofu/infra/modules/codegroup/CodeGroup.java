@@ -10,7 +10,8 @@ public class CodeGroup {
 	private String insertdate;
 	private String moddate;
 	private Integer delNy;
-	
+	private String JOB_ID;
+	private String JOB_TITLE;
 	
 	
 	
@@ -18,6 +19,18 @@ public class CodeGroup {
 	
 	public Integer getDelNy() {
 		return delNy;
+	}
+	public String getJOB_ID() {
+		return JOB_ID;
+	}
+	public void setJOB_ID(String jOB_ID) {
+		JOB_ID = jOB_ID;
+	}
+	public String getJOB_TITLE() {
+		return JOB_TITLE;
+	}
+	public void setJOB_TITLE(String jOB_TITLE) {
+		JOB_TITLE = jOB_TITLE;
 	}
 	public void setDelNy(Integer delNy) {
 		this.delNy = delNy;

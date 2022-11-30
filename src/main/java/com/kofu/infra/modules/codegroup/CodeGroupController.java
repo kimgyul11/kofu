@@ -34,6 +34,8 @@ public class CodeGroupController {
 		vo.setParamsPaging(service.selectOneCount(vo));
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
+		List<CodeGroup> oracleList = service.oracleSelect();
+		model.addAttribute("oracleList",oracleList);
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	

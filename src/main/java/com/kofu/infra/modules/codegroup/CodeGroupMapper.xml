@@ -8,7 +8,7 @@
 
     <resultMap id="resultMapObj" type="com.kofu.infra.modules.codegroup.CodeGroup"></resultMap>
 		<sql id="selectListUpperForMysql">
-		select aa.* from (
+			select aa.* from (
 		</sql>
 	
 	
@@ -101,6 +101,12 @@
 	</update>
 	
 	
+	<select id="oracleSelect" resultMap="resultMapObj">
+		SELECT
+			JOB_ID
+			,JOB_TITLE
+		FROM JOBS
+	</select>
 	
 </mapper>	
 
