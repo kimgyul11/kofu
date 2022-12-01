@@ -9,12 +9,7 @@
 <html lang="kr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="/resources/xdmin/css/home.css" />
-    <link rel="stylesheet" href="/resources/xdmin/css/style.css" />
     <title>HOME</title>
 </head>
 <body>
@@ -24,11 +19,11 @@
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->   
-<div class="title">
+	<div class="mainSearchWrap">
     <h1>언제,어디서나 원어민과 함께</h1> 
     <h2>AIR LANGUAGE</h2>
-    <div class="imgbox">
-    	<img class="img" src="https://cdn-icons-png.flaticon.com/512/476/476505.png">
+    <div class="mainimgbox">
+    	<img class="mainimg" src="https://cdn-icons-png.flaticon.com/512/476/476505.png">
     </div>
     <div class="searchbar">
 	    <ul class="search__option">
@@ -54,15 +49,57 @@
 	    </div>
 	</div>
 </div>
-
-
-
-
-
-
-
-
+ <div class="showbox">
+        <ul class="boxwrap">
+            <li class="box"><h1>지금 바로 출발할 준비 되었나요?</h1></li>
+            <li class="box"><h1>AIR LANGUAGE에서 </h1></li>
+            <li class="box"><h1>무한한 가능성을 펼쳐보세요</h1></li>
+            <li class="box"><h1></h1></li>
+            <li class="box"><img src="https://cdn-icons-png.flaticon.com/512/4524/4524057.png" ></li>
+        </ul>
+        <div class="boxwrap2">
+            <div class="mimgbox">
+                <img src="https://cdn-icons-png.flaticon.com/512/436/436354.png" alt="">
+            </div>
+            <ul class="mtextbox">
+                <li><h1>새로운 언어를 배울 시간</h1></li>
+                <li><h1>자신의 언어로 도와주거나</h1></li>
+                <li><h1>다른사람들에게 도움을 받아보세요</h1></li>
+            </ul>
+        </div>
+        <div class="coment">
+            <div class="imgbox">
+                <img src="https://cdn-icons-png.flaticon.com/512/9041/9041407.png">
+            </div>
+            <div class="textbox">
+                <h1>자유롭게 묻고 답해보세요</h1>
+                <h2 style="color:tomato;">지금 바로 질문하기>></h2><br><br>
+                <p>모르는 단어를 물어보거나<br>궁금한 모든것을 자신의 언어로 물어보세요</p>
+            </div>
+        </div>
+        <div class="coment">
+            <div class="textbox">
+                <h1>언제든지 꺼내보세요</h1>
+                <h2>마이페이지로 이동</h2><br><br>
+                <p>내가 궁금한 질문들을 저장해보세요<br>마이페이지에서 확인 하실 수 있습니다.</p>
+            </div>
+            <div class="imgbox">
+                <img src="https://cdn-icons-png.flaticon.com/512/5494/5494525.png">
+            </div>
+        </div>
+        <div class="coment">
+            <div class="imgbox">
+                <img src="https://cdn-icons-png.flaticon.com/512/5352/5352459.png">
+            </div>
+            <div class="textbox">
+                <h1>당신의 가능성을 펼칠 시간</h1>
+                <h2>지금바로 시작 해보세요</h2><br><br>
+            </div>
+        </div>
+    </div>
 </form>
+   
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -130,6 +167,62 @@ const menu = document.querySelector('.nav_right_Wrap');
 toggleBtn.addEventListener('click', () =>{
     menu.classList.toggle('active');
 });
+
+//첫번째영역
+let observer = new IntersectionObserver((e)=>{
+    e.forEach((box)=>{
+        if(box.isIntersecting){
+            box.target.style.opacity = 1;
+            box.target.style.transform = 'translateY(30px)';
+        }else{
+            box.target.style.opacity = 0;
+            box.target.style.transform = 'translateY(30%)';
+        }
+    })
+})
+let box = document.querySelectorAll(".box")
+observer.observe(box[0])
+observer.observe(box[1])
+observer.observe(box[2])
+observer.observe(box[4])
+//감시해주는 객체
+
+//두번째영역
+let observer2 = new IntersectionObserver((e)=>{
+    e.forEach((box2)=>{
+        if(box2.isIntersecting){
+            box2.target.style.opacity = 1;
+            box2.target.style.transform = 'translateX(-15%)';
+        }else{
+            box2.target.style.opacity = 0;
+            box2.target.style.transform = 'translateX(-10%)';
+        }
+    })
+})
+let box2 = document.querySelectorAll(".boxwrap2")
+observer2.observe(box2[0]);
+
+
+//세번째영역
+let observer3 = new IntersectionObserver((e)=>{
+    e.forEach((box3)=>{
+        if(box3.isIntersecting){
+            box3.target.style.opacity = 1;
+            box3.target.style.transform = 'translateY(-40%)';
+        }else{
+            box3.target.style.opacity = 0;
+            box3.target.style.transform = 'translateY(-15%)';
+        }
+    })
+})
+let box3 = document.querySelectorAll(".coment")
+observer3.observe(box3[0]);
+observer3.observe(box3[1]);
+observer3.observe(box3[2]);
+//감시해주는 객체
+
+
+
 </script>
 
 </body>
