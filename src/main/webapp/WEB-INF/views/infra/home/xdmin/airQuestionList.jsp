@@ -66,7 +66,8 @@
 					                            <c:if test="${list.language_select eq Language.ccSeq}">질문 언어 :<c:out value="${Language.cc_name }"/></c:if>
 					                        </c:forEach>
 				                        </li>
-			                        	<li>작성일:<c:out value="${list.writetime }"/></li>    
+			                        	<li>작성일:<c:out value="${list.writetime }"/></li>
+			                        	<li>답변수:<c:out value="${list.questionCount }"/></li>    
 			                        </ul>
 			                    </li>
 			                </ul>

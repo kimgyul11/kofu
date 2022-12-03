@@ -55,6 +55,9 @@ public class Home extends Base {
 	private String likeUseNy;
 	
 	
+	//답변 카운트 
+	private String questionCount;
+	
 	//다중이미지 업로드
 	private MultipartFile[] uploadedImage;
 	
@@ -396,6 +399,12 @@ public String getAirline() {
 	}
 	public void setCc_name(String cc_name) {
 		this.cc_name = cc_name;
+	}
+	public String getQuestionCount() {
+		return questionCount;
+	}
+	public void setQuestionCount(String questionCount) {
+		this.questionCount = questionCount;
 	}
 	
 	

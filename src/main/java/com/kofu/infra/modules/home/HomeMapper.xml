@@ -27,6 +27,7 @@
 	    	,a.language_select
 	    	,b.user_level
 	    	,b.user_id
+	    	,(select count(*) from answer  where 1=1 and  ansQuestionSeq = a.questionSeq) as questionCount
 	    	<!-- 이미지 uuid -->
     	FROM question a
     	LEFT JOIN airLanguage_member b ON b.memberSeq = a.userID
