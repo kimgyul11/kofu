@@ -39,6 +39,11 @@
                 <li class="list_item"><button name="languageOption" type="submit" value="12"><img src="https://cdn-icons-png.flaticon.com/512/555/555526.png" alt=""></li>
             </ul>
         </div><!-- 언어별 버튼영역e-->
+<!--  파파고api test   -->
+<textarea class="papagoTextareaA"id="send_text"></textarea>
+<button type="button" id="jsonConvertStringSend">Eng번역</button>
+<button type="button" id="jsonConvertStringSendjp">jpn번역</button>
+<textarea class="papagoTextareaB" id="result_text"></textarea>
 		<!-- 본문영역 s -->
 		<c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>    	    
         <c:choose>
@@ -170,6 +175,35 @@
 	$("#bookmarkInst").on("click", function(){
 		form.attr("action", goUrlInst).submit();
 	});
+    
+    
+    /* 파파고 번역기 */
+    //번역을 위해서 button 이벤트를 위해서 사용하는 것
+	$("#jsonConvertStringSend").on(
+		"click",
+		function() {
+			var str = document.getElementById("send_text").value;
+			
+			$.ajax({
+				async : true,
+				cache : false,
+				type : "post",
+				url : "trans",
+				data : {"str" : str},
+				success : function(response) {
+					let tmp = JSON.parse(response);
+					console.log(tmp.message.result.translatedText);
+					
+					document.getElementById("result_text").value = tmp.message.result.translatedText;
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert("ajaxUpdate " + jqXHR.textStatus + " : "
+							+ jqXHR.errorThrown);
+				}
+			});
+		});
+    
+    
 </script>
 </body>
 </html>

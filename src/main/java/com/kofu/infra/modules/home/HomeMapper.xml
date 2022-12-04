@@ -88,6 +88,7 @@
 		LEFT JOIN answer_like d ON a.ansSeq = d.likeAnswerSeq
 		WHERE 1=1 
 			and a.ansQuestionSeq= #{questionSeq}
+		ORDER BY 	a.	ansSelect, a.ansWriteTime desc
 	</select>
 	
 	<!-- 페이지 네이션 카운터 -->
@@ -155,7 +156,7 @@
 			,bookmark_UserId
 		)
 		VALUES(
-			1R
+			1
 			,#{question_questionSeq}
 			,#{bookmark_UserId}
 		)

@@ -160,10 +160,12 @@
  				,success: function(response) {
 					if(response.rt == "success") {
 						alert("좋아요등록완료");
-						$().text("♥")
+						$(this).text("♥")
+						window.location.reload();
 					} else if(response.rt == "delete"){
 						alert("좋아요삭제");
-						$().text('♡');
+						$(this).text('♡');
+						window.location.reload();
 					} else{
 						alert("오류");
 					}
