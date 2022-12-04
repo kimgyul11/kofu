@@ -18,7 +18,7 @@ public class Base {
 	private String questionSeq;
 	private String userID;
 	private String language_select;
-	private String writetime;
+	private Date writetime;
 	private String lastModTime;
 	private Integer questionDelNy;
 	private String bookmarkSeq;
@@ -277,10 +277,11 @@ public class Base {
 	public void setLanguage_select(String language_select) {
 		this.language_select = language_select;
 	}
-	public String getWritetime() {
+
+	public Date getWritetime() {
 		return writetime;
 	}
-	public void setWritetime(String writetime) {
+	public void setWritetime(Date writetime) {
 		this.writetime = writetime;
 	}
 	public String getLastModTime() {

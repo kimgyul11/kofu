@@ -14,7 +14,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/xdmin/css/airQuestionList.css">
-    <link rel="stylesheet" href="/resources/xdmin/css/style.css">
     <title>AIRLANGUAGE</title>
 </head>
 <body>
@@ -27,6 +26,9 @@
 	<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 	<!-- Navbar e  -->    
     <div class="container">
+    <a href="#" class="navbar__toogleBtn">
+   			<i class="fa-solid fa-bars"></i>
+		</a>
         <!-- 언어별 버튼영역 s -->
         <div class="language_catagory_wrap">
             <p>언어별 선택 <i class="fa-solid fa-magnifying-glass"></i></p>
@@ -44,8 +46,41 @@
     			<h2>검색조건이 없습니다.</h2>
    			</c:when>
 	    	<c:otherwise>
+	    	<div class="questionArea">
 	    		<c:forEach items="${list}" var="list" varStatus="status">
-			        <div class="box_container">
+				<!-- 질문박스s -->
+				<div class="questionBox">
+				     <div class="questionBox-header">
+				         <ul class="header-info">
+				         <c:choose>
+         					<c:when test="${list.path ne null}">
+         						<li class="info-img"><img src="<c:out value="${list.path}"/><c:out value="${list.uuidName}"/>"></li>
+   							</c:when>
+	         				<c:otherwise>
+	         					<li class="info-img"><img src="https://cdn-icons-png.flaticon.com/512/2026/2026487.png"></li>
+	         				</c:otherwise>
+	         			</c:choose>
+				            <li><c:out value="${list.user_id }"/></li>
+				        </ul>
+				        <ul class="header-date">
+				          <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
+	                            <c:if test="${list.language_select eq Language.ccSeq}"><li>질문 언어 :<c:out value="${Language.cc_name }"/></li></c:if>
+	                        </c:forEach>
+				            <li>작성일:<fmt:formatDate value="${list.writetime }" pattern="yyyy-MM-dd hh:mm"/></li>
+				            
+				        </ul>
+				    </div>
+				    <div class="questionBox-body" onclick="goForm(<c:out value="${list.questionSeq }"/>)">
+				        <p><c:out value="${list.content }"/></p>
+				    </div>
+				    <div class="questionCount">
+				        <div class="bubble"><c:out value="${list.questionCount }"/></div>
+				    </div>
+				</div>
+				<!-- 질문박스e -->	    		
+
+	    		
+			        <%-- <div class="box_container">
 			            <div class="box_wrap">
 			                <ul class="box_head">
 			                    <li>
@@ -81,8 +116,9 @@
 			                    <button><i class="fa-regular fa-message"></i></button>
 			                </ul>
 			            </div>
-			        </div>
+			        </div> --%>
 				</c:forEach>
+				</div>	    		
 			</c:otherwise>
 		</c:choose>
 	

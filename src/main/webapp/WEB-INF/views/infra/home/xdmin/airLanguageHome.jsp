@@ -20,6 +20,7 @@
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->   
 	<div class="mainSearchWrap">
+	
     <h1>언제,어디서나 원어민과 함께</h1> 
     <h2>AIR LANGUAGE</h2>
     <div class="mainimgbox">
@@ -49,6 +50,9 @@
 	    </div>
 	</div>
 </div>
+   	 <a href="#" class="navbar__toogleBtn">
+   			<i class="fa-solid fa-bars"></i>
+		</a>
  <div class="showbox">
         <ul class="boxwrap">
             <li class="box"><h1>지금 바로 출발할 준비 되었나요?</h1></li>
@@ -103,6 +107,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
+//미디어쿼리 버튼
+const toggleBtn = document.querySelector('.navbar__toogleBtn');
+const menu = document.querySelector('.nav_right_Wrap');
+
+toggleBtn.addEventListener('click', () =>{
+    menu.classList.toggle('active');
+});
+
 var goUrlList = "quelist";
 var form = $("form[name=form]");
 	$("#btnForm").on("click", function() {
@@ -160,13 +172,6 @@ goForm = function(keyValue) {
 }
 
 
-//미디어쿼리 버튼
-const toggleBtn = document.querySelector('.navbar__toogleBtn');
-const menu = document.querySelector('.nav_right_Wrap');
-
-toggleBtn.addEventListener('click', () =>{
-    menu.classList.toggle('active');
-});
 
 //첫번째영역
 let observer = new IntersectionObserver((e)=>{

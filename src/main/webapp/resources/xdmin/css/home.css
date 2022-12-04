@@ -30,7 +30,6 @@ ul{
 	justify-content: space-between;
 	align-items: center;
     flex-wrap: wrap;
-    border-bottom: 1px solid #e0e0e0;
     position:sticky;
     top:0;
     z-index:100;
@@ -287,6 +286,7 @@ option {
         right: 22px;
         font-size: 24px;
         color: #000;
+        z-index: 120;
     }
    	.navbar .logo{
         margin-left: 0;

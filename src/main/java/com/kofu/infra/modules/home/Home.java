@@ -1,5 +1,7 @@
 package com.kofu.infra.modules.home;
 
+import java.util.Date;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kofu.infra.common.base.Base;
@@ -12,7 +14,6 @@ public class Home extends Base {
 	//qeustion 테이블
 	private String questionSeq;
 	private String content;
-	private String writetime;
 	private String userID;
 	private String language_select;
 	private String lastModTime;
@@ -361,12 +362,7 @@ public String getAirline() {
 	public void setLanguage_select(String language_select) {
 		this.language_select = language_select;
 	}
-	public String getWritetime() {
-		return writetime;
-	}
-	public void setWritetime(String writetime) {
-		this.writetime = writetime;
-	}
+
 	public String getLastModTime() {
 		return lastModTime;
 	}

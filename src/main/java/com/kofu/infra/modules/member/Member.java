@@ -82,9 +82,6 @@ public class Member extends Base{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getWritetime() {
-		return writetime;
-	}
 	public void setWritetime(String writetime) {
 		this.writetime = writetime;
 	}

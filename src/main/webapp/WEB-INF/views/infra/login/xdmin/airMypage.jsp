@@ -28,7 +28,14 @@
             <div class="mypage_left_Wrap">
                 <div class="profile_box">
                     <div class="profile">
-                        <img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>">
+                    	<c:choose>
+         					<c:when test="${item.path ne null}">
+         						<img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>">
+   							</c:when>
+	         				<c:otherwise>
+	         					<img src="https://cdn-icons-png.flaticon.com/512/5987/5987462.png">
+	         				</c:otherwise>
+         				</c:choose>
                     </div>
                     <ul class="profile_input">
                         <li><p>아이디</p><input type="text" readonly value="<c:out value="${sessId}"/>" ></li>

@@ -60,8 +60,8 @@
             <div class="input_box">
                     <h1>로그인</h1>
                 <ul class="input_item">
-                    <li><input type="text" id="user_id" placeholder="아이디를 입력해주세요"></li>
-                    <li><input type="password" id="user_pw" placeholder="비밀번호를 입력해주세요"></li>
+                    <li><input type="text" id="user_id" placeholder="아이디를 입력해주세요" value="test11"></li>
+                    <li><input type="password" id="user_pw" placeholder="비밀번호를 입력해주세요" onkeyup="enterkey();" value="1234"></li>
                     <ul class="input_itembtn">
                         <li>
                         <label class="switch">
@@ -106,7 +106,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script type="text/javascript">
-
+    function enterkey() {
+    	if (window.event.keyCode == 13) {
+    	     // 엔터키가 눌렸을 때 실행할 내용
+    		  $.ajax({
+                  async: true 
+                  ,cache: false
+                  ,type: "post"
+                  /* ,dataType:"json" */
+                  ,url: "/member/loginProc"
+                  /* ,data : $("#formLogin").serialize() */
+                  ,data : { "user_id" : $("#user_id").val(), "user_pw" : $("#user_pw").val()}
+                  ,success: function(response) {
+                      if(response.rt == "success") {
+                              alert("로그인 완료");
+                              location.href = "/airLanguageHome";
+                      } else {
+                          alert("회원없음");
+                      }
+                  }
+                  ,error : function(jqXHR, textStatus, errorThrown){
+                      alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+                  }
+              });
+          };
+    	}
         $("#btnLogin").on("click", function(){
     
             $.ajax({
@@ -231,8 +255,6 @@
 					});
 
 	   		function setLoginStatus() {
-
-				
 				$.ajax({
 					async: true
 					,cache: false
@@ -253,16 +275,6 @@
 				});
 			}
 		   });
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
     </script>    
 </body>
 </html>

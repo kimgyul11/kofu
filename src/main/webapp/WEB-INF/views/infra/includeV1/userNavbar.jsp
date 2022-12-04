@@ -5,20 +5,6 @@
         <div class="logo">
             <a href="/airLanguageHome">AirLanguage</a>
         </div>
-   
-		<div class="wrap">
-			<%-- <div class="search">
-				<select id="navShOption" name="navShOption"class="select-option">
-					<option>언어선택</option>
-					<option value="9"<c:if test="${vo.navShOption eq 9}">selected</c:if>>한국어</option>
-					<option value="10"<c:if test="${vo.navShOption eq 10}">selected</c:if>>중국어</option>
-					<option value="11"<c:if test="${vo.navShOption eq 11}">selected</c:if>>일본어</option>
-					<option value="12"<c:if test="${vo.navShOption eq 12}">selected</c:if>>영어</option>
-				</select>
-			 	<input type="text" name="navShValue" id="navShValue" value="<c:out value="${vo.navShValue}"/>" class="searchTerm" placeholder="검색어를 입력하세요">
-			 <button type="button"  class="searchButton" id="btnForm"><i class="fa fa-search"></i></button>
-	   		</div> --%>
-		</div>
         <ul class="nav_right_Wrap">
             <c:choose>
             	<c:when test="${empty sessSeq }">
@@ -35,6 +21,3 @@
             </c:choose>
         </ul>
     </div><!-- 네비게이션바 영역 종료-->
-        <a href="#" class="navbar__toogleBtn">
-   			<i class="fa-solid fa-bars"></i>
-		</a>
