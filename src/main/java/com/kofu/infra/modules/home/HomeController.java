@@ -75,6 +75,9 @@ public class HomeController {
 		Home result = service.selectOne(vo);
 		model.addAttribute("item",result);
 		
+		List<Home>listCount = service.likeListCnt(dto);
+		model.addAttribute("listCount", listCount);
+	
 
 		
 		List<Home>homeList = service.selectAns(vo);

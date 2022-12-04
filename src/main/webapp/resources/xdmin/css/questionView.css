@@ -475,6 +475,10 @@ html{
     background: #000;
     color: #fff;
 }
+.likebtn{
+	background:red;
+	width:150px;
+}
 
 
 

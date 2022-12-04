@@ -86,8 +86,8 @@
 		<c:if test="${not empty vo.questionSeq}">
 			<input type="hidden" name="ansSeq">
 			<c:forEach items="${homeList}"  var="homeList" varStatus="status">
-			<input text="hidden" class="likeAnswerSeq" name="likeAnswerSeq" id="likeAnswerSeq"value="<c:out value="${homeList.ansSeq }"/>">
-			<input text="hidden" value="<c:out value="${homeList.likeSeq }"/>" id="likeSeq" name="likeSeq">
+			<input type="text" class="likeAnswerSeq" name="likeAnswerSeq" id="likeAnswerSeq"value="<c:out value="${homeList.ansSeq }"/>">
+			<input type="hidden" value="<c:out value="${homeList.likeSeq }"/>" id="likeSeq" name="likeSeq">
 			
 			    <div class="answerbox">
 			    	<div class="answer-hearderWrap">
@@ -108,6 +108,7 @@
 		           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택하기</button> 
 		              	</c:if>
 			            <button>신고하기</button>
+			            좋아요수:<c:out value="${fn:length(listCount)}"/>
 			              <input type="text" value="<c:out value="${homeList.likeUseNy }"/>" id="likeUseNy" name="likeUseNy">
 			            <c:choose>
 							<c:when test="${empty homeList.likeUseNy}">
@@ -159,11 +160,9 @@
 				,data: {"likeUserId" : $("#likeUserId").val(), "likeAnswerSeq" : JSON.stringify(keyValue)} 
  				,success: function(response) {
 					if(response.rt == "success") {
-						alert("좋아요등록완료");
 						$(this).text("♥")
 						window.location.reload();
 					} else if(response.rt == "delete"){
-						alert("좋아요삭제");
 						$(this).text('♡');
 						window.location.reload();
 					} else{
