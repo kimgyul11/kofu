@@ -27,12 +27,13 @@
 	    	,a.language_select
 	    	,b.user_level
 	    	,b.user_id
+	    	,b.memberSeq
 	    	,(select count(*) from answer  where 1=1 and  ansQuestionSeq = a.questionSeq) as questionCount
 	    	,c.path
 	    	,c.uuidName
     	FROM question a
     	LEFT JOIN airLanguage_member b ON b.memberSeq = a.userID
-    	LEFT JOIN questionImgUploaded c ON c.pseq = a.userID
+    	LEFT JOIN airLanguage_memberUploaded c ON c.pseq = b.memberSeq
     	WHERE 1=1
     	<choose>
     		<when test="languageOption == 9"> AND a.language_select = 9 </when>
