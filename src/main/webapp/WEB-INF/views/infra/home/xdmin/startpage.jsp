@@ -11,33 +11,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/resources/xdmin/xdmin_css/startpage.css">
-    <title>AirLanguage</title>
+    <link rel="stylesheet" href="/DODAMDODAM/css/dindex.css">
+    <title>DODAM</title>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <h2>AirLanguage</h2>
-            <div class="pic"></div>
-            <button onClick="location.href='airLogin'">click</button>
-        </div>
-        <div class="card card2">
-            <h4>Admin Page</h4>
-        <i class="fas fa-arrow-right"></i>
-            <div class="pic"></div>
-            <button type="button" onClick="location.href='xdminlogin'">click</button>
-        </div>
-    </div>
-    <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
-    <script>
-	
-	goForm = function(keyValue) {
 
-		/* if(keyValue != 0) seq.val(btoa(keyValue)); */
-		seq.val(keyValue);
-		form.attr("action", goUrlForm).submit();
-	}
-	
-    </script>
+<div class="box-left">
+    <a href="#" class="card-user education"></a>
+    <br>
+    <p>USER PAGE</p>
+</div>
+
+<div class="box-right">
+    <a href="#" class="card-admin education"></a>
+    <br>
+    <p>ADMIN PAGE</p>
+</div>
 </body>
 </html>

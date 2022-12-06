@@ -17,8 +17,9 @@
     <title>AIRLANGUAGE</title>
 </head>
 <body>
-<form name = "form" action="">
+<form name="form">
 <input type="hidden" name="questionSeq">
+<input type="text"  name="languageOption"value="<c:out value="${vo.languageOption}"/>">
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 <input type="hidden" name="bookmark_UserId" value="<c:out value="${sessSeq}"/>">
@@ -40,10 +41,10 @@
             </ul>
         </div><!-- 언어별 버튼영역e-->
 <!--  파파고api test   -->
-<textarea class="papagoTextareaA"id="send_text"></textarea>
+<!-- <textarea class="papagoTextareaA"id="send_text"></textarea>
 <button type="button" id="jsonConvertStringSend">Eng번역</button>
 <button type="button" id="jsonConvertStringSendjp">jpn번역</button>
-<textarea class="papagoTextareaB" id="result_text"></textarea>
+<textarea class="papagoTextareaB" id="result_text"></textarea> -->
 		<!-- 본문영역 s -->
 		<c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>    	    
         <c:choose>
@@ -65,14 +66,27 @@
 	         					<li class="info-img"><img src="https://cdn-icons-png.flaticon.com/512/2026/2026487.png"></li>
 	         				</c:otherwise>
 	         			</c:choose>
-				            <li><c:out value="${list.user_id }"/></li>
+				            <li class="open-modal"><c:out value="${list.user_id }"/></li>
 				        </ul>
 				        <ul class="header-date">
-				          <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
-	                            <c:if test="${list.language_select eq Language.ccSeq}"><li>질문 언어 :<c:out value="${Language.cc_name }"/></li></c:if>
-	                        </c:forEach>
-				            <li>작성일:<fmt:formatDate value="${list.writetime }" pattern="yyyy-MM-dd hh:mm"/></li>
-				            
+				          <%-- <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
+	                            <c:if test="${list.language_select eq Language.ccSeq}">
+	                            	<li>질문 언어 :<c:out value="${Language.cc_name }"/></li>
+	                            </c:if>
+	                        </c:forEach> --%>
+	                        <c:if test="${list.language_select eq 9}">
+	                        	<li class="language-select">질문언어<div class="test-item-kor"></li>
+	                        </c:if>
+	                        <c:if test="${list.language_select eq 10}">
+	                        	<li class="language-select">질문언어<div class="test-item-cha"></li>
+	                        </c:if>
+	                        <c:if test="${list.language_select eq 11}">
+	                        	<li class="language-select">질문언어<div class="test-item-jpa"></li>
+	                        </c:if>
+	                        <c:if test="${list.language_select eq 12}">
+	                        	<li class="language-select">질문언어<div class="test-item-usa"></li>
+	                        </c:if>
+				            	<li class="language-select">작성일:<fmt:formatDate value="${list.writetime }" pattern="yyyy-MM-dd hh:mm"/></li>
 				        </ul>
 				    </div>
 				    <div class="questionBox-body" onclick="goForm(<c:out value="${list.questionSeq }"/>)">
@@ -82,46 +96,49 @@
 				        <div class="bubble"><c:out value="${list.questionCount }"/></div>
 				    </div>
 				</div>
-				<!-- 질문박스e -->	    		
-
-	    		
-			        <%-- <div class="box_container">
-			            <div class="box_wrap">
-			                <ul class="box_head">
-			                    <li>
-			                        <ul class="box_profile">
-			                            <li class="profile_imgWrap"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt=""></li>
-			                            <li class="profile_idwrap"><c:out value="${list.user_id }"/></li>
-			                            <li class="profile_lvwrap">
-			                            	<c:choose>
-			                            		<c:when test="${list.user_level eq 1}"><h1>레벨1</h1></c:when>
-			                            	</c:choose>
-			                            </li>
-			                        </ul>
-			                    </li>
-			                    <li>
-			                        <ul class="box_info">
-				                        <li>
-					                        <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
-					                            <c:if test="${list.language_select eq Language.ccSeq}">질문 언어 :<c:out value="${Language.cc_name }"/></c:if>
-					                        </c:forEach>
-				                        </li>
-			                        	<li>작성일:<c:out value="${list.writetime }"/></li>
-			                        	<li>답변수:<c:out value="${list.questionCount }"/></li>    
-			                        </ul>
-			                    </li>
-			                </ul>
-				                <a href="javascript:goForm(<c:out value="${list.questionSeq }"/>)">
-				                    <div class="box_body">
-				                        <p><c:out value="${list.content }"/></p>  
-				                    </div>
-				                </a>
-			                <ul class="box_footer">
-			                	<input type="hidden" value="<c:out value="${list.questionSeq}"/>" name="question_questionSeq" >
-			                    <button><i class="fa-regular fa-message"></i></button>
-			                </ul>
-			            </div>
-			        </div> --%>
+				<!-- 질문박스e -->
+<div class="userInfo-modal_background"> 
+        <div class="userInfo-modal_wrap">
+            <div class="userInfo-modal-Box">
+                <div>
+                    <span class="close-modal">&times;</span>
+                </div>
+                    <div class="profile-head">
+                    	<c:choose>
+         					<c:when test="${list.path ne null}">
+         						<img class="profile-head_img" src="<c:out value="${list.path}"/><c:out value="${list.uuidName}"/>">
+   							</c:when>
+	         				<c:otherwise>
+	         					<img class="profile-head_img" src="https://cdn-icons-png.flaticon.com/512/2026/2026487.png">
+	         				</c:otherwise>
+	         			</c:choose>
+                        	<p><c:out value="${list.user_id }"/></p>
+                        </div>
+                        <ul class="profile-body">
+                            <li class="profile-body_item">
+                                <p>주로 사용하는 언어</p>
+                                <span><c:out value="${list.user_favoriteLanguage }"/></span>
+                            </li>
+                            <li class="profile-body_item">
+                                <p>현재 배우는 언어</p>
+                                <span><c:out value="${list.lean_language }"/></span>
+                            </li>
+                            <li class="profile-body_item">
+                                <p>좋아요 받은 수</p>
+                                <span>cout</span>
+                            </li>
+                            <li class="profile-body_item">
+                                <p>채택 답변 수</p>
+                                <span>cout</span>
+                            </li>
+                        </ul>
+                        <div class="profile-introduce">
+                            <p>여기에 텍스트 소개들어갑니다</p>
+                        </div>
+              
+            </div>
+        </div>
+    </div>
 				</c:forEach>
 				</div>	    		
 			</c:otherwise>
@@ -153,6 +170,7 @@
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
+	var memberseq = $("input:hidden[name=memberSeq]");
 	var questionSeq = $("input:hidden[name=questionSeq]");
 	var bookSeq = $("input:hidden[name=bookmarkSeq]");
 	var goUrlForm = "/queview";
@@ -170,11 +188,7 @@
 		form.attr("action", goUrlForm).submit();
 	}
 	
-    var goUrlInst = "qlbookmark"; 			/* #-> */
-    
-	$("#bookmarkInst").on("click", function(){
-		form.attr("action", goUrlInst).submit();
-	});
+
     
     
     /* 파파고 번역기 */
@@ -203,7 +217,42 @@
 			});
 		});
     
-    
+	
+
+	
+	// Modal을 가져온다
+	const modal = document.getElementsByClassName("userInfo-modal_background");
+	// Modal을 띄우는 클래스 이름을 가져온다.
+	const openModalBtn = document.getElementsByClassName("open-modal");
+	// Modal을 닫는 close 클래스를 가져온다.
+	const closeModalBtn = document.getElementsByClassName("close-modal");
+	var funcs = [];
+
+
+	// Modal을 띄우고 닫는 클릭 이벤트를 정의한 함수
+	function Modals(num) {
+		return function(){
+			// 해당 클래스의 내용을 클릭하면 Modal을 띄운다.
+			openModalBtn[num].onclick = function(){
+				modal[num].style.display = "block";
+				console.log(num);
+			};
+			
+			// 닫기 버튼 클릭하면 Modal이 닫힌다.
+			closeModalBtn[num].onclick = function() {
+				modal[num].style.display = "none";
+			};
+		};
+	}
+	// 원하는 Modal 수만큼 Modal 함수를 호출해서 funcs 함수에 정의한다.
+	for(var i = 0; i< openModalBtn.length; i++){
+		funcs[i] = Modals(i);
+	}
+	// 원하는 Modal 수만큼 funcs 함수를 호출한다.
+	for(var j = 0; j< openModalBtn.length; j++){
+		funcs[j]();
+	}
+	
 </script>
 </body>
 </html>

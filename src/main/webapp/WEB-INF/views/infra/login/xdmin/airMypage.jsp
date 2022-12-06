@@ -68,7 +68,7 @@
 					    <span>총 질문 수: ${fn:length(list)}</span>
 						<c:forEach items="${list}" var ="list" varStatus="status">
 							<ul class="menu2">
-							    <li onclick="goview(<c:out value="${list.questionSeq}"/>);"><c:out value="${list.content }"/></li>
+							    <li onclick="goview(<c:out value="${list.questionSeq}"/>);"><p><c:out value="${list.content }"/></p></li>
 							</ul>
 						</c:forEach>
 					</li>

@@ -193,11 +193,13 @@
     #ac .menu2{
         display:none;
     }
-    #ac .menu2 li{
+    #ac .menu2 li p{
         height: 20px;
         width: 100%;
         text-align: center;
         cursor: pointer;
+        overflow:hidden;
+        text-overflow: ellipsis;
     }
     #ac .menu2 li:hover{
         background-color:rgba(0, 0, 0, 0.500);

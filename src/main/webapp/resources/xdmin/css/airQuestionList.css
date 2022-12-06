@@ -104,7 +104,7 @@
 	margin-bottom:30px;
 }
 .questionBox{
-    width: 100%;
+    min-width: 700px;
     max-width: 700px;
     min-height: 220px;
     border-radius: 5px;
@@ -141,15 +141,39 @@
 	height: 100%;
 }
 .questionBox-body{
-    width: 100%;
+    margin:auto;
     height: 150px;
-    padding: 8px 16px;
     font-size: 0.8rem;
+    padding:12px 16px;
     cursor: pointer;
+    position: relative;
+    overflow:auto;
+    z-index: 1;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
 }
-.header-date{
-    font-size: 0.9rem;
+.questionBox-body:after{
+	content: "";
+    width: 0%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    left: 0;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+    background: #e0f2f1;
 }
+.questionBox-body:hover:after{
+	width: 100%;
+    z-index: -1;
+}
+
 .questionCount{
     display: flex;
     justify-content: flex-end;
@@ -168,6 +192,51 @@
     align-items: center;
     font-size: 1.2rem;
 }
+/* 질문 언어 */
+.header-date{
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+}
+.language-select{
+	display: flex;
+	align-items: center;
+	font-weight: bold;
+}
+.test-item-kor{
+    width: 25px;
+    height: 25px;
+    margin-left:10px;
+    border-radius:50%;
+    border:1px solid #616161;
+    background-image: url(https://cdn-icons-png.flaticon.com/512/5111/5111586.png);
+    background-size: cover;
+}
+.test-item-cha{
+    width: 25px;
+    height: 25px;
+    margin-left:10px;
+    border-radius:50%;
+    background-image: url(https://cdn-icons-png.flaticon.com/512/323/323363.png);
+    background-size: cover;
+}
+.test-item-usa{
+    width: 25px;
+    height: 25px;
+    margin-left:10px;
+    border-radius:50%;
+    background-image: url(https://cdn-icons-png.flaticon.com/512/323/323310.png);
+    background-size: cover;
+}
+.test-item-jpa{
+    width: 25px;
+    height: 25px;
+    margin-left:10px;
+    border:1px solid #616161;
+    border-radius:50%;
+    background-image: url(https://cdn-icons-png.flaticon.com/512/323/323308.png);
+    background-size: cover;
+}
 
 .bubble
 {
@@ -183,6 +252,7 @@ border: #e0e0e0 solid 2px;
 display: flex;
 justify-content: center;
 align-items: center;
+z-index: 0;
 }
 
 .bubble:after
@@ -449,7 +519,118 @@ padding: 0;
     	width:90%;
     }
 }    
-
-
 }
 
+
+/* 유저정보 모달 s */
+.open-modal{
+	cursor:pointer;
+	border-radius:5px;
+	padding:2px;
+}
+.open-modal:hover{
+	background:#000;
+	color:#fff;
+}
+.userInfo-modal_background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+.userInfo-modal_wrap{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.HeaderList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+.userInfo-modal-Box{
+    min-width: 900px;
+    min-height: 500px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    animation: scale 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.02),22.3px 22.3px 17.9px rgba(0, 0, 0, 0.03),100px 100px 80px rgba(0, 0, 0, 0.05);
+}
+.close-modal {
+    float: right;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: red;
+}
+@keyframes scale {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+.prifileBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px 6px;
+    max-width: 600px;
+    min-height: 500px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+.profile-head{
+    display: flex;
+    flex-direction:column;
+    padding: 12px 0px;
+    justify-content: center;
+    align-items: center;
+}
+.profile-head_img{
+    width:150px;
+    height:150px;
+    border-radius: 50%;
+    border: 3px solid;
+}
+.profile-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile-body_item{
+    width: 100%;
+    margin-bottom: 12px;
+    height: 40px;
+    max-width: 400px;
+    display: flex;
+    background: #eeeeee;
+    align-items: center;
+    justify-content: space-around;
+}
+.profile-body_item span{
+    color: red;
+}
+.profile-introduce{
+    width: 100%;
+    max-width: 400px;
+    height: 100px;
+    border: 1px solid #e0e0e0;
+    margin: auto;
+    padding: 12px 6px;
+    font-size:0.8rem;
+}
+/* 유저정보 모달e */

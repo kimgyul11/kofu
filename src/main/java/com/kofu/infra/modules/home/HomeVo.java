@@ -18,6 +18,7 @@ public class HomeVo {
 	private String likeAnswerSeq;
 	private String bookmark_UserId;
 	private String userID;
+	private String memberSeq;
 	
 	
 	
@@ -26,6 +27,12 @@ public class HomeVo {
 	
 
 
+	public String getMemberSeq() {
+		return memberSeq;
+	}
+	public void setMemberSeq(String memberSeq) {
+		this.memberSeq = memberSeq;
+	}
 	public String getUserID() {
 		return userID;
 	}

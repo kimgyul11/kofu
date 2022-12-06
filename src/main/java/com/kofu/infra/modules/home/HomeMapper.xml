@@ -25,10 +25,12 @@
 			,a.content
 	    	,a.writetime
 	    	,a.language_select
-	    	,b.user_level
 	    	,b.user_id
 	    	,b.memberSeq
+	    	,b.lean_language
+	    	,b.user_favoriteLanguage
 	    	,(select count(*) from answer  where 1=1 and  ansQuestionSeq = a.questionSeq) as questionCount
+	    	,(select count(*) from answer_like where 1=1 and likeUserId=#{memberSeq}) as likeCount
 	    	,c.path
 	    	,c.uuidName
     	FROM question a
@@ -57,7 +59,7 @@
 		<include refid="selectListLowerForMysql" />
 	</select>
 	
-	<!-- question view  -->
+	<!-- 질문 VIEW  -->
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.questionSeq
@@ -65,13 +67,16 @@
 			,a.writetime
 			,a.language_select
 			,b.user_id
-			,b.user_level
+			,c.path
+	    	,c.uuidName
 		FROM  question a
 		LEFT JOIN airLanguage_member b ON b.memberSeq = a.userID
+		LEFT JOIN airLanguage_memberUploaded c ON c.pseq = b.memberSeq
 		WHERE 1=1
 			AND a.questionSeq = #{questionSeq}
 	</select>
 	
+	<!-- 답변내역출력 -->
 	<select id="selectAns" resultMap="resultMapObj">
 		SELECT
 			a.ansSeq
@@ -92,23 +97,15 @@
 		ORDER BY 	a.	ansSelect, a.ansWriteTime desc
 	</select>
 	
+
+	
+	
+	
 	<!-- 페이지 네이션 카운터 -->
 		<select id="selectOenCount" resultType="Integer">
 			SELECT COUNT(*)
 			FROM question a
 	    	WHERE 1=1
-   	    	<choose>
-	    		<when test="languageOption == 9"> AND a.language_select = 9 </when>
-				<when test="languageOption == 10">AND a.language_select = 10 </when>
-				<when test="languageOption == 11"> AND a.language_select = 11</when>
-				<when test="languageOption == 12"> AND a.language_select = 12</when>
-    		</choose>
-		    <choose>
-				<when test="shOption == 9"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 9 </when>
-				<when test="shOption == 10">AND a.language_select = 10 AND content LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 11"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 11</when>
-				<when test="shOption == 12"> AND content LIKE CONCAT('%',#{shValue},'%') AND a.language_select = 12</when>
-			</choose>
 		</select>
 		
 	<!-- 질문 등록  -->

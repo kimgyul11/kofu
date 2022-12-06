@@ -34,13 +34,6 @@
                 	<a href="#"><li class="qprofile"><img src="https://thumb.zumst.com/640x480/https://static.hubzum.zumst.com/hubzum/2020/07/06/10/db4a299640334858979ee4b349ae7a35.jpg" alt=""></li></a>	
 	              	
 	                <li class="qid"><c:out value="${item.user_id }"/></li>
-	                <li class="qlevel">
-	                <c:choose>
-	               		<c:when test="${item.user_level eq 1}"><img src="https://cdn-icons-png.flaticon.com/512/4262/4262616.png" alt=""></c:when>
-	               		<c:when test="${item.user_level eq 2}"><img src="https://cdn-icons-png.flaticon.com/512/4262/4262616.png" alt=""></c:when>
-	               		<c:when test="${item.user_level eq 3}"><img src="https://cdn-icons-png.flaticon.com/512/4262/4262616.png" alt=""></c:when>
-	               	</c:choose>
-                	</li>
                 </ul>	
                	<ul class="head_right">
                 	<li><c:out value="${item.language_select }"/></li>

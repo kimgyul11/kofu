@@ -58,10 +58,18 @@ public class Home extends Base {
 	
 	//답변 카운트 
 	private String questionCount;
+	private String likeCount;
+	
 	
 	//다중이미지 업로드
 	private MultipartFile[] uploadedImage;
 	
+public String getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(String likeCount) {
+		this.likeCount = likeCount;
+	}
 public MultipartFile[] getUploadedImage() {
 		return uploadedImage;
 	}

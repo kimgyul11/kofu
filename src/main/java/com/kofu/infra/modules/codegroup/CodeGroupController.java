@@ -96,7 +96,6 @@ public class CodeGroupController {
 		redirectAttributes.addFlashAttribute("vo",vo);
 		
 		return "redirect:/codeGroup/codeGroupList";
-		
 	}
 
 	

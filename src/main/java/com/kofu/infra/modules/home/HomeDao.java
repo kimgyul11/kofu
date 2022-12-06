@@ -105,6 +105,6 @@ public class HomeDao {
 	//좋아요리스트카운트 	
 	public List<Home> likeListCnt(Home dto){return sqlSession.selectList(namespace + ".likeListCnt",dto);}
 	
-
+	
 
 }

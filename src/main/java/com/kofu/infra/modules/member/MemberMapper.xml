@@ -18,7 +18,6 @@
 			,a.user_name
 			,a.user_dob
 			,a.user_conutry
-			,a.user_level
 			,a.user_gender
 			,a.user_useNy
 			,a.user_delNy
@@ -36,7 +35,6 @@
 			,user_name
 			,user_dob
 			,user_conutry
-			,user_level
 		)
 		VALUES(
 			#{user_id}
@@ -44,7 +42,6 @@
 			,#{user_name}
 			,#{user_dob}
 			,#{user_conutry}
-			,#{user_level}
 		)
 		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
 			SELECT last_insert_id()
@@ -109,7 +106,6 @@
 			a.memberSeq
 			,a.user_id
 			,a.user_name
-			,a.user_level
 			,a.lean_language
 			,a.user_gender
 			,a.user_favoriteLanguage
@@ -198,7 +194,6 @@
 			a.memberSeq
 			,a.user_id
 			,a.user_name
-			,a.user_level
 			,a.lean_language
 			,a.user_gender
 			,a.user_favoriteLanguage

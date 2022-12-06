@@ -45,6 +45,7 @@ public class HomeController {
 	public String airLanguageHome(Model model,HomeVo vo) throws Exception {
 		 System.out.println("vo.getShValue(): " + vo.getShValue());
 		 System.out.println("vo.getShOption(): " + vo.getShOption());
+		 vo.setParamsPaging(service.selectOenCount(vo));
 		 service.homeSearch(vo);
 		
 		return "infra/home/xdmin/airLanguageHome";
@@ -57,13 +58,14 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "quelist")
-	public String quelist(@ModelAttribute("vo")HomeVo vo,Model model)throws Exception {
+	public String quelist(@ModelAttribute("vo")HomeVo vo,Model model,RedirectAttributes redirectAttributes)throws Exception {
 		
 		
 		vo.setParamsPaging(service.selectOenCount(vo));
 		List<Home>list = service.selectList(vo);
 		model.addAttribute("list", list);
-		
+
+		redirectAttributes.addFlashAttribute("vo",vo);
 		return "infra/home/xdmin/airQuestionList";
 	}
 	
