@@ -51,8 +51,8 @@
 	</div>
 </div>
    	 <a href="#" class="navbar__toogleBtn">
-   			<i class="fa-solid fa-bars"></i>
-		</a>
+		<i class="fa-solid fa-bars"></i>
+	</a>
  <div class="showbox">
         <ul class="boxwrap">
             <li class="box"><h1>지금 바로 출발할 준비 되었나요?</h1></li>

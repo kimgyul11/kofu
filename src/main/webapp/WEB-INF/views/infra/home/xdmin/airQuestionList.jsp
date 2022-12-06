@@ -19,7 +19,6 @@
 <body>
 <form name="form">
 <input type="hidden" name="questionSeq">
-<input type="text"  name="languageOption"value="<c:out value="${vo.languageOption}"/>">
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 <input type="hidden" name="bookmark_UserId" value="<c:out value="${sessSeq}"/>">
@@ -115,14 +114,22 @@
                         	<p><c:out value="${list.user_id }"/></p>
                         </div>
                         <ul class="profile-body">
+                        <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
+                           <c:if test="${list.user_favoriteLanguage eq Language.ccSeq}">
                             <li class="profile-body_item">
                                 <p>주로 사용하는 언어</p>
-                                <span><c:out value="${list.user_favoriteLanguage }"/></span>
+                                <span><c:out value="${Language.cc_name }"/></span>
                             </li>
+                            </c:if>
+                            </c:forEach>
+                            <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
+                           <c:if test="${list.lean_language eq Language.ccSeq}">
                             <li class="profile-body_item">
                                 <p>현재 배우는 언어</p>
-                                <span><c:out value="${list.lean_language }"/></span>
+                                <span><c:out value="${Language.cc_name }"/></span>
                             </li>
+                            </c:if>
+                            </c:forEach>
                             <li class="profile-body_item">
                                 <p>좋아요 받은 수</p>
                                 <span>cout</span>

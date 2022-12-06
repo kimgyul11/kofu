@@ -470,7 +470,6 @@ padding: 0;
 
 
 
-@media (max-width:768px){
 	body{
 		width:100%;
 	}
@@ -518,7 +517,6 @@ padding: 0;
     .searchbar{
     	width:90%;
     }
-}    
 }
 
 
@@ -556,7 +554,8 @@ padding: 0;
     border-bottom: 1px solid #e0e0e0;
 }
 .userInfo-modal-Box{
-    min-width: 900px;
+	width:100%;
+    max-width: 600px;
     min-height: 500px;
     margin: auto;
     background-color: #fff;

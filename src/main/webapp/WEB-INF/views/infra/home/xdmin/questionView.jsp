@@ -37,7 +37,7 @@
                 </ul>	
                	<ul class="head_right">
                 	<li><c:out value="${item.language_select }"/></li>
-                	<li><c:out value="${item.writetime }"/></li>
+                	<li><fmt:formatDate value="${item.writetime }" pattern="yyyy-MM-dd hh:mm"/></li>
            		</ul>
             </ul>
             <div class="queBox_body">
@@ -56,7 +56,6 @@
 					</c:otherwise>
 				</c:choose>		
             </div>
-            
         </div>
    			
         <!-- 답변창s -->
