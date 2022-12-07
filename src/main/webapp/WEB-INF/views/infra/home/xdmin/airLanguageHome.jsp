@@ -50,7 +50,7 @@
 	    </div>
 	</div>
 </div>
-   	 <a href="#" class="navbar__toogleBtn">
+ 	 <a href="#" class="navbar__toogleBtn">
 		<i class="fa-solid fa-bars"></i>
 	</a>
  <div class="showbox">

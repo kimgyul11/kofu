@@ -277,7 +277,7 @@ option {
         margin: 0;
         padding: 8px 12px;
         width:100%;
-        border-bottom: 2px solid;
+        position:relative;
     }
     .navbar__toogleBtn{
         display: block;

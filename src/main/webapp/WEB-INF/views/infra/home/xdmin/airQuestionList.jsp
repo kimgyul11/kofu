@@ -24,11 +24,11 @@
 <input type="hidden" name="bookmark_UserId" value="<c:out value="${sessSeq}"/>">
 	<!-- Navbar s  -->
 	<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
-	<!-- Navbar e  -->    
+	<!-- Navbar e  -->
     <div class="container">
     <a href="#" class="navbar__toogleBtn">
-   			<i class="fa-solid fa-bars"></i>
-		</a>
+		<i class="fa-solid fa-bars"></i>
+	</a>
         <!-- 언어별 버튼영역 s -->
         <div class="language_catagory_wrap">
             <p>언어별 선택 <i class="fa-solid fa-magnifying-glass"></i></p>
@@ -259,6 +259,13 @@
 	for(var j = 0; j< openModalBtn.length; j++){
 		funcs[j]();
 	}
+	//미디어쿼리 버튼
+	const toggleBtn = document.querySelector('.navbar__toogleBtn');
+	const menu = document.querySelector('.nav_right_Wrap');
+
+	toggleBtn.addEventListener('click', () =>{
+	    menu.classList.toggle('active');
+	});
 	
 </script>
 </body>
