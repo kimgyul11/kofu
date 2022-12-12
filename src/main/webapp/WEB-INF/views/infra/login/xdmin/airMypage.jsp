@@ -92,12 +92,12 @@
 					</li>
 					 <li class="menu1">
 					 	<p>북마크 내역
-					     <span>북마크 게시물</span>
-					     <ul class="menu2">
-					         <li>Sub-Menu1</li>
-					         <li>Sub-Menu2</li>
-					         <li>Sub-Menu3</li>
-					     </ul>
+					     <span>북마크 수:${fn:length(bookmarkList)}</span>
+					     <c:forEach items="${bookmarkList}" var ="bookmarkList" varStatus="status">
+						     <ul class="menu2">
+						         <li onclick="goans(<c:out value="${bookmarkList.questionSeq}"/>);"><c:out value="${bookmarkList.content }"/></li>
+						     </ul>
+					     </c:forEach>
 					 </li>
 				</ul>
             </div>

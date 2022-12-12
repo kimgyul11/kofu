@@ -9,6 +9,7 @@ public class MemberVo {
 	private String bookmarkSeq;
 	private String questionSeq;
 	private String userID;
+	private String bookmark_UserId;
 	
 	
 	private String user_pw;
@@ -158,6 +159,14 @@ public class MemberVo {
 
 	public void setMemberSeq(String memberSeq) {
 		this.memberSeq = memberSeq;
+	}
+
+	public String getBookmark_UserId() {
+		return bookmark_UserId;
+	}
+
+	public void setBookmark_UserId(String bookmark_UserId) {
+		this.bookmark_UserId = bookmark_UserId;
 	}
 	
 	

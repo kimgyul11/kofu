@@ -247,6 +247,17 @@
 			and a.ansSelect = 1
 			and a.ansUserId = #{memberSeq};
 	</select>
+	<!--마이페이지 북마크리스트   -->
+	<select id="mypageBookmarkSelect" resultMap="resultMapObj">
+		SELECT
+			a.*
+		FROM question a
+		LEFT JOIN bookmark b on b.question_questionSeq = a.questionSeq
+		WHERE 1=1
+		AND b.bookmark_UserId=#{memberSeq}
+	</select>
+		
+	
 	
 		<!--마이페이지 수정  -->
 	<update id="mypageMod">

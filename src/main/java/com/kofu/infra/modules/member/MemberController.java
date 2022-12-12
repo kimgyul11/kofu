@@ -40,6 +40,10 @@ public class MemberController {
 		
 		List<Member> pickList = service.mypagePickSelect(vo);
 		model.addAttribute("pickList",pickList);
+		
+		List<Member> bookmarkList = service.mypageBookmarkSelect(vo);
+		model.addAttribute("bookmarkList",bookmarkList);
+		
 	return "infra/login/xdmin/airMypage";
 	}
 	

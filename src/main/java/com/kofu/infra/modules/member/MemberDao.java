@@ -77,6 +77,10 @@ public class MemberDao {
 	public List<Member> mypagePickSelect(MemberVo vo){
 		return sqlSession.selectList(namespace + ".mypagePickSelect", vo);
 	}
+	//마이페이지 북마크리스트 
+	public List<Member> mypageBookmarkSelect(MemberVo vo){
+		return sqlSession.selectList(namespace + ".mypageBookmarkSelect", vo);
+	}	
 	//마이페이지 수정
 	public int mypageMod(Member dto) {return sqlSession.update(namespace + ".mypageMod",dto);}
 	
