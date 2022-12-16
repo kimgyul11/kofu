@@ -88,10 +88,13 @@
 			,c.user_id
 			,d.likeSeq
 			,d.likeUseNy
+			,e.path
+	    	,e.uuidName
 		FROM answer a
 		LEFT JOIN question b ON b.questionSeq = a.ansQuestionSeq
 		LEFT JOIN airLanguage_member c ON a.ansUserId = c.memberSeq
 		LEFT JOIN answer_like d ON a.ansSeq = d.likeAnswerSeq
+		LEFT JOIN airLanguage_memberUploaded e ON e.pseq = c.memberSeq
 		WHERE 1=1 
 			and a.ansQuestionSeq= #{questionSeq}
 		ORDER BY 	a.	ansSelect, a.ansWriteTime desc

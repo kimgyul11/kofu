@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="CodeServiceImpl" class="com.kofu.infra.modules.code.CodeServiceImpl"/> 
 
 <!DOCTYPE html>
 <html lang="kr">
@@ -31,12 +32,25 @@
         <div class="questionBox">
             <ul class="queBox_head">
                 <ul class="head_left">
-                	<a href="#"><li class="qprofile"><img src="https://thumb.zumst.com/640x480/https://static.hubzum.zumst.com/hubzum/2020/07/06/10/db4a299640334858979ee4b349ae7a35.jpg" alt=""></li></a>	
-	              	
+                <c:choose>
+				<c:when test="${item.path ne null}">
+ 					<li class="qprofile"><img src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>"></li>
+ 					<li class="qid"><c:out value="${item.user_id }"/></li>
+				</c:when>
+  				<c:otherwise>
+					<a href="#"><li class="qprofile"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt=""></li></a>	
 	                <li class="qid"><c:out value="${item.user_id }"/></li>
+  				</c:otherwise>
+  			</c:choose>
+                	
                 </ul>	
                	<ul class="head_right">
-                	<li><c:out value="${item.language_select }"/></li>
+               	<c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+               	<c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
+                           <c:if test="${item.language_select eq Language.ccSeq}">
+                	<li><c:out value="${Language.cc_name }"/></li>
+                		</c:if>
+                	</c:forEach>
                 	<li><fmt:formatDate value="${item.writetime }" pattern="yyyy-MM-dd hh:mm"/></li>
            		</ul>
             </ul>
@@ -57,7 +71,8 @@
 				</c:choose>		
             </div>
         </div>
-   			
+   		
+
         <!-- 답변창s -->
         <div class="answerWrap">
 			<div class="answerContent">
@@ -73,12 +88,43 @@
 				</ul>
 			</div>
 		</div><!--답변창e -->
+		
+		
+		<c:if test="${not empty vo.questionSeq}">
+		<c:forEach items="${homeList}"  var="homeList" varStatus="status">
+		<input type="hidden" class="likeAnswerSeq" name="likeAnswerSeq" id="likeAnswerSeq"value="<c:out value="${homeList.ansSeq }"/>">
+		<input type="hidden" value="<c:out value="${homeList.likeSeq }"/>" id="likeSeq" name="likeSeq">
+		<div class="answer_wrap">
+		   <ul class="answer_profile">
+		   <c:choose>
+				<c:when test="${homeList.path ne null}">
+ 					<li class="ans_profileWrap"><img class="ans_profile" src="<c:out value="${homeList.path}"/><c:out value="${homeList.uuidName}"/>"></li>
+		       		<li class="ans_name"><c:out value="${homeList.user_id}"/></li>
+				</c:when>
+  				<c:otherwise>
+					<li class="ans_profileWrap"><img class="ans_profile" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt=""></li>
+  					<li class="ans_name"><c:out value="${homeList.user_id}"/></li>
+  				</c:otherwise>
+  			</c:choose>
+		   </ul>
+		   <div class="answer_bubble">
+		       <p class="date"><c:out value="${homeList.ansWriteTime }"/></p>
+		       <div class="bubble_content">
+		           <c:out value="${homeList.ansContent}"/>
+		        </div>
+		        <ul class="bubble_bottom">
+		            <li class="likebtn">하트</li>
+		        </ul>
+		    </div>
+		</div>
+		</c:forEach>
+		</c:if>	
 		<br><br>
 		<br><br>
 		<c:if test="${not empty vo.questionSeq}">
 			<input type="hidden" name="ansSeq">
 			<c:forEach items="${homeList}"  var="homeList" varStatus="status">
-			<input type="text" class="likeAnswerSeq" name="likeAnswerSeq" id="likeAnswerSeq"value="<c:out value="${homeList.ansSeq }"/>">
+			<input type="hidden" class="likeAnswerSeq" name="likeAnswerSeq" id="likeAnswerSeq"value="<c:out value="${homeList.ansSeq }"/>">
 			<input type="hidden" value="<c:out value="${homeList.likeSeq }"/>" id="likeSeq" name="likeSeq">
 			
 			    <div class="answerbox">
@@ -104,10 +150,10 @@
 			              <input type="text" value="<c:out value="${homeList.likeUseNy }"/>" id="likeUseNy" name="likeUseNy">
 			            <c:choose>
 							<c:when test="${empty homeList.likeUseNy}">
-								<button class="likeInst" type="button" onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);">♡</button>
+								<button id="likeBTN" class="likeInst" type="button" onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);">♡</button>
 							</c:when>
 							<c:otherwise>
-								<button class="likeInst" type="button"  onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);">♥</button>
+								<button id="likeBTN" class="likeInst" type="button"  onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);">♥</button>
 							</c:otherwise>
 						</c:choose>
 			        </div>
@@ -152,11 +198,11 @@
 				,data: {"likeUserId" : $("#likeUserId").val(), "likeAnswerSeq" : JSON.stringify(keyValue)} 
  				,success: function(response) {
 					if(response.rt == "success") {
-						$(this).text("♥")
-						window.location.reload();
+						$(this).text("♥");
+						$("#likeBTN").load(location.href+" #likeBTN");
 					} else if(response.rt == "delete"){
 						$(this).text('♡');
-						window.location.reload();
+						$("#likeBTN").load(location.href+" #likeBTN");
 					} else{
 						alert("오류");
 					}
