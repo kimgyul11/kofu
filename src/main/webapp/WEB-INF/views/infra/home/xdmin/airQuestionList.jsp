@@ -6,7 +6,6 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <jsp:useBean id="CodeServiceImpl" class="com.kofu.infra.modules.code.CodeServiceImpl"/>
 
-
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -271,7 +270,7 @@
 
 	toggleBtn.addEventListener('click', () =>{
 	    menu.classList.toggle('active');
-	});
+	});\
 	
 	
 	//arrow-up

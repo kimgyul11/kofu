@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-
+<jsp:useBean id="CodeServiceImpl" class="com.kofu.infra.modules.code.CodeServiceImpl"/>
 
 <!DOCTYPE html>
 <head>
@@ -23,6 +23,7 @@
 	<!-- Navbar e  -->  
     
     <!--메인 영역  -->
+    <c:set var="gender" value="${CodeServiceImpl.selectListCachedCode('4')}"/> 
     <div class="container">
         <div class="mypage_Wrap">
             <div class="mypage_left_Wrap">
@@ -40,7 +41,11 @@
                     <ul class="profile_input">
                         <li><p>아이디</p><input type="text" readonly value="<c:out value="${sessId}"/>" ></li>
                         <li><p>이름</p><input type="text" readonly value="<c:out value="${sessName }"/>" name="user_name"></li>
-                        <li><p>성별</p><input type="text" readonly value="<c:out value="${item.user_gender }"/>"></li>
+                        <c:forEach items="${gender}" var="gender" varStatus="statusGender">
+                           <c:if test="${item.user_gender  eq gender.ccSeq}">
+                        		<li><p>성별</p><input type="text" readonly value="<c:out value="${gender.cc_name }"/>"></li>
+                        </c:if>
+                        </c:forEach>
                         <li><p>주 언어</p>
                         	<select id='lean_language' name='lean_language' >
 								<option value='9' <c:if test="${item.lean_language eq 9}">selected</c:if>>한국어</option>
