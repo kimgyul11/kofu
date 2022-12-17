@@ -90,7 +90,7 @@
 		</div><!--답변창e -->
 		
 		
-		<c:if test="${not empty vo.questionSeq}">
+<%-- 		<c:if test="${not empty vo.questionSeq}">
 		<c:forEach items="${homeList}"  var="homeList" varStatus="status">
 		<input type="hidden" class="likeAnswerSeq" name="likeAnswerSeq" id="likeAnswerSeq"value="<c:out value="${homeList.ansSeq }"/>">
 		<input type="hidden" value="<c:out value="${homeList.likeSeq }"/>" id="likeSeq" name="likeSeq">
@@ -118,16 +118,17 @@
 		    </div>
 		</div>
 		</c:forEach>
-		</c:if>	
+		</c:if>	 --%>
 		<br><br>
 		<br><br>
+		<section id="answer__wrap">
 		<c:if test="${not empty vo.questionSeq}">
 			<input type="hidden" name="ansSeq">
 			<c:forEach items="${homeList}"  var="homeList" varStatus="status">
 			<input type="hidden" class="likeAnswerSeq" name="likeAnswerSeq" id="likeAnswerSeq"value="<c:out value="${homeList.ansSeq }"/>">
 			<input type="hidden" value="<c:out value="${homeList.likeSeq }"/>" id="likeSeq" name="likeSeq">
 			
-			    <div class="answerbox">
+			    <div class="answerbox" id="">
 			    	<div class="answer-hearderWrap">
 				        <ul class="answer-header">
 				            <li class="profile-item">
@@ -141,7 +142,7 @@
 			        <div class="answer-body">
 			            <p><c:out value="${homeList.ansContent}"/></p>
 			        </div>
-			        <div class="footer">
+			        <div class="footer" id="footer">
 				        <c:if test="${item.user_id eq sessId }">
 		           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택하기</button> 
 		              	</c:if>
@@ -150,16 +151,17 @@
 			              <input type="text" value="<c:out value="${homeList.likeUseNy }"/>" id="likeUseNy" name="likeUseNy">
 			            <c:choose>
 							<c:when test="${empty homeList.likeUseNy}">
-								<button id="likeBTN" class="likeInst" type="button" onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);">♡</button>
+								<button  class="likeInst" type="button" <%-- onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);" --%>><i onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);" id="ruv" class="fa-regular fa-heart"></i></button>
 							</c:when>
 							<c:otherwise>
-								<button id="likeBTN" class="likeInst" type="button"  onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);">♥</button>
+								<button  class="likeInst" type="button"  <%-- onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);" --%>><i onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);" id="ruv" class="fa-solid fa-heart"></i></button>
 							</c:otherwise>
 						</c:choose>
 			        </div>
 			    </div>
 			</c:forEach>
 		</c:if>
+		</section>
     </div>
 <!--질문창 e-->
 	</div>
@@ -173,7 +175,6 @@
     	var likeSeq = $("input:hidden[name=likeSeq]");
     	var goUrlSelect = "answerSelect";
     	var selectSeq = $("input:hidden[name=ansSeq]");
-    	
     	
         $("#btnsave").on("click",function(){
     	   		// insert
@@ -197,12 +198,24 @@
 				,url: "/likeProc"
 				,data: {"likeUserId" : $("#likeUserId").val(), "likeAnswerSeq" : JSON.stringify(keyValue)} 
  				,success: function(response) {
-					if(response.rt == "success") {
-						$(this).text("♥");
-						$("#likeBTN").load(location.href+" #likeBTN");
+ 					var likeicon = "";
+ 					if(response.rt == "success") {
+						likeicon += '<i class="fa-solid fa-heart"></i>';
+						
+						$("#ruv").removeClass("fa-regular fa-heart");
+						$('#ruv').html(likeicon);
+						$("#answer__wrap").load(window.location.href + " #answer__wrap");
+						/* $(this).html("♥");
+						  $("#footer").load(window.location.href + "#footer"); */
+						/* $("#likeBTN").load(location.href+" #likeBTN"); */
 					} else if(response.rt == "delete"){
-						$(this).text('♡');
-						$("#likeBTN").load(location.href+" #likeBTN");
+						likeicon += '<i class="fa-regular fa-heart"></i>';
+						$("#ruv").removeClass("fa-solid fa-heart");
+						$('#ruv').html(likeicon);
+						$("#answer__wrap").load(window.location.href + " #answer__wrap");
+						/* $(this).html('♡');
+						$("#footer").load(window.location.href + "#footer"); */
+						/* $("#likeBTN").load(location.href+" #likeBTN"); */
 					} else{
 						alert("오류");
 					}
