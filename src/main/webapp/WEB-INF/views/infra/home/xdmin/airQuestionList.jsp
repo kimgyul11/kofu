@@ -25,12 +25,11 @@
 	<!-- Navbar s  -->
 	<%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 	<!-- Navbar e  -->
-    <div class="container">
     <a href="#" class="navbar__toogleBtn">
 		<i class="fa-solid fa-bars"></i>
 	</a>
         <!-- 언어별 버튼영역 s -->
-        <div class="language_catagory_wrap">
+        <div class="language_catagory_wrap" id="lagbtn">
             <p>언어별 선택 <i class="fa-solid fa-magnifying-glass"></i></p>
             <ul class="catagory_list">
                 <li class="list_item"><button name="languageOption" type="submit" value="9"><img src="https://cdn-icons-png.flaticon.com/512/330/330591.png" alt=""></li>
@@ -45,7 +44,8 @@
 <button type="button" id="jsonConvertStringSendjp">jpn번역</button>
 <textarea class="papagoTextareaB" id="result_text"></textarea> -->
 		<!-- 본문영역 s -->
-		<c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>    	    
+		<c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/> 
+		<div id="top"></div>   	    
         <c:choose>
     		<c:when test="${fn:length(list) eq 0}">
     			<h2>검색조건이 없습니다.</h2>
@@ -174,6 +174,12 @@
 		</div>
 	</div>
 	</form>
+	<button class="arrow-up">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    <button class="question-reg">
+        <i class="fa-solid fa-pen"></i>
+    </button>
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
@@ -267,6 +273,30 @@
 	    menu.classList.toggle('active');
 	});
 	
+	
+	//arrow-up
+	const navbar = document.querySelector('.navbar');
+	const navbarHeight = navbar.getBoundingClientRect().height;
+	
+	const arrowUp = document.querySelector('.arrow-up');
+	const questionreg = document.querySelector('.question-reg');
+	document.addEventListener('scroll',()=>{
+	    if(window.scrollY>navbarHeight){
+	        arrowUp.classList.add('visible');
+	        questionreg.classList.add('visible');
+	    }else{
+	        arrowUp.classList.remove('visible');
+	        arrowUp.classList.remove('visible');
+	    }
+	});
+	//화살표 클릭시 이동
+	arrowUp.addEventListener('click', () =>{
+	    scrollIntoView('#lagbtn');
+	});
+	function scrollIntoView(selector) {
+	    const scrollTo = document.querySelector(selector);
+	    scrollTo.scrollIntoView({ behavior: 'smooth' });
+	}
 </script>
 </body>
 </html>

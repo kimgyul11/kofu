@@ -36,9 +36,14 @@
         <div class="textbox">
             <textarea class="check" name="content" id="content" placeholder="단어나 문장을 입력해보세요" value="<c:out value="${item.content }"/>"></textarea>
         </div>
-        <ul class="buttonlist" id="btnsave">
-            <li><i class="fa-regular fa-image"></i></li>
-            <button>등록</button>
+        <ul class="buttonlist" >
+            <li>
+            	<input type="file" id="question__img">
+            	<label for="question__img">
+            		<i class="fa-regular fa-image"></i>
+            	</label>
+           	</li>
+            <button type="button" id="btnsave">등록</button>
         </ul>
         <!-- <div class="btn_container">
             <button class="btn_item1" id="btnsave"type="button">등록하기</button>
