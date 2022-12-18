@@ -270,7 +270,7 @@
 
 	toggleBtn.addEventListener('click', () =>{
 	    menu.classList.toggle('active');
-	});\
+	});
 	
 	
 	//arrow-up
@@ -295,7 +295,7 @@
 	function scrollIntoView(selector) {
 	    const scrollTo = document.querySelector(selector);
 	    scrollTo.scrollIntoView({ behavior: 'smooth' });
-	}
+	};
 </script>
 </body>
 </html>

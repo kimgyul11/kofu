@@ -42,14 +42,13 @@
 	                <li class="qid"><c:out value="${item.user_id }"/></li>
   				</c:otherwise>
   			</c:choose>
-                	
                 </ul>	
                	<ul class="head_right">
                	<c:set var="listCodeleanLanguage" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
                	<c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
                            <c:if test="${item.language_select eq Language.ccSeq}">
-                	<li><c:out value="${Language.cc_name }"/></li>
-                		</c:if>
+                				<li><c:out value="${Language.cc_name }"/></li>
+                			</c:if>
                 	</c:forEach>
                 	<li><fmt:formatDate value="${item.writetime }" pattern="yyyy-MM-dd hh:mm"/></li>
            		</ul>

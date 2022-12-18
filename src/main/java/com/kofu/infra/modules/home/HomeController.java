@@ -110,7 +110,7 @@ public class HomeController {
 		System.out.println("controller result: "+ result);
 		
 		
-		return "redirect:quelist";
+		return "infra/home/xdmin/airQuestionList";
 	}
 
 // -------------------------------------답변작성페이지------------------------------------------

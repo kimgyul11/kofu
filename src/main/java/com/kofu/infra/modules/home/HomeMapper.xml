@@ -129,7 +129,7 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
-	
+
 	<!-- 질문 답변  -->
 	<insert id="ansInsert">
 		INSERT INTO answer(

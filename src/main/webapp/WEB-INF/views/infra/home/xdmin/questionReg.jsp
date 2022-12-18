@@ -15,7 +15,7 @@
     <title>AirLanguage</title>
 </head>
 <body>
-<form name="form"> 
+<form name="form" method="post" enctype="multipart/form-data"> 
 <input type="hidden" name="questionSeq">
 <input type="hidden" value="<c:out value="${sessSeq }"/>" id="userID" name="userID">
 <!-- Navbar s  -->
@@ -38,7 +38,7 @@
         </div>
         <ul class="buttonlist" >
             <li>
-            	<input type="file" id="question__img">
+            	<input type="file" id="question__img" accept="image/*" >
             	<label for="question__img">
             		<i class="fa-regular fa-image"></i>
             	</label>

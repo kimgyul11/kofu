@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.kofu.infra.common.util.UtilUpload;
 
 
 
@@ -18,12 +21,33 @@ public class HomeServiceImpl implements HomeService{
 		return dao.selectList(vo);
 	}
 	
-	
+//	질문작성 영역s
 	  @Override
 	  public int insert(Home dto) throws Exception{ 
-	  int result = dao.insert(dto); System.out.println("service result : "+ result ); 
-	  return result; }
-	 
+	  try {
+  	  dao.insert(dto);
+  	  
+  	 int j = 0; 
+	  System.out.println(dto.getUploadedImage()); 
+	  for(MultipartFile multipartFile : dto.getUploadedImage()) { 
+		  if(!multipartFile.isEmpty()) {
+	  String pathModule =this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+	  UtilUpload.upload(multipartFile, pathModule, dto);
+	  
+	  dto.setTableName("questionImgUploaded");
+	  dto.setType(1);
+	  dto.setDefaultNy(j == 0 ? 1 : 0); dto.setSort(j + 1);
+	  dto.setPseq(dto.getQuestionSeq());
+	  
+	  dao.insertImgUploaded(dto); 
+	  j++; } }
+  	  
+	  return 1;
+	  }catch (Exception e) {
+			throw new Exception();
+		}
+	  }
+//	질문작성 영역e	 
 	
 
 
