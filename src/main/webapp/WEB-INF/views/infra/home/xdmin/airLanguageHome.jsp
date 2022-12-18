@@ -84,7 +84,14 @@
         <div class="coment">
             <div class="textbox">
                 <h1>언제든지 꺼내보세요</h1>
-                <h2><a onclick="location.href='airMypage?memberSeq=<c:out value="${sessSeq}"/>'">마이페이지로 이동</h2><br><br>
+                <c:choose>
+            		<c:when test="${empty sessSeq }">
+            			<h2><a href="/airLogin">마이페이지로 이동</h2><br><br>
+                	</c:when>
+                	<c:otherwise>
+                		<h2><a onclick="location.href='airMypage?memberSeq=<c:out value="${sessSeq}"/>'">마이페이지로 이동</h2><br><br>
+               		</c:otherwise>
+           		</c:choose>
                 <p>내가 궁금한 질문들을 저장해보세요<br>마이페이지에서 확인 하실 수 있습니다.</p>
             </div>
             <div class="imgbox">
