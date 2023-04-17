@@ -87,37 +87,7 @@
 				</ul>
 			</div>
 		</div><!--답변창e -->
-		
-		
-<%-- 		<c:if test="${not empty vo.questionSeq}">
-		<c:forEach items="${homeList}"  var="homeList" varStatus="status">
-		<input type="hidden" class="likeAnswerSeq" name="likeAnswerSeq" id="likeAnswerSeq"value="<c:out value="${homeList.ansSeq }"/>">
-		<input type="hidden" value="<c:out value="${homeList.likeSeq }"/>" id="likeSeq" name="likeSeq">
-		<div class="answer_wrap">
-		   <ul class="answer_profile">
-		   <c:choose>
-				<c:when test="${homeList.path ne null}">
- 					<li class="ans_profileWrap"><img class="ans_profile" src="<c:out value="${homeList.path}"/><c:out value="${homeList.uuidName}"/>"></li>
-		       		<li class="ans_name"><c:out value="${homeList.user_id}"/></li>
-				</c:when>
-  				<c:otherwise>
-					<li class="ans_profileWrap"><img class="ans_profile" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt=""></li>
-  					<li class="ans_name"><c:out value="${homeList.user_id}"/></li>
-  				</c:otherwise>
-  			</c:choose>
-		   </ul>
-		   <div class="answer_bubble">
-		       <p class="date"><c:out value="${homeList.ansWriteTime }"/></p>
-		       <div class="bubble_content">
-		           <c:out value="${homeList.ansContent}"/>
-		        </div>
-		        <ul class="bubble_bottom">
-		            <li class="likebtn">하트</li>
-		        </ul>
-		    </div>
-		</div>
-		</c:forEach>
-		</c:if>	 --%>
+
 		<br><br>
 		<br><br>
 		<section id="answer__wrap">
@@ -145,15 +115,24 @@
 				        <c:if test="${item.user_id eq sessId }">
 		           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택하기</button> 
 		              	</c:if>
-			            <button>신고하기</button>
-			            좋아요수:<c:out value="${fn:length(listCount)}"/>
 			              <input type="text" value="<c:out value="${homeList.likeUseNy }"/>" id="likeUseNy" name="likeUseNy">
 			            <c:choose>
 							<c:when test="${empty homeList.likeUseNy}">
-								<button  class="likeInst" type="button" <%-- onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);" --%>><i onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);" id="ruv" class="fa-regular fa-heart"></i></button>
+								<button  
+									class="likeInst" 
+									type="button" 
+									onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);"
+								>
+									<i id="ruv-${homeList.ansSeq}" class="fa-regular fa-heart"></i>
+								</button>
 							</c:when>
 							<c:otherwise>
-								<button  class="likeInst" type="button"  <%-- onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);" --%>><i onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);" id="ruv" class="fa-solid fa-heart"></i></button>
+								<button 
+									class="likeInst"
+									type="button" 
+									onclick="javascript:goLike(<c:out value="${homeList.ansSeq }"/>);" 
+									><i id="ruv-${homeList.ansSeq}" class="fa-solid fa-heart"></i>
+								</button>
 							</c:otherwise>
 						</c:choose>
 			        </div>
@@ -188,6 +167,8 @@
 	    	alert('채택이 완료되었습니다.');
 			form.attr("action", goUrlSelect).submit();
 		}
+		
+		
 		//좋아요버튼 ajax.
 		function goLike(keyValue) {
 		$.ajax({
@@ -197,24 +178,12 @@
 				,url: "/likeProc"
 				,data: {"likeUserId" : $("#likeUserId").val(), "likeAnswerSeq" : JSON.stringify(keyValue)} 
  				,success: function(response) {
- 					var likeicon = "";
  					if(response.rt == "success") {
-						likeicon += '<i class="fa-solid fa-heart"></i>';
-						
-						$("#ruv").removeClass("fa-regular fa-heart");
-						$('#ruv').html(likeicon);
-						$("#answer__wrap").load(window.location.href + " #answer__wrap");
-						/* $(this).html("♥");
-						  $("#footer").load(window.location.href + "#footer"); */
-						/* $("#likeBTN").load(location.href+" #likeBTN"); */
+ 						var likeicon = '<i class="fa-solid fa-heart"></i>';
+						 $("#ruv-" + keyValue).removeClass("fa-regular fa-heart").html(likeicon)
 					} else if(response.rt == "delete"){
-						likeicon += '<i class="fa-regular fa-heart"></i>';
-						$("#ruv").removeClass("fa-solid fa-heart");
-						$('#ruv').html(likeicon);
-						$("#answer__wrap").load(window.location.href + " #answer__wrap");
-						/* $(this).html('♡');
-						$("#footer").load(window.location.href + "#footer"); */
-						/* $("#likeBTN").load(location.href+" #likeBTN"); */
+						var likeicon = '<i class="fa-regular fa-heart"></i>';
+				        $("#ruv-" + keyValue).removeClass("fa-solid fa-heart").html(likeicon)
 					} else{
 						alert("오류");
 					}
@@ -224,6 +193,8 @@
 				}
 			});
 		}
+		
+		
 		//북마크  ajax.
 		$("#bookInst").on("click",function(){
 		$.ajax({

@@ -146,7 +146,7 @@
 
     
     <!--테이블 시작  -->
-    <div class="contaner"
+    <div class="contaner">
     <div style="width:80%;margin:auto; text-align: center; height:700px;">
 		<table class="table table-hover">
 		    <thead>

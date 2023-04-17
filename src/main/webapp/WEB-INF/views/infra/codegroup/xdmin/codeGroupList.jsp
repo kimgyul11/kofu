@@ -153,7 +153,7 @@
   	<c:out value="${oracleList.JOB_TITLE}"/>
   </c:forEach>   
     <!--테이블 시작  -->
-    <div class="contaner"
+    <div class="contaner">
     <div style="width:80%;margin:auto; text-align: center; height:700px;">
 		<table class="table table-hover">
 		    <thead>
@@ -258,7 +258,6 @@
 	        </div>
 	    </div>
 	</div>
-	
 	<div id="kensaku">	
 		<div class="float-start">
 			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -295,6 +294,7 @@
 		<div class="float-end">
 			<button type="button" class="btn btn-outline-dark" style="margin:5px;">수정</button>
 		</div>
+	</div>
 	</div>	
 </div>
 <br>

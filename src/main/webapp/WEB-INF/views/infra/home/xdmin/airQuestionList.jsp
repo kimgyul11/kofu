@@ -264,6 +264,9 @@
 	for(var j = 0; j< openModalBtn.length; j++){
 		funcs[j]();
 	}
+	
+	
+	
 	//미디어쿼리 버튼
 	const toggleBtn = document.querySelector('.navbar__toogleBtn');
 	const menu = document.querySelector('.nav_right_Wrap');
@@ -296,6 +299,23 @@
 	    const scrollTo = document.querySelector(selector);
 	    scrollTo.scrollIntoView({ behavior: 'smooth' });
 	};
+	
+	// 언어 카테고리 버튼 클릭 이벤트 핸들러
+	var languageButtons = document.getElementsByName("languageOption");
+	for (var i = 0; i < languageButtons.length; i++) {
+	  languageButtons[i].addEventListener("click", function() {
+	    sessionStorage.setItem("languageCategory", this.value);
+	  });
+	}
+
+	// 페이지 로딩 시 저장된 언어 카테고리 값으로 선택된 버튼 설정
+	var savedLanguageCategory = sessionStorage.getItem("languageCategory");
+	if (savedLanguageCategory) {
+	  var selectedButton = document.querySelector(`button[name="languageOption"][value="${savedLanguageCategory}"]`);
+	  if (selectedButton) {
+	    selectedButton.classList.add("selected");
+	  }
+	}
 </script>
 </body>
 </html>
