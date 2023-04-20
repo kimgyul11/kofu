@@ -16,39 +16,32 @@
 </head>
 <body>
 <form autocomplete="off">
-	
-    <div class="loginWrap">
+	<div class="wrap">
+		<div class="border">
+			<h1 class="title">AIR LANGUAGE</h1>	
+			<div class="input_items">
+			    <input class="input_item" type="text" id="user_id" placeholder="아이디를 입력해주세요" value="test11">
+			    <input class="input_item" type="password" id="user_pw" placeholder="비밀번호를 입력해주세요" onkeyup="login();" value="1234">
+			    <button class="btn" type="button" id="btnLogin">로그인</button>
+			    <div class="margin">OR</div>
+			</div>
+			<ul class="loginItems">
+				<li class="loginItem" id="naverBtn">
+					<img class="loginItem_img" src="https://cdn-icons-png.flaticon.com/512/8142/8142645.png">
+				</li>
+				<li class="loginItem" id="kakaoBtn">
+					<img class="loginItem_img" src="https://cdn-icons-png.flaticon.com/512/4494/4494622.png">
+				</li>
+				<li class="loginItem">
+					<a href="/member/airSignupView">
+						<img class="loginItem_img" src="https://cdn-icons-png.flaticon.com/512/6159/6159448.png">
+					</a>
+				</li>
+			</ul>
+	    </div>
+	</div>
         
-        <div class="login_input_wrap">
-            <div class="input_box">
-                <h1>AIR LANGUAGE</h1>
-                <ul class="input_item">
-                    <li><input type="text" id="user_id" placeholder="아이디를 입력해주세요" value="test11"></li>
-                    <li><input type="password" id="user_pw" placeholder="비밀번호를 입력해주세요" onkeyup="enterkey();" value="1234"></li>
-                    <li><button type="button" id="btnLogin">로그인</button></li>
-                    <li>OR</li><br>
-                    <li>
-                    <ul class="loginbtnWrap">
-                        <li class="loginbtn" id="naverBtn"><img class="loginbtn_img" src="https://cdn-icons-png.flaticon.com/512/8142/8142645.png"></li>
-                        <li class="loginbtn" id="kakaoBtn"><img class="loginbtn_img" src="https://cdn-icons-png.flaticon.com/512/4494/4494622.png"></li>
-                        <li class="loginbtn"><a href="/member/airSignupView"><img class="loginbtn_img" src="https://cdn-icons-png.flaticon.com/512/6159/6159448.png"></a></li>
-                    </ul>
-                    </li>
-                    <li>
-                     
-                        <ul class="findwrap">
-                            <li><a href="#">아이디 찾기</a></li>
-                            <br>
-                            <li><a href="#">비밀번호 찾기</a></li>
-                            <br>
-                            <li><a href="airLanguageHome">HOME</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <form name="form">
+   	<form name="form">
 		<input type="hidden" name="user_name"/>
 		<input type="hidden" name="snsId"/>
 		<input type="hidden" name="user_email"/>
@@ -61,56 +54,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script type="text/javascript">
-    function enterkey() {
-    	if (window.event.keyCode == 13) {
-    	     // 엔터키가 눌렸을 때 실행할 내용
-    		  $.ajax({
-                  async: true 
-                  ,cache: false
-                  ,type: "post"
-                  /* ,dataType:"json" */
-                  ,url: "/member/loginProc"
-                  /* ,data : $("#formLogin").serialize() */
-                  ,data : { "user_id" : $("#user_id").val(), "user_pw" : $("#user_pw").val()}
-                  ,success: function(response) {
-                      if(response.rt == "success") {
-                              alert("로그인 완료");
-                              location.href = "/airLanguageHome";
-                      } else {
-                          alert("회원없음");
-                      }
-                  }
-                  ,error : function(jqXHR, textStatus, errorThrown){
-                      alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-                  }
-              });
-          };
-    	}
-        $("#btnLogin").on("click", function(){
     
-            $.ajax({
-                async: true 
-                ,cache: false
-                ,type: "post"
-                /* ,dataType:"json" */
-                ,url: "/member/loginProc"
-                /* ,data : $("#formLogin").serialize() */
-                ,data : { "user_id" : $("#user_id").val(), "user_pw" : $("#user_pw").val()}
-                ,success: function(response) {
-                    if(response.rt == "success") {
-                            alert("로그인 완료");
-                            location.href = "/airLanguageHome";
-                    } else {
-                        alert("회원없음");
-                    }
-                }
-                ,error : function(jqXHR, textStatus, errorThrown){
-                    alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-                }
-            });
-        });
-        
-        
+    function login() {
+    	  $.ajax({
+    	    async: true,
+    	    cache: false,
+    	    type: "post",
+    	    url: "/member/loginProc",
+    	    data: {
+    	      "user_id": $("#user_id").val(),
+    	      "user_pw": $("#user_pw").val()
+    	    },
+    	    success: function (response) {
+    	      if (response.rt == "success") {
+    	        alert("로그인 완료");
+    	        location.href = "/airLanguageHome";
+    	      } else {
+    	        alert("회원없음");
+    	      }
+    	    },
+    	    error: function (jqXHR, textStatus, errorThrown) {
+    	      alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+    	    }
+    	  });
+    	}
+
+    	$("#btnLogin").on("click", function(){
+    	  login();
+    	});
+
+    	$(document).on("keydown", function(event){
+    	  if (event.keyCode === 13) {
+    	    login();
+    	  }
+    	});
         //-----------------------------카카오로그인------------------------------------------------
         
         

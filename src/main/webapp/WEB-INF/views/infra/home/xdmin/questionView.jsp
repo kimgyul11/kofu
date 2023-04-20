@@ -115,7 +115,6 @@
 				        <c:if test="${item.user_id eq sessId }">
 		           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택하기</button> 
 		              	</c:if>
-			              <input type="text" value="<c:out value="${homeList.likeUseNy }"/>" id="likeUseNy" name="likeUseNy">
 			            <c:choose>
 							<c:when test="${empty homeList.likeUseNy}">
 								<button  

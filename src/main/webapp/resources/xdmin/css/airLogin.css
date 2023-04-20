@@ -19,12 +19,21 @@ a{
     text-decoration: none;
     color:black;
 }
+.margin{
+	margin:12px 0px;
+}
 .loginWrap{
     background: #fff;
     display: flex ;
     height: 100vh;	
 }
-
+.border{
+	border:1px solid #e0e0e0;
+	padding:34px;
+	border-radius:5px;
+	
+	
+}
 .login_img{
     background-image: url('https://images.unsplash.com/photo-1564500617448-e541b1df7cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size : cover;  
@@ -35,16 +44,19 @@ a{
 
 /* 로그인 영역 */
 
-.login_input_wrap{
-    width: 100%;
-    height: 100%;
-    flex: 1;
+.wrap{
+    width: 50%;
+    height: 100vh;
+    margin:auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.input_box_header{
-    display: flex;
+.title{
+	font-size:38px;
+	font-weight: bold;
+	margin:24px 4px;
 }
 
 .input_box{
@@ -59,45 +71,41 @@ a{
 .input_box h1{
     font-weight: lighter;
 }
-.input_item  input{
+.input_items{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
     width: 100%;
-    height: 35px;
     border: none;
-    border-bottom: 2.5px solid;
-    margin: 0px 0 25px 0px;
-    cursor: pointer;
+    
+    
+}
+.input_item{
+	width:300px;
     font-size: 15px;
+    text-align: center;
+    border-radius:15px;
+    border:1px solid #e0e0e0;
+    height:45px;
+    margin:12px auto;
+    outline: none;
+    
 }
-.input_itembtn{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
+
+.btn{
+	width:150px;
+	height:40px;
+	border-radius : 5px; 
+	border:none;
+	background:#2E9AFE;
+	cursor: pointer;
+	font-size:16px;
+	font-weight:bold;
+	color:#fff;
 }
-.input_itembtn button{
-    width: 55px;
-    height: 22px;
-    border-radius: 15px;
-    border: none;
-    background-color: black;
-    color: #fff;
-    cursor: pointer;
-}
-.input_itembtn button:hover{
-    background: #1976d2;
-    color: #fff;
-}
-.findwrap{
-    margin-top: 30px;
-    font-size:1.2rem;
-}
-.findwrap li:hover{
-    background: #1976d2;
-    border-radius: 15px;
-}
-.findwrap li a:hover{
-    color: #fff;
-}
+
+
+
 .input_box input::placeholder{
     color:black;
     font-size: 15px;
@@ -105,262 +113,41 @@ a{
 .input_box input:focus{
     outline:none;
 }
-.loginbtnWrap{
+
+
+.loginItems{
     display: flex;
     justify-content: space-around;
-    margin-top: 15px;
+    margin-top: 8px;
     cursor: pointer;
     
 }
-.loginbtn{
+.loginItem{
     border-radius: 50%;
     width: 50px;
     height: 50px;
     overflow: hidden;
+    margin:12px 7px;
+    transition: all 0.3s ease-in-out;
 }
-.loginbtn_img{
+.loginItem_img{
     width: 100%;
     height: 100%;
     margin: auto;
     text-align: center;
 }
 
-.footerimg{
-    width: 150px;
-    height: 150px;
-    position: relative;
-    left: 50%;   
-}
-.footerimg img{
-    width: 100%;
-    height: 100%;
-}
-
-.imgmove{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70%;
-}
-.imgmove h1{
-    position: absolute;
-    font-weight:lighter;
-    top:10%;
-}
-.imgmove h2{
-    position: absolute;
-    font-weight: lighter;
-    top:15%;
-}
-
-
-.check{
-    opacity: 0;
-    animation: 1s check-ok forwards;
-    transition-timing-function: ease-in;
-    animation-delay: 3.5s;
-    transform-origin: 79% 25%;
-}
-
-@keyframes check-ok {
-    0%{
-    transform: translate(156.5 25.5);
-    transform: scale(1);
-    opacity: 0;
-    }
-        40%{
-    transform: translate(156.5 25.5);
-    transform: scale(1.1);
-    opacity: 1;
-    }  
-    100%{
-    transform: translate(156.5 25.5);
-    transform: scale(1.1);
-    opacity: 1;
-    } 
-}
-
-.pass-animate {
-    animation-iteration-count: 1;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-    opacity: 0;
-}
-.pass-1{
-    animation-name: pass-1;
-}
-
-@keyframes pass-1 {
-    0%{
-    transform: translateX(250px);
-    }
-    40%{
-    transform: translateX(0px);
-    }
-    60%{
-    transform: translateX(0px);
-    }  
-    100%{
-    transform: translateX(-230px);
-    } 
-}
-
-.pass-2{
-    animation-name: pass-1;
-    animation-delay: 1.2s;
-}
-
-@keyframes pass-1 {
-    0%{
-    transform: translateX(250px);
-    opacity: 1;
-    }
-    40%{
-    transform: translateX(0px);
-    opacity: 1;
-    }
-    60%{
-    transform: translateX(0px);
-    opacity: 1;
-    }  
-    100%{
-    transform: translateX(-230px);
-    opacity: 1;
-    } 
-}
-
-.passOK{
-    animation-name: passOK;
-    animation-delay: 2.4s;
-}
-
-@keyframes passOK {
-    0%{
-        transform: translateX(250px);
-        opacity: 1;
-    }
-    40%{
-        transform: translateX(0px);
-        opacity: 1;
-    }
-    60%{
-        transform: translateX(0px);
-        opacity: 1;
-    }  
-    100%{
-        transform: translateX(0px);
-        opacity: 1;
-    } 
+.loginItem:hover{
+	transform: translateY(-10px);
 }
 
 
 
-/* 스위치 버튼 */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-}
 
-/* Hide default HTML checkbox */
-.switch input {
-opacity: 0;
-width: 0;
-height: 0;
-}
-
-/* The slider */
-.slider {
-position: absolute;
-cursor: pointer;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-color: #ccc;
--webkit-transition: .4s;
-transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked + .slider {
-background-color: #2196F3;
-}
-
-input:focus + .slider {
-box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
--webkit-transform: translateX(19px);
--ms-transform: translateX(19px);
-transform: translateX(19px);
-}
-
-/* Rounded sliders */
-.slider.round {
-border-radius: 34px;
-}
-
-.slider.round:before {
-border-radius: 50%;
-}
 
 
 @media(max-width:768px){
-    .loginWrap{
-        display: flex;
-        flex-direction: column;
-        
-    }
-    .login_img{
-        background-image: url('https://images.unsplash.com/photo-1564500617448-e541b1df7cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-        max-height: 250px;
-        width: 100%;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-    }
-    .loginWrap{
-        background: #fff;
-        display: flex ;
-    }
-    .imgmove h1,h2{
-        font-size: 1.2rem;
-        font-weight: lighter;
-    }
-    .imgmove svg{
-        display: none;
-    }
-    .input_box{
-        width: 100%;
-    }
-    .login_input_wrap{
-        width: 100%;
-        max-height: 400px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .input_item{
-        width: 60%;
-    }
-    .input_item input{
-        margin-top:35px;
+    .wrap{
+    	width:100%;
     }
 }
