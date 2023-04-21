@@ -155,24 +155,7 @@
     -o-transition: all 0.4s;
     transition: all 0.4s;
 }
-.questionBox-body:after{
-	content: "";
-    width: 0%;
-    height: 100%;
-    top: 0;
-    position: absolute;
-    left: 0;
-    -webkit-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    -ms-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    transition: all 0.4s;
-    background: #e0f2f1;
-}
-.questionBox-body:hover:after{
-	width: 100%;
-    z-index: -1;
-}
+
 
 .questionCount{
     display: flex;

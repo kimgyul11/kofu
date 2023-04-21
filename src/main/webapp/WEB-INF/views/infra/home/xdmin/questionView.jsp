@@ -24,6 +24,9 @@
 <input type="hidden" value="<c:out value="${sessSeq}"/>" id="bookmark_UserId" name="bookmark_UserId">
 <input type="hidden" value="<c:out value="${vo.questionSeq}"/>" id="bookmarkSeq" name="bookmarkSeq">
 
+
+
+
 <!-- Navbar s  -->
 <%@include file="../../../infra/includeV1/userNavbar.jsp"%>
 <!-- Navbar e  -->    
@@ -70,10 +73,8 @@
 				</c:choose>		
             </div>
         </div>
-   		
-
-        <!-- 답변창s -->
-        <div class="answerWrap">
+		<!-- 답변창s -->
+		<div class="answerWrap">
 			<div class="answerContent">
 				<textarea name="ansContent" value="<c:out value="${dto.ansContent }"/>" placeholder="<c:out value="${item.user_id }"/>님이 당신의 답변을 기다리고 있습니다."></textarea>
 			</div>
@@ -82,21 +83,18 @@
 					<li><input type="hidden">
 				</ul>
 				<ul class="answerbtn">
-					<li><button><i class="fa-regular fa-image"></i></button>
-					<li><button type="button" id="btnsave"><i class="fa-regular fa-floppy-disk"></i></button>
+					<li><button type="button" id="btnsave">등록하기</button>
 				</ul>
 			</div>
 		</div><!--답변창e -->
+		
 
-		<br><br>
-		<br><br>
-		<section id="answer__wrap">
+
 		<c:if test="${not empty vo.questionSeq}">
 			<input type="hidden" name="ansSeq">
 			<c:forEach items="${homeList}"  var="homeList" varStatus="status">
 			<input type="hidden" class="likeAnswerSeq" name="likeAnswerSeq" id="likeAnswerSeq"value="<c:out value="${homeList.ansSeq }"/>">
 			<input type="hidden" value="<c:out value="${homeList.likeSeq }"/>" id="likeSeq" name="likeSeq">
-			
 			    <div class="answerbox" id="">
 			    	<div class="answer-hearderWrap">
 				        <ul class="answer-header">
@@ -113,7 +111,7 @@
 			        </div>
 			        <div class="footer" id="footer">
 				        <c:if test="${item.user_id eq sessId }">
-		           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택하기</button> 
+		           			<button type="button" onclick="anspikc(<c:out value="${homeList.ansSeq}"/>);">채택</button> 
 		              	</c:if>
 			            <c:choose>
 							<c:when test="${empty homeList.likeUseNy}">
@@ -138,7 +136,7 @@
 			    </div>
 			</c:forEach>
 		</c:if>
-		</section>
+
     </div>
 <!--질문창 e-->
 	</div>

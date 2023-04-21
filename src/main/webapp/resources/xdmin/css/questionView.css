@@ -111,11 +111,10 @@ html{
 
 
 .container{
-	padding-top: 150px;
-    width: 50%;
-    margin: auto;
-    
+	position: relative;
+	width:100%;
 }
+
 .questionBox{
     width: 100%;
     max-width:750px;
@@ -133,9 +132,10 @@ html{
     display: flex;
     align-items: center;
     justify-content:space-between;
-    padding-left: 0;
+    padding: 6px 9px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    font-size:14px;
 }
 .queBox_head li{
     margin-left: 15px ;
@@ -372,10 +372,10 @@ html{
 /* 답변창 */
 
 .answerWrap{
-	margin:90px auto 0 auto;
+	margin:32px auto;
 	width:100%;
 	max-width:750px;
-	height:100%;
+	
 	
 }
 .answerContent{
@@ -451,9 +451,8 @@ html{
 }
 .user-photo{ 
     flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    border: 2px solid #333;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: gold;
     background: center;
@@ -477,10 +476,17 @@ html{
     justify-content: flex-end;
 }
 .footer button{
+	width:40px;
     margin: 5px;
-    border: none;
+	border: 1px solid #e0e0e0;
     border-radius: 5px;
+   	color: palevioletred;
+   	cursor:pointer
 }
+
+
+
+
 
 .picbox{
 	width:60px;
@@ -496,14 +502,11 @@ html{
 	display: flex;
 	justify-content: space-between;
 	align-items:center;
-   	height: 70px;
-    background: #000;
+   	height: 60px;
+    background-color: #4b4a47;
     color: #fff;
 }
-.likebtn{
-	background:red;
-	width:150px;
-}
+
 
 @media (max-width:768px){
     .navbar{
@@ -662,12 +665,8 @@ html{
 }
 
 
-
 @media(max-width:768px){
-	.container{
-		width:100%;
-		padding:15px;
-	}
+
     .ans_profile{
         width: 50px;
         height: 50px;

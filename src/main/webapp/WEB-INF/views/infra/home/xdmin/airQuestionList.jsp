@@ -95,53 +95,52 @@
 				    </div>
 				</div>
 				<!-- 질문박스e -->
-<div class="userInfo-modal_background"> 
+	<div class="userInfo-modal_background"> 
         <div class="userInfo-modal_wrap">
             <div class="userInfo-modal-Box">
                 <div>
                     <span class="close-modal">&times;</span>
                 </div>
-                    <div class="profile-head">
-                    	<c:choose>
-         					<c:when test="${list.path ne null}">
-         						<img class="profile-head_img" src="<c:out value="${list.path}"/><c:out value="${list.uuidName}"/>">
-   							</c:when>
-	         				<c:otherwise>
-	         					<img class="profile-head_img" src="https://cdn-icons-png.flaticon.com/512/2026/2026487.png">
-	         				</c:otherwise>
-	         			</c:choose>
-                        	<p><c:out value="${list.user_id }"/></p>
-                        </div>
-                        <ul class="profile-body">
-                        <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
-                           <c:if test="${list.user_favoriteLanguage eq Language.ccSeq}">
-                            <li class="profile-body_item">
-                                <p>주로 사용하는 언어</p>
-                                <span><c:out value="${Language.cc_name }"/></span>
-                            </li>
-                            </c:if>
-                            </c:forEach>
-                            <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
-                           <c:if test="${list.lean_language eq Language.ccSeq}">
-                            <li class="profile-body_item">
-                                <p>현재 배우는 언어</p>
-                                <span><c:out value="${Language.cc_name }"/></span>
-                            </li>
-                            </c:if>
-                            </c:forEach>
-                            <li class="profile-body_item">
-                                <p>좋아요 받은 수</p>
-                                <span>0</span>
-                            </li>
-                            <li class="profile-body_item">
-                                <p>채택 답변 수</p>
-                                <span>0</span>
-                            </li>
-                        </ul>
-                        <div class="profile-introduce">
-                            <p>여기에 텍스트 소개들어갑니다</p>
-                        </div>
-              
+            <div class="profile-head">
+            	<c:choose>
+					<c:when test="${list.path ne null}">
+	 						<img class="profile-head_img" src="<c:out value="${list.path}"/><c:out value="${list.uuidName}"/>">
+					</c:when>
+	  				<c:otherwise>
+	  					<img class="profile-head_img" src="https://cdn-icons-png.flaticon.com/512/2026/2026487.png">
+	  				</c:otherwise>
+  				</c:choose>
+                	<p><c:out value="${list.user_id }"/></p>
+                </div>
+                <ul class="profile-body">
+                <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
+                   <c:if test="${list.user_favoriteLanguage eq Language.ccSeq}">
+                    <li class="profile-body_item">
+                        <p>주로 사용하는 언어</p>
+                        <span><c:out value="${Language.cc_name }"/></span>
+                    </li>
+                    </c:if>
+                    </c:forEach>
+                    <c:forEach items="${listCodeleanLanguage}" var="Language" varStatus="statusGender">
+                   <c:if test="${list.lean_language eq Language.ccSeq}">
+                    <li class="profile-body_item">
+                        <p>현재 배우는 언어</p>
+                        <span><c:out value="${Language.cc_name }"/></span>
+                    </li>
+                    </c:if>
+                    </c:forEach>
+                    <li class="profile-body_item">
+                        <p>좋아요 받은 수</p>
+                        <span>0</span>
+                    </li>
+                    <li class="profile-body_item">
+                        <p>채택 답변 수</p>
+                        <span>0</span>
+                    </li>
+                </ul>
+                <div class="profile-introduce">
+                    <p>여기에 텍스트 소개들어갑니다</p>
+                </div>
             </div>
         </div>
     </div>
@@ -174,8 +173,8 @@
 	</div>
 	</form>
 	<div class="menuWrap">
-		<button class="menuItem" id="topBtn">TOP</button>
-	    <button class="menuItem" id='queBtn'>질문하기</button>
+		<button class="menuItem" id="topBtn" >TOP</button>
+	    <button class="menuItem" id='queBtn' >질문하기</button>
     </div>
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -274,10 +273,16 @@
 	});
 	
 	
+	//사이드메뉴 이벤트 
+	const queBtn = document.querySelector('#queBtn');
 	const topBtn =  document.querySelector('#topBtn');
+
 	topBtn.addEventListener('click', () =>{
-	    scrollIntoView('#lagbtn');
+		scrollIntoView('#lagbtn');
 	});
+	document.getElementById("queBtn").onclick = ()=> {
+	    window.location.href = "/quereg";
+	};
 	function scrollIntoView(selector) {
 	    const scrollTo = document.querySelector(selector);
 	    scrollTo.scrollIntoView({ behavior: 'smooth' });
@@ -286,22 +291,7 @@
 	
 	
 	
-	// 언어 카테고리 버튼 클릭 이벤트 핸들러
-	var languageButtons = document.getElementsByName("languageOption");
-	for (var i = 0; i < languageButtons.length; i++) {
-	  languageButtons[i].addEventListener("click", function() {
-	    sessionStorage.setItem("languageCategory", this.value);
-	  });
-	}
 
-	// 페이지 로딩 시 저장된 언어 카테고리 값으로 선택된 버튼 설정
-	var savedLanguageCategory = sessionStorage.getItem("languageCategory");
-	if (savedLanguageCategory) {
-	  var selectedButton = document.querySelector(`button[name="languageOption"][value="${savedLanguageCategory}"]`);
-	  if (selectedButton) {
-	    selectedButton.classList.add("selected");
-	  }
-	}
 </script>
 </body>
 </html>
