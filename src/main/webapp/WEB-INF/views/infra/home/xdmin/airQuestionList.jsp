@@ -131,11 +131,11 @@
                             </c:forEach>
                             <li class="profile-body_item">
                                 <p>좋아요 받은 수</p>
-                                <span>cout</span>
+                                <span>0</span>
                             </li>
                             <li class="profile-body_item">
                                 <p>채택 답변 수</p>
-                                <span>cout</span>
+                                <span>0</span>
                             </li>
                         </ul>
                         <div class="profile-introduce">
@@ -173,12 +173,10 @@
 		</div>
 	</div>
 	</form>
-	<button class="arrow-up">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
-    <button class="question-reg">
-        <i class="fa-solid fa-pen"></i>
-    </button>
+	<div class="menuWrap">
+		<button class="menuItem" id="topBtn">TOP</button>
+	    <button class="menuItem" id='queBtn'>질문하기</button>
+    </div>
 <script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
@@ -276,29 +274,17 @@
 	});
 	
 	
-	//arrow-up
-	const navbar = document.querySelector('.navbar');
-	const navbarHeight = navbar.getBoundingClientRect().height;
-	
-	const arrowUp = document.querySelector('.arrow-up');
-	const questionreg = document.querySelector('.question-reg');
-	document.addEventListener('scroll',()=>{
-	    if(window.scrollY>navbarHeight){
-	        arrowUp.classList.add('visible');
-	        questionreg.classList.add('visible');
-	    }else{
-	        arrowUp.classList.remove('visible');
-	        arrowUp.classList.remove('visible');
-	    }
-	});
-	//화살표 클릭시 이동
-	arrowUp.addEventListener('click', () =>{
+	const topBtn =  document.querySelector('#topBtn');
+	topBtn.addEventListener('click', () =>{
 	    scrollIntoView('#lagbtn');
 	});
 	function scrollIntoView(selector) {
 	    const scrollTo = document.querySelector(selector);
 	    scrollTo.scrollIntoView({ behavior: 'smooth' });
 	};
+	
+	
+	
 	
 	// 언어 카테고리 버튼 클릭 이벤트 핸들러
 	var languageButtons = document.getElementsByName("languageOption");
