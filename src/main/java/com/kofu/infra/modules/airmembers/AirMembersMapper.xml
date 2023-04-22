@@ -45,7 +45,6 @@
     		,a.user_useNy
     		,a.user_delNy
     		,a.user_favoriteLanguage
-			,a.user_level
     	<include refid="memberCommon" />
     		ORDER BY a.memberSeq DESC
     	<!-- <include refid="selectListLowerForMysql" />		 -->
@@ -63,7 +62,6 @@
     		,a.user_useNy
     		,a.user_delNy
     		,a.user_favoriteLanguage
-			,a.user_level
 		FROM airLanguage_member a
 		WHERE 1=1 
 			AND memberSeq = #{memberSeq}

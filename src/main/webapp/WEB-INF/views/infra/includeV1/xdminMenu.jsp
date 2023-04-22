@@ -4,11 +4,6 @@
         <div class="nav_logo">
             <a href=""><i class="fa-solid fa-plane-departure"></i>AirLanguage</a>
         </div>
-        <ul class="nav_list">
-        	<li><a><c:out value="${sessId }"/>님 환영합니다.</a></li>
-            <li><a href="#">프로필이미지</a></li>
-            <li><a   id="btnLogout">로그아웃</a></li>
-        </ul>
     </nav>
 
     <!-- 사이드 메뉴 -->
